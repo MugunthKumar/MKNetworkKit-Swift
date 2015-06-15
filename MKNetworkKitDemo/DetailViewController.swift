@@ -1,31 +1,40 @@
 //
 //  DetailViewController.swift
-//  MKNetworkKitDemo
+//  iCashSG 2
 //
-//  Created by Mugunth Kumar on 15/6/15.
-//  Copyright © 2015 Steinlogic Consulting and Training Pte Ltd. All rights reserved.
+//  Created by Mugunth on 15/5/15.
+//  Copyright (c) 2015 Steinlogic Consulting and Training Pte Ltd. All rights reserved.
 //
 
 import UIKit
 
 class DetailViewController: UIViewController {
 
-  @IBOutlet weak var detailDescriptionLabel: UILabel!
+  @IBOutlet weak var fullScreenImageView: UIImageView!
 
 
-  var detailItem: AnyObject? {
+  var detailItem: FlickrImage? {
     didSet {
-        // Update the view.
-        self.configureView()
+      // Update the view.
+      self.configureView()
     }
   }
 
   func configureView() {
     // Update the user interface for the detail item.
-    if let detail = self.detailItem {
-        if let label = self.detailDescriptionLabel {
-            label.text = detail.description
+    if let detail: FlickrImage = self.detailItem {
+
+      let client = (UIApplication.sharedApplication().delegate as! AppDelegate).host
+      client?.fetchImage(detail.fullscreenImageUrlString!) { (image : UIImage?) -> Void in
+
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+
+          UIView.transitionWithView(self.view!, duration: 0.5, options: .TransitionCrossDissolve, animations: {
+            () -> Void in
+            self.fullScreenImageView.image = image;
+            }, completion: nil)
         }
+      }
     }
   }
 
@@ -39,7 +48,7 @@ class DetailViewController: UIViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-
-
+  
+  
 }
 
