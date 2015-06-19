@@ -30,9 +30,9 @@
 
 import Foundation
 
-struct Log {
+public struct Log {
 
-  static let emojiLogger = Log(
+  public static let emojiLog = Log(
     infoPrefix: "✅",
     infoSuffix: "✅",
     warnPrefix: "⚠️",
@@ -41,31 +41,42 @@ struct Log {
     errorSuffix: "🚫"
   )
 
-  static let xcodeColorsLogger = Log(
+  public static var xcodeColorsLog = Log(
     infoPrefix: "\u{001b}[fg0,255,0;",
     infoSuffix: "\u{001b}[;",
     warnPrefix: "\u{001b}[fg255,255,0;",
     warnSuffix: "\u{001b}[;",
     errorPrefix: "\u{001b}[fg255,0,0;",
     errorSuffix: "\u{001b}[;"
-  )
+    ) {
 
-  static var defaultLogger : Log = emojiLogger
+    didSet {
+      setenv("XcodeColors", "YES", 0)
+    }
+  }
 
-  var infoPrefix : String
-  var warnPrefix : String
-  var errorPrefix : String
-  var infoSuffix : String
-  var warnSuffix : String
-  var errorSuffix : String
+  public static var simpleLog = Log(
+    infoPrefix: "",
+    infoSuffix: "",
+    warnPrefix: "! ",
+    warnSuffix: " !",
+    errorPrefix: "X ",
+    errorSuffix: " X"
+    )
 
-  init(infoPrefix : String, infoSuffix : String,
+  public static var defaultLog : Log = emojiLog
+
+  private var infoPrefix : String
+  private var warnPrefix : String
+  private var errorPrefix : String
+  private var infoSuffix : String
+  private var warnSuffix : String
+  private var errorSuffix : String
+
+  public init(infoPrefix : String, infoSuffix : String,
     warnPrefix : String, warnSuffix : String,
     errorPrefix : String, errorSuffix : String
     ) {
-
-      setenv("XcodeColors", "YES", 0)
-
       self.infoPrefix = infoPrefix
       self.warnPrefix = warnPrefix
       self.errorPrefix = errorPrefix
@@ -75,33 +86,36 @@ struct Log {
       self.errorSuffix = errorSuffix
   }
 
-  func info<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
+  public func info<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
 
     print("\(functionName) [\(lineNumber)] \(infoPrefix)\(object)\(infoSuffix)")
+    print("\n") // remove this line if you are using Swift 2 and above
   }
 
-  func warn<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
+  public func warn<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
 
     print("\(functionName) [\(lineNumber)] \(warnPrefix)\(object)\(warnSuffix)")
+    print("\n")
   }
 
-  func error<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
+  public func error<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
 
     print("\(functionName) [\(lineNumber)] \(errorPrefix)\(object)\(errorSuffix)")
+    print("\n")
   }
 
-  static func info<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
+  public static func info<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
 
-    defaultLogger.info(object, functionName:functionName, lineNumber:lineNumber)
+    defaultLog.info(object, functionName:functionName, lineNumber:lineNumber)
   }
 
-  static func warn<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
+  public static func warn<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
 
-    defaultLogger.warn(object, functionName:functionName, lineNumber:lineNumber)
+    defaultLog.warn(object, functionName:functionName, lineNumber:lineNumber)
   }
 
-  static func error<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
+  public static func error<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
 
-    defaultLogger.error(object, functionName:functionName, lineNumber:lineNumber)
+    defaultLog.error(object, functionName:functionName, lineNumber:lineNumber)
   }
 }
