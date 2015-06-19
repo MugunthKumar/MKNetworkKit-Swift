@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		AB28F7B81B2F246E0043B035 /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28F7B71B2F246E0043B035 /* UIKitExtensions.swift */; };
+		AB86DB621B33C95B00C05B26 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86DB611B33C95B00C05B26 /* Log.swift */; };
+		AB86DB631B33C95B00C05B26 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86DB611B33C95B00C05B26 /* Log.swift */; };
+		AB86DB641B33C95B00C05B26 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86DB611B33C95B00C05B26 /* Log.swift */; };
 		ABCF93871B2ECA1F0078CA66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93861B2ECA1F0078CA66 /* AppDelegate.swift */; };
 		ABCF93891B2ECA1F0078CA66 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93881B2ECA1F0078CA66 /* MasterViewController.swift */; };
 		ABCF938B1B2ECA1F0078CA66 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF938A1B2ECA1F0078CA66 /* DetailViewController.swift */; };
@@ -58,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		AB28F7B71B2F246E0043B035 /* UIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
+		AB86DB611B33C95B00C05B26 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		ABCF93831B2ECA1F0078CA66 /* MKNetworkKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKNetworkKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABCF93861B2ECA1F0078CA66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABCF93881B2ECA1F0078CA66 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 				ABCF93CB1B2ECDAD0078CA66 /* Request.swift */,
 				ABCF93CF1B2EE2180078CA66 /* FoundationExtensions.swift */,
 				AB28F7B71B2F246E0043B035 /* UIKitExtensions.swift */,
+				AB86DB611B33C95B00C05B26 /* Log.swift */,
 			);
 			path = MKNetworkKit3;
 			sourceTree = "<group>";
@@ -307,6 +312,7 @@
 			files = (
 				ABCF93C41B2ECD690078CA66 /* Cache.swift in Sources */,
 				ABCF93BD1B2ECB830078CA66 /* FlickrImage.swift in Sources */,
+				AB86DB621B33C95B00C05B26 /* Log.swift in Sources */,
 				ABCF938B1B2ECA1F0078CA66 /* DetailViewController.swift in Sources */,
 				ABCF93C81B2ECD790078CA66 /* Host.swift in Sources */,
 				ABCF93C01B2ECB830078CA66 /* FlickrImageCell.swift in Sources */,
@@ -325,6 +331,7 @@
 			files = (
 				ABCF939E1B2ECA200078CA66 /* MKNetworkKitDemoTests.swift in Sources */,
 				ABCF93C51B2ECD690078CA66 /* Cache.swift in Sources */,
+				AB86DB631B33C95B00C05B26 /* Log.swift in Sources */,
 				ABCF93BB1B2ECB830078CA66 /* FlickrClient.swift in Sources */,
 				ABCF93D11B2EE2180078CA66 /* FoundationExtensions.swift in Sources */,
 				ABCF93C91B2ECD790078CA66 /* Host.swift in Sources */,
@@ -340,6 +347,7 @@
 			files = (
 				ABCF93A91B2ECA200078CA66 /* MKNetworkKitDemoUITests.swift in Sources */,
 				ABCF93C61B2ECD690078CA66 /* Cache.swift in Sources */,
+				AB86DB641B33C95B00C05B26 /* Log.swift in Sources */,
 				ABCF93BC1B2ECB830078CA66 /* FlickrClient.swift in Sources */,
 				ABCF93D21B2EE2180078CA66 /* FoundationExtensions.swift in Sources */,
 				ABCF93CA1B2ECD790078CA66 /* Host.swift in Sources */,
@@ -473,6 +481,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MKNetworkKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -485,6 +494,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MKNetworkKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

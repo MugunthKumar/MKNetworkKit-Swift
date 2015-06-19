@@ -50,12 +50,26 @@ class Request {
   var method: HTTPMethod = .GET
   var parameters: [String:AnyObject]?
   var headers: [String:String]?
+  var parameterEncoding : ParameterEncoding
+
   var files: [String:String]?
   var blobs: [String:NSData]?
   var bodyData: NSData?
+
   var task : NSURLSessionTask?
 
-  var parameterEncoding : ParameterEncoding
+  var username : NSString?
+  var password : NSString?
+
+  var downloadPath : NSString?
+  var requiresAuthentication : Bool = false
+  var isSSL : Bool = false
+
+  var doNotCache : Bool = false
+  var alwaysCache : Bool = false
+  var ignoreCache : Bool = false
+  var alwaysLoad : Bool = false
+
 
   var state : State {
 
