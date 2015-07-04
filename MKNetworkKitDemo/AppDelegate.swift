@@ -25,11 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     host = FlickrClient(apiKey:"210af0ac7c5dad997a19f7667e5779d3");
 
     Log.error("Hello")
-    let customLogger = Log(
-      infoPrefix: "", infoSuffix: "",
-      warnPrefix: "!!!", warnSuffix: "!!!",
-      errorPrefix: "XXX", errorSuffix: "XXX")
-    customLogger.warn("This is a warning")
+
     return true
   }
 
