@@ -16,7 +16,6 @@ enum ParameterEncoding : String, CustomStringConvertible {
   var description : String { return self.rawValue }
 }
 
-
 enum State : String, CustomStringConvertible {
 
   case Ready = "Ready"

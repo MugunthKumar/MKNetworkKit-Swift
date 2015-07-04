@@ -14,6 +14,7 @@ class Host {
   private var ephermeralSession : NSURLSession
   private var defaultHeaders : [String:String]
   private var path : String?
+  private var cache : Cache?
 
   var secure : Bool = false
   var name : String?
@@ -25,6 +26,11 @@ class Host {
     self.name = name
     self.defaultHeaders = defaultHeaders
     self.path = path
+  }
+
+  func useCache(cache:Cache) {
+
+    self.cache = cache
   }
 
   func createRequestWithURLString(urlString : String) -> Request {
@@ -74,6 +80,7 @@ class Host {
       print("Request is nil, check your URL and other parameters you use to build your request")
       return
     }
+
 
     request.task = defaultSession.dataTaskWithRequest(urlRequest) {
       (data : NSData?, response : NSURLResponse?, error : NSError?) -> Void in

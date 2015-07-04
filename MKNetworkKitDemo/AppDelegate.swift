@@ -23,8 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     splitViewController.delegate = self
 
     host = FlickrClient(apiKey:"210af0ac7c5dad997a19f7667e5779d3");
-
-    Log.error("Hello")
+    host?.useCache(Cache(directoryName: "FlickrCache"))
 
     return true
   }
