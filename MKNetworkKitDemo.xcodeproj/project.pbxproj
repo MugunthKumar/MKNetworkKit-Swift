@@ -9,55 +9,20 @@
 /* Begin PBXBuildFile section */
 		AB28F7B81B2F246E0043B035 /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28F7B71B2F246E0043B035 /* UIKitExtensions.swift */; };
 		AB86DB621B33C95B00C05B26 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86DB611B33C95B00C05B26 /* Log.swift */; };
-		AB86DB631B33C95B00C05B26 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86DB611B33C95B00C05B26 /* Log.swift */; };
-		AB86DB641B33C95B00C05B26 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86DB611B33C95B00C05B26 /* Log.swift */; };
 		ABCF93871B2ECA1F0078CA66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93861B2ECA1F0078CA66 /* AppDelegate.swift */; };
 		ABCF93891B2ECA1F0078CA66 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93881B2ECA1F0078CA66 /* MasterViewController.swift */; };
 		ABCF938B1B2ECA1F0078CA66 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF938A1B2ECA1F0078CA66 /* DetailViewController.swift */; };
 		ABCF938E1B2ECA1F0078CA66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABCF938C1B2ECA1F0078CA66 /* Main.storyboard */; };
 		ABCF93901B2ECA1F0078CA66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABCF938F1B2ECA1F0078CA66 /* Assets.xcassets */; };
 		ABCF93931B2ECA1F0078CA66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABCF93911B2ECA1F0078CA66 /* LaunchScreen.storyboard */; };
-		ABCF939E1B2ECA200078CA66 /* MKNetworkKitDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF939D1B2ECA200078CA66 /* MKNetworkKitDemoTests.swift */; };
-		ABCF93A91B2ECA200078CA66 /* MKNetworkKitDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93A81B2ECA200078CA66 /* MKNetworkKitDemoUITests.swift */; };
 		ABCF93BA1B2ECB830078CA66 /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B71B2ECB830078CA66 /* FlickrClient.swift */; };
-		ABCF93BB1B2ECB830078CA66 /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B71B2ECB830078CA66 /* FlickrClient.swift */; };
-		ABCF93BC1B2ECB830078CA66 /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B71B2ECB830078CA66 /* FlickrClient.swift */; };
 		ABCF93BD1B2ECB830078CA66 /* FlickrImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B81B2ECB830078CA66 /* FlickrImage.swift */; };
-		ABCF93BE1B2ECB830078CA66 /* FlickrImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B81B2ECB830078CA66 /* FlickrImage.swift */; };
-		ABCF93BF1B2ECB830078CA66 /* FlickrImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B81B2ECB830078CA66 /* FlickrImage.swift */; };
 		ABCF93C01B2ECB830078CA66 /* FlickrImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B91B2ECB830078CA66 /* FlickrImageCell.swift */; };
-		ABCF93C11B2ECB830078CA66 /* FlickrImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B91B2ECB830078CA66 /* FlickrImageCell.swift */; };
-		ABCF93C21B2ECB830078CA66 /* FlickrImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B91B2ECB830078CA66 /* FlickrImageCell.swift */; };
 		ABCF93C41B2ECD690078CA66 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93C31B2ECD690078CA66 /* Cache.swift */; };
-		ABCF93C51B2ECD690078CA66 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93C31B2ECD690078CA66 /* Cache.swift */; };
-		ABCF93C61B2ECD690078CA66 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93C31B2ECD690078CA66 /* Cache.swift */; };
 		ABCF93C81B2ECD790078CA66 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93C71B2ECD790078CA66 /* Host.swift */; };
-		ABCF93C91B2ECD790078CA66 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93C71B2ECD790078CA66 /* Host.swift */; };
-		ABCF93CA1B2ECD790078CA66 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93C71B2ECD790078CA66 /* Host.swift */; };
 		ABCF93CC1B2ECDAD0078CA66 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93CB1B2ECDAD0078CA66 /* Request.swift */; };
-		ABCF93CD1B2ECDAD0078CA66 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93CB1B2ECDAD0078CA66 /* Request.swift */; };
-		ABCF93CE1B2ECDAD0078CA66 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93CB1B2ECDAD0078CA66 /* Request.swift */; };
 		ABCF93D01B2EE2180078CA66 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93CF1B2EE2180078CA66 /* FoundationExtensions.swift */; };
-		ABCF93D11B2EE2180078CA66 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93CF1B2EE2180078CA66 /* FoundationExtensions.swift */; };
-		ABCF93D21B2EE2180078CA66 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93CF1B2EE2180078CA66 /* FoundationExtensions.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		ABCF939A1B2ECA200078CA66 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ABCF937B1B2ECA1F0078CA66 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ABCF93821B2ECA1F0078CA66;
-			remoteInfo = MKNetworkKitDemo;
-		};
-		ABCF93A51B2ECA200078CA66 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ABCF937B1B2ECA1F0078CA66 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ABCF93821B2ECA1F0078CA66;
-			remoteInfo = MKNetworkKitDemo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		AB28F7B71B2F246E0043B035 /* UIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
@@ -70,12 +35,6 @@
 		ABCF938F1B2ECA1F0078CA66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABCF93921B2ECA1F0078CA66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABCF93941B2ECA1F0078CA66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ABCF93991B2ECA200078CA66 /* MKNetworkKitDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MKNetworkKitDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ABCF939D1B2ECA200078CA66 /* MKNetworkKitDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKNetworkKitDemoTests.swift; sourceTree = "<group>"; };
-		ABCF939F1B2ECA200078CA66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ABCF93A41B2ECA200078CA66 /* MKNetworkKitDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MKNetworkKitDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ABCF93A81B2ECA200078CA66 /* MKNetworkKitDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKNetworkKitDemoUITests.swift; sourceTree = "<group>"; };
-		ABCF93AA1B2ECA200078CA66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABCF93B71B2ECB830078CA66 /* FlickrClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
 		ABCF93B81B2ECB830078CA66 /* FlickrImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrImage.swift; sourceTree = "<group>"; };
 		ABCF93B91B2ECB830078CA66 /* FlickrImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrImageCell.swift; sourceTree = "<group>"; };
@@ -93,20 +52,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ABCF93961B2ECA200078CA66 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ABCF93A11B2ECA200078CA66 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -115,8 +60,6 @@
 			children = (
 				ABCF93B61B2ECA350078CA66 /* MKNetworkKit3 */,
 				ABCF93851B2ECA1F0078CA66 /* MKNetworkKitDemo */,
-				ABCF939C1B2ECA200078CA66 /* MKNetworkKitDemoTests */,
-				ABCF93A71B2ECA200078CA66 /* MKNetworkKitDemoUITests */,
 				ABCF93841B2ECA1F0078CA66 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -125,8 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				ABCF93831B2ECA1F0078CA66 /* MKNetworkKitDemo.app */,
-				ABCF93991B2ECA200078CA66 /* MKNetworkKitDemoTests.xctest */,
-				ABCF93A41B2ECA200078CA66 /* MKNetworkKitDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,24 +87,6 @@
 				ABCF93941B2ECA1F0078CA66 /* Info.plist */,
 			);
 			path = MKNetworkKitDemo;
-			sourceTree = "<group>";
-		};
-		ABCF939C1B2ECA200078CA66 /* MKNetworkKitDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				ABCF939D1B2ECA200078CA66 /* MKNetworkKitDemoTests.swift */,
-				ABCF939F1B2ECA200078CA66 /* Info.plist */,
-			);
-			path = MKNetworkKitDemoTests;
-			sourceTree = "<group>";
-		};
-		ABCF93A71B2ECA200078CA66 /* MKNetworkKitDemoUITests */ = {
-			isa = PBXGroup;
-			children = (
-				ABCF93A81B2ECA200078CA66 /* MKNetworkKitDemoUITests.swift */,
-				ABCF93AA1B2ECA200078CA66 /* Info.plist */,
-			);
-			path = MKNetworkKitDemoUITests;
 			sourceTree = "<group>";
 		};
 		ABCF93B61B2ECA350078CA66 /* MKNetworkKit3 */ = {
@@ -199,62 +122,19 @@
 			productReference = ABCF93831B2ECA1F0078CA66 /* MKNetworkKitDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		ABCF93981B2ECA200078CA66 /* MKNetworkKitDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ABCF93B01B2ECA200078CA66 /* Build configuration list for PBXNativeTarget "MKNetworkKitDemoTests" */;
-			buildPhases = (
-				ABCF93951B2ECA200078CA66 /* Sources */,
-				ABCF93961B2ECA200078CA66 /* Frameworks */,
-				ABCF93971B2ECA200078CA66 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				ABCF939B1B2ECA200078CA66 /* PBXTargetDependency */,
-			);
-			name = MKNetworkKitDemoTests;
-			productName = MKNetworkKitDemoTests;
-			productReference = ABCF93991B2ECA200078CA66 /* MKNetworkKitDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		ABCF93A31B2ECA200078CA66 /* MKNetworkKitDemoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ABCF93B31B2ECA200078CA66 /* Build configuration list for PBXNativeTarget "MKNetworkKitDemoUITests" */;
-			buildPhases = (
-				ABCF93A01B2ECA200078CA66 /* Sources */,
-				ABCF93A11B2ECA200078CA66 /* Frameworks */,
-				ABCF93A21B2ECA200078CA66 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				ABCF93A61B2ECA200078CA66 /* PBXTargetDependency */,
-			);
-			name = MKNetworkKitDemoUITests;
-			productName = MKNetworkKitDemoUITests;
-			productReference = ABCF93A41B2ECA200078CA66 /* MKNetworkKitDemoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		ABCF937B1B2ECA1F0078CA66 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Steinlogic Consulting and Training Pte Ltd";
 				TargetAttributes = {
 					ABCF93821B2ECA1F0078CA66 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = P898K98WCW;
-					};
-					ABCF93981B2ECA200078CA66 = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = ABCF93821B2ECA1F0078CA66;
-					};
-					ABCF93A31B2ECA200078CA66 = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = ABCF93821B2ECA1F0078CA66;
 					};
 				};
 			};
@@ -272,8 +152,6 @@
 			projectRoot = "";
 			targets = (
 				ABCF93821B2ECA1F0078CA66 /* MKNetworkKitDemo */,
-				ABCF93981B2ECA200078CA66 /* MKNetworkKitDemoTests */,
-				ABCF93A31B2ECA200078CA66 /* MKNetworkKitDemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -286,20 +164,6 @@
 				ABCF93931B2ECA1F0078CA66 /* LaunchScreen.storyboard in Resources */,
 				ABCF93901B2ECA1F0078CA66 /* Assets.xcassets in Resources */,
 				ABCF938E1B2ECA1F0078CA66 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ABCF93971B2ECA200078CA66 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ABCF93A21B2ECA200078CA66 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,52 +189,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ABCF93951B2ECA200078CA66 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ABCF939E1B2ECA200078CA66 /* MKNetworkKitDemoTests.swift in Sources */,
-				ABCF93C51B2ECD690078CA66 /* Cache.swift in Sources */,
-				AB86DB631B33C95B00C05B26 /* Log.swift in Sources */,
-				ABCF93BB1B2ECB830078CA66 /* FlickrClient.swift in Sources */,
-				ABCF93D11B2EE2180078CA66 /* FoundationExtensions.swift in Sources */,
-				ABCF93C91B2ECD790078CA66 /* Host.swift in Sources */,
-				ABCF93CD1B2ECDAD0078CA66 /* Request.swift in Sources */,
-				ABCF93C11B2ECB830078CA66 /* FlickrImageCell.swift in Sources */,
-				ABCF93BE1B2ECB830078CA66 /* FlickrImage.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ABCF93A01B2ECA200078CA66 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ABCF93A91B2ECA200078CA66 /* MKNetworkKitDemoUITests.swift in Sources */,
-				ABCF93C61B2ECD690078CA66 /* Cache.swift in Sources */,
-				AB86DB641B33C95B00C05B26 /* Log.swift in Sources */,
-				ABCF93BC1B2ECB830078CA66 /* FlickrClient.swift in Sources */,
-				ABCF93D21B2EE2180078CA66 /* FoundationExtensions.swift in Sources */,
-				ABCF93CA1B2ECD790078CA66 /* Host.swift in Sources */,
-				ABCF93CE1B2ECDAD0078CA66 /* Request.swift in Sources */,
-				ABCF93C21B2ECB830078CA66 /* FlickrImageCell.swift in Sources */,
-				ABCF93BF1B2ECB830078CA66 /* FlickrImage.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		ABCF939B1B2ECA200078CA66 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ABCF93821B2ECA1F0078CA66 /* MKNetworkKitDemo */;
-			targetProxy = ABCF939A1B2ECA200078CA66 /* PBXContainerItemProxy */;
-		};
-		ABCF93A61B2ECA200078CA66 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ABCF93821B2ECA1F0078CA66 /* MKNetworkKitDemo */;
-			targetProxy = ABCF93A51B2ECA200078CA66 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		ABCF938C1B2ECA1F0078CA66 /* Main.storyboard */ = {
@@ -501,54 +320,6 @@
 			};
 			name = Release;
 		};
-		ABCF93B11B2ECA200078CA66 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = MKNetworkKitDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MKNetworkKitDemo.app/MKNetworkKitDemo";
-			};
-			name = Debug;
-		};
-		ABCF93B21B2ECA200078CA66 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = MKNetworkKitDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MKNetworkKitDemo.app/MKNetworkKitDemo";
-			};
-			name = Release;
-		};
-		ABCF93B41B2ECA200078CA66 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = MKNetworkKitDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = MKNetworkKitDemo;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		ABCF93B51B2ECA200078CA66 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = MKNetworkKitDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = MKNetworkKitDemo;
-				USES_XCTRUNNER = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -566,24 +337,6 @@
 			buildConfigurations = (
 				ABCF93AE1B2ECA200078CA66 /* Debug */,
 				ABCF93AF1B2ECA200078CA66 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		ABCF93B01B2ECA200078CA66 /* Build configuration list for PBXNativeTarget "MKNetworkKitDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ABCF93B11B2ECA200078CA66 /* Debug */,
-				ABCF93B21B2ECA200078CA66 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		ABCF93B31B2ECA200078CA66 /* Build configuration list for PBXNativeTarget "MKNetworkKitDemoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ABCF93B41B2ECA200078CA66 /* Debug */,
-				ABCF93B51B2ECA200078CA66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
