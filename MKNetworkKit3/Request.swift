@@ -83,6 +83,8 @@ public class Request {
         task?.resume()
 
       case .Completed:
+        fallthrough
+      case .Error:
         for handler in completionHandlers {
           handler(self)
         }

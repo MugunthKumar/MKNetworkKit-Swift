@@ -53,12 +53,9 @@ public class Host {
       }
 
       var finalUrl : String = httpProtocol + hostName + "/"
-
-      if self.path != nil {
-
-        finalUrl += self.path!
+      if let actualPath = self.path {
+        finalUrl += (actualPath + "/")
       }
-
       finalUrl += path
 
       return Request(
@@ -72,25 +69,19 @@ public class Host {
   }
 
   public func startRequest(request : Request) {
-
     guard let urlRequest = request.request else {
-
       print("Request is nil, check your URL and other parameters you use to build your request")
       return
     }
 
-
     request.task = defaultSession.dataTaskWithRequest(urlRequest) {
       (data : NSData?, response : NSURLResponse?, error : NSError?) -> Void in
-
       request.responseData = data
       request.response = response as? NSHTTPURLResponse
       request.error = error
 
       var statusCode : Int = 0
-
       if request.response != nil {
-
         statusCode = request.response!.statusCode
       }
 

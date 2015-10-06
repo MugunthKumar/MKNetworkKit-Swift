@@ -271,7 +271,7 @@
 				TargetAttributes = {
 					AB18DB851BC3F3AF00E25793 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = P898K98WCW;
+						DevelopmentTeam = 4736GALF72;
 					};
 					AB18DB8E1BC3F3AF00E25793 = {
 						CreatedOnToolsVersion = 7.1;
@@ -421,6 +421,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos macosx";
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -442,6 +444,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos macosx";
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -592,6 +596,7 @@
 				AB18DB9E1BC3F3AF00E25793 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB18DBA31BC3F3AF00E25793 /* Build configuration list for PBXNativeTarget "MKNetworkKitTests" */ = {
 			isa = XCConfigurationList;
@@ -600,6 +605,7 @@
 				AB18DBA01BC3F3AF00E25793 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ABCF937E1B2ECA1F0078CA66 /* Build configuration list for PBXProject "MKNetworkKitDemo" */ = {
 			isa = XCConfigurationList;
