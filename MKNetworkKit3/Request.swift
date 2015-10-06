@@ -99,11 +99,8 @@ public class Request {
   }
 
   var request : NSURLRequest? {
-
     var finalUrl : String
-
     switch(method) {
-
     case .GET, .DELETE, .CONNECT, .TRACE:
       finalUrl = url + (parameters?.URLEncodedString)!
     case .POST, .PUT, .PATCH, .OPTIONS:
@@ -115,16 +112,13 @@ public class Request {
     let urlRequest = NSMutableURLRequest(URL: nsurl)
     urlRequest.HTTPMethod = method.description
 
-    for (headerValue, headerField) in headers! {
-
+    for (headerField, headerValue) in headers! {
       urlRequest.addValue(headerValue, forHTTPHeaderField: headerField)
     }
 
     if [.POST, .PUT, .PATCH, .OPTIONS].contains(method) {
-
       urlRequest.HTTPBody = parameters?.URLEncodedString.dataUsingEncoding(NSUTF8StringEncoding)
     }
-
     return urlRequest
   }
 
@@ -155,7 +149,15 @@ public class Request {
   }
   
   public var description : String {
-    return url
+    var displayString = "curl -X \(method) '\(self.url)' -H " +
+      headers!.map {"'\($0):\($1)'"}.joinWithSeparator(" -H ")
+
+    if [.POST, .PUT, .PATCH, .OPTIONS].contains(method) {
+      if let actualData = request?.HTTPBody {
+        displayString += "-d '\(String(data:actualData, encoding:NSUTF8StringEncoding))'"
+      }
+    }
+    return displayString
   }
 
   public var responseAsJSON : AnyObject? {
