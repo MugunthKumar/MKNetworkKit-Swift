@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MKNetworkKit
 
 class FlickrClient : Host {
 
@@ -22,7 +23,7 @@ class FlickrClient : Host {
 
   internal func imageFetchRequest(tag : String, page: Int) -> Request? {
 
-    return super.createRequestWithPath("flickr.photos.search&api_key=\(flickrAPIKey)&tags=\(tag.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)&per_page=200&format=json&nojsoncallback=1&page=\(page)")
+    return super.createRequestWithPath("flickr.photos.search&api_key=\(flickrAPIKey)&tags=\(tag.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!)&per_page=200&format=json&nojsoncallback=1&page=\(page)")
   }
 
   func fetchImages (tag : String, completionHandler: (Array<FlickrImage>) -> Void) {

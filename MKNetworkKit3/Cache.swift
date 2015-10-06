@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Cache {
+public class Cache {
 
   var fileExtension : String
   var directory : String
@@ -21,7 +21,7 @@ class Cache {
   var diskQueue : dispatch_queue_t = dispatch_queue_create("com.mknetworkkit.diskqueue", DISPATCH_QUEUE_SERIAL)
 
   // MARK: Initializer
-  init(cost: Int = 10, directoryName : String = "AppCache", fileExtension : String = "mkcache") {
+  public init(cost: Int = 10, directoryName : String = "AppCache", fileExtension : String = "mkcache") {
 
     let cachesDirectory = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0]
     directory = cachesDirectory + "/" + directoryName

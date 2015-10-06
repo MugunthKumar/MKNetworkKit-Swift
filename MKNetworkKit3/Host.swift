@@ -8,18 +8,18 @@
 
 import Foundation
 
-class Host {
+public class Host {
 
-  private var defaultSession : NSURLSession
+  var defaultSession : NSURLSession
   private var ephermeralSession : NSURLSession
   private var defaultHeaders : [String:String]
   private var path : String?
   private var cache : Cache?
 
-  var secure : Bool = false
-  var name : String?
+  public var secure : Bool = false
+  public var name : String?
 
-  init(name : String, path: String? = nil, defaultHeaders : [String:String] = [:]) {
+  public init(name : String, path: String? = nil, defaultHeaders : [String:String] = [:]) {
 
     defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     ephermeralSession = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
@@ -28,17 +28,17 @@ class Host {
     self.path = path
   }
 
-  func useCache(cache:Cache) {
+  public func useCache(cache:Cache) {
 
     self.cache = cache
   }
 
-  func createRequestWithURLString(urlString : String) -> Request {
+  public func createRequestWithURLString(urlString : String) -> Request {
 
     return Request(url: urlString)
   }
 
-  func createRequestWithPath(path : String,
+  public func createRequestWithPath(path : String,
     method: HTTPMethod = .GET,
     parameters: [String:AnyObject]? = [:],
     headers: [String:String]? = [:],
@@ -47,9 +47,7 @@ class Host {
     bodyData: NSData? = nil) -> Request? {
 
       let httpProtocol = secure ? "https://"  : "http://"
-
       guard let hostName = name else {
-
         print("Host name is nil. To create a request with absolute URL use createRequestWithURLString")
         return nil
       }
@@ -73,7 +71,7 @@ class Host {
         bodyData: bodyData)
   }
 
-  func startRequest(request : Request) {
+  public func startRequest(request : Request) {
 
     guard let urlRequest = request.request else {
 

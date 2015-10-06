@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MKNetworkKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {

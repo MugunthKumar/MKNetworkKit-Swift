@@ -8,15 +8,15 @@
 
 import Foundation
 
-enum ParameterEncoding : String, CustomStringConvertible {
+public enum ParameterEncoding : String, CustomStringConvertible {
 
   case URL = "URL"
   case JSON = "JSON"
 
-  var description : String { return self.rawValue }
+  public var description : String { return self.rawValue }
 }
 
-enum State : String, CustomStringConvertible {
+public enum State : String, CustomStringConvertible {
 
   case Ready = "Ready"
   case Started = "Started"
@@ -26,10 +26,10 @@ enum State : String, CustomStringConvertible {
   case Completed = "Completed"
   case Error = "Error"
 
-  var description : String { return self.rawValue }
+  public var description : String { return self.rawValue }
 }
 
-enum HTTPMethod : String, CustomStringConvertible {
+public enum HTTPMethod : String, CustomStringConvertible {
 
   case GET = "GET"
   case POST = "POST"
@@ -40,37 +40,37 @@ enum HTTPMethod : String, CustomStringConvertible {
   case TRACE = "TRACE"
   case CONNECT = "CONNECT"
 
-  var description : String { return self.rawValue }
+  public var description : String { return self.rawValue }
 }
 
-class Request {
+public class Request {
 
-  var url: String
-  var method: HTTPMethod = .GET
-  var parameters: [String:AnyObject]?
-  var headers: [String:String]?
-  var parameterEncoding : ParameterEncoding
+  public var url: String
+  public var method: HTTPMethod = .GET
+  public var parameters: [String:AnyObject]?
+  public var headers: [String:String]?
+  public var parameterEncoding : ParameterEncoding
 
-  var files: [String:String]?
-  var blobs: [String:NSData]?
-  var bodyData: NSData?
+  public var files: [String:String]?
+  public var blobs: [String:NSData]?
+  public var bodyData: NSData?
 
-  var task : NSURLSessionTask?
+  public var task : NSURLSessionTask?
 
-  var username : NSString?
-  var password : NSString?
+  public var username : NSString?
+  public var password : NSString?
 
-  var downloadPath : NSString?
-  var requiresAuthentication : Bool = false
-  var isSSL : Bool = false
+  public var downloadPath : NSString?
+  public var requiresAuthentication : Bool = false
+  public var isSSL : Bool = false
 
-  var doNotCache : Bool = false
-  var alwaysCache : Bool = false
-  var ignoreCache : Bool = false
-  var alwaysLoad : Bool = false
+  public var doNotCache : Bool = false
+  public var alwaysCache : Bool = false
+  public var ignoreCache : Bool = false
+  public var alwaysLoad : Bool = false
 
 
-  var state : State {
+  public var state : State {
 
     didSet {
 
@@ -130,7 +130,7 @@ class Request {
   var response : NSHTTPURLResponse?
   var error : NSError?
 
-  var completionHandlers = Array<(Request) -> Void>()
+  public var completionHandlers = Array<(Request) -> Void>()
 
   init(method: HTTPMethod = .GET,
     url: String,
@@ -152,15 +152,12 @@ class Request {
       self.bodyData = bodyData
   }
   
-  var description : String {
-    
+  public var description : String {
     return url
   }
 
-  var responseAsJSON : AnyObject? {
-
+  public var responseAsJSON : AnyObject? {
     guard let responseData : NSData = responseData else { return nil }
-
     do {
       let jsonObject = try NSJSONSerialization.JSONObjectWithData(responseData, options: .MutableLeaves)
       return jsonObject

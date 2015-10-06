@@ -11,7 +11,7 @@ import UIKit
 
 extension Request {
 
-  var responseAsImage : UIImage? {
+  public var responseAsImage : UIImage? {
 
     if responseData != nil {
       return UIImage(data:responseData!)

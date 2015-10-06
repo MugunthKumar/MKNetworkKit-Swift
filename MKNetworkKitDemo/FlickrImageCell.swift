@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MKNetworkKit
 
 class FlickrImageCell: UITableViewCell {
 
