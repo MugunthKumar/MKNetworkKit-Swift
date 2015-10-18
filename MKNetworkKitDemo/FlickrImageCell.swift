@@ -14,19 +14,7 @@ class FlickrImageCell: UITableViewCell {
   @IBOutlet weak var photoView : UIImageView!
   var imageFetchRequest : Request? = nil
 
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    // Initialization code
-  }
-
-  override func setSelected(selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-
-    // Configure the view for the selected state
-  }
-
   override func prepareForReuse() {
-
     super.prepareForReuse()
     photoView.image = nil;
     imageFetchRequest?.state = .Cancelled;
@@ -34,11 +22,13 @@ class FlickrImageCell: UITableViewCell {
 
   func bind(flickrImage : FlickrImage) {
 
+    flickrImage.thumbnailImageUrlString?.loadRemoteImage({ image -> Void in
+      self.photoView.image = image
+    })
+
     let client = (UIApplication.sharedApplication().delegate as! AppDelegate).host
     imageFetchRequest = client?.fetchImage(flickrImage.thumbnailImageUrlString!) { (image : UIImage?) -> Void in
-
       dispatch_async(dispatch_get_main_queue()) { () -> Void in
-
         UIView.transitionWithView(self.superview!, duration: 0.5, options: .TransitionCrossDissolve, animations: {
           () -> Void in
           self.photoView.image = image;

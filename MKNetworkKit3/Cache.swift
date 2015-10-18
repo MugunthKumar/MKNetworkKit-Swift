@@ -2,9 +2,33 @@
 //  Cache.swift
 //  MKNetworkKitDemo
 //
-//  Created by Mugunth Kumar on 15/6/15.
-//  Copyright © 2015 Steinlogic Consulting and Training Pte Ltd. All rights reserved.
+//  Created by Mugunth Kumar
+//  Copyright © 2015 - 2020 Steinlogic Consulting and Training Pte Ltd. All rights reserved.
 //
+//  MIT LICENSE (REQUIRES ATTRIBUTION)
+//	ATTRIBUTION FREE LICENSING AVAILBLE (for a license fee)
+//  Email mugunth.kumar@gmail.com for details
+//
+//  Created by Mugunth Kumar (@mugunthkumar)
+//  Copyright (C) 2015-2025 by Steinlogic Consulting And Training Pte Ltd.
+
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 
 import Foundation
 import UIKit
@@ -22,7 +46,6 @@ public class Cache {
 
   // MARK: Initializer
   public init(cost: Int = 10, directoryName : String = "AppCache", fileExtension : String = "mkcache") {
-
     let cachesDirectory = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0]
     directory = cachesDirectory + "/" + directoryName
     cacheCost = cost
@@ -38,8 +61,7 @@ public class Cache {
       }
     }
 
-    #if os(iOS) || os(watchOS)
-
+    #if os(iOS) || os(watchOS) || os(tvOS)
       NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationDidReceiveMemoryWarningNotification,
         object: nil, queue: nil, usingBlock: { (_) in
           self.flushToDisk()
@@ -56,11 +78,9 @@ public class Cache {
         object: nil, queue: nil, usingBlock: { (_) in
           self.flushToDisk()
       })
-
     #endif
 
     #if os(OSX)
-
       NSNotificationCenter.defaultCenter().addObserverForName(NSApplicationWillHideNotification,
       object: nil, queue: nil, usingBlock: { (_) in
       self.flushToDisk()
@@ -78,30 +98,19 @@ public class Cache {
   }
 
   // MARK: Disk cache related methods
-
   func makePath(key : String) -> String {
-
     return "\(self.directory)/\(key).\(fileExtension)"
   }
 
   func fetchFromDisk (key : String) -> AnyObject? {
-
     let filePath = makePath(key)
     return NSKeyedUnarchiver.unarchiveObjectWithFile(filePath)
   }
   
   func cacheToDisk (key : String, _ value : AnyObject) {
-
     let filePath = makePath(key)
-
     if NSFileManager.defaultManager().fileExistsAtPath(filePath) {
-      do {
-        try NSFileManager.defaultManager().removeItemAtPath(filePath)
-      }
-      catch {
-        // this try never fails because we check for file existence prior hand
-        Log.info("Missing file")
-      }
+       try! NSFileManager.defaultManager().removeItemAtPath(filePath)
     }
 
     let data = NSKeyedArchiver.archivedDataWithRootObject(value)

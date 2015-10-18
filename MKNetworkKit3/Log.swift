@@ -1,8 +1,10 @@
 //
 //  Log.swift
 //  MKNetworkKitDemo
-//  19 Jun 2015
-
+//
+//  Created by Mugunth Kumar
+//  Copyright © 2015 - 2020 Steinlogic Consulting and Training Pte Ltd. All rights reserved.
+//
 //  MIT LICENSE (REQUIRES ATTRIBUTION)
 //	ATTRIBUTION FREE LICENSING AVAILBLE (for a license fee)
 //  Email mugunth.kumar@gmail.com for details
@@ -27,6 +29,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//
 
 import Foundation
 
@@ -87,35 +90,29 @@ public struct Log {
   }
 
   public func info<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
-
     print("\(functionName) [\(lineNumber)] \(infoPrefix)\(object)\(infoSuffix)")
     print("\n") // remove this line if you are using Swift 2 and above
   }
 
   public func warn<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
-
     print("\(functionName) [\(lineNumber)] \(warnPrefix)\(object)\(warnSuffix)")
     print("\n")
   }
 
   public func error<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
-
     print("\(functionName) [\(lineNumber)] \(errorPrefix)\(object)\(errorSuffix)")
     print("\n")
   }
 
   public static func info<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
-
     defaultLog.info(object, functionName:functionName, lineNumber:lineNumber)
   }
 
   public static func warn<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
-
     defaultLog.warn(object, functionName:functionName, lineNumber:lineNumber)
   }
 
   public static func error<T>(object : T, functionName : String = __FUNCTION__, lineNumber : Int = __LINE__) {
-
     defaultLog.error(object, functionName:functionName, lineNumber:lineNumber)
   }
 }

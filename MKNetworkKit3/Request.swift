@@ -2,22 +2,44 @@
 //  Request.swift
 //  MKNetworkKitDemo
 //
-//  Created by Mugunth Kumar on 15/6/15.
-//  Copyright © 2015 Steinlogic Consulting and Training Pte Ltd. All rights reserved.
+//  Created by Mugunth Kumar
+//  Copyright © 2015 - 2020 Steinlogic Consulting and Training Pte Ltd. All rights reserved.
 //
+//  MIT LICENSE (REQUIRES ATTRIBUTION)
+//	ATTRIBUTION FREE LICENSING AVAILBLE (for a license fee)
+//  Email mugunth.kumar@gmail.com for details
+//
+//  Created by Mugunth Kumar (@mugunthkumar)
+//  Copyright (C) 2015-2025 by Steinlogic Consulting And Training Pte Ltd.
+
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+// 
 
 import Foundation
 
 public enum ParameterEncoding : String, CustomStringConvertible {
-
   case URL = "URL"
   case JSON = "JSON"
-
   public var description : String { return self.rawValue }
 }
 
 public enum State : String, CustomStringConvertible {
-
   case Ready = "Ready"
   case Started = "Started"
   case ResponseAvailableFromCache = "ResponseAvailableFromCache"
@@ -25,12 +47,10 @@ public enum State : String, CustomStringConvertible {
   case Cancelled = "Cancelled"
   case Completed = "Completed"
   case Error = "Error"
-
   public var description : String { return self.rawValue }
 }
 
 public enum HTTPMethod : String, CustomStringConvertible {
-
   case GET = "GET"
   case POST = "POST"
   case PUT = "PUT"
@@ -39,12 +59,10 @@ public enum HTTPMethod : String, CustomStringConvertible {
   case OPTIONS = "OPTIONS"
   case TRACE = "TRACE"
   case CONNECT = "CONNECT"
-
   public var description : String { return self.rawValue }
 }
 
 public class Request {
-
   public var url: String
   public var method: HTTPMethod = .GET
   public var parameters: [String:AnyObject]?
@@ -56,6 +74,7 @@ public class Request {
   public var bodyData: NSData?
 
   public var task : NSURLSessionTask?
+  public var host: Host!
 
   public var username : NSString?
   public var password : NSString?
@@ -69,13 +88,9 @@ public class Request {
   public var ignoreCache : Bool = false
   public var alwaysLoad : Bool = false
 
-
   public var state : State {
-
     didSet {
-
       switch (state) {
-
       case .Ready:
         break
 
@@ -108,7 +123,6 @@ public class Request {
     }
 
     guard let nsurl = NSURL(string: finalUrl) else {return nil}
-
     let urlRequest = NSMutableURLRequest(URL: nsurl)
     urlRequest.HTTPMethod = method.description
 
@@ -169,5 +183,15 @@ public class Request {
       print("Error parsing as JSON")
       return nil
     }
+  }
+
+  public func completion (handler: (Request) -> Void) -> Request {
+    completionHandlers.append(handler)
+    return self
+  }
+  
+  public func run() -> Request {
+    host.startRequest(self)
+    return self
   }
 }

@@ -22,34 +22,26 @@ class FlickrClient : Host {
   }
 
   internal func imageFetchRequest(tag : String, page: Int) -> Request? {
-
     return super.createRequestWithPath("flickr.photos.search&api_key=\(flickrAPIKey)&tags=\(tag.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!)&per_page=200&format=json&nojsoncallback=1&page=\(page)")
   }
 
   func fetchImages (tag : String, completionHandler: (Array<FlickrImage>) -> Void) {
-
     guard let request = imageFetchRequest(tag, page: 0) else { return }
-
+    
     request.completionHandlers.append {(request: Request) in
-
       let jsonDictionary = request.responseAsJSON as! [String:AnyObject]
       let photosDictionary = jsonDictionary["photos"] as! [String: AnyObject]
       let flickrArray = photosDictionary["photo"] as! [[String: AnyObject]]
       completionHandler(flickrArray.map {FlickrImage(jsonDictionary: $0)})
     }
-
     self.startRequest(request)
   }
 
   func fetchImage (imageURLString : String, completionHandler: (UIImage?) -> Void) -> Request {
-
     let request = super.createRequestWithURLString(imageURLString)
-
     request.completionHandlers.append {(request: Request) in
-
       completionHandler(request.responseAsImage)
     }
-
     self.startRequest(request)
     return request
   }
