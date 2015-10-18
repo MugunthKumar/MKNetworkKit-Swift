@@ -37,32 +37,39 @@ public class Host {
 
   var defaultSession : NSURLSession
   private var ephermeralSession : NSURLSession
+  private var backgroundSession : NSURLSession
   private var defaultHeaders : [String:String]
   private var path : String?
-  private var cache : Cache?
 
+  public var cache : Cache?
   public var secure : Bool = false
   public var name : String?
 
-  public init(name : String? = nil, path: String? = nil, defaultHeaders : [String:String] = [:]) {
-    defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-    ephermeralSession = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
-    self.name = name
-    self.defaultHeaders = defaultHeaders
-    self.path = path
+  public init(name: String? = nil,
+    path: String? = nil,
+    defaultHeaders: [String:String] = [:],
+    session: NSURLSession? = nil) {
+      if let s = session {
+        defaultSession = s
+      } else {
+        defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+      }
+
+      ephermeralSession = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
+      backgroundSession = NSURLSession(configuration: NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("hello"))
+
+      self.name = name
+      self.defaultHeaders = defaultHeaders
+      self.path = path
   }
 
-  public func useCache(cache:Cache) {
-    self.cache = cache
-  }
-
-  public func createRequestWithURLString(urlString : String) -> Request {
+  public func requestWithURLString(urlString: String) -> Request {
     let request = Request(url: urlString)
     request.host = self
     return request
   }
 
-  public func createRequestWithPath(path : String,
+  public func requestWithPath(path: String,
     method: HTTPMethod = .GET,
     parameters: [String:AnyObject]? = [:],
     headers: [String:String]? = [:],
@@ -76,11 +83,11 @@ public class Host {
         return nil
       }
 
-      var finalUrl : String = httpProtocol + hostName + "/"
+      var finalUrl : String = httpProtocol + hostName
       if let actualPath = self.path {
-        finalUrl += (actualPath + "/")
+        finalUrl += "/"
+        finalUrl += actualPath
       }
-      finalUrl += path
 
       let request = Request(
         method: method,

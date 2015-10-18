@@ -63,6 +63,12 @@ public enum HTTPMethod : String, CustomStringConvertible {
 }
 
 public class Request {
+  
+  static private var runningRequestsSynchronizingQueue =
+  dispatch_queue_create("com.mknetworkkit.tasks.queue", DISPATCH_QUEUE_SERIAL)
+  static private var runningRequests = [Request]()
+  static internal var runningRequestsUpdatedHandler: ((Int) -> Void)?
+
   public var url: String
   public var method: HTTPMethod = .GET
   public var parameters: [String:AnyObject]?
@@ -103,12 +109,25 @@ public class Request {
         for handler in completionHandlers {
           handler(self)
         }
-
+        
       case .Cancelled:
         task?.cancel()
 
       default:
         break
+      }
+
+      if (state == .Started) {
+        dispatch_async(Request.runningRequestsSynchronizingQueue) {
+          Request.runningRequests.append(self)
+          Request.runningRequestsUpdatedHandler?(Request.runningRequests.count)
+        }
+      }
+      if (state == .Completed || state == .Error || state == .Cancelled) {
+        dispatch_async(Request.runningRequestsSynchronizingQueue) {
+          Request.runningRequests = Request.runningRequests.filter {$0 !== self}
+          Request.runningRequestsUpdatedHandler?(Request.runningRequests.count)
+        }
       }
     }
   }
@@ -140,7 +159,7 @@ public class Request {
   var response : NSHTTPURLResponse?
   var error : NSError?
 
-  public var completionHandlers = Array<(Request) -> Void>()
+  private var completionHandlers = Array<(Request) -> Void>()
 
   init(method: HTTPMethod = .GET,
     url: String,

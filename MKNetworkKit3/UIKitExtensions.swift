@@ -42,4 +42,16 @@ extension Request {
       return nil
     }
   }
+
+  public static var automaticNetworkActivityIndicator : Bool = false {
+    didSet {
+      if automaticNetworkActivityIndicator {
+        Request.runningRequestsUpdatedHandler = { count in
+          dispatch_async(dispatch_get_main_queue()) {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = count > 0
+          }
+        }
+      }
+    }
+  }
 }

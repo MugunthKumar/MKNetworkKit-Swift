@@ -37,7 +37,7 @@ import Foundation
 extension String {
   static let imageHost = Host()
   public func loadRemoteImage(handler:(UIImage?) -> Void) -> Void {
-    String.imageHost.createRequestWithURLString(self)
+    String.imageHost.requestWithURLString(self)
       .completion { (request) -> Void in
         handler(request.responseAsImage)
       }.run()
@@ -47,7 +47,7 @@ extension String {
 // MARK: Extension methods on Dictionary
 extension Dictionary {
   var URLEncodedString : String {
-    var encodedString = self.reduce("") {
+    var encodedString = self.reduce("?") {
       let (key, value) = $1
       return "\($0)" + "\(key)=\(value)&"
     }
