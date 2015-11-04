@@ -182,7 +182,7 @@ public class Request {
   var responseData : NSData?
   var response : NSHTTPURLResponse?
 
-  var error : NSError?
+  public var error : NSError?
 
   var equalityIdentifier: String {
     var string: String = "\(arc4random())"
@@ -271,6 +271,11 @@ public class Request {
     return displayString
   }
 
+  public var responseAsString : AnyObject? {
+    guard let responseData : NSData = responseData else { return nil }
+    return String(data: responseData, encoding: NSUTF8StringEncoding)
+  }
+  
   public var responseAsJSON : AnyObject? {
     guard let responseData : NSData = responseData else { return nil }
     do {

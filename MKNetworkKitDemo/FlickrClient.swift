@@ -31,8 +31,7 @@ class FlickrClient : Host {
   internal func imageFetchRequest(tag : String, page: Int) -> Request? {
     return super.request(withPath: "", parameters:
       ["method": "flickr.photos.search",
-      "api_key": flickrAPIKey,
-      "tags": tag.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!,
+        "tags": tag.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!,
         "per_page": "200",
         "format": "json",
         "nojsoncallback": "1",
@@ -40,15 +39,24 @@ class FlickrClient : Host {
       ])
   }
 
+  override func customizeRequest(request: Request) -> Request {
+    request.appendParameter("api_key", value: flickrAPIKey)
+    return request
+  }
+
   func fetchImages (tag : String, completionHandler: (Array<FlickrImage>) -> Void) {
     guard let request = imageFetchRequest(tag, page: 0) else { return }
-    
+
     request.completion {(request: Request) in
-      let jsonDictionary = request.responseAsJSON as! [String:AnyObject]
-      let photosDictionary = jsonDictionary["photos"] as! [String: AnyObject]
-      let flickrArray = photosDictionary["photo"] as! [[String: AnyObject]]
-      completionHandler(flickrArray.map {FlickrImage(jsonDictionary: $0)})
-    }.run()
+      if ([.Completed, .StaleResponseAvailableFromCache, .ResponseAvailableFromCache].contains(request.state)) {
+        let jsonDictionary = request.responseAsJSON as! [String:AnyObject]
+        let photosDictionary = jsonDictionary["photos"] as! [String: AnyObject]
+        let flickrArray = photosDictionary["photo"] as! [[String: AnyObject]]
+        completionHandler(flickrArray.map {FlickrImage(jsonDictionary: $0)})
+      } else {
+        print(request.error)
+      }
+      }.run()
   }
 
   #if os(iOS) || os(watchOS) || os(tvOS)
@@ -56,7 +64,7 @@ class FlickrClient : Host {
     let request = super.request(withUrlString: imageURLString)
     return request.completion {(request: Request) in
       completionHandler(request.responseAsImage)
-    }.run()
+      }.run()
   }
   #endif
   

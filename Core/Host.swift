@@ -160,6 +160,10 @@ public class Host {
     return request
   }
 
+  public func customizeError(request: Request) -> NSError? {
+    return request.error
+  }
+
   public func startRequest(request : Request) {
     guard let urlRequest = request.request else {
       Log.error("Request is nil, check your URL and other parameters you use to build your request")
@@ -191,7 +195,7 @@ public class Host {
 
     let sessionToUse: NSURLSession = request.requiresAuthentication ? ephermeralSession : defaultSession
 
-    request.task = sessionToUse.dataTaskWithRequest(urlRequest) {
+    request.task = sessionToUse.dataTaskWithRequest(urlRequest) {[unowned self]
       (data : NSData?, response : NSURLResponse?, error : NSError?) -> Void in
 
       request.responseData = data
@@ -224,7 +228,8 @@ public class Host {
         if let unwrappedError = error {
           userInfo["error"] = unwrappedError
         }
-        request.error = NSError(domain: "com.mknetworkkit.httperrordomain", code: statusCode, userInfo: userInfo);
+        request.error = NSError(domain: "com.mknetworkkit.httperrordomain", code: statusCode, userInfo: userInfo)
+        request.error = self.customizeError(request)
 
       default:
         break
