@@ -1,6 +1,6 @@
 //
 //  Cache.swift
-//  MKNetworkKitDemo
+//  MKNetworkKit
 //
 //  Created by Mugunth Kumar
 //  Copyright © 2015 - 2020 Steinlogic Consulting and Training Pte Ltd. All rights reserved.
@@ -31,7 +31,13 @@
 //  THE SOFTWARE.
 
 import Foundation
+#if os(iOS) || os(watchOS) || os(tvOS)
 import UIKit
+#endif
+
+#if os(OSX)
+import AppKit
+#endif
 
 public class Cache<T>: CustomDebugStringConvertible {
 
@@ -49,7 +55,7 @@ public class Cache<T>: CustomDebugStringConvertible {
   }
 
   // MARK: Initializer
-  public init(cost: Int = 10, directoryName : String = "AppCache", fileExtension : String = "mkcache") {
+  public init(cost: Int = 10, directoryName : String = "AppCache", fileExtension : String = "cachearchive") {
     let cachesDirectory = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
     directory = cachesDirectory + "/" + directoryName
     cacheCost = cost

@@ -7,8 +7,15 @@
 //
 
 import Foundation
-import UIKit
-import MKNetworkKit
+
+#if os(iOS) || os(watchOS) || os(tvOS)
+  import MKNetworkKit
+  import UIKit
+#endif
+
+#if os(OSX)
+  import MKNetworkKitOSX
+#endif
 
 class FlickrClient : Host {
 
@@ -44,11 +51,13 @@ class FlickrClient : Host {
     }.run()
   }
 
+  #if os(iOS) || os(watchOS) || os(tvOS)
   func fetchImage (imageURLString : String, completionHandler: (UIImage?) -> Void) -> Request {
     let request = super.request(withUrlString: imageURLString)
     return request.completion {(request: Request) in
       completionHandler(request.responseAsImage)
     }.run()
   }
+  #endif
   
 }

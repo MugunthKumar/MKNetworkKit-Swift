@@ -7,18 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB18DB891BC3F3AF00E25793 /* MKNetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AB18DB881BC3F3AF00E25793 /* MKNetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB18DB901BC3F3AF00E25793 /* MKNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; };
 		AB18DB971BC3F3AF00E25793 /* MKNetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */; };
 		AB18DB9B1BC3F3AF00E25793 /* MKNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; };
 		AB18DB9C1BC3F3AF00E25793 /* MKNetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AB18DBA41BC3F3C100E25793 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93C31B2ECD690078CA66 /* Cache.swift */; };
-		AB18DBA51BC3F3C100E25793 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93C71B2ECD790078CA66 /* Host.swift */; };
-		AB18DBA61BC3F3C100E25793 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93CB1B2ECDAD0078CA66 /* Request.swift */; };
-		AB18DBA71BC3F3C100E25793 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93CF1B2EE2180078CA66 /* FoundationExtensions.swift */; };
-		AB18DBA81BC3F3C100E25793 /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28F7B71B2F246E0043B035 /* UIKitExtensions.swift */; };
-		AB18DBA91BC3F3C100E25793 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86DB611B33C95B00C05B26 /* Log.swift */; };
-		AB8133F31BE9FA9200726CE6 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8133F01BE9F42F00726CE6 /* NSDateExtensions.swift */; };
+		AB8134231BEA0F5E00726CE6 /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B71B2ECB830078CA66 /* FlickrClient.swift */; };
+		AB81343D1BEA0FE700726CE6 /* MKNetworkKitOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */; };
+		AB81343E1BEA0FE700726CE6 /* MKNetworkKitOSX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB8134491BEA113A00726CE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134431BEA113A00726CE6 /* AppDelegate.swift */; };
+		AB81344A1BEA113A00726CE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB8134441BEA113A00726CE6 /* Assets.xcassets */; };
+		AB81344B1BEA113A00726CE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB8134451BEA113A00726CE6 /* Main.storyboard */; };
+		AB81344D1BEA113A00726CE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134481BEA113A00726CE6 /* ViewController.swift */; };
+		AB8134591BEA11AC00726CE6 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134501BEA11AC00726CE6 /* Cache.swift */; };
+		AB81345B1BEA11AC00726CE6 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134511BEA11AC00726CE6 /* FoundationExtensions.swift */; };
+		AB81345D1BEA11AC00726CE6 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134521BEA11AC00726CE6 /* Host.swift */; };
+		AB81345F1BEA11AC00726CE6 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134531BEA11AC00726CE6 /* Log.swift */; };
+		AB8134611BEA11AC00726CE6 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134541BEA11AC00726CE6 /* NSDateExtensions.swift */; };
+		AB8134631BEA11AC00726CE6 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134551BEA11AC00726CE6 /* Request.swift */; };
+		AB8134651BEA11AC00726CE6 /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134561BEA11AC00726CE6 /* UIKitExtensions.swift */; };
+		AB8134671BEA13DE00726CE6 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134551BEA11AC00726CE6 /* Request.swift */; };
+		AB8134681BEA13E800726CE6 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134541BEA11AC00726CE6 /* NSDateExtensions.swift */; };
+		AB8134691BEA13EC00726CE6 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134531BEA11AC00726CE6 /* Log.swift */; };
+		AB81346A1BEA13F000726CE6 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134521BEA11AC00726CE6 /* Host.swift */; };
+		AB81346B1BEA13F400726CE6 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134511BEA11AC00726CE6 /* FoundationExtensions.swift */; };
+		AB81346C1BEA13F900726CE6 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134501BEA11AC00726CE6 /* Cache.swift */; };
+		AB81346D1BEA13FC00726CE6 /* AppKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB81344F1BEA11AC00726CE6 /* AppKitExtensions.swift */; };
+		AB8134731BEA168900726CE6 /* FlickrImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B81B2ECB830078CA66 /* FlickrImage.swift */; };
 		ABCF93871B2ECA1F0078CA66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93861B2ECA1F0078CA66 /* AppDelegate.swift */; };
 		ABCF93891B2ECA1F0078CA66 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93881B2ECA1F0078CA66 /* MasterViewController.swift */; };
 		ABCF938B1B2ECA1F0078CA66 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF938A1B2ECA1F0078CA66 /* DetailViewController.swift */; };
@@ -52,6 +66,13 @@
 			remoteGlobalIDString = AB18DB851BC3F3AF00E25793;
 			remoteInfo = MKNetworkKit;
 		};
+		AB81343B1BEA0FDC00726CE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABCF937B1B2ECA1F0078CA66 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB8134291BEA0FA200726CE6;
+			remoteInfo = "MKNetworkKit-osx";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +87,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AB81343F1BEA0FE800726CE6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AB81343E1BEA0FE700726CE6 /* MKNetworkKitOSX.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -75,9 +107,23 @@
 		AB18DB8F1BC3F3AF00E25793 /* MKNetworkKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MKNetworkKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKNetworkKitTests.swift; sourceTree = "<group>"; };
 		AB18DB981BC3F3AF00E25793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB28F7B71B2F246E0043B035 /* UIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
-		AB8133F01BE9F42F00726CE6 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
-		AB86DB611B33C95B00C05B26 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		AB8133F81BEA0EB000726CE6 /* MKNetworkKitDemo-OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MKNetworkKitDemo-OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKNetworkKitOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB8134431BEA113A00726CE6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AB8134441BEA113A00726CE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AB8134461BEA113A00726CE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AB8134471BEA113A00726CE6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB8134481BEA113A00726CE6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AB81344F1BEA11AC00726CE6 /* AppKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppKitExtensions.swift; sourceTree = "<group>"; };
+		AB8134501BEA11AC00726CE6 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		AB8134511BEA11AC00726CE6 /* FoundationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtensions.swift; sourceTree = "<group>"; };
+		AB8134521BEA11AC00726CE6 /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
+		AB8134531BEA11AC00726CE6 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		AB8134541BEA11AC00726CE6 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
+		AB8134551BEA11AC00726CE6 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		AB8134561BEA11AC00726CE6 /* UIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
+		AB81346E1BEA156500726CE6 /* ios.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ios.plist; sourceTree = SOURCE_ROOT; };
+		AB81346F1BEA156500726CE6 /* osx.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = osx.plist; sourceTree = SOURCE_ROOT; };
 		ABCF93831B2ECA1F0078CA66 /* MKNetworkKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKNetworkKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABCF93861B2ECA1F0078CA66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABCF93881B2ECA1F0078CA66 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -89,10 +135,6 @@
 		ABCF93B71B2ECB830078CA66 /* FlickrClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
 		ABCF93B81B2ECB830078CA66 /* FlickrImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrImage.swift; sourceTree = "<group>"; };
 		ABCF93B91B2ECB830078CA66 /* FlickrImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrImageCell.swift; sourceTree = "<group>"; };
-		ABCF93C31B2ECD690078CA66 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
-		ABCF93C71B2ECD790078CA66 /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
-		ABCF93CB1B2ECDAD0078CA66 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		ABCF93CF1B2EE2180078CA66 /* FoundationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +150,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB18DB901BC3F3AF00E25793 /* MKNetworkKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB8133F51BEA0EB000726CE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB81343D1BEA0FE700726CE6 /* MKNetworkKitOSX.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB8134321BEA0FA200726CE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,13 +197,43 @@
 			path = MKNetworkKitTests;
 			sourceTree = "<group>";
 		};
+		AB8134421BEA113A00726CE6 /* MKNetworkKitDemo-OSX */ = {
+			isa = PBXGroup;
+			children = (
+				AB8134431BEA113A00726CE6 /* AppDelegate.swift */,
+				AB8134441BEA113A00726CE6 /* Assets.xcassets */,
+				AB8134451BEA113A00726CE6 /* Main.storyboard */,
+				AB8134471BEA113A00726CE6 /* Info.plist */,
+				AB8134481BEA113A00726CE6 /* ViewController.swift */,
+			);
+			path = "MKNetworkKitDemo-OSX";
+			sourceTree = "<group>";
+		};
+		AB81344E1BEA11AC00726CE6 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AB81344F1BEA11AC00726CE6 /* AppKitExtensions.swift */,
+				AB8134501BEA11AC00726CE6 /* Cache.swift */,
+				AB8134511BEA11AC00726CE6 /* FoundationExtensions.swift */,
+				AB8134521BEA11AC00726CE6 /* Host.swift */,
+				AB8134531BEA11AC00726CE6 /* Log.swift */,
+				AB8134541BEA11AC00726CE6 /* NSDateExtensions.swift */,
+				AB8134551BEA11AC00726CE6 /* Request.swift */,
+				AB8134561BEA11AC00726CE6 /* UIKitExtensions.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		ABCF937A1B2ECA1F0078CA66 = {
 			isa = PBXGroup;
 			children = (
-				ABCF93B61B2ECA350078CA66 /* MKNetworkKit3 */,
+				AB81344E1BEA11AC00726CE6 /* Core */,
 				ABCF93851B2ECA1F0078CA66 /* MKNetworkKitDemo */,
 				AB18DB871BC3F3AF00E25793 /* MKNetworkKit */,
 				AB18DB951BC3F3AF00E25793 /* MKNetworkKitTests */,
+				AB8134421BEA113A00726CE6 /* MKNetworkKitDemo-OSX */,
+				AB81346E1BEA156500726CE6 /* ios.plist */,
+				AB81346F1BEA156500726CE6 /* osx.plist */,
 				ABCF93841B2ECA1F0078CA66 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -157,6 +244,8 @@
 				ABCF93831B2ECA1F0078CA66 /* MKNetworkKitDemo.app */,
 				AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */,
 				AB18DB8F1BC3F3AF00E25793 /* MKNetworkKitTests.xctest */,
+				AB8133F81BEA0EB000726CE6 /* MKNetworkKitDemo-OSX.app */,
+				AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -178,20 +267,6 @@
 			path = MKNetworkKitDemo;
 			sourceTree = "<group>";
 		};
-		ABCF93B61B2ECA350078CA66 /* MKNetworkKit3 */ = {
-			isa = PBXGroup;
-			children = (
-				ABCF93C31B2ECD690078CA66 /* Cache.swift */,
-				ABCF93C71B2ECD790078CA66 /* Host.swift */,
-				ABCF93CB1B2ECDAD0078CA66 /* Request.swift */,
-				ABCF93CF1B2EE2180078CA66 /* FoundationExtensions.swift */,
-				AB28F7B71B2F246E0043B035 /* UIKitExtensions.swift */,
-				AB86DB611B33C95B00C05B26 /* Log.swift */,
-				AB8133F01BE9F42F00726CE6 /* NSDateExtensions.swift */,
-			);
-			path = MKNetworkKit3;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -199,7 +274,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB18DB891BC3F3AF00E25793 /* MKNetworkKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB8134331BEA0FA200726CE6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +324,43 @@
 			productReference = AB18DB8F1BC3F3AF00E25793 /* MKNetworkKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		AB8133F71BEA0EB000726CE6 /* MKNetworkKitDemo-OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB81341A1BEA0EB000726CE6 /* Build configuration list for PBXNativeTarget "MKNetworkKitDemo-OSX" */;
+			buildPhases = (
+				AB8133F41BEA0EB000726CE6 /* Sources */,
+				AB8133F51BEA0EB000726CE6 /* Frameworks */,
+				AB8133F61BEA0EB000726CE6 /* Resources */,
+				AB81343F1BEA0FE800726CE6 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB81343C1BEA0FDC00726CE6 /* PBXTargetDependency */,
+			);
+			name = "MKNetworkKitDemo-OSX";
+			productName = "MKNetworkKitDemo-Mac";
+			productReference = AB8133F81BEA0EB000726CE6 /* MKNetworkKitDemo-OSX.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AB8134291BEA0FA200726CE6 /* MKNetworkKitOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB8134361BEA0FA200726CE6 /* Build configuration list for PBXNativeTarget "MKNetworkKitOSX" */;
+			buildPhases = (
+				AB81342A1BEA0FA200726CE6 /* Sources */,
+				AB8134321BEA0FA200726CE6 /* Frameworks */,
+				AB8134331BEA0FA200726CE6 /* Headers */,
+				AB8134351BEA0FA200726CE6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MKNetworkKitOSX;
+			productName = MKNetworkKit;
+			productReference = AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		ABCF93821B2ECA1F0078CA66 /* MKNetworkKitDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABCF93AD1B2ECA200078CA66 /* Build configuration list for PBXNativeTarget "MKNetworkKitDemo" */;
@@ -269,16 +387,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Steinlogic Consulting and Training Pte Ltd";
 				TargetAttributes = {
 					AB18DB851BC3F3AF00E25793 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 4736GALF72;
 					};
 					AB18DB8E1BC3F3AF00E25793 = {
 						CreatedOnToolsVersion = 7.1;
 						TestTargetID = ABCF93821B2ECA1F0078CA66;
+					};
+					AB8133F71BEA0EB000726CE6 = {
+						CreatedOnToolsVersion = 7.1;
 					};
 					ABCF93821B2ECA1F0078CA66 = {
 						CreatedOnToolsVersion = 7.0;
@@ -302,6 +422,8 @@
 				ABCF93821B2ECA1F0078CA66 /* MKNetworkKitDemo */,
 				AB18DB851BC3F3AF00E25793 /* MKNetworkKit */,
 				AB18DB8E1BC3F3AF00E25793 /* MKNetworkKitTests */,
+				AB8133F71BEA0EB000726CE6 /* MKNetworkKitDemo-OSX */,
+				AB8134291BEA0FA200726CE6 /* MKNetworkKitOSX */,
 			);
 		};
 /* End PBXProject section */
@@ -315,6 +437,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AB18DB8D1BC3F3AF00E25793 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB8133F61BEA0EB000726CE6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB81344A1BEA113A00726CE6 /* Assets.xcassets in Resources */,
+				AB81344B1BEA113A00726CE6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB8134351BEA0FA200726CE6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -338,13 +476,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB18DBA71BC3F3C100E25793 /* FoundationExtensions.swift in Sources */,
-				AB8133F31BE9FA9200726CE6 /* NSDateExtensions.swift in Sources */,
-				AB18DBA41BC3F3C100E25793 /* Cache.swift in Sources */,
-				AB18DBA91BC3F3C100E25793 /* Log.swift in Sources */,
-				AB18DBA61BC3F3C100E25793 /* Request.swift in Sources */,
-				AB18DBA51BC3F3C100E25793 /* Host.swift in Sources */,
-				AB18DBA81BC3F3C100E25793 /* UIKitExtensions.swift in Sources */,
+				AB8134591BEA11AC00726CE6 /* Cache.swift in Sources */,
+				AB8134611BEA11AC00726CE6 /* NSDateExtensions.swift in Sources */,
+				AB81345F1BEA11AC00726CE6 /* Log.swift in Sources */,
+				AB8134631BEA11AC00726CE6 /* Request.swift in Sources */,
+				AB81345B1BEA11AC00726CE6 /* FoundationExtensions.swift in Sources */,
+				AB8134651BEA11AC00726CE6 /* UIKitExtensions.swift in Sources */,
+				AB81345D1BEA11AC00726CE6 /* Host.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +491,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB18DB971BC3F3AF00E25793 /* MKNetworkKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB8133F41BEA0EB000726CE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB81344D1BEA113A00726CE6 /* ViewController.swift in Sources */,
+				AB8134491BEA113A00726CE6 /* AppDelegate.swift in Sources */,
+				AB8134731BEA168900726CE6 /* FlickrImage.swift in Sources */,
+				AB8134231BEA0F5E00726CE6 /* FlickrClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB81342A1BEA0FA200726CE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB8134681BEA13E800726CE6 /* NSDateExtensions.swift in Sources */,
+				AB81346B1BEA13F400726CE6 /* FoundationExtensions.swift in Sources */,
+				AB8134671BEA13DE00726CE6 /* Request.swift in Sources */,
+				AB8134691BEA13EC00726CE6 /* Log.swift in Sources */,
+				AB81346D1BEA13FC00726CE6 /* AppKitExtensions.swift in Sources */,
+				AB81346C1BEA13F900726CE6 /* Cache.swift in Sources */,
+				AB81346A1BEA13F000726CE6 /* Host.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,9 +550,22 @@
 			target = AB18DB851BC3F3AF00E25793 /* MKNetworkKit */;
 			targetProxy = AB18DB991BC3F3AF00E25793 /* PBXContainerItemProxy */;
 		};
+		AB81343C1BEA0FDC00726CE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB8134291BEA0FA200726CE6 /* MKNetworkKitOSX */;
+			targetProxy = AB81343B1BEA0FDC00726CE6 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		AB8134451BEA113A00726CE6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB8134461BEA113A00726CE6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		ABCF938C1B2ECA1F0078CA66 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -412,20 +588,20 @@
 		AB18DB9D1BC3F3AF00E25793 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MKNetworkKit/Info.plist;
+				INFOPLIST_FILE = ios.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos macosx";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos";
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -435,20 +611,20 @@
 		AB18DB9E1BC3F3AF00E25793 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MKNetworkKit/Info.plist;
+				INFOPLIST_FILE = ios.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos macosx";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos";
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -476,6 +652,88 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MKNetworkKitDemo.app/MKNetworkKitDemo";
+			};
+			name = Release;
+		};
+		AB81341B1BEA0EB000726CE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "MKNetworkKitDemo-OSX/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.steinlogic.MKNetworkKitDemo-OSX";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		AB81341C1BEA0EB000726CE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "MKNetworkKitDemo-OSX/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.steinlogic.MKNetworkKitDemo-OSX";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		AB8134371BEA0FA200726CE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = osx.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.steinlogic.MKNetworkKit-OSX";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				VALID_ARCHS = "i386 x86_64";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AB8134381BEA0FA200726CE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = osx.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.steinlogic.MKNetworkKit-OSX";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				VALID_ARCHS = "i386 x86_64";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -607,6 +865,24 @@
 			buildConfigurations = (
 				AB18DB9F1BC3F3AF00E25793 /* Debug */,
 				AB18DBA01BC3F3AF00E25793 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB81341A1BEA0EB000726CE6 /* Build configuration list for PBXNativeTarget "MKNetworkKitDemo-OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB81341B1BEA0EB000726CE6 /* Debug */,
+				AB81341C1BEA0EB000726CE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB8134361BEA0FA200726CE6 /* Build configuration list for PBXNativeTarget "MKNetworkKitOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB8134371BEA0FA200726CE6 /* Debug */,
+				AB8134381BEA0FA200726CE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

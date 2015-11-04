@@ -1,6 +1,6 @@
 //
 //  Extensions.swift
-//  MKNetworkKitDemo
+//  MKNetworkKit
 //
 //  Created by Mugunth Kumar
 //  Copyright © 2015 - 2020 Steinlogic Consulting and Training Pte Ltd. All rights reserved.
@@ -29,20 +29,8 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-//
 
 import Foundation
-
-// MARK: Extension methods on String
-extension String {
-  static let imageHost = Host(cacheDirectory: "MKNetworkKit")
-  public func loadRemoteImage(handler:(UIImage?) -> Void) -> Void {
-    String.imageHost.request(withUrlString:self)
-      .completion { (request) -> Void in
-        handler(request.responseAsImage)
-      }.run()
-  }
-}
 
 // MARK: Extension methods on Dictionary
 extension Dictionary {

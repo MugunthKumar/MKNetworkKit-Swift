@@ -1,6 +1,6 @@
 //
-//  UIKitExtensions.swift
-//  MKNetworkKitDemo
+//  AppKitExtensions.swift
+//  MKNetworkKit
 //
 //  Created by Mugunth Kumar
 //  Copyright © 2015 - 2020 Steinlogic Consulting and Training Pte Ltd. All rights reserved.
@@ -29,29 +29,13 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-//
 
 import Foundation
-import UIKit
+import AppKit
 
-extension Request {
-  public var responseAsImage : UIImage? {
-    if let data = responseData {
-      return UIImage(data:data)
-    } else {
-      return nil
-    }
-  }
-
-  public static var automaticNetworkActivityIndicator : Bool = false {
-    didSet {
-      if automaticNetworkActivityIndicator {
-        Request.runningRequestsUpdatedHandler = { count in
-          dispatch_async(dispatch_get_main_queue()) {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = count > 0
-          }
-        }
-      }
-    }
+extension NSAlert {
+  public func show(error: NSError) {
+    let alert = NSAlert(error:error)
+    alert.runModal()
   }
 }
