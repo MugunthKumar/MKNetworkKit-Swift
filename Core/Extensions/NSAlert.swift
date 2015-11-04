@@ -1,5 +1,5 @@
 //
-//  UIKitExtensions.swift
+//  NSAlert.swift
 //  MKNetworkKit
 //
 //  Created by Mugunth Kumar
@@ -31,47 +31,11 @@
 //  THE SOFTWARE.
 
 import Foundation
-import UIKit
+import AppKit
 
-
-// MARK: Extension methods on String to load a remote image
-extension String {
-  static let imageHost = Host(cacheDirectory: "MKNetworkKit")
-  public func loadRemoteImage(handler:(UIImage?) -> Void) -> Void {
-    String.imageHost.request(withUrlString:self)
-      .completion { (request) -> Void in
-        handler(request.responseAsImage)
-      }.run()
-  }
-}
-
-extension Request {
-  public var responseAsImage : UIImage? {
-    if let data = responseData {
-      return UIImage(data:data)
-    } else {
-      return nil
-    }
-  }
-
-  public static var automaticNetworkActivityIndicator : Bool = false {
-    didSet {
-      if automaticNetworkActivityIndicator {
-        Request.runningRequestsUpdatedHandler = { count in
-          dispatch_async(dispatch_get_main_queue()) {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = count > 0
-          }
-        }
-      }
-    }
-  }
-}
-
-extension UIAlertController {
+extension NSAlert {
   public func show(error: NSError) {
-    let alertController = UIAlertController(title: error.localizedFailureReason ?? error.localizedDescription,
-      message: error.localizedRecoverySuggestion,
-      preferredStyle: .Alert)
-    UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+    let alert = NSAlert(error:error)
+    alert.runModal()
   }
 }

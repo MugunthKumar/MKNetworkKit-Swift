@@ -98,10 +98,8 @@ public class Request {
   internal var requiresAuthentication : Bool {
     return (username != nil && password != nil)
   }
-  public var isSSL : Bool = false
 
   public var doNotCache : Bool = false
-  public var alwaysCache : Bool = true
   public var ignoreCache : Bool = false
   public var alwaysLoad : Bool = false
 

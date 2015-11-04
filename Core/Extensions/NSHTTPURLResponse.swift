@@ -1,5 +1,5 @@
 //
-//  AppKitExtensions.swift
+//  NSHTTPURLResponse.swift
 //  MKNetworkKit
 //
 //  Created by Mugunth Kumar
@@ -29,13 +29,51 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//
 
 import Foundation
-import AppKit
 
-extension NSAlert {
-  public func show(error: NSError) {
-    let alert = NSAlert(error:error)
-    alert.runModal()
+extension NSHTTPURLResponse {
+
+  public func headerValue(key: String) -> String? {
+    let lowercaseKey = String(key).lowercaseString
+    for (k, v) in allHeaderFields {
+      if String(k).lowercaseString == lowercaseKey {
+        return v as? String
+      }
+    }
+    return nil
+  }
+  var isContentTypeImage: Bool {
+    if let _ = headerValue("Content-Type")?.lowercaseString.rangeOfString("image") {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  var cacheExpiryDate: NSDate? {
+    if let expiresOn = headerValue("Expires") {
+      if let expiresOnDate = NSDate.dateFromRFC1123DateString(expiresOn) {
+        return expiresOnDate
+      }
+    }
+
+    if let cacheControl = headerValue("Cache-Control") {
+      let entities = cacheControl.componentsSeparatedByString(",")
+      for entity in entities {
+        if let _ = entity.rangeOfString("no-cache") {
+          return nil
+        }
+        if let _ = entity.rangeOfString("max-age") {
+          let maxAgeComponents = entity.componentsSeparatedByString("=")
+          if let maxAge = Double(maxAgeComponents[1]) {
+            return NSDate().dateByAddingTimeInterval(maxAge)
+          }
+        }
+      }
+    }
+
+    return nil
   }
 }
