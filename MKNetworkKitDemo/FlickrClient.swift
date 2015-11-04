@@ -22,7 +22,7 @@ class FlickrClient : Host {
   }
 
   internal func imageFetchRequest(tag : String, page: Int) -> Request? {
-    return super.requestWithPath("", parameters:
+    return super.request(withPath: "", parameters:
       ["method": "flickr.photos.search",
       "api_key": flickrAPIKey,
       "tags": tag.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!,
@@ -45,7 +45,7 @@ class FlickrClient : Host {
   }
 
   func fetchImage (imageURLString : String, completionHandler: (UIImage?) -> Void) -> Request {
-    let request = super.requestWithURLString(imageURLString)
+    let request = super.request(withUrlString: imageURLString)
     return request.completion {(request: Request) in
       completionHandler(request.responseAsImage)
     }.run()

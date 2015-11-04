@@ -35,9 +35,9 @@ import Foundation
 
 // MARK: Extension methods on String
 extension String {
-  static let imageHost = Host()
+  static let imageHost = Host(cacheDirectory: "MKNetworkKit")
   public func loadRemoteImage(handler:(UIImage?) -> Void) -> Void {
-    String.imageHost.requestWithURLString(self)
+    String.imageHost.request(withUrlString:self)
       .completion { (request) -> Void in
         handler(request.responseAsImage)
       }.run()
@@ -66,12 +66,58 @@ extension Dictionary {
       try data = NSJSONSerialization.dataWithJSONObject(stringizedDictionary, options:
         NSJSONWritingOptions.PrettyPrinted)
     } catch let error as NSError {
-      print(error)
+      Log.warn(error)
     }
 
     guard data != nil else {
       return nil
     }
     return NSString(data: data!, encoding: NSUTF8StringEncoding) as String?
+  }
+}
+
+// MARK: Extension methods on NSHTTPURLResponse
+extension NSHTTPURLResponse {
+
+  public func headerValue(key: String) -> String? {
+    let lowercaseKey = String(key).lowercaseString
+    for (k, v) in allHeaderFields {
+      if String(k).lowercaseString == lowercaseKey {
+        return v as? String
+      }
+    }
+    return nil
+  }
+  var isContentTypeImage: Bool {
+    if let _ = headerValue("Content-Type")?.lowercaseString.rangeOfString("image") {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  var cacheExpiryDate: NSDate? {
+    if let expiresOn = headerValue("Expires") {
+      if let expiresOnDate = NSDate.dateFromRFC1123DateString(expiresOn) {
+        return expiresOnDate
+      }
+    }
+
+    if let cacheControl = headerValue("Cache-Control") {
+      let entities = cacheControl.componentsSeparatedByString(",")
+      for entity in entities {
+        if let _ = entity.rangeOfString("no-cache") {
+          return nil
+        }
+        if let _ = entity.rangeOfString("max-age") {
+          let maxAgeComponents = entity.componentsSeparatedByString("=")
+          if let maxAge = Double(maxAgeComponents[1]) {
+            return NSDate().dateByAddingTimeInterval(maxAge)
+          }
+        }
+      }
+    }
+
+    return nil
   }
 }

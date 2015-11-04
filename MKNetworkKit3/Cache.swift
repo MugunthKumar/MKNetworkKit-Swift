@@ -33,30 +33,32 @@
 import Foundation
 import UIKit
 
-public class Cache {
+public class Cache<T>: CustomDebugStringConvertible {
 
   var fileExtension : String
   var directory : String
 
-  var inMemoryCache : [String:AnyObject] = [String:AnyObject]()
+  var inMemoryCache : [String:T] = [String:T]()
   var recentKeys : [String] = [String]()
   var cacheCost : Int = 10
   var queue : dispatch_queue_t = dispatch_queue_create("com.mknetworkkit.cachequeue", DISPATCH_QUEUE_SERIAL)
   var diskQueue : dispatch_queue_t = dispatch_queue_create("com.mknetworkkit.diskqueue", DISPATCH_QUEUE_SERIAL)
 
+  public var debugDescription: String {
+    return directory
+  }
+
   // MARK: Initializer
   public init(cost: Int = 10, directoryName : String = "AppCache", fileExtension : String = "mkcache") {
-    let cachesDirectory = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0]
+    let cachesDirectory = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
     directory = cachesDirectory + "/" + directoryName
     cacheCost = cost
     self.fileExtension = fileExtension
 
     if !(NSFileManager.defaultManager().fileExistsAtPath(directory)) {
-
       do {
         try NSFileManager.defaultManager().createDirectoryAtPath(directory, withIntermediateDirectories: true, attributes: nil)
       } catch let error as NSError {
-
         Log.error(error)
       }
     }
@@ -102,25 +104,25 @@ public class Cache {
     return "\(self.directory)/\(key).\(fileExtension)"
   }
 
-  func fetchFromDisk (key : String) -> AnyObject? {
+  func fetchFromDisk (key : String) -> T? {
     let filePath = makePath(key)
-    return NSKeyedUnarchiver.unarchiveObjectWithFile(filePath)
+    return NSKeyedUnarchiver.unarchiveObjectWithFile(filePath) as? T
   }
   
-  func cacheToDisk (key : String, _ value : AnyObject) {
+  func cacheToDisk (key : String, _ value : T) {
     let filePath = makePath(key)
     if NSFileManager.defaultManager().fileExistsAtPath(filePath) {
        try! NSFileManager.defaultManager().removeItemAtPath(filePath)
     }
 
-    let data = NSKeyedArchiver.archivedDataWithRootObject(value)
+    let data = NSKeyedArchiver.archivedDataWithRootObject(value as! AnyObject)
     dispatch_async(diskQueue) {
       data.writeToFile(filePath, atomically: true)
     }
   }
 
   //MARK: Caching methods
-  subscript(key: String) -> AnyObject? {
+  subscript(key: String) -> T? {
     get {
       if let valueToBeReturned = self.inMemoryCache[key] {
         return valueToBeReturned
@@ -141,20 +143,13 @@ public class Cache {
   }
 
   func enforceMemoryCost() {
-
     if self.recentKeys.count > self.cacheCost {
-
-      var lruKey : String?
-      var lruValue : String?
-
       dispatch_async(self.queue) {
-        lruKey = self.recentKeys.removeLast()
-        lruValue = self.recentKeys.removeLast()
-      }
-
-      if let valueToCache = lruValue {
-        cacheToDisk(lruKey!, valueToCache)
-        enforceDiskCost()
+        let lruKey = self.recentKeys.removeLast()
+        let lruValue = self.inMemoryCache[lruKey]
+        if let valueToCache = lruValue {
+          self.cacheToDisk(lruKey, valueToCache)
+        }
       }
     }
   }

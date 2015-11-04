@@ -29,7 +29,11 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-// 
+//
+
+// TODO:
+// * Multi-part form data
+// * Cache support
 
 import Foundation
 
@@ -37,6 +41,15 @@ public enum ParameterEncoding : String, CustomStringConvertible {
   case URL = "URL"
   case JSON = "JSON"
   public var description : String { return self.rawValue }
+
+  public var contentType : String {
+    switch(self) {
+    case .URL:
+      return "application/x-www-form-urlencoded"
+    case .JSON:
+      return "application/json"
+    }
+  }
 }
 
 public enum State : String, CustomStringConvertible {
@@ -63,7 +76,7 @@ public enum HTTPMethod : String, CustomStringConvertible {
 }
 
 public class Request {
-  
+
   static private var runningRequestsSynchronizingQueue =
   dispatch_queue_create("com.mknetworkkit.tasks.queue", DISPATCH_QUEUE_SERIAL)
   static private var runningRequests = [Request]()
@@ -71,30 +84,33 @@ public class Request {
 
   public var url: String
   public var method: HTTPMethod = .GET
-  public var parameters: [String:AnyObject]?
-  public var headers: [String:String]?
-  public var parameterEncoding : ParameterEncoding
+  public var parameters = [String:AnyObject]()
+  public var headers = [String:String]()
+  public var parameterEncoding: ParameterEncoding = .URL
 
-  public var files: [String:String]?
-  public var blobs: [String:NSData]?
+  public var files = [String:String]()
+  public var blobs = [String:NSData]()
   public var bodyData: NSData?
 
   public var task : NSURLSessionTask?
-  public var host: Host!
+  public weak var host: Host!
 
-  public var username : NSString?
-  public var password : NSString?
+  public var username : String?
+  public var password : String?
 
-  public var downloadPath : NSString?
-  public var requiresAuthentication : Bool = false
+  public var downloadPath : String?
+
+  internal var requiresAuthentication : Bool {
+    return (username != nil && password != nil)
+  }
   public var isSSL : Bool = false
 
   public var doNotCache : Bool = false
-  public var alwaysCache : Bool = false
+  public var alwaysCache : Bool = true
   public var ignoreCache : Bool = false
   public var alwaysLoad : Bool = false
 
-  public var state : State {
+  public var state : State = .Ready {
     didSet {
       switch (state) {
       case .Ready:
@@ -103,6 +119,10 @@ public class Request {
       case .Started:
         task?.resume()
 
+      case .ResponseAvailableFromCache:
+        fallthrough
+      case .StaleResponseAvailableFromCache:
+        fallthrough
       case .Completed:
         fallthrough
       case .Error:
@@ -112,9 +132,6 @@ public class Request {
         
       case .Cancelled:
         task?.cancel()
-
-      default:
-        break
       }
 
       if (state == .Started) {
@@ -136,7 +153,7 @@ public class Request {
     var finalUrl : String
     switch(method) {
     case .GET, .DELETE, .CONNECT, .TRACE:
-      finalUrl = url + (parameters?.URLEncodedString)!
+      finalUrl = url + parameters.URLEncodedString
     case .POST, .PUT, .PATCH, .OPTIONS:
       finalUrl = url
     }
@@ -145,33 +162,73 @@ public class Request {
     let urlRequest = NSMutableURLRequest(URL: nsurl)
     urlRequest.HTTPMethod = method.description
 
-    for (headerField, headerValue) in headers! {
-      urlRequest.addValue(headerValue, forHTTPHeaderField: headerField)
+    for (headerField, headerValue) in headers {
+      urlRequest.setValue(headerValue, forHTTPHeaderField: headerField)
     }
 
+    urlRequest.setValue(parameterEncoding.contentType, forHTTPHeaderField: "Content-Type")
+
+    let charset =
+    CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)) as NSString
+    urlRequest.addValue("charset=\(charset)", forHTTPHeaderField: "Content-Type")
+
     if [.POST, .PUT, .PATCH, .OPTIONS].contains(method) {
-      urlRequest.HTTPBody = parameters?.URLEncodedString.dataUsingEncoding(NSUTF8StringEncoding)
+      urlRequest.HTTPBody = parameters.URLEncodedString.dataUsingEncoding(NSUTF8StringEncoding)
     }
+
+    // body data overrides parameters
+    if let unwrappedBodyData = bodyData {
+      urlRequest.HTTPBody = unwrappedBodyData
+    }
+
     return urlRequest
   }
 
   var responseData : NSData?
   var response : NSHTTPURLResponse?
+
   var error : NSError?
 
+  var equalityIdentifier: String {
+    var string: String = "\(arc4random())"
+    if let unwrappedRequest = request {
+      if ![.POST, .PUT, .PATCH, .OPTIONS].contains(method) {
+        string = "\(method.rawValue.uppercaseString) \(unwrappedRequest.URL!.absoluteString)"
+      }
+    }
+    if let unwrappedUsername = username {
+      string += unwrappedUsername
+    }
+    if let unwrappedPassword = password {
+      string += unwrappedPassword
+    }
+
+    return string
+  }
+
+  var cacheble: Bool {
+    if method != .GET {
+      return false
+    }
+    if doNotCache {
+      return false
+    }
+    if requiresAuthentication {
+      return false
+    }
+    return true
+  }
+
+  private var progressHandlers = Array<(Request) -> Void>()
   private var completionHandlers = Array<(Request) -> Void>()
 
   init(method: HTTPMethod = .GET,
     url: String,
-    parameters: [String:AnyObject]? = [:],
-    headers: [String:String]? = [:],
-    files: [String:String]? = [:],
-    blobs: [String:NSData]? = [:],
+    parameters: [String:AnyObject] = [:],
+    headers: [String:String] = [:],
+    files: [String:String] = [:],
+    blobs: [String:NSData] = [:],
     bodyData: NSData? = nil) {
-
-      parameterEncoding = .URL
-      state = .Ready
-
       self.url = url
       self.method = method;
       self.parameters = parameters;
@@ -180,10 +237,36 @@ public class Request {
       self.blobs = blobs
       self.bodyData = bodyData
   }
-  
-  public var description : String {
+
+  public func append(headers additionalHeaders: [String:String] = [:],
+    parameters additionalParameters: [String:AnyObject] = [:]) {
+      for (k, v) in additionalHeaders {
+        headers.updateValue(v, forKey: k)
+      }
+      for (k, v) in additionalParameters {
+        parameters.updateValue(v, forKey: k)
+      }
+  }
+
+  public func appendHeader(key: String, value: String) {
+    headers.updateValue(value, forKey: key)
+  }
+
+  public func appendParameter(key: String, value: String) {
+    parameters.updateValue(value, forKey: key)
+  }
+
+  public func appendAuthorizationHeader(type type: String, value: String) {
+    appendHeader("Authorization", value: "\(type) \(value)")
+  }
+
+  public var description: String {
+    return asCurlCommand
+  }
+
+  public var asCurlCommand : String {
     var displayString = "curl -X \(method) '\(self.url)' -H " +
-      headers!.map {"'\($0):\($1)'"}.joinWithSeparator(" -H ")
+      headers.map {"'\($0):\($1)'"}.joinWithSeparator(" -H ")
 
     if [.POST, .PUT, .PATCH, .OPTIONS].contains(method) {
       if let actualData = request?.HTTPBody {
@@ -199,16 +282,26 @@ public class Request {
       let jsonObject = try NSJSONSerialization.JSONObjectWithData(responseData, options: .MutableLeaves)
       return jsonObject
     } catch {
-      print("Error parsing as JSON")
+      Log.error("Error parsing as JSON")
       return nil
     }
+  }
+
+  public func progress (handler: (Request) -> Void) -> Request {
+    progressHandlers.append(handler)
+    return self
   }
 
   public func completion (handler: (Request) -> Void) -> Request {
     completionHandlers.append(handler)
     return self
   }
-  
+
+  public func log() -> Request {
+    Log.info(self.asCurlCommand)
+    return self
+  }
+
   public func run() -> Request {
     host.startRequest(self)
     return self

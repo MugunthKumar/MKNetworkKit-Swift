@@ -67,7 +67,7 @@ public struct Log {
     errorSuffix: " X"
     )
 
-  public static var defaultLog : Log = emojiLog
+  public static var defaultLog : Log = simpleLog
 
   private var infoPrefix : String
   private var warnPrefix : String

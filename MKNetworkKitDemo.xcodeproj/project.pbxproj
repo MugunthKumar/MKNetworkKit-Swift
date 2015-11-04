@@ -18,6 +18,7 @@
 		AB18DBA71BC3F3C100E25793 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93CF1B2EE2180078CA66 /* FoundationExtensions.swift */; };
 		AB18DBA81BC3F3C100E25793 /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB28F7B71B2F246E0043B035 /* UIKitExtensions.swift */; };
 		AB18DBA91BC3F3C100E25793 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86DB611B33C95B00C05B26 /* Log.swift */; };
+		AB8133F31BE9FA9200726CE6 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8133F01BE9F42F00726CE6 /* NSDateExtensions.swift */; };
 		ABCF93871B2ECA1F0078CA66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93861B2ECA1F0078CA66 /* AppDelegate.swift */; };
 		ABCF93891B2ECA1F0078CA66 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93881B2ECA1F0078CA66 /* MasterViewController.swift */; };
 		ABCF938B1B2ECA1F0078CA66 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF938A1B2ECA1F0078CA66 /* DetailViewController.swift */; };
@@ -75,6 +76,7 @@
 		AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKNetworkKitTests.swift; sourceTree = "<group>"; };
 		AB18DB981BC3F3AF00E25793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB28F7B71B2F246E0043B035 /* UIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
+		AB8133F01BE9F42F00726CE6 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
 		AB86DB611B33C95B00C05B26 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		ABCF93831B2ECA1F0078CA66 /* MKNetworkKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKNetworkKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABCF93861B2ECA1F0078CA66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				ABCF93CF1B2EE2180078CA66 /* FoundationExtensions.swift */,
 				AB28F7B71B2F246E0043B035 /* UIKitExtensions.swift */,
 				AB86DB611B33C95B00C05B26 /* Log.swift */,
+				AB8133F01BE9F42F00726CE6 /* NSDateExtensions.swift */,
 			);
 			path = MKNetworkKit3;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB18DBA71BC3F3C100E25793 /* FoundationExtensions.swift in Sources */,
+				AB8133F31BE9FA9200726CE6 /* NSDateExtensions.swift in Sources */,
 				AB18DBA41BC3F3C100E25793 /* Cache.swift in Sources */,
 				AB18DBA91BC3F3C100E25793 /* Log.swift in Sources */,
 				AB18DBA61BC3F3C100E25793 /* Request.swift in Sources */,
