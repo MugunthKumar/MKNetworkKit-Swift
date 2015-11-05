@@ -10,14 +10,15 @@ import Foundation
 
 extension Dictionary {
   var URLEncodedString : String {
-    var encodedString = self.reduce("?") {
+    var encodedString = self.reduce("") {
       let (key, value) = $1
       return "\($0)" + "\(key)=\(value)&"
     }
     if encodedString.characters.count > 0 {
       encodedString.removeAtIndex(encodedString.endIndex.predecessor());
     }
-    return encodedString;
+
+    return encodedString.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) ?? ""
   }
 
   var JSONString : String? {

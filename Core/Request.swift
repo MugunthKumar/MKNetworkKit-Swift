@@ -119,10 +119,13 @@ public class Request {
       case .Completed:
         fallthrough
       case .Error:
+        if (state == .Error) {
+          log()
+        }
         for handler in completionHandlers {
           handler(self)
         }
-        
+
       case .Cancelled:
         task?.cancel()
       }
@@ -146,7 +149,7 @@ public class Request {
     var finalUrl : String
     switch(method) {
     case .GET, .DELETE, .CONNECT, .TRACE:
-      finalUrl = url + parameters.URLEncodedString
+      finalUrl = url + "?" + parameters.URLEncodedString
     case .POST, .PUT, .PATCH, .OPTIONS:
       finalUrl = url
     }
@@ -258,13 +261,17 @@ public class Request {
   }
 
   public var asCurlCommand : String {
-    var displayString = "curl -X \(method) '\(self.url)' -H " +
-      headers.map {"'\($0):\($1)'"}.joinWithSeparator(" -H ")
 
-    if [.POST, .PUT, .PATCH, .OPTIONS].contains(method) {
-      if let actualData = request?.HTTPBody {
-        displayString += "-d '\(String(data:actualData, encoding:NSUTF8StringEncoding))'"
-      }
+    var displayString = "curl -X \(method)"
+    guard let r = request else { return displayString }
+    guard let urlString = r.URL?.absoluteString else { return displayString }
+    displayString = displayString + " \'" + urlString + "\'"
+
+    guard let h = r.allHTTPHeaderFields else { return displayString }
+    displayString += " -H \(h.map {"'\($0):\($1)'"}.joinWithSeparator(" -H "))"
+
+    if let actualData = r.HTTPBody {
+      displayString = displayString + " -d \'" + String(data:actualData, encoding:NSUTF8StringEncoding)! + "\'"
     }
     return displayString
   }
@@ -273,14 +280,14 @@ public class Request {
     guard let responseData : NSData = responseData else { return nil }
     return String(data: responseData, encoding: NSUTF8StringEncoding)
   }
-  
+
   public var responseAsJSON : AnyObject? {
     guard let responseData : NSData = responseData else { return nil }
     do {
       let jsonObject = try NSJSONSerialization.JSONObjectWithData(responseData, options: .MutableLeaves)
       return jsonObject
     } catch {
-      Log.error("Error parsing as JSON")
+      Log.error("Error parsing as JSON \(responseAsString)")
       return nil
     }
   }
@@ -299,7 +306,7 @@ public class Request {
     Log.info(self.asCurlCommand)
     return self
   }
-
+  
   public func run() -> Request {
     host.startRequest(self)
     return self

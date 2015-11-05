@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension UIAlertController {
   public func show(error: NSError) {

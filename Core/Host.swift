@@ -99,7 +99,7 @@ public class Host {
     return request
   }
 
-  public func request(withPath path: String,
+  public func request(withPath requestPath: String,
     method: HTTPMethod = .GET,
     parameters: [String:AnyObject] = [:],
     headers: [String:String] = [:],
@@ -130,6 +130,8 @@ public class Host {
       if let unwrappedPath = self.path {
         finalUrl = finalUrl + "/\(unwrappedPath)"
       }
+
+      finalUrl = finalUrl + "/\(requestPath)"
 
       let request = Request(
         method: method,
