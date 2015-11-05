@@ -99,8 +99,9 @@ public class Host {
     return request
   }
 
-  public func request(withPath requestPath: String,
+  public func request(
     method: HTTPMethod = .GET,
+    withPath requestPath: String,
     parameters: [String:AnyObject] = [:],
     headers: [String:String] = [:],
     files: [String:String] = [:],

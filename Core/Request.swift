@@ -232,8 +232,8 @@ public class Request {
     blobs: [String:NSData] = [:],
     bodyData: NSData? = nil) {
       self.url = url
-      self.method = method;
-      self.parameters = parameters;
+      self.method = method
+      self.parameters = parameters
       self.headers = headers
       self.files = files
       self.blobs = blobs
