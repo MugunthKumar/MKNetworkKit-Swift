@@ -17,7 +17,8 @@ extension Dictionary {
     if encodedString.characters.count > 0 {
       encodedString.removeAtIndex(encodedString.endIndex.predecessor());
     }
-    return encodedString;
+
+    return encodedString.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) ?? ""
   }
 
   var JSONString : String? {

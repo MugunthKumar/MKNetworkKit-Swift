@@ -258,13 +258,17 @@ public class Request {
   }
 
   public var asCurlCommand : String {
-    var displayString = "curl -X \(method) '\(self.url)' -H " +
+
+    var finalUrl = url
+    if [.GET, .DELETE, .CONNECT, .TRACE].contains(method) {
+      finalUrl = finalUrl + parameters.URLEncodedString
+    }
+
+    var displayString = "curl -X \(method) '\(finalUrl)' -H " +
       headers.map {"'\($0):\($1)'"}.joinWithSeparator(" -H ")
 
-    if [.POST, .PUT, .PATCH, .OPTIONS].contains(method) {
-      if let actualData = request?.HTTPBody {
-        displayString += "-d '\(String(data:actualData, encoding:NSUTF8StringEncoding))'"
-      }
+    if let actualData = request?.HTTPBody {
+      displayString += "-d '\(String(data:actualData, encoding:NSUTF8StringEncoding)!)'"
     }
     return displayString
   }
