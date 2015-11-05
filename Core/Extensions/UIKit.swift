@@ -37,10 +37,12 @@ import UIKit
 // MARK: Extension methods on String to load a remote image
 extension String {
   static let imageHost = Host(cacheDirectory: "MKNetworkKit")
-  public func loadRemoteImage(handler:(UIImage?) -> Void) -> Void {
-    String.imageHost.request(withUrlString:self)
+  public func loadRemoteImage(handler:(UIImage?) -> Void) -> Request {
+    return String.imageHost.request(withUrlString:self)
       .completion { (request) -> Void in
-        handler(request.responseAsImage)
+        dispatch_async(dispatch_get_main_queue()) {
+          handler(request.responseAsImage)
+        }
       }.run()
   }
 }
@@ -48,7 +50,7 @@ extension String {
 extension Request {
   public var responseAsImage : UIImage? {
     if let data = responseData {
-      return UIImage(data:data)
+      return UIImage(data:data, scale: UIScreen.mainScreen().scale)
     } else {
       return nil
     }

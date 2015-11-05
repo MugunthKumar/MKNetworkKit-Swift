@@ -149,7 +149,11 @@ public class Request {
     var finalUrl : String
     switch(method) {
     case .GET, .DELETE, .CONNECT, .TRACE:
-      finalUrl = url + "?" + parameters.URLEncodedString
+      if (parameters.count > 0) {
+        finalUrl = url + "?" + parameters.URLEncodedString
+      } else {
+        finalUrl = url
+      }
     case .POST, .PUT, .PATCH, .OPTIONS:
       finalUrl = url
     }
@@ -162,7 +166,9 @@ public class Request {
       urlRequest.setValue(headerValue, forHTTPHeaderField: headerField)
     }
 
-    urlRequest.setValue(parameterEncoding.contentType, forHTTPHeaderField: "Content-Type")
+    if parameters.count > 0 {
+      urlRequest.setValue(parameterEncoding.contentType, forHTTPHeaderField: "Content-Type")
+    }
 
     let charset =
     CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)) as NSString
@@ -304,6 +310,13 @@ public class Request {
 
   public func log() -> Request {
     Log.info(self.asCurlCommand)
+    return self
+  }
+
+  public func cancel() -> Request {
+    if state == .Started {
+      state = .Cancelled
+    }
     return self
   }
   
