@@ -122,6 +122,11 @@ public class Request {
         if (state == .Error) {
           log()
         }
+        if state == .Completed && cachedDataHash != nil {
+          if responseData?.hash == cachedDataHash {
+            break
+          }
+        }
         for handler in completionHandlers {
           handler(self)
         }
@@ -186,6 +191,7 @@ public class Request {
     return urlRequest
   }
 
+  var cachedDataHash: Int?
   var responseData : NSData?
   var response : NSHTTPURLResponse?
 

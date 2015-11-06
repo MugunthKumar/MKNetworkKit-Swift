@@ -181,6 +181,7 @@ public class Host {
 
         if let data = dataCache?[request.equalityIdentifier] {
           request.responseData = data
+          request.cachedDataHash = data.hash
           request.response = cachedResponse
 
           if expiryTimeFromNow > 0 {
