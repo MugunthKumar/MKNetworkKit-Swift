@@ -32,7 +32,7 @@ extension NSDate {
       let locale = NSLocale(localeIdentifier: "en_US")
       let timeZone = NSTimeZone(name: "GMT")
       let dateFormatter = NSDateFormatter()
-      dateFormatter.locale = locale //need locale for some iOS 9 verision, will not select correct default locale
+      dateFormatter.locale = locale
       dateFormatter.timeZone = timeZone
       dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss z"
       return dateFormatter
@@ -44,7 +44,7 @@ extension NSDate {
       let locale = NSLocale(localeIdentifier: "en_US")
       let timeZone = NSTimeZone(name: "GMT")
       let dateFormatter = NSDateFormatter()
-      dateFormatter.locale = locale //need locale for some iOS 9 verision, will not select correct default locale
+      dateFormatter.locale = locale
       dateFormatter.timeZone = timeZone
       dateFormatter.dateFormat = "EEEE, dd-MMM-yy HH:mm:ss z"
       return dateFormatter
@@ -56,7 +56,7 @@ extension NSDate {
       let locale = NSLocale(localeIdentifier: "en_US")
       let timeZone = NSTimeZone(name: "GMT")
       let dateFormatter = NSDateFormatter()
-      dateFormatter.locale = locale //need locale for some iOS 9 verision, will not select correct default locale
+      dateFormatter.locale = locale
       dateFormatter.timeZone = timeZone
       dateFormatter.dateFormat = "EEE MMM d HH:mm:ss yyyy"
       return dateFormatter
