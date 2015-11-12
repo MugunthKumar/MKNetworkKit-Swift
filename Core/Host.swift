@@ -232,6 +232,7 @@ public class Host {
         if let unwrappedError = error {
           userInfo["error"] = unwrappedError
         }
+        userInfo[NSLocalizedFailureReasonErrorKey] = "\(statusCode) " + NSHTTPURLResponse.localizedStringForStatusCode(statusCode)
         request.error = NSError(domain: "com.mknetworkkit.httperrordomain", code: statusCode, userInfo: userInfo)
         request.error = self.customizeError(request)
 
