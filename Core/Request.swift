@@ -210,7 +210,6 @@ public class Request {
     if let unwrappedPassword = password {
       string += unwrappedPassword
     }
-
     return string
   }
 
@@ -326,7 +325,16 @@ public class Request {
     return self
   }
   
-  public func run() -> Request {
+  public func run(alwaysLoad alwaysLoad: Bool? = nil, ignoreCache: Bool? = nil, doNotCache: Bool? = nil) -> Request {
+    if let unwrappedAlwaysLoad = alwaysLoad {
+      self.alwaysLoad = unwrappedAlwaysLoad
+    }
+    if let unwrappedIgnoreCache = ignoreCache {
+      self.ignoreCache = unwrappedIgnoreCache
+    }
+    if let unwrappedDoNotCache = doNotCache {
+      self.doNotCache = unwrappedDoNotCache
+    }
     host.startRequest(self)
     return self
   }

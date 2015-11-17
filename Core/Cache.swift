@@ -130,7 +130,7 @@ public class Cache<T>: CustomDebugStringConvertible {
   //MARK: Caching methods
   subscript(key: String) -> T? {
     get {
-      if let valueToBeReturned = self.inMemoryCache[key] {
+      if let valueToBeReturned = inMemoryCache[key] {
         return valueToBeReturned
       }
       if let valueToBeReturned = fetchFromDisk(key) {
@@ -149,7 +149,7 @@ public class Cache<T>: CustomDebugStringConvertible {
   }
 
   func enforceMemoryCost() {
-    if self.recentKeys.count > self.cacheCost {
+    if recentKeys.count > cacheCost {
       dispatch_async(self.queue) {
         let lruKey = self.recentKeys.removeLast()
         let lruValue = self.inMemoryCache[lruKey]
@@ -167,7 +167,6 @@ public class Cache<T>: CustomDebugStringConvertible {
 
   // MARK: Cleanup related methods
   func flushToDisk() {
-
     for (key, value) in inMemoryCache {
       cacheToDisk(key, value)
     }
