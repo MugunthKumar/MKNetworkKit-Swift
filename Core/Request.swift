@@ -276,13 +276,13 @@ public class Request {
     var displayString = "curl -X \(method)"
     guard let r = request else { return displayString }
     guard let urlString = r.URL?.absoluteString else { return displayString }
-    displayString = displayString + " \'" + urlString + "\'"
+    displayString = displayString + " '" + urlString + "'"
 
     guard let h = r.allHTTPHeaderFields else { return displayString }
     displayString += " -H \(h.map {"'\($0):\($1)'"}.joinWithSeparator(" -H "))"
 
     if let actualData = r.HTTPBody {
-      displayString = displayString + " -d \'" + String(data:actualData, encoding:NSUTF8StringEncoding)! + "\'"
+      displayString = displayString + " -d '" + String(data:actualData, encoding:NSUTF8StringEncoding)! + "'"
     }
     return displayString
   }
