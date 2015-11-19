@@ -123,7 +123,7 @@ public class Request {
           log()
         }
         if state == .Completed && cachedDataHash != nil {
-          if responseData?.hash == cachedDataHash {
+          if responseData?.md5 == cachedDataHash {
             break
           }
         }
@@ -191,7 +191,7 @@ public class Request {
     return urlRequest
   }
 
-  var cachedDataHash: Int?
+  var cachedDataHash: String?
   var responseData : NSData?
   var response : NSHTTPURLResponse?
 

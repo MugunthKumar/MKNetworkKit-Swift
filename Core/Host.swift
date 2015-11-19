@@ -181,11 +181,13 @@ public class Host {
 
         if let data = dataCache?[request.equalityIdentifier] {
           request.responseData = data
-          request.cachedDataHash = data.hash
           request.response = cachedResponse
+          request.cachedDataHash = data.md5
 
           if expiryTimeFromNow > 0 {
             request.state = .ResponseAvailableFromCache
+            request.cachedDataHash = data.md5
+
             if !request.alwaysLoad {
               request.state = .Completed
               return
