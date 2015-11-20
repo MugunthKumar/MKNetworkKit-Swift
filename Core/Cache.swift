@@ -41,21 +41,21 @@ import AppKit
 
 public class Cache<T>: CustomDebugStringConvertible {
 
-  var fileExtension : String
-  var directory : String
+  var fileExtension: String
+  var directory: String
 
-  var inMemoryCache : [String:T] = [String:T]()
-  var recentKeys : [String] = [String]()
-  var cacheCost : Int = 10
-  var queue : dispatch_queue_t = dispatch_queue_create("com.mknetworkkit.cachequeue", DISPATCH_QUEUE_SERIAL)
-  var diskQueue : dispatch_queue_t = dispatch_queue_create("com.mknetworkkit.diskqueue", DISPATCH_QUEUE_SERIAL)
+  var inMemoryCache: [String:T] = [String:T]()
+  var recentKeys: [String] = [String]()
+  var cacheCost: Int = 10
+  var queue: dispatch_queue_t = dispatch_queue_create("com.mknetworkkit.cachequeue", DISPATCH_QUEUE_SERIAL)
+  var diskQueue: dispatch_queue_t = dispatch_queue_create("com.mknetworkkit.diskqueue", DISPATCH_QUEUE_SERIAL)
 
   public var debugDescription: String {
     return directory
   }
 
   // MARK: Initializer
-  public init(cost: Int = 10, directoryName : String = "AppCache", fileExtension : String = "cachearchive") {
+  public init(cost: Int = 10, directoryName: String = "AppCache", fileExtension: String = "cachearchive") {
     let cachesDirectory = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
     directory = cachesDirectory + "/" + directoryName
     cacheCost = cost
@@ -106,16 +106,16 @@ public class Cache<T>: CustomDebugStringConvertible {
   }
 
   // MARK: Disk cache related methods
-  func makePath(key : String) -> String {
+  func makePath(key: String) -> String {
     return "\(self.directory)/\(key).\(fileExtension)"
   }
 
-  func fetchFromDisk (key : String) -> T? {
+  func fetchFromDisk (key: String) -> T? {
     let filePath = makePath(key)
     return NSKeyedUnarchiver.unarchiveObjectWithFile(filePath) as? T
   }
   
-  func cacheToDisk (key : String, _ value : T) {
+  func cacheToDisk (key: String, _ value: T) {
     let filePath = makePath(key)
     if NSFileManager.defaultManager().fileExistsAtPath(filePath) {
        try! NSFileManager.defaultManager().removeItemAtPath(filePath)

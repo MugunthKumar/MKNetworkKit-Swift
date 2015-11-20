@@ -32,12 +32,12 @@
 
 import Foundation
 
-public enum ParameterEncoding : String, CustomStringConvertible {
+public enum ParameterEncoding: String, CustomStringConvertible {
   case URL = "URL"
   case JSON = "JSON"
-  public var description : String { return self.rawValue }
+  public var description: String { return self.rawValue }
 
-  public var contentType : String {
+  public var contentType: String {
     switch(self) {
     case .URL:
       return "application/x-www-form-urlencoded"
@@ -47,7 +47,7 @@ public enum ParameterEncoding : String, CustomStringConvertible {
   }
 }
 
-public enum State : String, CustomStringConvertible {
+public enum State: String, CustomStringConvertible {
   case Ready = "Ready"
   case Started = "Started"
   case ResponseAvailableFromCache = "ResponseAvailableFromCache"
@@ -55,10 +55,10 @@ public enum State : String, CustomStringConvertible {
   case Cancelled = "Cancelled"
   case Completed = "Completed"
   case Error = "Error"
-  public var description : String { return self.rawValue }
+  public var description: String { return self.rawValue }
 }
 
-public enum HTTPMethod : String, CustomStringConvertible {
+public enum HTTPMethod: String, CustomStringConvertible {
   case GET = "GET"
   case POST = "POST"
   case PUT = "PUT"
@@ -67,7 +67,7 @@ public enum HTTPMethod : String, CustomStringConvertible {
   case OPTIONS = "OPTIONS"
   case TRACE = "TRACE"
   case CONNECT = "CONNECT"
-  public var description : String { return self.rawValue }
+  public var description: String { return self.rawValue }
 }
 
 public class Request {
@@ -87,23 +87,23 @@ public class Request {
   public var blobs = [String:NSData]()
   public var bodyData: NSData?
 
-  public var task : NSURLSessionTask?
+  public var task: NSURLSessionTask?
   public weak var host: Host!
 
-  public var username : String?
-  public var password : String?
+  public var username: String?
+  public var password: String?
 
-  public var downloadPath : String?
+  public var downloadPath: String?
 
-  internal var requiresAuthentication : Bool {
+  internal var requiresAuthentication: Bool {
     return (username != nil && password != nil)
   }
 
-  public var doNotCache : Bool = false
-  public var ignoreCache : Bool = false
-  public var alwaysLoad : Bool = false
+  public var doNotCache: Bool = false
+  public var ignoreCache: Bool = false
+  public var alwaysLoad: Bool = false
 
-  public var state : State = .Ready {
+  public var state: State = .Ready {
     didSet {
       switch (state) {
       case .Ready:
@@ -150,8 +150,8 @@ public class Request {
     }
   }
 
-  var request : NSURLRequest? {
-    var finalUrl : String
+  var request: NSURLRequest? {
+    var finalUrl: String
     switch(method) {
     case .GET, .DELETE, .CONNECT, .TRACE:
       if (parameters.count > 0) {
@@ -192,10 +192,10 @@ public class Request {
   }
 
   var cachedDataHash: String?
-  var responseData : NSData?
-  var response : NSHTTPURLResponse?
+  var responseData: NSData?
+  var response: NSHTTPURLResponse?
 
-  public var error : NSError?
+  public var error: NSError?
 
   var equalityIdentifier: String {
     var string: String = "\(arc4random())"
@@ -271,7 +271,7 @@ public class Request {
     return asCurlCommand
   }
 
-  public var asCurlCommand : String {
+  public var asCurlCommand: String {
 
     var displayString = "curl -X \(method)"
     guard let r = request else { return displayString }
@@ -287,13 +287,13 @@ public class Request {
     return displayString
   }
 
-  public var responseAsString : AnyObject? {
-    guard let responseData : NSData = responseData else { return nil }
+  public var responseAsString: AnyObject? {
+    guard let responseData: NSData = responseData else { return nil }
     return String(data: responseData, encoding: NSUTF8StringEncoding)
   }
 
-  public var responseAsJSON : AnyObject? {
-    guard let responseData : NSData = responseData else { return nil }
+  public var responseAsJSON: AnyObject? {
+    guard let responseData: NSData = responseData else { return nil }
     do {
       let jsonObject = try NSJSONSerialization.JSONObjectWithData(responseData, options: .MutableLeaves)
       return jsonObject

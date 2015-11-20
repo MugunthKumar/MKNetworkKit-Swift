@@ -9,7 +9,7 @@
 import Foundation
 
 extension Dictionary {
-  var URLEncodedString : String {
+  var URLEncodedString: String {
     var encodedString = self.reduce("") {
       let (key, value) = $1
       return "\($0)" + "\(key)=\(value)&"
@@ -21,11 +21,11 @@ extension Dictionary {
     return encodedString.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) ?? ""
   }
 
-  var JSONString : String? {
+  var JSONString: String? {
     let stringizedDictionary = self.map {(key, value) in
       return ["\(key)","\(value)"]
     }
-    var data : NSData?
+    var data: NSData?
     do {
       try data = NSJSONSerialization.dataWithJSONObject(stringizedDictionary, options:
         NSJSONWritingOptions.PrettyPrinted)

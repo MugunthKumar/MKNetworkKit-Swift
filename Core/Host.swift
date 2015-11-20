@@ -33,18 +33,18 @@
 
 import Foundation
 
-let DefaultCacheDuration :NSTimeInterval = 60 // 1 minute
+let DefaultCacheDuration:NSTimeInterval = 60 // 1 minute
 
 public class Host {
 
-  var defaultSession : NSURLSession
-  private var ephermeralSession : NSURLSession
-  //private var backgroundSession : NSURLSession
-  private var defaultHeaders : [String:String]
+  var defaultSession: NSURLSession
+  private var ephermeralSession: NSURLSession
+  //private var backgroundSession: NSURLSession
+  private var defaultHeaders: [String:String]
 
-  public var name : String?
-  private var path : String?
-  private var portNumber : Int?
+  public var name: String?
+  private var path: String?
+  private var portNumber: Int?
 
   public var cacheDirectory: String? {
     didSet {
@@ -58,7 +58,7 @@ public class Host {
   private var dataCache: Cache<NSData>?
   private var responseCache: Cache<NSHTTPURLResponse>?
 
-  public var secure : Bool = true // ATS, so true! Yay!
+  public var secure: Bool = true // ATS, so true! Yay!
 
   public init(name: String? = nil,
     path: String? = nil,
@@ -112,9 +112,9 @@ public class Host {
       var httpProtocol: String!
 
       if let unwrappedSSL = ssl {
-        httpProtocol = unwrappedSSL ? "https://"  : "http://"
+        httpProtocol = unwrappedSSL ? "https://" : "http://"
       } else {
-        httpProtocol = secure ? "https://"  : "http://"
+        httpProtocol = secure ? "https://" : "http://"
       }
 
       guard let hostName = name else {
@@ -122,7 +122,7 @@ public class Host {
         return nil
       }
 
-      var finalUrl : String = httpProtocol + hostName
+      var finalUrl: String = httpProtocol + hostName
 
       if let unwrappedPortNumber = portNumber {
         finalUrl = finalUrl + ":\(unwrappedPortNumber)"
@@ -167,7 +167,7 @@ public class Host {
     return request.error
   }
 
-  public func startRequest(request : Request) {
+  public func startRequest(request: Request) {
     guard let urlRequest = request.request else {
       Log.error("Request is nil, check your URL and other parameters you use to build your request")
       return
@@ -199,10 +199,10 @@ public class Host {
       }
     }
 
-    let sessionToUse: NSURLSession = request.requiresAuthentication ? ephermeralSession : defaultSession
+    let sessionToUse: NSURLSession = request.requiresAuthentication ? ephermeralSession: defaultSession
 
     request.task = sessionToUse.dataTaskWithRequest(urlRequest) {[unowned self]
-      (data : NSData?, response : NSURLResponse?, error : NSError?) -> Void in
+      (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
 
       request.responseData = data
       request.response = response as? NSHTTPURLResponse
@@ -217,7 +217,7 @@ public class Host {
         return
       }
 
-      var statusCode : Int = 0
+      var statusCode: Int = 0
       if request.response != nil {
         statusCode = request.response!.statusCode
       }

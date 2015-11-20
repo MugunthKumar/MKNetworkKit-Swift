@@ -50,7 +50,7 @@ extension String {
 }
 
 extension Request {
-  public var responseAsImage : UIImage? {
+  public var responseAsImage: UIImage? {
     if let data = responseData {
       return UIImage(data:data, scale: UIScreen.mainScreen().scale)
     } else {
@@ -66,7 +66,7 @@ extension Request {
     return UIImage(CGImage: cgImage, scale: UIScreen.mainScreen().scale, orientation: .Up)
   }
 
-  public static var automaticNetworkActivityIndicator : Bool = false {
+  public static var automaticNetworkActivityIndicator: Bool = false {
     didSet {
       if automaticNetworkActivityIndicator {
         Request.runningRequestsUpdatedHandler = { count in
