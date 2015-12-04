@@ -18,7 +18,12 @@ extension Dictionary {
       encodedString.removeAtIndex(encodedString.endIndex.predecessor());
     }
 
-    return encodedString.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) ?? ""
+    let filterSet = NSCharacterSet.URLFragmentAllowedCharacterSet().mutableCopy() as! NSMutableCharacterSet
+    filterSet.formUnionWithCharacterSet(.URLPathAllowedCharacterSet())
+    filterSet.formUnionWithCharacterSet(.URLQueryAllowedCharacterSet())
+    filterSet.formUnionWithCharacterSet(.URLHostAllowedCharacterSet())
+
+    return encodedString.stringByAddingPercentEncodingWithAllowedCharacters(filterSet) ?? ""
   }
 
   var JSONString: String? {
