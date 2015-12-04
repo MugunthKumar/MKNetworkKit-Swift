@@ -58,6 +58,11 @@ public class Host {
   private var dataCache: Cache<NSData>?
   private var responseCache: Cache<NSHTTPURLResponse>?
 
+  func emptyCache() {
+    dataCache?.emptyCache()
+    responseCache?.emptyCache()
+  }
+  
   public var secure: Bool = true // ATS, so true! Yay!
 
   public init(name: String? = nil,

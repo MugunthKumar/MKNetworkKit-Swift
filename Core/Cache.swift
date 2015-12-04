@@ -164,7 +164,6 @@ public class Cache<T>: CustomDebugStringConvertible {
     
   }
 
-
   // MARK: Cleanup related methods
   func flushToDisk() {
     for (key, value) in inMemoryCache {
@@ -178,12 +177,10 @@ public class Cache<T>: CustomDebugStringConvertible {
   }
 
   func emptyCache() {
-
     dispatch_async(self.queue) {
       self.inMemoryCache.removeAll()
       self.recentKeys.removeAll()
     }
-
     do {
      try NSFileManager.defaultManager().removeItemAtPath(directory)
     } catch let error as NSError {
@@ -192,22 +189,16 @@ public class Cache<T>: CustomDebugStringConvertible {
   }
 
   deinit {
-
     #if os(iOS)
-
       NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
       NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidEnterBackgroundNotification, object: nil)
       NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationWillResignActiveNotification, object: nil)
       NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationWillTerminateNotification, object: nil)
-
     #endif
-
     #if os(OSX)
-
       NSNotificationCenter.defaultCenter().removeObserver(self, name: NSApplicationWillHideNotification, object: nil)
       NSNotificationCenter.defaultCenter().removeObserver(self, name: NSApplicationWillResignActiveNotification, object: nil)
       NSNotificationCenter.defaultCenter().removeObserver(self, name: NSApplicationWillTerminateNotification, object: nil)
-
     #endif
   }
 }
