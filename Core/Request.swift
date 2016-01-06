@@ -278,7 +278,12 @@ public class Request {
     guard let urlString = r.URL?.absoluteString else { return displayString }
     displayString = displayString + " '" + urlString + "'"
 
-    guard let h = r.allHTTPHeaderFields else { return displayString }
+    guard var h = r.allHTTPHeaderFields else { return displayString }
+    if let encodingValue = h["Accept-Encoding"] {
+      if encodingValue.containsString("gzip") {
+        h["Accept-Encoding"] = nil
+      }
+    }
     displayString += " -H \(h.map {"'\($0):\($1)'"}.joinWithSeparator(" -H "))"
 
     if let actualData = r.HTTPBody {
