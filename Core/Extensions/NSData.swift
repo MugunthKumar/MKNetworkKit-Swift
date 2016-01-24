@@ -31,6 +31,9 @@
 //  THE SOFTWARE.
 //
 
+// This file requires CommonCrypto to be included in the Bridging Header
+// #import <CommonCrypto/CommonCrypto.h>
+
 import Foundation
 
 extension NSData {

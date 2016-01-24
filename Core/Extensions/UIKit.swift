@@ -72,7 +72,9 @@ extension Request {
       if automaticNetworkActivityIndicator {
         Request.runningRequestsUpdatedHandler = { count in
           dispatch_async(dispatch_get_main_queue()) {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = count > 0
+            #if os(iOS)
+              UIApplication.sharedApplication().networkActivityIndicatorVisible = count > 0
+            #endif
           }
         }
       }
