@@ -1,6 +1,6 @@
 //
-//  MasterViewController.swift
-//  iCashSG 2
+//  FlickrImageListViewController.swift
+//  MKNetworkKit
 //
 //  Created by Mugunth on 15/5/15.
 //  Copyright (c) 2015 Steinlogic Consulting and Training Pte Ltd. All rights reserved.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class FlickrImageListViewController: UITableViewController {
 
-  var detailViewController: DetailViewController? = nil
+  var detailViewController: FlickrImageDetailViewController? = nil
   var images = [FlickrImage]()
 
 
@@ -22,18 +22,19 @@ class MasterViewController: UITableViewController {
     }
   }
 
+  var flickrHost: FlickrClient {
+    return (UIApplication.sharedApplication().delegate as! AppDelegate).flickrHost
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
     if let split = self.splitViewController {
       let controllers = split.viewControllers
       let navigationController = controllers[controllers.count-1] as! UINavigationController
-      self.detailViewController = navigationController.topViewController as? DetailViewController
+      self.detailViewController = navigationController.topViewController as? FlickrImageDetailViewController
 
-      let client = (UIApplication.sharedApplication().delegate as! AppDelegate).host
-
-      client?.fetchImages("Singapore") {(images : Array<FlickrImage>) -> Void in
-
+      flickrHost.fetchImages("Singapore") {images -> Void in
         self.images = images;
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
           self.tableView.reloadData()
@@ -53,7 +54,7 @@ class MasterViewController: UITableViewController {
     if segue.identifier == "showDetail" {
       if let indexPath = self.tableView.indexPathForSelectedRow {
         let object = images[indexPath.row]
-        let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+        let controller = (segue.destinationViewController as! UINavigationController).topViewController as! FlickrImageDetailViewController
         controller.detailItem = object
         controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
         controller.navigationItem.leftItemsSupplementBackButton = true

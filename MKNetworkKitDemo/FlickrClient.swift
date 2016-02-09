@@ -22,8 +22,7 @@ class FlickrClient : Host {
   var flickrAPIKey : String;
 
   init(apiKey : String) {
-
-    flickrAPIKey = apiKey;
+    flickrAPIKey = apiKey
     super.init(name: "api.flickr.com", path:"services/rest")
     self.secure = true
   }
@@ -44,7 +43,7 @@ class FlickrClient : Host {
     return request
   }
 
-  func fetchImages (tag : String, completionHandler: (Array<FlickrImage>) -> Void) {
+  func fetchImages (tag : String, completionHandler: [FlickrImage] -> Void) {
     guard let request = imageFetchRequest(tag, page: 0) else { return }
 
     request.completion {(request: Request) in

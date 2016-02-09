@@ -1,6 +1,6 @@
 //
-//  DetailViewController.swift
-//  iCashSG 2
+//  FlickrImageDetailViewController.swift
+//  MKNetworkKit
 //
 //  Created by Mugunth on 15/5/15.
 //  Copyright (c) 2015 Steinlogic Consulting and Training Pte Ltd. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class FlickrImageDetailViewController: UIViewController {
 
   @IBOutlet weak var fullScreenImageView: UIImageView!
 
@@ -20,12 +20,15 @@ class DetailViewController: UIViewController {
     }
   }
 
+  var flickrHost: FlickrClient {
+    return (UIApplication.sharedApplication().delegate as! AppDelegate).flickrHost
+  }
+
   func configureView() {
     // Update the user interface for the detail item.
     if let detail: FlickrImage = self.detailItem {
 
-      let client = (UIApplication.sharedApplication().delegate as! AppDelegate).host
-      client?.fetchImage(detail.fullscreenImageUrlString!) { (image : UIImage?) -> Void in
+      flickrHost.fetchImage(detail.fullscreenImageUrlString!) { (image : UIImage?) -> Void in
 
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
 

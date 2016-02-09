@@ -13,7 +13,8 @@ import MKNetworkKit
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
   var window: UIWindow?
-  var host : FlickrClient!
+  var flickrHost : FlickrClient!
+  var testHost: TestClient!
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -22,8 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
     splitViewController.delegate = self
 
-    host = FlickrClient(apiKey:"210af0ac7c5dad997a19f7667e5779d3")
-    host.cacheDirectory = "FlickrCache"
+    flickrHost = FlickrClient(apiKey:"210af0ac7c5dad997a19f7667e5779d3")
+    flickrHost.cacheDirectory = "FlickrCache"
+    testHost = TestClient()
+    
     print(NSHomeDirectory())
 
     Request.automaticNetworkActivityIndicator = true
@@ -56,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
   func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
       guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
-      guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController else { return false }
+      guard let topAsDetailController = secondaryAsNavController.topViewController as? FlickrImageDetailViewController else { return false }
       if topAsDetailController.detailItem == nil {
           // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
           return true

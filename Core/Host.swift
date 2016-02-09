@@ -109,8 +109,6 @@ public class Host {
     withPath requestPath: String,
     parameters: [String:AnyObject] = [:],
     headers: [String:String] = [:],
-    files: [String:String] = [:],
-    blobs: [String:NSData] = [:],
     bodyData: NSData? = nil,
     ssl: Bool? = nil) -> Request? {
 
@@ -144,8 +142,6 @@ public class Host {
         url: finalUrl,
         parameters: parameters,
         headers: headers,
-        files: files,
-        blobs: blobs,
         bodyData: bodyData)
 
       request.host = self // weak reference
@@ -177,7 +173,6 @@ public class Host {
       Log.error("Request is nil, check your URL and other parameters you use to build your request")
       return
     }
-
 
     if request.cacheble && !request.ignoreCache {
       if let cachedResponse = responseCache?[request.equalityIdentifier] {

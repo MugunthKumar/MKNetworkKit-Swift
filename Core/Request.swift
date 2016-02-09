@@ -70,8 +70,32 @@ public enum HTTPMethod: String, CustomStringConvertible {
   public var description: String { return self.rawValue }
 }
 
-public class Request {
+public struct MultipartEntity {
+  let mimetype: String
+  let suggestedFileName: String
+  let data: NSData
+  public init(mimetype: String, suggestedFileName: String, data: NSData) {
+    self.mimetype = mimetype
+    self.suggestedFileName = suggestedFileName
+    self.data = data
+  }
 
+  public init?(mimetype: String, filePath: String) {
+    self.mimetype = mimetype
+
+    guard let fileName = NSURL(fileURLWithPath: filePath).lastPathComponent else {
+      return nil
+    }
+    self.suggestedFileName = fileName
+
+    guard let data = NSData(contentsOfFile: filePath) else {
+      return nil
+    }
+    self.data = data
+  }
+}
+
+public class Request {
   static private var runningRequestsSynchronizingQueue =
   dispatch_queue_create("com.mknetworkkit.tasks.queue", DISPATCH_QUEUE_SERIAL)
   static private var runningRequests = [Request]()
@@ -83,8 +107,7 @@ public class Request {
   public var headers = [String:String]()
   public var parameterEncoding: ParameterEncoding = .URL
 
-  public var files = [String:String]()
-  public var blobs = [String:NSData]()
+  public var multipartEntities = [String:MultipartEntity]()
   public var bodyData: NSData?
 
   public var task: NSURLSessionTask?
@@ -183,7 +206,35 @@ public class Request {
       urlRequest.HTTPBody = parameters.URLEncodedString.dataUsingEncoding(NSUTF8StringEncoding)
     }
 
-    // body data overrides parameters
+    // this overrides body provided by parameter encoding.
+    // for multi-part form data, parameters are encoded differently
+    if multipartEntities.count > 0 {
+      let body = NSMutableData()
+      let boundary = String(format: "multipart-form-boundary.%08x%08x", arc4random(), arc4random())
+
+      for (k, v) in parameters {
+        let string = "--\(boundary)\r\nContent-Disposition: form-data; name=\"\(k)\"\r\n\r\n\(v)\r\n"
+        body.appendData(string.dataUsingEncoding(NSUTF8StringEncoding)!)
+      }
+
+      for (k, v) in multipartEntities {
+        let string = "--\(boundary)\r\nContent-Disposition: form-data; name=\"\(k)\"; filename=\"\(v.suggestedFileName)\"\r\nContent-Type: \(v.mimetype)\r\nContent-Transfer-Encoding: binary\r\n\r\n"
+        body.appendData(string.dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData(v.data)
+        body.appendData("\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+      }
+
+      let closingBoundary = "--\(boundary)--\r\n"
+      body.appendData(closingBoundary.dataUsingEncoding(NSUTF8StringEncoding)!)
+
+      urlRequest.HTTPBody = body
+      urlRequest.setValue("multipart/form-data", forHTTPHeaderField: "Content-Type")
+      urlRequest.addValue("charset=\(charset)", forHTTPHeaderField: "Content-Type")
+      urlRequest.addValue("boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+      urlRequest.setValue(String(body.length), forHTTPHeaderField: "Content-Length")
+    }
+
+    // body data overrides parameters, files or blob based body data
     if let unwrappedBodyData = bodyData {
       urlRequest.HTTPBody = unwrappedBodyData
     }
@@ -226,22 +277,18 @@ public class Request {
     return true
   }
 
-  private var progressHandlers = Array<(Request) -> Void>()
-  private var completionHandlers = Array<(Request) -> Void>()
+  private var progressHandlers = Array<Request -> Void>()
+  private var completionHandlers = Array<Request -> Void>()
 
   init(method: HTTPMethod = .GET,
     url: String,
     parameters: [String:AnyObject] = [:],
     headers: [String:String] = [:],
-    files: [String:String] = [:],
-    blobs: [String:NSData] = [:],
     bodyData: NSData? = nil) {
       self.url = url
       self.method = method
       self.parameters = parameters
       self.headers = headers
-      self.files = files
-      self.blobs = blobs
       self.bodyData = bodyData
   }
 
@@ -261,6 +308,10 @@ public class Request {
 
   public func appendParameter(key: String, value: String) {
     parameters.updateValue(value, forKey: key)
+  }
+
+  public func appendMultipartEntity(key: String, value: MultipartEntity) {
+    multipartEntities.updateValue(value, forKey: key)
   }
 
   public func appendAuthorizationHeader(type type: String, value: String) {
@@ -287,7 +338,9 @@ public class Request {
     displayString += " -H \(h.map {"'\($0):\($1)'"}.joinWithSeparator(" -H "))"
 
     if let actualData = r.HTTPBody {
-      displayString = displayString + " -d '" + String(data:actualData, encoding:NSUTF8StringEncoding)! + "'"
+      if let stringData = String(data:actualData, encoding:NSUTF8StringEncoding) {
+        displayString = displayString + " -d '" + stringData + "'"
+      }
     }
     return displayString
   }

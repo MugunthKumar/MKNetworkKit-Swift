@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9046" systemVersion="15B22c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15E33e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -13,20 +12,19 @@
                 <navigationController title="Master" id="RMx-3f-FxP" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx">
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <connections>
-                        <segue destination="7bK-jq-Zjz" kind="relationship" relationship="rootViewController" id="tsl-Nk-0bq"/>
+                        <segue destination="FNd-Ei-yBv" kind="relationship" relationship="rootViewController" id="qEK-p7-4o6"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-38" y="-630"/>
+            <point key="canvasLocation" x="85" y="-893"/>
         </scene>
         <!--Detail-->
         <scene sceneID="yUG-lL-AsK">
             <objects>
-                <viewController title="Detail" id="JEX-9P-axG" customClass="DetailViewController" customModule="MKNetworkKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Detail" id="JEX-9P-axG" customClass="FlickrImageDetailViewController" customModule="MKNetworkKitDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
                         <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
@@ -37,10 +35,8 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="802-nD-DRM">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
                             </imageView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="802-nD-DRM" secondAttribute="trailing" id="2S0-vL-adR"/>
@@ -57,7 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="129"/>
+            <point key="canvasLocation" x="1543" y="165"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -71,16 +67,129 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-856" y="-330"/>
+            <point key="canvasLocation" x="-852" y="-254"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2uO-uE-8g4">
+            <objects>
+                <viewController id="FNd-Ei-yBv" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MLT-Rp-2vR"/>
+                        <viewControllerLayoutGuide type="bottom" id="0xi-C3-CYW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EKQ-T9-UJb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdj-ie-bWa">
+                                <rect key="frame" x="259" y="261" width="82" height="30"/>
+                                <state key="normal" title="Flickr Demo"/>
+                                <connections>
+                                    <segue destination="7bK-jq-Zjz" kind="show" id="O3h-5s-0Xx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gfx-2e-9GT">
+                                <rect key="frame" x="253" y="315" width="94" height="30"/>
+                                <state key="normal" title="Upload Demo"/>
+                                <connections>
+                                    <segue destination="TYj-qS-whI" kind="show" id="AWr-8X-gX8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vdj-ie-bWa" firstAttribute="centerX" secondItem="EKQ-T9-UJb" secondAttribute="centerX" id="34A-KA-lbS"/>
+                            <constraint firstItem="vdj-ie-bWa" firstAttribute="centerY" secondItem="EKQ-T9-UJb" secondAttribute="centerY" constant="-24" id="3nm-Ft-seo"/>
+                            <constraint firstItem="Gfx-2e-9GT" firstAttribute="top" secondItem="vdj-ie-bWa" secondAttribute="bottom" constant="24" id="B7c-AK-8is"/>
+                            <constraint firstItem="Gfx-2e-9GT" firstAttribute="centerY" secondItem="EKQ-T9-UJb" secondAttribute="centerY" id="p4Q-hC-RmE"/>
+                            <constraint firstItem="Gfx-2e-9GT" firstAttribute="centerX" secondItem="EKQ-T9-UJb" secondAttribute="centerX" id="qgu-jE-TPc"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="p4Q-hC-RmE"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="k6s-5Z-gyo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2mn-VV-bs8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="771" y="-990"/>
+        </scene>
+        <!--Choose Image-->
+        <scene sceneID="z1S-zQ-bgf">
+            <objects>
+                <viewController title="Choose Image" id="TYj-qS-whI" customClass="UploadViewController" customModule="MKNetworkKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qaq-J5-aEM"/>
+                        <viewControllerLayoutGuide type="bottom" id="QS8-UM-KWL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DzZ-eD-gsV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aeD-bf-waS">
+                                <rect key="frame" x="16" y="126" width="568" height="458"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEH-AG-AIf">
+                                <rect key="frame" x="16" y="80" width="144" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="zyk-l6-bVB"/>
+                                </constraints>
+                                <state key="normal" title="Choose From Library"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="zyk-l6-bVB"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="chooseAction:" destination="TYj-qS-whI" eventType="touchUpInside" id="gLO-GK-xyi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZO1-r6-hkb">
+                                <rect key="frame" x="489" y="80" width="95" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="uB6-cX-QHa"/>
+                                </constraints>
+                                <state key="normal" title="Upload Image"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="uB6-cX-QHa"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="uploadAction:" destination="TYj-qS-whI" eventType="touchUpInside" id="3iS-NW-yJG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QS8-UM-KWL" firstAttribute="top" secondItem="aeD-bf-waS" secondAttribute="bottom" constant="16" id="5zA-pV-B5F"/>
+                            <constraint firstAttribute="trailing" secondItem="aeD-bf-waS" secondAttribute="trailing" constant="16" id="GUg-vb-00l"/>
+                            <constraint firstItem="ZO1-r6-hkb" firstAttribute="centerY" secondItem="UEH-AG-AIf" secondAttribute="centerY" id="amb-c4-MBN"/>
+                            <constraint firstItem="ZO1-r6-hkb" firstAttribute="trailing" secondItem="aeD-bf-waS" secondAttribute="trailing" id="hN7-3A-Ets"/>
+                            <constraint firstItem="UEH-AG-AIf" firstAttribute="leading" secondItem="aeD-bf-waS" secondAttribute="leading" id="p10-pL-2Gp"/>
+                            <constraint firstItem="aeD-bf-waS" firstAttribute="leading" secondItem="DzZ-eD-gsV" secondAttribute="leading" constant="16" id="rZ7-Yr-KPz"/>
+                            <constraint firstItem="UEH-AG-AIf" firstAttribute="top" secondItem="Qaq-J5-aEM" secondAttribute="bottom" constant="16" id="vRQ-7E-4gB"/>
+                            <constraint firstItem="aeD-bf-waS" firstAttribute="top" secondItem="UEH-AG-AIf" secondAttribute="bottom" constant="16" id="ybe-nJ-pNE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="aeD-bf-waS" id="gVt-xt-dfr"/>
+                        <outlet property="uploadButton" destination="ZO1-r6-hkb" id="BMS-sg-tlG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bvz-zw-Atj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1531" y="-1485"/>
         </scene>
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
             <objects>
-                <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="MasterViewController" customModule="MKNetworkKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="FlickrImageListViewController" customModule="MKNetworkKitDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="185" sectionHeaderHeight="22" sectionFooterHeight="22" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="FlickrImageCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FlickrImageCell" rowHeight="185" id="WCw-Qf-5nD" customClass="FlickrImageCell" customModule="MKNetworkKitDemo" customModuleProvider="target">
@@ -92,13 +201,11 @@
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wFj-Ce-r64">
                                             <rect key="frame" x="150" y="8" width="300" height="168.5"/>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="wFj-Ce-r64" secondAttribute="height" multiplier="16:9" id="5nr-4f-Dz8"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
-                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="wFj-Ce-r64" firstAttribute="top" secondItem="37f-cq-3Eg" secondAttribute="topMargin" id="8aK-AW-cqy"/>
                                         <constraint firstAttribute="centerX" secondItem="wFj-Ce-r64" secondAttribute="centerX" id="LCL-EG-MMf"/>
@@ -114,7 +221,6 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="photoView" destination="wFj-Ce-r64" id="DC8-tp-JDP"/>
@@ -132,7 +238,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="-630"/>
+            <point key="canvasLocation" x="1659" y="-645"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
@@ -140,7 +246,6 @@
                 <navigationController id="vC3-pB-5Vb" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DjV-YW-jjY">
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="JEX-9P-axG" kind="relationship" relationship="rootViewController" id="GKi-kA-LjT"/>
@@ -148,7 +253,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-45" y="129"/>
+            <point key="canvasLocation" x="773" y="153"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
