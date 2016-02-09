@@ -35,12 +35,12 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     presentViewController(imagePickerController, animated: true, completion: nil)
   }
 
-  var testHost: TestClient {
-    return (UIApplication.sharedApplication().delegate as! AppDelegate).testHost
+  var host: HTTPBinHost {
+    return (UIApplication.sharedApplication().delegate as! AppDelegate).httpbinHost
   }
 
   @IBAction func uploadAction(sender: AnyObject) {
-    testHost.uploadImage(imageFilePath!) {
+    host.uploadImage(imageFilePath!) {
 
     }
   }
@@ -48,8 +48,13 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
   func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
     let image = info[UIImagePickerControllerOriginalImage] as! UIImage
     imageView.image = image
+    let size = CGSizeMake(250, 250)
+    UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+    image.drawInRect(CGRectMake(0, 0, size.width, size.height))
+    let smallImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     imageFilePath = NSTemporaryDirectory() + "image.png"
-    UIImageJPEGRepresentation(image, 0.8)?.writeToFile(imageFilePath!, atomically: true)
+    UIImageJPEGRepresentation(smallImage, 0.8)?.writeToFile(imageFilePath!, atomically: true)
     dismissViewControllerAnimated(true, completion: nil)
   }
 

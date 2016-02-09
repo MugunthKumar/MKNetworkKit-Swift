@@ -35,10 +35,10 @@ import Foundation
 
 let DefaultCacheDuration:NSTimeInterval = 60 // 1 minute
 
-public class Host {
+public class Host: NSObject, NSURLSessionTaskDelegate {
 
-  var defaultSession: NSURLSession
-  private var ephermeralSession: NSURLSession
+  var defaultSession: NSURLSession!
+  private var ephermeralSession: NSURLSession!
   //private var backgroundSession: NSURLSession
   private var defaultHeaders: [String:String]
 
@@ -62,7 +62,7 @@ public class Host {
     dataCache?.emptyCache()
     responseCache?.emptyCache()
   }
-  
+
   public var secure: Bool = true // ATS, so true! Yay!
 
   public init(name: String? = nil,
@@ -71,20 +71,6 @@ public class Host {
     portNumber: Int? = nil,
     session: NSURLSession? = nil,
     cacheDirectory: String? = nil) {
-
-      if let s = session {
-        defaultSession = s
-      } else {
-        defaultSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-      }
-
-      ephermeralSession = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
-
-      //      if let identifier = NSBundle.mainBundle().bundleIdentifier {
-      //        backgroundSession = NSURLSession(configuration: NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(identifier))
-      //      } else {
-      //        backgroundSession = NSURLSession(configuration: NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("com.mugunthkumar.mknetworkkit"))
-      //      }
 
       self.name = name
       self.defaultHeaders = defaultHeaders
@@ -96,6 +82,25 @@ public class Host {
         dataCache = Cache(directoryName: "\(unwrappedDirectory)/Data")
         responseCache = Cache(directoryName: "\(unwrappedDirectory)/Response")
       }
+
+      super.init()
+
+      if let s = session {
+        defaultSession = s
+      } else {
+        defaultSession = NSURLSession(configuration:
+          NSURLSessionConfiguration.defaultSessionConfiguration(),
+          delegate: self, delegateQueue: NSOperationQueue.mainQueue())
+      }
+
+      ephermeralSession = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration(),
+        delegate: self, delegateQueue: NSOperationQueue.mainQueue())
+
+      //      if let identifier = NSBundle.mainBundle().bundleIdentifier {
+      //        backgroundSession = NSURLSession(configuration: NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(identifier))
+      //      } else {
+      //        backgroundSession = NSURLSession(configuration: NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("com.mugunthkumar.mknetworkkit"))
+      //      }
   }
 
   public func request(withUrlString urlString: String) -> Request {
@@ -252,7 +257,42 @@ public class Host {
         request.state = .Error;
       }
     }
-    
+
+    if request.requiresAuthentication {
+      ephermeralSession.configuration.URLCredentialStorage?.setDefaultCredential(request.credential!
+        , forProtectionSpace: request.protectionSpace!, task: request.task!)
+    }
+
     request.state = .Started
   }
+
+  //MARK: - Auth related
+  public func URLSession(session: NSURLSession, task: NSURLSessionTask, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) {
+
+    if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+      if let trust = challenge.protectionSpace.serverTrust {
+        // TODO: - Add certificate pinning later here
+        let credential = NSURLCredential(forTrust: trust)
+        completionHandler(.UseCredential, credential)
+      } else {
+        completionHandler(.CancelAuthenticationChallenge, nil)
+      }
+    }
+
+    if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodHTTPBasic ||
+      challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodHTTPDigest {
+        if challenge.previousFailureCount == 3 {
+          completionHandler(.RejectProtectionSpace, nil)
+        } else {
+          if let credential = session.configuration.URLCredentialStorage?.defaultCredentialForProtectionSpace(challenge.protectionSpace) {
+            completionHandler(.UseCredential, credential)
+          } else {
+            completionHandler(.CancelAuthenticationChallenge, nil)
+          }
+        }
+    }
+  }
+  
+  
+  
 }

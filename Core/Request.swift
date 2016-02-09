@@ -115,11 +115,12 @@ public class Request {
 
   public var username: String?
   public var password: String?
+  public var realm: String?
 
   public var downloadPath: String?
 
   internal var requiresAuthentication: Bool {
-    return (username != nil && password != nil)
+    return (username != nil && password != nil && realm != nil)
   }
 
   public var doNotCache: Bool = false
@@ -242,6 +243,35 @@ public class Request {
     return urlRequest
   }
 
+  var credential: NSURLCredential? {
+    var credentialToReturn: NSURLCredential? = nil
+    if requiresAuthentication {
+      credentialToReturn = NSURLCredential(user: username!, password: password!, persistence: .ForSession)
+    }
+    return credentialToReturn
+  }
+
+  var protectionSpace: NSURLProtectionSpace? {
+    var protectionSpaceToReturn: NSURLProtectionSpace? = nil
+
+    if let url = request?.URL {
+      var portNumber: Int!
+      if let p = url.port {
+        portNumber = p.integerValue
+      } else {
+        if url.scheme == "https" {
+          portNumber = 443
+        } else {
+          portNumber = 80
+        }
+      }
+      protectionSpaceToReturn = NSURLProtectionSpace(host: url.host!, port: portNumber,
+        `protocol`: url.scheme, realm: realm,
+        authenticationMethod: NSURLAuthenticationMethodHTTPBasic)
+    }
+    return protectionSpaceToReturn
+  }
+
   var cachedDataHash: String?
   var responseData: NSData?
   var response: NSHTTPURLResponse?
@@ -314,6 +344,10 @@ public class Request {
     multipartEntities.updateValue(value, forKey: key)
   }
 
+  public func appendBasicAuthorizationHeader(username username: String, password: String) {
+    let authString = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!.base64EncodedStringWithOptions(.EncodingEndLineWithCarriageReturn)
+    appendAuthorizationHeader(type: "Basic", value: authString)
+  }
   public func appendAuthorizationHeader(type type: String, value: String) {
     appendHeader("Authorization", value: "\(type) \(value)")
   }
@@ -323,7 +357,6 @@ public class Request {
   }
 
   public var asCurlCommand: String {
-
     var displayString = "curl -X \(method)"
     guard let r = request else { return displayString }
     guard let urlString = r.URL?.absoluteString else { return displayString }

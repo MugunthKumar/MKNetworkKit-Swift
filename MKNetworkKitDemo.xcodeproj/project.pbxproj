@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AB18DB901BC3F3AF00E25793 /* MKNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; };
 		AB18DB971BC3F3AF00E25793 /* MKNetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */; };
+		AB7394051C69EF2800E91571 /* AuthTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7394041C69EF2800E91571 /* AuthTestViewController.swift */; };
 		AB8134231BEA0F5E00726CE6 /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B71B2ECB830078CA66 /* FlickrClient.swift */; };
 		AB81343D1BEA0FE700726CE6 /* MKNetworkKitOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */; };
 		AB81343E1BEA0FE700726CE6 /* MKNetworkKitOSX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -51,6 +52,7 @@
 		ABDCA0B41C69B9CA00B9568E /* MKNetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ABDCA0B91C69BCD300B9568E /* TestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDCA0B81C69BCD300B9568E /* TestClient.swift */; };
 		ABDCA0BD1C69C08900B9568E /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDCA0BC1C69C08900B9568E /* UploadViewController.swift */; };
+		ABDCA0C01C69E70100B9568E /* HTTPBinHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDCA0BF1C69E70100B9568E /* HTTPBinHost.swift */; };
 		ABEB1AAA1C69A7DE00702A28 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
 		ABEB1AAB1C69A7DE00702A28 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
 		ABEB1AAC1C69A7DE00702A28 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
@@ -120,6 +122,7 @@
 		AB18DB8F1BC3F3AF00E25793 /* MKNetworkKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MKNetworkKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKNetworkKitTests.swift; sourceTree = "<group>"; };
 		AB18DB981BC3F3AF00E25793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB7394041C69EF2800E91571 /* AuthTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTestViewController.swift; sourceTree = "<group>"; };
 		AB8133F81BEA0EB000726CE6 /* MKNetworkKitDemo-OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MKNetworkKitDemo-OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKNetworkKitOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8134431BEA113A00726CE6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +159,7 @@
 		ABDCA0B61C69B9E000B9568E /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = usr/lib/system/libcommonCrypto.tbd; sourceTree = SDKROOT; };
 		ABDCA0B81C69BCD300B9568E /* TestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestClient.swift; sourceTree = "<group>"; };
 		ABDCA0BC1C69C08900B9568E /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		ABDCA0BF1C69E70100B9568E /* HTTPBinHost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinHost.swift; sourceTree = "<group>"; };
 		ABEB1AA91C69A7DE00702A28 /* NSData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -304,6 +308,8 @@
 				ABCF93941B2ECA1F0078CA66 /* Info.plist */,
 				ABDCA0B81C69BCD300B9568E /* TestClient.swift */,
 				ABDCA0BC1C69C08900B9568E /* UploadViewController.swift */,
+				ABDCA0BF1C69E70100B9568E /* HTTPBinHost.swift */,
+				AB7394041C69EF2800E91571 /* AuthTestViewController.swift */,
 			);
 			path = MKNetworkKitDemo;
 			sourceTree = "<group>";
@@ -584,11 +590,13 @@
 				ABCF93BD1B2ECB830078CA66 /* FlickrImage.swift in Sources */,
 				ABCF938B1B2ECA1F0078CA66 /* FlickrImageDetailViewController.swift in Sources */,
 				ABDCA0B91C69BCD300B9568E /* TestClient.swift in Sources */,
+				ABDCA0C01C69E70100B9568E /* HTTPBinHost.swift in Sources */,
 				ABCF93C01B2ECB830078CA66 /* FlickrImageCell.swift in Sources */,
 				ABDCA0BD1C69C08900B9568E /* UploadViewController.swift in Sources */,
 				ABCF93891B2ECA1F0078CA66 /* FlickrImageListViewController.swift in Sources */,
 				ABCF93871B2ECA1F0078CA66 /* AppDelegate.swift in Sources */,
 				ABEB1AAA1C69A7DE00702A28 /* NSData.swift in Sources */,
+				AB7394051C69EF2800E91571 /* AuthTestViewController.swift in Sources */,
 				ABCF93BA1B2ECB830078CA66 /* FlickrClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

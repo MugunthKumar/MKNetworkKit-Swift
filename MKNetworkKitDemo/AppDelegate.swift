@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
   var window: UIWindow?
   var flickrHost : FlickrClient!
-  var testHost: TestClient!
+  var httpbinHost: HTTPBinHost!
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -25,9 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     flickrHost = FlickrClient(apiKey:"210af0ac7c5dad997a19f7667e5779d3")
     flickrHost.cacheDirectory = "FlickrCache"
-    testHost = TestClient()
-    
-    print(NSHomeDirectory())
+
+    httpbinHost = HTTPBinHost()
+    //print(NSHomeDirectory())
 
     Request.automaticNetworkActivityIndicator = true
     return true
