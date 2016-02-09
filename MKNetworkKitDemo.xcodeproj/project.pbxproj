@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		AB18DB901BC3F3AF00E25793 /* MKNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; };
 		AB18DB971BC3F3AF00E25793 /* MKNetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */; };
-		AB18DB9B1BC3F3AF00E25793 /* MKNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; };
-		AB18DB9C1BC3F3AF00E25793 /* MKNetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AB8134231BEA0F5E00726CE6 /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B71B2ECB830078CA66 /* FlickrClient.swift */; };
 		AB81343D1BEA0FE700726CE6 /* MKNetworkKitOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */; };
 		AB81343E1BEA0FE700726CE6 /* MKNetworkKitOSX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -47,6 +45,14 @@
 		ABCF93BA1B2ECB830078CA66 /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B71B2ECB830078CA66 /* FlickrClient.swift */; };
 		ABCF93BD1B2ECB830078CA66 /* FlickrImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B81B2ECB830078CA66 /* FlickrImage.swift */; };
 		ABCF93C01B2ECB830078CA66 /* FlickrImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B91B2ECB830078CA66 /* FlickrImageCell.swift */; };
+		ABDCA0A61C69B2F800B9568E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDCA0A51C69B2F800B9568E /* SystemConfiguration.framework */; };
+		ABDCA0B21C69B9A400B9568E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDCA0A51C69B2F800B9568E /* SystemConfiguration.framework */; };
+		ABDCA0B31C69B9CA00B9568E /* MKNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; };
+		ABDCA0B41C69B9CA00B9568E /* MKNetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ABEB1AAA1C69A7DE00702A28 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
+		ABEB1AAB1C69A7DE00702A28 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
+		ABEB1AAC1C69A7DE00702A28 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
+		ABEB1AAD1C69A7DE00702A28 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,13 +70,6 @@
 			remoteGlobalIDString = ABCF93821B2ECA1F0078CA66;
 			remoteInfo = MKNetworkKitDemo;
 		};
-		AB18DB991BC3F3AF00E25793 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ABCF937B1B2ECA1F0078CA66 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AB18DB851BC3F3AF00E25793;
-			remoteInfo = MKNetworkKit;
-		};
 		AB81343B1BEA0FDC00726CE6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ABCF937B1B2ECA1F0078CA66 /* Project object */;
@@ -78,20 +77,16 @@
 			remoteGlobalIDString = AB8134291BEA0FA200726CE6;
 			remoteInfo = "MKNetworkKit-osx";
 		};
+		ABDCA0B01C69B99300B9568E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABCF937B1B2ECA1F0078CA66 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB18DB851BC3F3AF00E25793;
+			remoteInfo = MKNetworkKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		AB18DBA21BC3F3AF00E25793 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				AB18DB9C1BC3F3AF00E25793 /* MKNetworkKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AB81343F1BEA0FE800726CE6 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -99,6 +94,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				AB81343E1BEA0FE700726CE6 /* MKNetworkKitOSX.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABDCA0B51C69B9CA00B9568E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				ABDCA0B41C69B9CA00B9568E /* MKNetworkKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,6 +149,10 @@
 		ABCF93B71B2ECB830078CA66 /* FlickrClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
 		ABCF93B81B2ECB830078CA66 /* FlickrImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrImage.swift; sourceTree = "<group>"; };
 		ABCF93B91B2ECB830078CA66 /* FlickrImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrImageCell.swift; sourceTree = "<group>"; };
+		ABDCA0A51C69B2F800B9568E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		ABDCA0AE1C69B6FC00B9568E /* module.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
+		ABDCA0B61C69B9E000B9568E /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = usr/lib/system/libcommonCrypto.tbd; sourceTree = SDKROOT; };
+		ABEB1AA91C69A7DE00702A28 /* NSData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABDCA0A61C69B2F800B9568E /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,7 +191,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB18DB9B1BC3F3AF00E25793 /* MKNetworkKit.framework in Frameworks */,
+				ABDCA0B31C69B9CA00B9568E /* MKNetworkKit.framework in Frameworks */,
+				ABDCA0B21C69B9A400B9568E /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				AB8134751BEA1E0500726CE6 /* NSAlert.swift */,
+				ABEB1AA91C69A7DE00702A28 /* NSData.swift */,
 				AB8134771BEA1E0500726CE6 /* NSDate.swift */,
 				AB8134781BEA1E0500726CE6 /* UIKit.swift */,
 				AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */,
@@ -246,6 +259,8 @@
 		ABCF937A1B2ECA1F0078CA66 = {
 			isa = PBXGroup;
 			children = (
+				ABDCA0B61C69B9E000B9568E /* libcommonCrypto.tbd */,
+				ABDCA0A51C69B2F800B9568E /* SystemConfiguration.framework */,
 				AB81344E1BEA11AC00726CE6 /* Core */,
 				ABCF93851B2ECA1F0078CA66 /* MKNetworkKitDemo */,
 				AB18DB871BC3F3AF00E25793 /* MKNetworkKit */,
@@ -253,6 +268,7 @@
 				AB8134421BEA113A00726CE6 /* MKNetworkKitDemo-OSX */,
 				AB81346E1BEA156500726CE6 /* ios.plist */,
 				AB81346F1BEA156500726CE6 /* osx.plist */,
+				ABDCA0911C69B02100B9568E /* CommonCrypto */,
 				ABCF93841B2ECA1F0078CA66 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -284,6 +300,14 @@
 				ABCF93941B2ECA1F0078CA66 /* Info.plist */,
 			);
 			path = MKNetworkKitDemo;
+			sourceTree = "<group>";
+		};
+		ABDCA0911C69B02100B9568E /* CommonCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				ABDCA0AE1C69B6FC00B9568E /* module.map */,
+			);
+			path = CommonCrypto;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,12 +411,12 @@
 				ABCF937F1B2ECA1F0078CA66 /* Sources */,
 				ABCF93801B2ECA1F0078CA66 /* Frameworks */,
 				ABCF93811B2ECA1F0078CA66 /* Resources */,
-				AB18DBA21BC3F3AF00E25793 /* Embed Frameworks */,
+				ABDCA0B51C69B9CA00B9568E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				AB18DB9A1BC3F3AF00E25793 /* PBXTargetDependency */,
+				ABDCA0B11C69B99300B9568E /* PBXTargetDependency */,
 			);
 			name = MKNetworkKitDemo;
 			productName = MKNetworkKitDemo;
@@ -411,6 +435,7 @@
 				TargetAttributes = {
 					AB18DB851BC3F3AF00E25793 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = P898K98WCW;
 					};
 					AB18DB8E1BC3F3AF00E25793 = {
 						CreatedOnToolsVersion = 7.1;
@@ -496,6 +521,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB8134591BEA11AC00726CE6 /* Cache.swift in Sources */,
+				ABEB1AAB1C69A7DE00702A28 /* NSData.swift in Sources */,
 				AB81347D1BEA1E0500726CE6 /* NSDate.swift in Sources */,
 				AB81347F1BEA1E0500726CE6 /* UIKit.swift in Sources */,
 				AB8134851BEA1E3700726CE6 /* NSString.swift in Sources */,
@@ -524,6 +550,7 @@
 				AB8134491BEA113A00726CE6 /* AppDelegate.swift in Sources */,
 				AB8134731BEA168900726CE6 /* FlickrImage.swift in Sources */,
 				AB8134231BEA0F5E00726CE6 /* FlickrClient.swift in Sources */,
+				ABEB1AAC1C69A7DE00702A28 /* NSData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +562,7 @@
 				AB81347E1BEA1E0500726CE6 /* NSDate.swift in Sources */,
 				AB8134671BEA13DE00726CE6 /* Request.swift in Sources */,
 				AB8134861BEA1E3700726CE6 /* NSString.swift in Sources */,
+				ABEB1AAD1C69A7DE00702A28 /* NSData.swift in Sources */,
 				AB8134891BEA1E5200726CE6 /* NSHTTPURLResponse.swift in Sources */,
 				AB8134831BEA1E2E00726CE6 /* NSDictionary.swift in Sources */,
 				AB8134691BEA13EC00726CE6 /* Log.swift in Sources */,
@@ -552,6 +580,7 @@
 				ABCF93C01B2ECB830078CA66 /* FlickrImageCell.swift in Sources */,
 				ABCF93891B2ECA1F0078CA66 /* MasterViewController.swift in Sources */,
 				ABCF93871B2ECA1F0078CA66 /* AppDelegate.swift in Sources */,
+				ABEB1AAA1C69A7DE00702A28 /* NSData.swift in Sources */,
 				ABCF93BA1B2ECB830078CA66 /* FlickrClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,15 +598,15 @@
 			target = ABCF93821B2ECA1F0078CA66 /* MKNetworkKitDemo */;
 			targetProxy = AB18DB931BC3F3AF00E25793 /* PBXContainerItemProxy */;
 		};
-		AB18DB9A1BC3F3AF00E25793 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AB18DB851BC3F3AF00E25793 /* MKNetworkKit */;
-			targetProxy = AB18DB991BC3F3AF00E25793 /* PBXContainerItemProxy */;
-		};
 		AB81343C1BEA0FDC00726CE6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AB8134291BEA0FA200726CE6 /* MKNetworkKitOSX */;
 			targetProxy = AB81343B1BEA0FDC00726CE6 /* PBXContainerItemProxy */;
+		};
+		ABDCA0B11C69B99300B9568E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB18DB851BC3F3AF00E25793 /* MKNetworkKit */;
+			targetProxy = ABDCA0B01C69B99300B9568E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -612,46 +641,64 @@
 		AB18DB9D1BC3F3AF00E25793 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = ios.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
 		AB18DB9E1BC3F3AF00E25793 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = ios.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -692,6 +739,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.steinlogic.MKNetworkKitDemo-OSX";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_INCLUDE_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -708,6 +756,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.steinlogic.MKNetworkKitDemo-OSX";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_INCLUDE_PATHS = "";
 			};
 			name = Release;
 		};
@@ -853,6 +902,10 @@
 				INFOPLIST_FILE = MKNetworkKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -867,6 +920,10 @@
 				INFOPLIST_FILE = MKNetworkKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

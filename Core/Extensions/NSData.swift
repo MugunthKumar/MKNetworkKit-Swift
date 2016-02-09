@@ -35,6 +35,7 @@
 // #import <CommonCrypto/CommonCrypto.h>
 
 import Foundation
+import CommonCrypto
 
 extension NSData {
   var md5: String {

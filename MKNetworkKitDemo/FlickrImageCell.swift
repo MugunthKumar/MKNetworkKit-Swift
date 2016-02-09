@@ -17,17 +17,17 @@ class FlickrImageCell: UITableViewCell {
   override func prepareForReuse() {
     super.prepareForReuse()
     photoView.image = nil;
-    imageFetchRequest?.state = .Cancelled;
+    imageFetchRequest?.cancel()
   }
 
   func bind(flickrImage : FlickrImage) {
-    flickrImage.thumbnailImageUrlString?.loadRemoteImage({ image -> Void in
+    imageFetchRequest = flickrImage.thumbnailImageUrlString?.loadRemoteImage { image, cached -> Void in
       dispatch_async(dispatch_get_main_queue()) { () -> Void in
         UIView.transitionWithView(self.superview!, duration: 0.5, options: .TransitionCrossDissolve, animations: {
           () -> Void in
           self.photoView.image = image
           }, completion: nil)
       }
-    })
+    }
   }
 }
