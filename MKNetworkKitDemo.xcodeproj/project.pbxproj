@@ -50,7 +50,6 @@
 		ABDCA0B31C69B9CA00B9568E /* MKNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; };
 		ABDCA0B41C69B9CA00B9568E /* MKNetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ABDCA0B91C69BCD300B9568E /* TestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDCA0B81C69BCD300B9568E /* TestClient.swift */; };
-		ABDCA0BB1C69BDF100B9568E /* Singapore.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ABDCA0BA1C69BDF000B9568E /* Singapore.jpg */; };
 		ABDCA0BD1C69C08900B9568E /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDCA0BC1C69C08900B9568E /* UploadViewController.swift */; };
 		ABEB1AAA1C69A7DE00702A28 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
 		ABEB1AAB1C69A7DE00702A28 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
@@ -156,7 +155,6 @@
 		ABDCA0AE1C69B6FC00B9568E /* module.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
 		ABDCA0B61C69B9E000B9568E /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = usr/lib/system/libcommonCrypto.tbd; sourceTree = SDKROOT; };
 		ABDCA0B81C69BCD300B9568E /* TestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestClient.swift; sourceTree = "<group>"; };
-		ABDCA0BA1C69BDF000B9568E /* Singapore.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Singapore.jpg; sourceTree = "<group>"; };
 		ABDCA0BC1C69C08900B9568E /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		ABEB1AA91C69A7DE00702A28 /* NSData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -294,7 +292,6 @@
 		ABCF93851B2ECA1F0078CA66 /* MKNetworkKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				ABDCA0BA1C69BDF000B9568E /* Singapore.jpg */,
 				ABCF93861B2ECA1F0078CA66 /* AppDelegate.swift */,
 				ABCF93B71B2ECB830078CA66 /* FlickrClient.swift */,
 				ABCF93B81B2ECB830078CA66 /* FlickrImage.swift */,
@@ -516,7 +513,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABDCA0BB1C69BDF100B9568E /* Singapore.jpg in Resources */,
 				ABCF93931B2ECA1F0078CA66 /* LaunchScreen.storyboard in Resources */,
 				ABCF93901B2ECA1F0078CA66 /* Assets.xcassets in Resources */,
 				ABCF938E1B2ECA1F0078CA66 /* Main.storyboard in Resources */,
