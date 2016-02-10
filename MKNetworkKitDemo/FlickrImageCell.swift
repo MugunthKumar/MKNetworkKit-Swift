@@ -16,7 +16,7 @@ class FlickrImageCell: UITableViewCell {
 
   override func prepareForReuse() {
     super.prepareForReuse()
-    photoView.image = nil;
+    photoView.image = nil
     imageFetchRequest?.cancel()
   }
 

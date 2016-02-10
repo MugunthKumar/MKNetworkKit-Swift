@@ -35,11 +35,13 @@ class FlickrImageListViewController: UITableViewController {
       self.detailViewController = navigationController.topViewController as? FlickrImageDetailViewController
 
       flickrHost.fetchImages("Singapore") {images -> Void in
-        self.images = images;
+        self.images = images
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
           self.tableView.reloadData()
         }
       }
+
+      flickrHost.fetchOriginal()
     }
   }
 

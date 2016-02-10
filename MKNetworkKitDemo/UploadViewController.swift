@@ -51,8 +51,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     let size = CGSizeMake(250, 250)
     UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
     image.drawInRect(CGRectMake(0, 0, size.width, size.height))
-    let smallImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+    let smallImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
     imageFilePath = NSTemporaryDirectory() + "image.png"
     UIImageJPEGRepresentation(smallImage, 0.8)?.writeToFile(imageFilePath!, atomically: true)
     dismissViewControllerAnimated(true, completion: nil)

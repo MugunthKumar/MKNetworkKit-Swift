@@ -10,6 +10,7 @@
 		AB18DB901BC3F3AF00E25793 /* MKNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; };
 		AB18DB971BC3F3AF00E25793 /* MKNetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */; };
 		AB7394051C69EF2800E91571 /* AuthTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7394041C69EF2800E91571 /* AuthTestViewController.swift */; };
+		AB7A41BE1C6AF74C0030B70C /* NSURLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */; };
 		AB8134231BEA0F5E00726CE6 /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B71B2ECB830078CA66 /* FlickrClient.swift */; };
 		AB81343D1BEA0FE700726CE6 /* MKNetworkKitOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */; };
 		AB81343E1BEA0FE700726CE6 /* MKNetworkKitOSX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -32,8 +33,6 @@
 		AB81347F1BEA1E0500726CE6 /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134781BEA1E0500726CE6 /* UIKit.swift */; };
 		AB8134821BEA1E2E00726CE6 /* NSDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */; };
 		AB8134831BEA1E2E00726CE6 /* NSDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */; };
-		AB8134851BEA1E3700726CE6 /* NSString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134841BEA1E3700726CE6 /* NSString.swift */; };
-		AB8134861BEA1E3700726CE6 /* NSString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134841BEA1E3700726CE6 /* NSString.swift */; };
 		AB8134881BEA1E5200726CE6 /* NSHTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */; };
 		AB8134891BEA1E5200726CE6 /* NSHTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */; };
 		AB81348B1BEA1E9C00726CE6 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB81348A1BEA1E9C00726CE6 /* UIAlertController.swift */; };
@@ -123,6 +122,7 @@
 		AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKNetworkKitTests.swift; sourceTree = "<group>"; };
 		AB18DB981BC3F3AF00E25793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB7394041C69EF2800E91571 /* AuthTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTestViewController.swift; sourceTree = "<group>"; };
+		AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionTask.swift; sourceTree = "<group>"; };
 		AB8133F81BEA0EB000726CE6 /* MKNetworkKitDemo-OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MKNetworkKitDemo-OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKNetworkKitOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8134431BEA113A00726CE6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,7 +140,6 @@
 		AB8134771BEA1E0500726CE6 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
 		AB8134781BEA1E0500726CE6 /* UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKit.swift; sourceTree = "<group>"; };
 		AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDictionary.swift; sourceTree = "<group>"; };
-		AB8134841BEA1E3700726CE6 /* NSString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSString.swift; sourceTree = "<group>"; };
 		AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSHTTPURLResponse.swift; sourceTree = "<group>"; };
 		AB81348A1BEA1E9C00726CE6 /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		ABCF93831B2ECA1F0078CA66 /* MKNetworkKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKNetworkKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,9 +256,9 @@
 				AB8134771BEA1E0500726CE6 /* NSDate.swift */,
 				AB8134781BEA1E0500726CE6 /* UIKit.swift */,
 				AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */,
-				AB8134841BEA1E3700726CE6 /* NSString.swift */,
 				AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */,
 				AB81348A1BEA1E9C00726CE6 /* UIAlertController.swift */,
+				AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -536,7 +535,7 @@
 				ABEB1AAB1C69A7DE00702A28 /* NSData.swift in Sources */,
 				AB81347D1BEA1E0500726CE6 /* NSDate.swift in Sources */,
 				AB81347F1BEA1E0500726CE6 /* UIKit.swift in Sources */,
-				AB8134851BEA1E3700726CE6 /* NSString.swift in Sources */,
+				AB7A41BE1C6AF74C0030B70C /* NSURLSessionTask.swift in Sources */,
 				AB81348B1BEA1E9C00726CE6 /* UIAlertController.swift in Sources */,
 				AB8134881BEA1E5200726CE6 /* NSHTTPURLResponse.swift in Sources */,
 				AB8134821BEA1E2E00726CE6 /* NSDictionary.swift in Sources */,
@@ -573,7 +572,6 @@
 				AB81347A1BEA1E0500726CE6 /* NSAlert.swift in Sources */,
 				AB81347E1BEA1E0500726CE6 /* NSDate.swift in Sources */,
 				AB8134671BEA13DE00726CE6 /* Request.swift in Sources */,
-				AB8134861BEA1E3700726CE6 /* NSString.swift in Sources */,
 				ABEB1AAD1C69A7DE00702A28 /* NSData.swift in Sources */,
 				AB8134891BEA1E5200726CE6 /* NSHTTPURLResponse.swift in Sources */,
 				AB8134831BEA1E2E00726CE6 /* NSDictionary.swift in Sources */,

@@ -17,9 +17,9 @@ import Foundation
   import MKNetworkKitOSX
 #endif
 
-class FlickrClient : Host {
+class FlickrClient: Host {
 
-  var flickrAPIKey : String;
+  var flickrAPIKey: String
 
   init(apiKey : String) {
     flickrAPIKey = apiKey
@@ -46,7 +46,7 @@ class FlickrClient : Host {
   func fetchImages (tag : String, completionHandler: [FlickrImage] -> Void) {
     guard let request = imageFetchRequest(tag, page: 0) else { return }
 
-    request.completion {(request: Request) in
+    request.completion {request in
       if ([.Completed, .StaleResponseAvailableFromCache, .ResponseAvailableFromCache].contains(request.state)) {
         let jsonDictionary = request.responseAsJSON as! [String:AnyObject]
         let photosDictionary = jsonDictionary["photos"] as! [String: AnyObject]
@@ -58,10 +58,24 @@ class FlickrClient : Host {
       }.run()
   }
 
+  func fetchOriginal () -> Void {
+    let request = super.request(withUrlString:"https://farm6.staticflickr.com/5687/22671477047_93a0eb3efc_o_d.jpg")
+    request.downloadPath = "\(NSHomeDirectory())/image.jpg"
+    request.progressChange { inProgressRequest in
+      print (inProgressRequest.progress)
+      }.completion { completedRequest in
+        if let error = completedRequest.error {
+          print ("Error \(error)")
+        } else {
+          print ("File saved to \(completedRequest.downloadPath)")
+        }
+    }.run()
+  }
+
   #if os(iOS) || os(watchOS) || os(tvOS)
   func fetchImage (imageURLString : String, completionHandler: (UIImage?) -> Void) -> Request {
     let request = super.request(withUrlString: imageURLString)
-    return request.completion {(request: Request) in
+    return request.completion {request in
       completionHandler(request.responseAsImage)
       }.run()
   }

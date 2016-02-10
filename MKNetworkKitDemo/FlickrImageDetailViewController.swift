@@ -34,7 +34,7 @@ class FlickrImageDetailViewController: UIViewController {
 
           UIView.transitionWithView(self.view!, duration: 0.5, options: .TransitionCrossDissolve, animations: {
             () -> Void in
-            self.fullScreenImageView.image = image;
+            self.fullScreenImageView.image = image
             }, completion: nil)
         }
       }

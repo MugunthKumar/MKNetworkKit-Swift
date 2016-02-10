@@ -1,5 +1,5 @@
 //
-//  NSString.swift
+//  NSURLSessionTask.swift
 //  MKNetworkKit
 //
 //  Created by Mugunth Kumar
@@ -32,3 +32,18 @@
 //
 
 import Foundation
+
+extension NSURLSessionTask {
+  private struct AssociatedKeys {
+    static var RequestKey = "com.steinlogic.mknetworkkit.associatedkeys.request"
+  }
+
+  var request: Request? {
+    get {
+      return objc_getAssociatedObject(self, &AssociatedKeys.RequestKey) as? Request
+    }
+    set (newValue) {
+      objc_setAssociatedObject(self, &AssociatedKeys.RequestKey, newValue, .OBJC_ASSOCIATION_ASSIGN)
+    }
+  }
+}

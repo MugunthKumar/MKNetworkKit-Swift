@@ -110,6 +110,13 @@ public class Request {
   public var multipartEntities = [String:MultipartEntity]()
   public var bodyData: NSData?
 
+  public var progress: Double? {
+    didSet {
+      for handler in progressHandlers {
+        handler(self)
+      }
+    }
+  }
   public var task: NSURLSessionTask?
   public weak var host: Host!
 
@@ -117,6 +124,9 @@ public class Request {
   public var password: String?
   public var realm: String?
 
+  public var clientCertificate: String?
+  public var clientCertificatePassword: String?
+  
   public var downloadPath: String?
 
   internal var requiresAuthentication: Bool {
@@ -394,7 +404,7 @@ public class Request {
     }
   }
 
-  public func progress (handler: (Request) -> Void) -> Request {
+  public func progressChange (handler: (Request) -> Void) -> Request {
     progressHandlers.append(handler)
     return self
   }
@@ -426,7 +436,11 @@ public class Request {
     if let unwrappedDoNotCache = doNotCache {
       self.doNotCache = unwrappedDoNotCache
     }
-    host.startRequest(self)
+    if self.downloadPath == nil {
+      host.startRequest(self)
+    } else {
+      host.startDownloadRequest(self)
+    }
     return self
   }
 }
