@@ -126,10 +126,10 @@ public class Request {
   static internal var runningRequestsUpdatedHandler: ((Int) -> Void)?
 
   public var url: String
-  public var method: HTTPMethod = .GET
+  public var method = HTTPMethod.GET
   public var parameters = [String:AnyObject]()
   public var headers = [String:String]()
-  public var parameterEncoding: ParameterEncoding = .URL
+  public var parameterEncoding = ParameterEncoding.URL
 
   public var multipartEntities = [String:MultipartEntity]()
   public var bodyData: NSData?
@@ -163,6 +163,9 @@ public class Request {
   public var alwaysLoad: Bool = false
 
   public var state: State = .Ready {
+    willSet {
+      stateWillChange?(self)
+    }
     didSet {
       switch (state) {
       case .Ready:
@@ -193,6 +196,8 @@ public class Request {
       case .Cancelled:
         task?.cancel()
       }
+
+      stateDidChange?(self)
 
       if (state == .Started) {
         dispatch_async(Request.runningRequestsSynchronizingQueue) {
@@ -342,6 +347,8 @@ public class Request {
     return true
   }
 
+  public var stateWillChange: (Request -> Void)?
+  public var stateDidChange: (Request -> Void)?
   private var progressHandlers = Array<Request -> Void>()
   private var completionHandlers = Array<Request -> Void>()
 

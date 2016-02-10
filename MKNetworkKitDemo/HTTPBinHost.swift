@@ -51,6 +51,24 @@ class HTTPBinHost: Host {
       }.run()
   }
 
+  func performQueueTest() {
+    guard let request10 = request(withPath: "stream/10") else { return }
+    guard let request20 = request(withPath: "stream/20") else { return }
+    guard let request30 = request(withPath: "streadm/30") else { return }
+    guard let request40 = request(withPath: "stream/40") else { return }
+    guard let request50 = request(withPath: "stream/50") else { return }
+
+    let queue = Queue()
+    queue.requests = [request10, request20, request30, request40, request50]
+    queue.run(abortOnFirstFail: true) { completedQueue in
+      if completedQueue.failedRequests.count > 0 {
+        print("Failed \(completedQueue.failedRequests.map {$0.asCurlCommand})")
+      } else {
+        print("All completed")
+      }
+    }
+  }
+  
   func uploadImage (imageFilePath: String, completionHandler: (Void -> Void)) {
     guard let request = request(.POST, withPath: "post") else { return }
     if let imageEntity = MultipartEntity(mimetype: "application/jpeg", filePath: imageFilePath) {

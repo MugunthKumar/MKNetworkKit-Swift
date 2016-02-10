@@ -285,8 +285,8 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDownloadDeleg
         , forProtectionSpace: request.protectionSpace!, task: request.task!)
     }
 
-    request.state = .Started
     request.task!.request = request
+    request.state = .Started
   }
 
   //MARK: - Completion Handler for background tasks

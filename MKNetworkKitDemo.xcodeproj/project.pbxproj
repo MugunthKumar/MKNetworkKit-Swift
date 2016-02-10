@@ -11,6 +11,8 @@
 		AB18DB971BC3F3AF00E25793 /* MKNetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */; };
 		AB7394051C69EF2800E91571 /* AuthTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7394041C69EF2800E91571 /* AuthTestViewController.swift */; };
 		AB7A41BE1C6AF74C0030B70C /* NSURLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */; };
+		AB7A41C31C6B2BA00030B70C /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C11C6B26120030B70C /* Queue.swift */; };
+		AB7A41C61C6B3D430030B70C /* QueueOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C41C6B3D3A0030B70C /* QueueOperation.swift */; };
 		AB8134231BEA0F5E00726CE6 /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B71B2ECB830078CA66 /* FlickrClient.swift */; };
 		AB81343D1BEA0FE700726CE6 /* MKNetworkKitOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */; };
 		AB81343E1BEA0FE700726CE6 /* MKNetworkKitOSX.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -123,6 +125,8 @@
 		AB18DB981BC3F3AF00E25793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB7394041C69EF2800E91571 /* AuthTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTestViewController.swift; sourceTree = "<group>"; };
 		AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionTask.swift; sourceTree = "<group>"; };
+		AB7A41C11C6B26120030B70C /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		AB7A41C41C6B3D3A0030B70C /* QueueOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueOperation.swift; sourceTree = "<group>"; };
 		AB8133F81BEA0EB000726CE6 /* MKNetworkKitDemo-OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MKNetworkKitDemo-OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8134391BEA0FA200726CE6 /* MKNetworkKitOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKNetworkKitOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8134431BEA113A00726CE6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +248,8 @@
 				AB8134521BEA11AC00726CE6 /* Host.swift */,
 				AB8134531BEA11AC00726CE6 /* Log.swift */,
 				AB8134551BEA11AC00726CE6 /* Request.swift */,
+				AB7A41C11C6B26120030B70C /* Queue.swift */,
+				AB7A41C41C6B3D3A0030B70C /* QueueOperation.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -535,9 +541,11 @@
 				ABEB1AAB1C69A7DE00702A28 /* NSData.swift in Sources */,
 				AB81347D1BEA1E0500726CE6 /* NSDate.swift in Sources */,
 				AB81347F1BEA1E0500726CE6 /* UIKit.swift in Sources */,
+				AB7A41C61C6B3D430030B70C /* QueueOperation.swift in Sources */,
 				AB7A41BE1C6AF74C0030B70C /* NSURLSessionTask.swift in Sources */,
 				AB81348B1BEA1E9C00726CE6 /* UIAlertController.swift in Sources */,
 				AB8134881BEA1E5200726CE6 /* NSHTTPURLResponse.swift in Sources */,
+				AB7A41C31C6B2BA00030B70C /* Queue.swift in Sources */,
 				AB8134821BEA1E2E00726CE6 /* NSDictionary.swift in Sources */,
 				AB81345F1BEA11AC00726CE6 /* Log.swift in Sources */,
 				AB8134631BEA11AC00726CE6 /* Request.swift in Sources */,
