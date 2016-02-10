@@ -70,6 +70,30 @@ public enum HTTPMethod: String, CustomStringConvertible {
   public var description: String { return self.rawValue }
 }
 
+public enum AuthenticationMethod: RawRepresentable {
+  case HTTPBasic
+  case HTTPDigest
+  public init?(rawValue: String) {
+    if rawValue == String(NSURLAuthenticationMethodHTTPDigest) {
+      self = HTTPDigest
+    }
+    else if rawValue == String(NSURLAuthenticationMethodHTTPBasic) {
+      self = HTTPBasic
+    } else {
+      return nil
+    }
+  }
+
+  public var rawValue: String {
+    switch self {
+    case .HTTPBasic:
+      return String(NSURLAuthenticationMethodHTTPBasic)
+    case .HTTPDigest:
+      return String(NSURLAuthenticationMethodHTTPDigest)
+    }
+  }
+}
+
 public struct MultipartEntity {
   let mimetype: String
   let suggestedFileName: String
@@ -123,6 +147,7 @@ public class Request {
   public var username: String?
   public var password: String?
   public var realm: String?
+  public var authenticationMethod = AuthenticationMethod.HTTPBasic
 
   public var clientCertificate: String?
   public var clientCertificatePassword: String?
@@ -277,7 +302,7 @@ public class Request {
       }
       protectionSpaceToReturn = NSURLProtectionSpace(host: url.host!, port: portNumber,
         `protocol`: url.scheme, realm: realm,
-        authenticationMethod: NSURLAuthenticationMethodHTTPBasic)
+        authenticationMethod: authenticationMethod.rawValue)
     }
     return protectionSpaceToReturn
   }

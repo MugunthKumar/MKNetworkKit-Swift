@@ -27,7 +27,6 @@ class HTTPBinHost: Host {
     request.appendBasicAuthorizationHeader(username: "user", password: "passwd")
     request.completion { completedRequest -> Void in
       print (completedRequest.responseAsJSON)
-      print (completedRequest.error)
       }.run()
   }
 
@@ -40,6 +39,18 @@ class HTTPBinHost: Host {
       print (completedRequest.responseAsJSON)
       }.run()
   }
+
+  func performDigestAuthentication (completionHandler: (Void -> Void)) {
+    guard let request = request(withPath: "digest-auth/auth/user/passwd") else { return }
+    request.username = "user"
+    request.password = "passwd"
+    request.realm = "me@kennethreitz.com"
+    request.authenticationMethod = .HTTPDigest
+    request.completion { completedRequest -> Void in
+      print (completedRequest.responseAsJSON)
+      }.run()
+  }
+
   func uploadImage (imageFilePath: String, completionHandler: (Void -> Void)) {
     guard let request = request(.POST, withPath: "post") else { return }
     if let imageEntity = MultipartEntity(mimetype: "application/jpeg", filePath: imageFilePath) {

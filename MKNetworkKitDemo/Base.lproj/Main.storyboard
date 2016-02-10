@@ -154,6 +154,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8F-Os-m5D">
                                 <rect key="frame" x="260" y="339" width="81" height="30"/>
                                 <state key="normal" title="Digest Auth"/>
+                                <connections>
+                                    <action selector="digestAuthAction:" destination="2ID-3J-5m4" eventType="touchUpInside" id="Nah-cT-oex"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

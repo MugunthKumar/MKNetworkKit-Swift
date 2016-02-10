@@ -33,4 +33,8 @@ class AuthTestViewController: UIViewController {
     host.performHiddenBasicAuthentication {}
   }
 
+  @IBAction func digestAuthAction(sender: AnyObject) {
+    host.performDigestAuthentication {}
+  }
+
 }
