@@ -44,6 +44,4 @@ We will release a stable tagged version soon.
 Documentation is available on the [Wiki page](https://github.com/MugunthKumar/MKNetworkKit-Swift/Wiki)
 
 ###Licensing
-MKNetworkKit is licensed under MIT License
-ATTRIBUTION FREE LICENSING AVAILBLE FOR A LICENSE FEE.
-Get an attribution free license here [License Store](http://blog.mugunthkumar.com/license-store/)
+MKNetworkKit is licensed under MIT License. Attribution free licensing is available for a small license fee. Get an attribution free license here [License Store](http://blog.mugunthkumar.com/license-store/)
