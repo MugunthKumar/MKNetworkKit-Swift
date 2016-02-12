@@ -37,6 +37,8 @@
 		AB0F5FA31C6DDE16006ED63F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134551BEA11AC00726CE6 /* Request.swift */; };
 		AB0F5FA41C6DDE16006ED63F /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134521BEA11AC00726CE6 /* Host.swift */; };
 		AB0F5FA61C6DDE16006ED63F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDCA0A51C69B2F800B9568E /* SystemConfiguration.framework */; };
+		AB0F5FB21C6DF6D2006ED63F /* NSURLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */; };
+		AB0F5FB41C6DF6EF006ED63F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0F5FB31C6DF6EF006ED63F /* SystemConfiguration.framework */; };
 		AB18DB901BC3F3AF00E25793 /* MKNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; };
 		AB18DB971BC3F3AF00E25793 /* MKNetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */; };
 		AB7A41BE1C6AF74C0030B70C /* NSURLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */; };
@@ -128,6 +130,8 @@
 		AB0F5FAF1C6DF5CA006ED63F /* OSX.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = OSX.plist; path = "Supporting Files/OSX.plist"; sourceTree = "<group>"; };
 		AB0F5FB01C6DF5CA006ED63F /* tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = tvOS.plist; path = "Supporting Files/tvOS.plist"; sourceTree = "<group>"; };
 		AB0F5FB11C6DF5CA006ED63F /* watchOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = watchOS.plist; path = "Supporting Files/watchOS.plist"; sourceTree = "<group>"; };
+		AB0F5FB31C6DF6EF006ED63F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		AB0F5FB51C6DF7E5006ED63F /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/lib/system/libcommonCrypto.tbd; sourceTree = DEVELOPER_DIR; };
 		AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB18DB8F1BC3F3AF00E25793 /* MKNetworkKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MKNetworkKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKNetworkKitTests.swift; sourceTree = "<group>"; };
@@ -135,7 +139,7 @@
 		AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionTask.swift; sourceTree = "<group>"; };
 		AB7A41C11C6B26120030B70C /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		AB7A41C41C6B3D3A0030B70C /* QueueOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueOperation.swift; sourceTree = "<group>"; };
-		AB8134391BEA0FA200726CE6 /* MKNetworkKit-OSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "MKNetworkKit-OSX.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB8134391BEA0FA200726CE6 /* MKNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8134501BEA11AC00726CE6 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		AB8134521BEA11AC00726CE6 /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
 		AB8134531BEA11AC00726CE6 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -158,7 +162,6 @@
 		ABCF93B81B2ECB830078CA66 /* FlickrImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrImage.swift; sourceTree = "<group>"; };
 		ABCF93B91B2ECB830078CA66 /* FlickrImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrImageCell.swift; sourceTree = "<group>"; };
 		ABDCA0A51C69B2F800B9568E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		ABDCA0AE1C69B6FC00B9568E /* module.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
 		ABDCA0B61C69B9E000B9568E /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = usr/lib/system/libcommonCrypto.tbd; sourceTree = SDKROOT; };
 		ABDCA0B81C69BCD300B9568E /* TestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestClient.swift; sourceTree = "<group>"; };
 		ABDCA0BC1C69C08900B9568E /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB0F5FB41C6DF6EF006ED63F /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +224,8 @@
 		AB0F5F791C6DC4A9006ED63F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AB0F5FB51C6DF7E5006ED63F /* libcommonCrypto.tbd */,
+				AB0F5FB31C6DF6EF006ED63F /* SystemConfiguration.framework */,
 				ABDCA0B61C69B9E000B9568E /* libcommonCrypto.tbd */,
 				ABDCA0A51C69B2F800B9568E /* SystemConfiguration.framework */,
 			);
@@ -283,7 +289,6 @@
 				AB0F5F791C6DC4A9006ED63F /* Frameworks */,
 				AB18DB951BC3F3AF00E25793 /* MKNetworkKitTests */,
 				AB0F5F7B1C6DC4E2006ED63F /* Supporting Files */,
-				ABDCA0911C69B02100B9568E /* CommonCrypto */,
 				ABCF93841B2ECA1F0078CA66 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -294,7 +299,7 @@
 				ABCF93831B2ECA1F0078CA66 /* MKNetworkKitDemo.app */,
 				AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */,
 				AB18DB8F1BC3F3AF00E25793 /* MKNetworkKitTests.xctest */,
-				AB8134391BEA0FA200726CE6 /* MKNetworkKit-OSX.framework */,
+				AB8134391BEA0FA200726CE6 /* MKNetworkKit.framework */,
 				AB0F5F941C6DDDEA006ED63F /* MKNetworkKit.framework */,
 				AB0F5FAC1C6DDE16006ED63F /* MKNetworkKit.framework */,
 			);
@@ -323,14 +328,6 @@
 			);
 			name = iOSDemo;
 			path = MKNetworkKitDemo;
-			sourceTree = "<group>";
-		};
-		ABDCA0911C69B02100B9568E /* CommonCrypto */ = {
-			isa = PBXGroup;
-			children = (
-				ABDCA0AE1C69B6FC00B9568E /* module.map */,
-			);
-			path = CommonCrypto;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,7 +452,7 @@
 			);
 			name = "MKNetworkKit-OSX";
 			productName = MKNetworkKit;
-			productReference = AB8134391BEA0FA200726CE6 /* MKNetworkKit-OSX.framework */;
+			productReference = AB8134391BEA0FA200726CE6 /* MKNetworkKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		ABCF93821B2ECA1F0078CA66 /* MKNetworkKitDemo */ = {
@@ -652,6 +649,7 @@
 				AB81347E1BEA1E0500726CE6 /* NSDate.swift in Sources */,
 				AB8134671BEA13DE00726CE6 /* Request.swift in Sources */,
 				ABEB1AAD1C69A7DE00702A28 /* NSData.swift in Sources */,
+				AB0F5FB21C6DF6D2006ED63F /* NSURLSessionTask.swift in Sources */,
 				AB8134891BEA1E5200726CE6 /* NSHTTPURLResponse.swift in Sources */,
 				AB8134831BEA1E2E00726CE6 /* NSDictionary.swift in Sources */,
 				AB8134691BEA13EC00726CE6 /* Log.swift in Sources */,
@@ -744,7 +742,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "armv7k i386";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -777,7 +775,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "armv7k i386";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -809,7 +807,7 @@
 				PRODUCT_NAME = MKNetworkKit;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -841,7 +839,7 @@
 				PRODUCT_NAME = MKNetworkKit;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -873,7 +871,7 @@
 				PRODUCT_NAME = MKNetworkKit;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -905,7 +903,7 @@
 				PRODUCT_NAME = MKNetworkKit;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -952,11 +950,16 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.steinlogic.MKNetworkKit-OSX";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MKNetworkKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/OSX";
 				VALID_ARCHS = "i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -977,11 +980,16 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.steinlogic.MKNetworkKit-OSX";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MKNetworkKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/OSX";
 				VALID_ARCHS = "i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
