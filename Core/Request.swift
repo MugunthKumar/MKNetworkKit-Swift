@@ -209,7 +209,7 @@ public class Request {
           Request.runningRequestsUpdatedHandler?(Request.runningRequests.count)
         }
       }
-      if (state == .Completed || state == .Error || state == .Cancelled) {
+      if (state == .Completed || state == .Paused || state == .Error || state == .Cancelled) {
         dispatch_async(Request.runningRequestsSynchronizingQueue) {
           Request.runningRequests = Request.runningRequests.filter {$0 !== self}
           Request.runningRequestsUpdatedHandler?(Request.runningRequests.count)

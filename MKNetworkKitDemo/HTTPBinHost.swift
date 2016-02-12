@@ -35,6 +35,7 @@ class HTTPBinHost: Host {
     request.username = "user"
     request.password = "passwd"
     request.realm = "Fake Realm"
+
     request.completion { completedRequest -> Void in
       print (completedRequest.responseAsJSON)
       }.run()

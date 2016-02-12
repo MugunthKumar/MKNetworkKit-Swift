@@ -58,20 +58,6 @@ class FlickrClient: Host {
       }.run()
   }
 
-  func fetchOriginal () -> Void {
-    let request = super.request(withUrlString:"https://farm6.staticflickr.com/5687/22671477047_93a0eb3efc_o_d.jpg")
-    request.downloadPath = "\(NSHomeDirectory())/image.jpg"
-    request.progressChange { inProgressRequest in
-      print (inProgressRequest.progress)
-      }.completion { completedRequest in
-        if let error = completedRequest.error {
-          print ("Error \(error)")
-        } else {
-          print ("File saved to \(completedRequest.downloadPath)")
-        }
-    }.run()
-  }
-
   #if os(iOS) || os(watchOS) || os(tvOS)
   func fetchImage (imageURLString : String, completionHandler: (UIImage?) -> Void) -> Request {
     let request = super.request(withUrlString: imageURLString)

@@ -317,8 +317,44 @@
                     <view key="view" contentMode="scaleToFill" id="QHB-D7-YAS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgc-av-vtf">
+                                <rect key="frame" x="464" y="96" width="120" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="8gX-8r-x8c"/>
+                                    <constraint firstAttribute="height" constant="30" id="aPb-EZ-3VR"/>
+                                </constraints>
+                                <state key="normal" title="Download"/>
+                                <connections>
+                                    <action selector="downloadPauseResumeButtonAction:" destination="P42-WX-tBs" eventType="touchUpInside" id="pCc-j1-zku"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://farm6.staticflickr.com/5687/22671477047_93a0eb3efc_o_d.jpg" borderStyle="roundedRect" placeholder="Enter a URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QoA-Pk-M3w">
+                                <rect key="frame" x="16" y="96" width="440" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TnM-Rx-7Vx">
+                                <rect key="frame" x="16" y="134" width="440" height="2"/>
+                            </progressView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Hgc-av-vtf" firstAttribute="leading" secondItem="QoA-Pk-M3w" secondAttribute="trailing" constant="8" id="44R-kx-xGe"/>
+                            <constraint firstItem="QoA-Pk-M3w" firstAttribute="leading" secondItem="QHB-D7-YAS" secondAttribute="leading" constant="16" id="CrB-Sm-LOj"/>
+                            <constraint firstItem="Hgc-av-vtf" firstAttribute="top" secondItem="QoA-Pk-M3w" secondAttribute="top" id="J0t-zk-o6w"/>
+                            <constraint firstItem="QoA-Pk-M3w" firstAttribute="top" secondItem="1ny-Og-wOn" secondAttribute="bottom" constant="32" id="PXD-46-LHw"/>
+                            <constraint firstItem="TnM-Rx-7Vx" firstAttribute="trailing" secondItem="QoA-Pk-M3w" secondAttribute="trailing" id="PaW-JH-i7Z"/>
+                            <constraint firstItem="TnM-Rx-7Vx" firstAttribute="leading" secondItem="QoA-Pk-M3w" secondAttribute="leading" id="UJ9-NH-bDW"/>
+                            <constraint firstItem="TnM-Rx-7Vx" firstAttribute="top" secondItem="QoA-Pk-M3w" secondAttribute="bottom" constant="8" id="XDN-JN-42O"/>
+                            <constraint firstAttribute="trailing" secondItem="Hgc-av-vtf" secondAttribute="trailing" constant="16" id="d5O-do-yui"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="downloadPauseResumeButton" destination="Hgc-av-vtf" id="bcu-ii-7ez"/>
+                        <outlet property="progressView" destination="TnM-Rx-7Vx" id="bSA-eC-41o"/>
+                        <outlet property="textField" destination="QoA-Pk-M3w" id="Sff-tt-6ZU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lpN-Yw-gCT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -389,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bvz-zw-Atj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2134" y="-1514"/>
+            <point key="canvasLocation" x="2297" y="-1504"/>
         </scene>
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">

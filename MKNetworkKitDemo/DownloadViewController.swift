@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import MKNetworkKit
 
-class DownloadViewController: UIViewController {
+class DownloadViewController: UIViewController, UIDocumentInteractionControllerDelegate {
+
+  @IBOutlet var downloadPauseResumeButton: UIButton!
+  @IBOutlet var textField: UITextField!
+  @IBOutlet var progressView: UIProgressView!
+
+  var request: Request?
 
   var flickrHost: FlickrClient {
     return (UIApplication.sharedApplication().delegate as! AppDelegate).flickrHost
@@ -16,23 +23,63 @@ class DownloadViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    flickrHost.fetchOriginal()
+    progressView.alpha = 0
   }
 
+  @IBAction func downloadPauseResumeButtonAction(sender: AnyObject) {
+
+    if let unwrappedRequest = request {
+      if unwrappedRequest.state == .Paused {
+        unwrappedRequest.resume()
+        downloadPauseResumeButton.setTitle("Pause", forState: .Normal)
+      } else {
+        unwrappedRequest.pause()
+        downloadPauseResumeButton.setTitle("Resume", forState: .Normal)
+      }
+    } else {
+      downloadPauseResumeButton.setTitle("Pause", forState: .Normal)
+      progressView.alpha = 1
+      request = flickrHost.request(withUrlString:textField.text!)
+      let path = "\(NSHomeDirectory())/image.jpg"
+      request?.downloadPath = path
+      do {
+        try NSFileManager.defaultManager().removeItemAtPath(path)
+      } catch let error as NSError {
+        print (error)
+      }
+      request?.progressChange { inProgressRequest in
+        dispatch_async(dispatch_get_main_queue()) {
+          self.progressView.progress = Float(inProgressRequest.progress!)
+        }
+        }.completion { completedRequest in
+          dispatch_async(dispatch_get_main_queue()) {
+            self.progressView.alpha = 0
+            self.downloadPauseResumeButton.setTitle("Download", forState: .Normal)
+            self.request = nil
+          }
+          if let error = completedRequest.error {
+            print ("Error \(error)")
+          } else {
+            dispatch_async(dispatch_get_main_queue()) {
+              self.presentFile(completedRequest.downloadPath!)
+            }
+          }
+        }.run()
+    }
+  }
+
+  func presentFile(fileUrl: String) {
+    let controller = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: fileUrl))
+    controller.delegate = self
+    controller.presentPreviewAnimated(true)
+  }
+
+  func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
+    return self
+  }
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-
-
-  /*
-  // MARK: - Navigation
-
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-  // Get the new view controller using segue.destinationViewController.
-  // Pass the selected object to the new view controller.
-  }
-  */
-
 }
