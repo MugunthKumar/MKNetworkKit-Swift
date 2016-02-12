@@ -52,6 +52,7 @@ public enum State: String, CustomStringConvertible {
   case Started = "Started"
   case ResponseAvailableFromCache = "ResponseAvailableFromCache"
   case StaleResponseAvailableFromCache = "StaleResponseAvailableFromCache"
+  case Paused = "Paused"
   case Cancelled = "Cancelled"
   case Completed = "Completed"
   case Error = "Error"
@@ -192,6 +193,9 @@ public class Request {
         for handler in completionHandlers {
           handler(self)
         }
+
+      case .Paused:
+        task?.suspend()
 
       case .Cancelled:
         task?.cancel()
@@ -457,7 +461,21 @@ public class Request {
     }
     return self
   }
-  
+
+  public func pause() -> Request {
+    if state == .Started {
+      state = .Paused
+    }
+    return self
+  }
+
+  public func resume() -> Request {
+    if state == .Paused {
+      state = .Started
+    }
+    return self
+  }
+
   public func run(alwaysLoad alwaysLoad: Bool? = nil, ignoreCache: Bool? = nil, doNotCache: Bool? = nil) -> Request {
     if let unwrappedAlwaysLoad = alwaysLoad {
       self.alwaysLoad = unwrappedAlwaysLoad

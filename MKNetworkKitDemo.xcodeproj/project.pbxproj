@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB0F5F761C6DA0D0006ED63F /* DemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F5F751C6DA0D0006ED63F /* DemoListViewController.swift */; };
+		AB0F5F781C6DA34D006ED63F /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F5F771C6DA34D006ED63F /* DownloadViewController.swift */; };
 		AB18DB901BC3F3AF00E25793 /* MKNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; };
 		AB18DB971BC3F3AF00E25793 /* MKNetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */; };
-		AB7394051C69EF2800E91571 /* AuthTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7394041C69EF2800E91571 /* AuthTestViewController.swift */; };
 		AB7A41BE1C6AF74C0030B70C /* NSURLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */; };
 		AB7A41C31C6B2BA00030B70C /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C11C6B26120030B70C /* Queue.swift */; };
 		AB7A41C61C6B3D430030B70C /* QueueOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C41C6B3D3A0030B70C /* QueueOperation.swift */; };
@@ -117,13 +118,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AB0F5F751C6DA0D0006ED63F /* DemoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoListViewController.swift; sourceTree = "<group>"; };
+		AB0F5F771C6DA34D006ED63F /* DownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 		AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB18DB881BC3F3AF00E25793 /* MKNetworkKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkKit.h; sourceTree = "<group>"; };
 		AB18DB8A1BC3F3AF00E25793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB18DB8F1BC3F3AF00E25793 /* MKNetworkKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MKNetworkKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKNetworkKitTests.swift; sourceTree = "<group>"; };
 		AB18DB981BC3F3AF00E25793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB7394041C69EF2800E91571 /* AuthTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTestViewController.swift; sourceTree = "<group>"; };
 		AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionTask.swift; sourceTree = "<group>"; };
 		AB7A41C11C6B26120030B70C /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		AB7A41C41C6B3D3A0030B70C /* QueueOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueOperation.swift; sourceTree = "<group>"; };
@@ -314,7 +316,8 @@
 				ABDCA0B81C69BCD300B9568E /* TestClient.swift */,
 				ABDCA0BC1C69C08900B9568E /* UploadViewController.swift */,
 				ABDCA0BF1C69E70100B9568E /* HTTPBinHost.swift */,
-				AB7394041C69EF2800E91571 /* AuthTestViewController.swift */,
+				AB0F5F751C6DA0D0006ED63F /* DemoListViewController.swift */,
+				AB0F5F771C6DA34D006ED63F /* DownloadViewController.swift */,
 			);
 			path = MKNetworkKitDemo;
 			sourceTree = "<group>";
@@ -602,8 +605,9 @@
 				ABCF93891B2ECA1F0078CA66 /* FlickrImageListViewController.swift in Sources */,
 				ABCF93871B2ECA1F0078CA66 /* AppDelegate.swift in Sources */,
 				ABEB1AAA1C69A7DE00702A28 /* NSData.swift in Sources */,
-				AB7394051C69EF2800E91571 /* AuthTestViewController.swift in Sources */,
 				ABCF93BA1B2ECB830078CA66 /* FlickrClient.swift in Sources */,
+				AB0F5F781C6DA34D006ED63F /* DownloadViewController.swift in Sources */,
+				AB0F5F761C6DA0D0006ED63F /* DemoListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

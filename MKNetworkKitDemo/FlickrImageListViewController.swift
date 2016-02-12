@@ -13,7 +13,6 @@ class FlickrImageListViewController: UITableViewController {
   var detailViewController: FlickrImageDetailViewController? = nil
   var images = [FlickrImage]()
 
-
   override func awakeFromNib() {
     super.awakeFromNib()
     if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
@@ -40,8 +39,6 @@ class FlickrImageListViewController: UITableViewController {
           self.tableView.reloadData()
         }
       }
-
-      flickrHost.fetchOriginal()
     }
   }
 

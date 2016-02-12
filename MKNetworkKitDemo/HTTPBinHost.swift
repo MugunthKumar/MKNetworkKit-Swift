@@ -51,7 +51,7 @@ class HTTPBinHost: Host {
       }.run()
   }
 
-  func performQueueTest() {
+  func performQueuedRequests() {
     guard let request10 = request(withPath: "stream/10") else { return }
     guard let request20 = request(withPath: "stream/20") else { return }
     guard let request30 = request(withPath: "streadm/30") else { return }
