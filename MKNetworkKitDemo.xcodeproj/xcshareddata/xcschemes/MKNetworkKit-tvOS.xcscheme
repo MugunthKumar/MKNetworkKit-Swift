@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0710"
+   LastUpgradeVersion = "0720"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AB8134291BEA0FA200726CE6"
-               BuildableName = "MKNetworkKit-OSX.framework"
-               BlueprintName = "MKNetworkKit-OSX"
+               BlueprintIdentifier = "AB0F5F961C6DDE16006ED63F"
+               BuildableName = "MKNetworkKit-tvOS.framework"
+               BlueprintName = "MKNetworkKit-tvOS"
                ReferencedContainer = "container:MKNetworkKitDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AB8134291BEA0FA200726CE6"
-            BuildableName = "MKNetworkKit-OSX.framework"
-            BlueprintName = "MKNetworkKit-OSX"
+            BlueprintIdentifier = "AB0F5F961C6DDE16006ED63F"
+            BuildableName = "MKNetworkKit-tvOS.framework"
+            BlueprintName = "MKNetworkKit-tvOS"
             ReferencedContainer = "container:MKNetworkKitDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AB8134291BEA0FA200726CE6"
-            BuildableName = "MKNetworkKit-OSX.framework"
-            BlueprintName = "MKNetworkKit-OSX"
+            BlueprintIdentifier = "AB0F5F961C6DDE16006ED63F"
+            BuildableName = "MKNetworkKit-tvOS.framework"
+            BlueprintName = "MKNetworkKit-tvOS"
             ReferencedContainer = "container:MKNetworkKitDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -33,6 +33,9 @@
 import Foundation
 import UIKit
 import ImageIO
+#if os(watchOS)
+  import WatchKit
+#endif
 
 // MARK: Extension methods on String to load a remote image
 extension String {
@@ -52,8 +55,19 @@ extension String {
 
 extension Request {
   public var responseAsImage: UIImage? {
+    var token: dispatch_once_t = 0
+    var scale: CGFloat = 2.0
+    dispatch_once(&token) {
+      #if os(watchOS)
+        scale = WKInterfaceDevice.currentDevice().screenScale
+      #endif
+      #if os(iOS)
+        scale = UIScreen.mainScreen().scale
+      #endif
+    }
+
     if let data = responseData {
-      return UIImage(data:data, scale: UIScreen.mainScreen().scale)
+      return UIImage(data:data, scale: scale)
     } else {
       return nil
     }
@@ -64,7 +78,19 @@ extension Request {
     guard let source = CGImageSourceCreateWithData(data as CFDataRef, nil) else { return nil }
     guard let cgImage = CGImageSourceCreateImageAtIndex(source, 0,
       [(kCGImageSourceShouldCache as String): false]) else { return nil }
-    return UIImage(CGImage: cgImage, scale: UIScreen.mainScreen().scale, orientation: .Up)
+
+    var token: dispatch_once_t = 0
+    var scale: CGFloat = 2.0
+    dispatch_once(&token) {
+      #if os(watchOS)
+        scale = WKInterfaceDevice.currentDevice().screenScale
+      #endif
+      #if os(iOS)
+        scale = UIScreen.mainScreen().scale
+      #endif
+    }
+
+    return UIImage(CGImage: cgImage, scale: scale, orientation: .Up)
   }
 
   public static var automaticNetworkActivityIndicator: Bool = false {

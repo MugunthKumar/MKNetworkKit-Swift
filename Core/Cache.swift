@@ -69,7 +69,7 @@ public class Cache<T>: CustomDebugStringConvertible {
       }
     }
 
-    #if os(iOS) || os(watchOS) || os(tvOS)
+    #if os(iOS) || os(tvOS)
       NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationDidReceiveMemoryWarningNotification,
         object: nil, queue: nil, usingBlock: { (_) in
           self.flushToDisk()

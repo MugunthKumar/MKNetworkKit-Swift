@@ -34,6 +34,7 @@
 import Foundation
 import UIKit
 
+#if os(iOS) || os(tvOS)
 extension UIAlertController {
   public func show(error: NSError) {
     let alertController = UIAlertController(title: error.localizedFailureReason ?? error.localizedDescription,
@@ -42,3 +43,4 @@ extension UIAlertController {
     UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
   }
 }
+#endif
