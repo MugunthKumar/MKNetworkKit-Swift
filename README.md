@@ -42,7 +42,7 @@ github "MugunthKumar/MKNetworkKit-Swift"
 Run `carthage update` to build the framework and drag the built `MKNetworkKit.framework` into your Xcode project.
 
 ###How to use
-WIP.
+Documentation is available on the [Wiki page](https://github.com/MugunthKumar/MKNetworkKit-Swift/Wiki)
 
 ###Licensing
 MKNetworkKit is licensed under MIT License
