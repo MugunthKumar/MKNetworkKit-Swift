@@ -4,7 +4,7 @@
 
 [![Gitter](https://badges.gitter.im/MugunthKumar/MKNetworkKit-Swift.svg)](https://gitter.im/MugunthKumar/MKNetworkKit-Swift?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Twitter](https://img.shields.io/badge/twitter-@MugunthKumar-brightgreen.svg?style=flat)](http://twitter.com/MugunthKumar)
+[![Twitter](https://img.shields.io/badge/twitter-@MugunthKumar-orange.svg?style=flat)](http://twitter.com/MugunthKumar)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MugunthKumar/MKNetworkKit-Swift/blob/master/LICENSE.md)
 [![Supported Platforms](https://img.shields.io/badge/platform-iOS%20%7C%20watch%20OS%20%7C%20tvOS%20%7C%20OSX-yellowgreen.svg)](https://github.com/MugunthKumar/MKNetworkKit-Swift/Wiki)
 
