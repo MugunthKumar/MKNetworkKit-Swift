@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AB0F5F7E1C6DDDEA006ED63F"
-               BuildableName = "MKNetworkKit-watchOS.framework"
+               BuildableName = "MKNetworkKit.framework"
                BlueprintName = "MKNetworkKit-watchOS"
                ReferencedContainer = "container:MKNetworkKitDemo.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB0F5F7E1C6DDDEA006ED63F"
-            BuildableName = "MKNetworkKit-watchOS.framework"
+            BuildableName = "MKNetworkKit.framework"
             BlueprintName = "MKNetworkKit-watchOS"
             ReferencedContainer = "container:MKNetworkKitDemo.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB0F5F7E1C6DDDEA006ED63F"
-            BuildableName = "MKNetworkKit-watchOS.framework"
+            BuildableName = "MKNetworkKit.framework"
             BlueprintName = "MKNetworkKit-watchOS"
             ReferencedContainer = "container:MKNetworkKitDemo.xcodeproj">
          </BuildableReference>
