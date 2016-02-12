@@ -805,8 +805,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
 				PRODUCT_NAME = MKNetworkKit;
+				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
@@ -837,8 +838,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
 				PRODUCT_NAME = MKNetworkKit;
+				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";

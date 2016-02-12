@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AB0F5F961C6DDE16006ED63F"
-               BuildableName = "MKNetworkKit-tvOS.framework"
+               BuildableName = "MKNetworkKit.framework"
                BlueprintName = "MKNetworkKit-tvOS"
                ReferencedContainer = "container:MKNetworkKitDemo.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB0F5F961C6DDE16006ED63F"
-            BuildableName = "MKNetworkKit-tvOS.framework"
+            BuildableName = "MKNetworkKit.framework"
             BlueprintName = "MKNetworkKit-tvOS"
             ReferencedContainer = "container:MKNetworkKitDemo.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB0F5F961C6DDE16006ED63F"
-            BuildableName = "MKNetworkKit-tvOS.framework"
+            BuildableName = "MKNetworkKit.framework"
             BlueprintName = "MKNetworkKit-tvOS"
             ReferencedContainer = "container:MKNetworkKitDemo.xcodeproj">
          </BuildableReference>
