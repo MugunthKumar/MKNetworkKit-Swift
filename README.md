@@ -9,9 +9,7 @@
 
 ---
 This is version 3.0 of MKNetworkKit. 
-Version 3 is a complete rewrite loosely based on version 2 that was released in October 2015.
-
-Version 1.x of MKNetworkKit is deprecated as NSURLConnection is deprecated in iOS 9 and is not available on tvOS.
+Version 3 is a complete rewrite loosely based on [version 2](https://github.com/MugunthKumar/MKNetworkKit) that was released in October 2015.
 
 ###Why MKNetworkKit?
 
@@ -36,9 +34,11 @@ Link your project against `SystemConfiguration.framework` if you haven't already
 #### Carthage
 To integrate MKNetworkKit into your Xcode project using Carthage, specify it in your `Cartfile`:
 ```
-github "MugunthKumar/MKNetworkKit-Swift"
+github "MugunthKumar/MKNetworkKit-Swift" "master"
 ```
 Run `carthage update` to build the framework and drag the built `MKNetworkKit.framework` into your Xcode project.
+
+We will release a stable tagged version soon.
 
 ###How to use
 Documentation is available on the [Wiki page](https://github.com/MugunthKumar/MKNetworkKit-Swift/Wiki)
