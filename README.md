@@ -27,9 +27,9 @@ These are just a few of the most interesting features on MKNetworkKit.
 
 ###Installation
 #### Manual
-Add this repository as a submodule in your project.
-Drag the `Core` directory into your  project. 
-Link your project against `SystemConfiguration.framework` if you haven't already
+1. Add this repository as a submodule in your project.
+2. Drag the `Core` directory into your  project. 
+3. Link your project against `SystemConfiguration.framework` if you haven't already
 
 #### Carthage
 To integrate MKNetworkKit into your Xcode project using Carthage, specify it in your `Cartfile`:
