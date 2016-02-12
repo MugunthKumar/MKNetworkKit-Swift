@@ -25,6 +25,7 @@ Version 1.x of MKNetworkKit is deprecated as NSURLConnection is deprecated in iO
 * cURL-able debug lines
 
 These are just a few of the most interesting features on MKNetworkKit.
+
 ---
 
 ###Installation
@@ -34,6 +35,7 @@ Drag the `Core` directory into your  project.
 Link your project against `SystemConfiguration.framework` if you haven't already
 
 #### Carthage
+WIP
 
 ###How to use
 WIP.
