@@ -1,6 +1,6 @@
 # MKNetworkKit
 #### An simple, elegant and easy to use networking framework in Swift 2.0
-
+[![Build Status](https://travis-ci.org/MugunthKumar/MKNetworkKit-Swift.svg?branch=master)](https://travis-ci.org/MugunthKumar/MKNetworkKit-Swift)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Twitter](https://img.shields.io/badge/twitter-@MugunthKumar-orange.svg?style=flat)](http://twitter.com/MugunthKumar)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MugunthKumar/MKNetworkKit-Swift/blob/master/LICENSE.md)
