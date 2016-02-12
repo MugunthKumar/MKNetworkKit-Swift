@@ -35,7 +35,11 @@ Drag the `Core` directory into your  project.
 Link your project against `SystemConfiguration.framework` if you haven't already
 
 #### Carthage
-WIP
+To integrate MKNetworkKit into your Xcode project using Carthage, specify it in your `Cartfile`:
+```
+github "MugunthKumar/MKNetworkKit-Swift"
+```
+Run `carthage update` to build the framework and drag the built `MKNetworkKit.framework` into your Xcode project.
 
 ###How to use
 WIP.
