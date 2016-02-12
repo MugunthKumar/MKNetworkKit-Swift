@@ -135,7 +135,7 @@ public class Request {
   public var multipartEntities = [String:MultipartEntity]()
   public var bodyData: NSData?
 
-  public var progress: Double? {
+  public var progressValue: Double? {
     didSet {
       for handler in progressHandlers {
         handler(self)
@@ -424,7 +424,7 @@ public class Request {
     return displayString
   }
 
-  public var responseAsString: AnyObject? {
+  public var responseAsString: String? {
     guard let responseData: NSData = responseData else { return nil }
     return String(data: responseData, encoding: NSUTF8StringEncoding)
   }
@@ -440,7 +440,7 @@ public class Request {
     }
   }
 
-  public func progressChange (handler: (Request) -> Void) -> Request {
+  public func progress (handler: (Request) -> Void) -> Request {
     progressHandlers.append(handler)
     return self
   }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AB0F5F761C6DA0D0006ED63F /* DemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F5F751C6DA0D0006ED63F /* DemoListViewController.swift */; };
 		AB0F5F781C6DA34D006ED63F /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F5F771C6DA34D006ED63F /* DownloadViewController.swift */; };
+		AB0F5F7D1C6DC5B7006ED63F /* CRUDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F5F7C1C6DC5B7006ED63F /* CRUDViewController.swift */; };
 		AB18DB901BC3F3AF00E25793 /* MKNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; };
 		AB18DB971BC3F3AF00E25793 /* MKNetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */; };
 		AB7A41BE1C6AF74C0030B70C /* NSURLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */; };
@@ -94,6 +95,7 @@
 		AB0F5F751C6DA0D0006ED63F /* DemoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoListViewController.swift; sourceTree = "<group>"; };
 		AB0F5F771C6DA34D006ED63F /* DownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 		AB0F5F7A1C6DC4D7006ED63F /* osx.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = osx.plist; sourceTree = "<group>"; };
+		AB0F5F7C1C6DC5B7006ED63F /* CRUDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRUDViewController.swift; sourceTree = "<group>"; };
 		AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB18DB8F1BC3F3AF00E25793 /* MKNetworkKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MKNetworkKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKNetworkKitTests.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				ABDCA0BF1C69E70100B9568E /* HTTPBinHost.swift */,
 				AB0F5F751C6DA0D0006ED63F /* DemoListViewController.swift */,
 				AB0F5F771C6DA34D006ED63F /* DownloadViewController.swift */,
+				AB0F5F7C1C6DC5B7006ED63F /* CRUDViewController.swift */,
 			);
 			name = iOSDemo;
 			path = MKNetworkKitDemo;
@@ -504,6 +507,7 @@
 			files = (
 				ABCF93BD1B2ECB830078CA66 /* FlickrImage.swift in Sources */,
 				ABCF938B1B2ECA1F0078CA66 /* FlickrImageDetailViewController.swift in Sources */,
+				AB0F5F7D1C6DC5B7006ED63F /* CRUDViewController.swift in Sources */,
 				ABDCA0B91C69BCD300B9568E /* TestClient.swift in Sources */,
 				ABDCA0C01C69E70100B9568E /* HTTPBinHost.swift in Sources */,
 				ABCF93C01B2ECB830078CA66 /* FlickrImageCell.swift in Sources */,

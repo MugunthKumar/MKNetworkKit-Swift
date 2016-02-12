@@ -25,6 +25,7 @@ class DemoListViewController: UITableViewController {
   }
 
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
     if indexPath.section == TableView.AuthenticationSection.rawValue {
       if indexPath.row == 0 {
         host.performBasicAuthentication {}
@@ -39,6 +40,25 @@ class DemoListViewController: UITableViewController {
 
     if indexPath.section == TableView.QueueSection.rawValue {
       host.performQueuedRequests()
+    }
+  }
+
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "showGET" {
+      let controller = segue.destinationViewController as! CRUDViewController
+      controller.method = .GET
+    }
+    if segue.identifier == "showPOST" {
+      let controller = segue.destinationViewController as! CRUDViewController
+      controller.method = .POST
+    }
+    if segue.identifier == "showPUT" {
+      let controller = segue.destinationViewController as! CRUDViewController
+      controller.method = .PUT
+    }
+    if segue.identifier == "showDELETE" {
+      let controller = segue.destinationViewController as! CRUDViewController
+      controller.method = .DELETE
     }
   }
 }

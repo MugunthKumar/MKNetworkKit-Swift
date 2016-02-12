@@ -48,6 +48,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="S8B-G6-Hac" kind="show" identifier="showGET" id="M4n-qh-N7I"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="K9H-IN-Tma" style="IBUITableViewCellStyleDefault" id="fNC-37-5EN">
                                         <rect key="frame" x="0.0" y="136" width="600" height="44"/>
@@ -65,6 +68,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="S8B-G6-Hac" kind="show" identifier="showPOST" id="E6g-Zl-IDY"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Q5I-dQ-gNV" style="IBUITableViewCellStyleDefault" id="TAP-SM-yrW">
                                         <rect key="frame" x="0.0" y="180" width="600" height="44"/>
@@ -82,6 +88,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="S8B-G6-Hac" kind="show" identifier="showPUT" id="3Ap-Ez-wy8"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="6g7-Aj-9uw" style="IBUITableViewCellStyleDefault" id="Nhw-UZ-s6V">
                                         <rect key="frame" x="0.0" y="224" width="600" height="44"/>
@@ -99,6 +108,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="S8B-G6-Hac" kind="show" identifier="showDELETE" id="WnQ-2a-E9s"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -306,6 +318,41 @@
             </objects>
             <point key="canvasLocation" x="-852" y="-254"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="tZF-hv-r7b">
+            <objects>
+                <viewController id="S8B-G6-Hac" customClass="CRUDViewController" customModule="MKNetworkKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y5z-XC-kDR"/>
+                        <viewControllerLayoutGuide type="bottom" id="d9n-XJ-jsB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="baV-U6-y9B">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dNP-y2-Pfi">
+                                <rect key="frame" x="16" y="80" width="568" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d9n-XJ-jsB" firstAttribute="top" secondItem="dNP-y2-Pfi" secondAttribute="bottom" constant="16" id="25V-OC-g1m"/>
+                            <constraint firstAttribute="trailing" secondItem="dNP-y2-Pfi" secondAttribute="trailing" constant="16" id="Uxd-gW-pqq"/>
+                            <constraint firstItem="dNP-y2-Pfi" firstAttribute="top" secondItem="y5z-XC-kDR" secondAttribute="bottom" constant="16" id="pzP-TM-3NR"/>
+                            <constraint firstItem="dNP-y2-Pfi" firstAttribute="leading" secondItem="baV-U6-y9B" secondAttribute="leading" constant="16" id="x0B-e7-klW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="dNP-y2-Pfi" id="qHZ-tD-RxX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d9g-XT-QA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1714" y="-1914"/>
+        </scene>
         <!--Download View Controller-->
         <scene sceneID="aDa-PL-Nr5">
             <objects>
@@ -358,7 +405,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lpN-Yw-gCT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1532" y="-1896"/>
+            <point key="canvasLocation" x="2126" y="-2016"/>
         </scene>
         <!--Choose Image-->
         <scene sceneID="z1S-zQ-bgf">
@@ -501,6 +548,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="3Ap-Ez-wy8"/>
         <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>
 </document>

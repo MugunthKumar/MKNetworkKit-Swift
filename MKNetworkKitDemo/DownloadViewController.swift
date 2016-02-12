@@ -47,9 +47,9 @@ class DownloadViewController: UIViewController, UIDocumentInteractionControllerD
       } catch let error as NSError {
         print (error)
       }
-      request?.progressChange { inProgressRequest in
+      request?.progress { inProgressRequest in
         dispatch_async(dispatch_get_main_queue()) {
-          self.progressView.progress = Float(inProgressRequest.progress!)
+          self.progressView.progress = Float(inProgressRequest.progressValue!)
         }
         }.completion { completedRequest in
           dispatch_async(dispatch_get_main_queue()) {

@@ -384,12 +384,12 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDownloadDeleg
   //MARK: - Progress markers
   public func URLSession(session: NSURLSession, task: NSURLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
     let progress = Double(totalBytesSent) / Double(totalBytesExpectedToSend)
-    task.request?.progress = progress
+    task.request?.progressValue = progress
   }
 
   public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
     let progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
-    downloadTask.request?.progress = progress
+    downloadTask.request?.progressValue = progress
   }
 
   public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
