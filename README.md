@@ -1,6 +1,5 @@
 # MKNetworkKit
----
-#### A networking framework in Swift 2.0 compatible with iOS 8, tvOS 9, watchOS 2 and OSX 10.10
+#### An simple, elegant and easy to use networking framework in Swift 2.0
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Twitter](https://img.shields.io/badge/twitter-@MugunthKumar-orange.svg?style=flat)](http://twitter.com/MugunthKumar)
