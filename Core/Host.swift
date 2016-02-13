@@ -57,11 +57,13 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDownloadDeleg
       if let unwrappedDirectory = cacheDirectory {
         dataCache = Cache(directoryName: "\(unwrappedDirectory)/Data")
         responseCache = Cache(directoryName: "\(unwrappedDirectory)/Response")
+        resumeDataCache = Cache(directoryName: "\(unwrappedDirectory)/ResumeData")
       }
     }
   }
 
   private var dataCache: Cache<NSData>?
+  private var resumeDataCache: Cache<NSData>?
   private var responseCache: Cache<NSHTTPURLResponse>?
 
   func emptyCache() {
@@ -87,7 +89,12 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDownloadDeleg
         self.cacheDirectory = unwrappedDirectory
         dataCache = Cache(directoryName: "\(unwrappedDirectory)/Data")
         responseCache = Cache(directoryName: "\(unwrappedDirectory)/Response")
+        resumeDataCache = Cache(directoryName: "\(unwrappedDirectory)/ResumeData")
+      } else {
+        resumeDataCache = Cache(cost: 10)
       }
+
+
 
       super.init()
 
@@ -190,7 +197,12 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDownloadDeleg
 //    if backgroundSessionCompletionHandler == nil {
 //      print("application:handleEventsForBackgroundURLSession:completionHandler: is not implemented in your application delegate. Download tasks will not resume properly after the app is backgrounded. Implement the method and set the completionHandler value to the host's backgroundSessionCompletionHandler")
 //    }
-    request.task = backgroundSession.downloadTaskWithRequest(urlRequest)
+
+    if let resumeData = resumeDataCache?[request.equalityIdentifier] {
+      request.task = backgroundSession.downloadTaskWithResumeData(resumeData)
+    } else {
+      request.task = backgroundSession.downloadTaskWithRequest(urlRequest)
+    }
     request.task!.request = request
     request.state = .Started
   }
@@ -305,6 +317,10 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDownloadDeleg
       if task.response == nil {
         task.request?.state = .Error
         return
+      }
+
+      if let infoDictionary = error?.userInfo {
+        resumeDataCache?[task.request!.equalityIdentifier] = infoDictionary[NSURLSessionDownloadTaskResumeData as NSObject] as? NSData
       }
 
       var statusCode: Int = 0

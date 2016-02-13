@@ -42,10 +42,12 @@ class DownloadViewController: UIViewController, UIDocumentInteractionControllerD
       request = flickrHost.request(withUrlString:textField.text!)
       let path = "\(NSHomeDirectory())/image.jpg"
       request?.downloadPath = path
-      do {
-        try NSFileManager.defaultManager().removeItemAtPath(path)
-      } catch let error as NSError {
-        print (error)
+      if NSFileManager.defaultManager().fileExistsAtPath(path) {
+        do {
+          try NSFileManager.defaultManager().removeItemAtPath(path)
+        } catch let error as NSError {
+          print (error)
+        }
       }
       request?.progress { inProgressRequest in
         dispatch_async(dispatch_get_main_queue()) {

@@ -155,6 +155,7 @@ public class Cache<T>: CustomDebugStringConvertible {
         let lruValue = self.inMemoryCache[lruKey]
         if let valueToCache = lruValue {
           self.cacheToDisk(lruKey, valueToCache)
+          self.inMemoryCache.removeValueForKey(lruKey)
         }
       }
     }
