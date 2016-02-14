@@ -43,7 +43,7 @@ extension NSURLSessionTask {
       return objc_getAssociatedObject(self, &AssociatedKeys.RequestKey) as? Request
     }
     set (newValue) {
-      objc_setAssociatedObject(self, &AssociatedKeys.RequestKey, newValue, .OBJC_ASSOCIATION_ASSIGN)
+      objc_setAssociatedObject(self, &AssociatedKeys.RequestKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
   }
 }

@@ -41,6 +41,9 @@ class DownloadViewController: UIViewController, UIDocumentInteractionControllerD
       progressView.alpha = 1
       request = flickrHost.request(withUrlString:textField.text!)
       let path = "\(NSHomeDirectory())/image.jpg"
+//      if let outputStream = NSOutputStream(toFileAtPath: path, append: true) {
+//        request?.appendOutputStream(outputStream)
+//      }
       request?.downloadPath = path
       if NSFileManager.defaultManager().fileExistsAtPath(path) {
         do {
@@ -63,7 +66,7 @@ class DownloadViewController: UIViewController, UIDocumentInteractionControllerD
             print ("Error \(error)")
           } else {
             dispatch_async(dispatch_get_main_queue()) {
-              self.presentFile(completedRequest.downloadPath!)
+              self.presentFile(path)
             }
           }
         }.run()

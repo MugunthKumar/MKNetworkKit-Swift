@@ -41,12 +41,16 @@ import AppKit
 
 public class Cache<T>: CustomDebugStringConvertible {
 
+  //MARK:- Properties
   var fileExtension: String
   var directory: String
+  var cacheCost: Int = 10
 
+  //MARK:- Cache Storage
   var inMemoryCache: [String:T] = [String:T]()
   var recentKeys: [String] = [String]()
-  var cacheCost: Int = 10
+
+  //MARK:- Queue
   var queue: dispatch_queue_t = dispatch_queue_create("com.mknetworkkit.cachequeue", DISPATCH_QUEUE_SERIAL)
   var diskQueue: dispatch_queue_t = dispatch_queue_create("com.mknetworkkit.diskqueue", DISPATCH_QUEUE_SERIAL)
 
@@ -54,7 +58,7 @@ public class Cache<T>: CustomDebugStringConvertible {
     return directory
   }
 
-  // MARK: Initializer
+  // MARK:- Designated Initializer
   public init(cost: Int = 10, directoryName: String = "AppCache", fileExtension: String = "cachearchive") {
     let cachesDirectory = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
     directory = cachesDirectory + "/" + directoryName
@@ -105,7 +109,7 @@ public class Cache<T>: CustomDebugStringConvertible {
     #endif
   }
 
-  // MARK: Disk cache related methods
+  // MARK:- Disk cache
   func makePath(key: String) -> String {
     return "\(self.directory)/\(key).\(fileExtension)"
   }
@@ -127,7 +131,7 @@ public class Cache<T>: CustomDebugStringConvertible {
     }
   }
 
-  //MARK: Caching methods
+  //MARK:- Caching methods
   subscript(key: String) -> T? {
     get {
       if let valueToBeReturned = inMemoryCache[key] {
@@ -148,24 +152,19 @@ public class Cache<T>: CustomDebugStringConvertible {
     }
   }
 
+  // MARK:- Cleanup related methods
   func enforceMemoryCost() {
-    if recentKeys.count > cacheCost {
-      dispatch_async(self.queue) {
-        let lruKey = self.recentKeys.removeLast()
-        let lruValue = self.inMemoryCache[lruKey]
-        if let valueToCache = lruValue {
-          self.cacheToDisk(lruKey, valueToCache)
-          self.inMemoryCache.removeValueForKey(lruKey)
-        }
+    if recentKeys.count <= cacheCost { return }
+    dispatch_async(self.queue) {
+      let lruKey = self.recentKeys.removeLast()
+      let lruValue = self.inMemoryCache[lruKey]
+      if let valueToCache = lruValue {
+        self.cacheToDisk(lruKey, valueToCache)
+        self.inMemoryCache.removeValueForKey(lruKey)
       }
     }
   }
 
-  func enforceDiskCost() {
-    
-  }
-
-  // MARK: Cleanup related methods
   func flushToDisk() {
     for (key, value) in inMemoryCache {
       cacheToDisk(key, value)
@@ -189,6 +188,7 @@ public class Cache<T>: CustomDebugStringConvertible {
     }
   }
 
+  // MARK:- De-initalizer
   deinit {
     #if os(iOS)
       NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)

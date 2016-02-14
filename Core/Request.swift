@@ -32,6 +32,7 @@
 
 import Foundation
 
+// MARK: Parameter Encoding
 public enum ParameterEncoding: String, CustomStringConvertible {
   case URL = "URL"
   case JSON = "JSON"
@@ -47,6 +48,7 @@ public enum ParameterEncoding: String, CustomStringConvertible {
   }
 }
 
+// MARK:- State
 public enum State: String, CustomStringConvertible {
   case Ready = "Ready"
   case Started = "Started"
@@ -59,6 +61,7 @@ public enum State: String, CustomStringConvertible {
   public var description: String { return self.rawValue }
 }
 
+// MARK:- HTTP Method
 public enum HTTPMethod: String, CustomStringConvertible {
   case GET = "GET"
   case POST = "POST"
@@ -71,6 +74,7 @@ public enum HTTPMethod: String, CustomStringConvertible {
   public var description: String { return self.rawValue }
 }
 
+// MARK:- Authentication Method
 public enum AuthenticationMethod: RawRepresentable {
   case HTTPBasic
   case HTTPDigest
@@ -95,6 +99,7 @@ public enum AuthenticationMethod: RawRepresentable {
   }
 }
 
+// MARK:- Multipart Entity
 public struct MultipartEntity {
   let mimetype: String
   let suggestedFileName: String
@@ -121,19 +126,80 @@ public struct MultipartEntity {
 }
 
 public class Request {
+
+  // MARK:- Properties to manage Running Requests
   static private var runningRequestsSynchronizingQueue =
-  dispatch_queue_create("com.mknetworkkit.tasks.queue", DISPATCH_QUEUE_SERIAL)
+  dispatch_queue_create("com.mknetworkkit.request.queue", DISPATCH_QUEUE_SERIAL)
   static private var runningRequests = [Request]()
   static internal var runningRequestsUpdatedHandler: ((Int) -> Void)?
 
-  public var url: String
-  public var method = HTTPMethod.GET
-  public var parameters = [String:AnyObject]()
-  public var headers = [String:String]()
-  public var parameterEncoding = ParameterEncoding.URL
+  // MARK:- URL Properties
+  internal var url: String
+  internal var method = HTTPMethod.GET
+  internal var parameters = [String:AnyObject]()
+  internal var headers = [String:String]()
+  internal var parameterEncoding = ParameterEncoding.URL
 
-  public var multipartEntities = [String:MultipartEntity]()
-  public var bodyData: NSData?
+  internal var multipartEntities = [String:MultipartEntity]()
+  internal var bodyData: NSData?
+
+  // MARK:- Stream Properties
+  public var inputStream: NSInputStream?
+  internal var outputStream = [NSOutputStream]()
+  public var downloadPath: String?
+
+  // MARK:- Opaque References
+  internal weak var task: NSURLSessionTask?
+  internal weak var host: Host!
+
+  // MARK:- Authentication Properties
+  public var username: String?
+  public var password: String?
+  public var realm: String?
+  public var authenticationMethod = AuthenticationMethod.HTTPBasic
+  public var clientCertificate: String?
+  public var clientCertificatePassword: String?
+
+  internal var requiresAuthentication: Bool {
+    return (username != nil && password != nil && realm != nil)
+  }
+
+  var credential: NSURLCredential? {
+    var credentialToReturn: NSURLCredential? = nil
+    if requiresAuthentication {
+      credentialToReturn = NSURLCredential(user: username!, password: password!, persistence: .ForSession)
+    }
+    return credentialToReturn
+  }
+
+  var protectionSpace: NSURLProtectionSpace? {
+    var protectionSpaceToReturn: NSURLProtectionSpace? = nil
+
+    if let url = request?.URL {
+      var portNumber: Int!
+      if let p = url.port {
+        portNumber = p.integerValue
+      } else {
+        if url.scheme == "https" {
+          portNumber = 443
+        } else {
+          portNumber = 80
+        }
+      }
+      protectionSpaceToReturn = NSURLProtectionSpace(host: url.host!, port: portNumber,
+        `protocol`: url.scheme, realm: realm,
+        authenticationMethod: authenticationMethod.rawValue)
+    }
+    return protectionSpaceToReturn
+  }
+
+  // MARK:- State Change Handlers
+  public var stateWillChange: (Request -> Void)?
+  public var stateDidChange: (Request -> Void)?
+
+  // MARK:- Progress And Completion Handlers
+  private var progressHandlers = Array<Request -> Void>()
+  private var completionHandlers = Array<Request -> Void>()
 
   public var progressValue: Double? {
     didSet {
@@ -142,27 +208,64 @@ public class Request {
       }
     }
   }
-  public var task: NSURLSessionTask?
-  public weak var host: Host!
 
-  public var username: String?
-  public var password: String?
-  public var realm: String?
-  public var authenticationMethod = AuthenticationMethod.HTTPBasic
-
-  public var clientCertificate: String?
-  public var clientCertificatePassword: String?
-  
-  public var downloadPath: String?
-
-  internal var requiresAuthentication: Bool {
-    return (username != nil && password != nil && realm != nil)
-  }
-
+  // MARK:- Cache Handling Properties
   public var doNotCache: Bool = false
   public var ignoreCache: Bool = false
   public var alwaysLoad: Bool = false
 
+  internal var cachedDataHash: String?
+  internal var equalityIdentifier: String {
+    var string: String = "\(arc4random())"
+    if let unwrappedRequest = request {
+      if ![.POST, .PUT, .PATCH, .OPTIONS].contains(method) {
+        string = "\(method.rawValue.uppercaseString) \(unwrappedRequest.URL!.absoluteString)"
+      }
+    }
+    if let unwrappedUsername = username {
+      string += unwrappedUsername
+    }
+    if let unwrappedPassword = password {
+      string += unwrappedPassword
+    }
+    return string
+  }
+
+  internal var cacheble: Bool {
+    if method != .GET {
+      return false
+    }
+    if doNotCache {
+      return false
+    }
+    if requiresAuthentication {
+      return false
+    }
+    return true
+  }
+
+  // MARK:- Request State
+  public func cancel() -> Request {
+    if state == .Started {
+      state = .Cancelled
+    }
+    return self
+  }
+
+  public func pause() -> Request {
+    if state == .Started {
+      state = .Paused
+    }
+    return self
+  }
+
+  public func resume() -> Request {
+    if state == .Paused {
+      state = .Started
+    }
+    return self
+  }
+  
   public var state: State = .Ready {
     willSet {
       stateWillChange?(self)
@@ -186,7 +289,7 @@ public class Request {
           log()
         }
         if state == .Completed && cachedDataHash != nil {
-          if responseData?.md5 == cachedDataHash {
+          if responseData.md5 == cachedDataHash {
             break
           }
         }
@@ -218,6 +321,7 @@ public class Request {
     }
   }
 
+  // MARK:- URL Request Preparation
   var request: NSURLRequest? {
     var finalUrl: String
     switch(method) {
@@ -287,75 +391,12 @@ public class Request {
     return urlRequest
   }
 
-  var credential: NSURLCredential? {
-    var credentialToReturn: NSURLCredential? = nil
-    if requiresAuthentication {
-      credentialToReturn = NSURLCredential(user: username!, password: password!, persistence: .ForSession)
-    }
-    return credentialToReturn
-  }
-
-  var protectionSpace: NSURLProtectionSpace? {
-    var protectionSpaceToReturn: NSURLProtectionSpace? = nil
-
-    if let url = request?.URL {
-      var portNumber: Int!
-      if let p = url.port {
-        portNumber = p.integerValue
-      } else {
-        if url.scheme == "https" {
-          portNumber = 443
-        } else {
-          portNumber = 80
-        }
-      }
-      protectionSpaceToReturn = NSURLProtectionSpace(host: url.host!, port: portNumber,
-        `protocol`: url.scheme, realm: realm,
-        authenticationMethod: authenticationMethod.rawValue)
-    }
-    return protectionSpaceToReturn
-  }
-
-  var cachedDataHash: String?
-  var responseData: NSData?
-  var response: NSHTTPURLResponse?
-
+  // MARK:- Response Properties
+  internal var responseData = NSMutableData()
+  internal var response: NSHTTPURLResponse?
   public var error: NSError?
 
-  var equalityIdentifier: String {
-    var string: String = "\(arc4random())"
-    if let unwrappedRequest = request {
-      if ![.POST, .PUT, .PATCH, .OPTIONS].contains(method) {
-        string = "\(method.rawValue.uppercaseString) \(unwrappedRequest.URL!.absoluteString)"
-      }
-    }
-    if let unwrappedUsername = username {
-      string += unwrappedUsername
-    }
-    if let unwrappedPassword = password {
-      string += unwrappedPassword
-    }
-    return string
-  }
-
-  var cacheble: Bool {
-    if method != .GET {
-      return false
-    }
-    if doNotCache {
-      return false
-    }
-    if requiresAuthentication {
-      return false
-    }
-    return true
-  }
-
-  public var stateWillChange: (Request -> Void)?
-  public var stateDidChange: (Request -> Void)?
-  private var progressHandlers = Array<Request -> Void>()
-  private var completionHandlers = Array<Request -> Void>()
-
+  // MARK:- Designated Initializer
   init(method: HTTPMethod = .GET,
     url: String,
     parameters: [String:AnyObject] = [:],
@@ -368,6 +409,7 @@ public class Request {
       self.bodyData = bodyData
   }
 
+  // MARK:- Tweaking your Request
   public func append(headers additionalHeaders: [String:String] = [:],
     parameters additionalParameters: [String:AnyObject] = [:]) {
       for (k, v) in additionalHeaders {
@@ -390,6 +432,11 @@ public class Request {
     multipartEntities.updateValue(value, forKey: key)
   }
 
+  public func appendOutputStream(stream: NSOutputStream) {
+    outputStream.append(stream)
+  }
+
+  // MARK:- Adding Authorization to your Request
   public func appendBasicAuthorizationHeader(username username: String, password: String) {
     let authString = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!.base64EncodedStringWithOptions(.EncodingEndLineWithCarriageReturn)
     appendAuthorizationHeader(type: "Basic", value: authString)
@@ -398,6 +445,7 @@ public class Request {
     appendHeader("Authorization", value: "\(type) \(value)")
   }
 
+  // MARK:- Printing and Debug String Support
   public var description: String {
     return asCurlCommand
   }
@@ -424,6 +472,12 @@ public class Request {
     return displayString
   }
 
+  public func log() -> Request {
+    Log.info(self.asCurlCommand)
+    return self
+  }
+
+  // MARK:- Response Formatters
   public var responseAsString: String? {
     guard let responseData: NSData = responseData else { return nil }
     return String(data: responseData, encoding: NSUTF8StringEncoding)
@@ -450,32 +504,7 @@ public class Request {
     return self
   }
 
-  public func log() -> Request {
-    Log.info(self.asCurlCommand)
-    return self
-  }
-
-  public func cancel() -> Request {
-    if state == .Started {
-      state = .Cancelled
-    }
-    return self
-  }
-
-  public func pause() -> Request {
-    if state == .Started {
-      state = .Paused
-    }
-    return self
-  }
-
-  public func resume() -> Request {
-    if state == .Paused {
-      state = .Started
-    }
-    return self
-  }
-
+  // MARK:- Running the request
   public func run(alwaysLoad alwaysLoad: Bool? = nil, ignoreCache: Bool? = nil, doNotCache: Bool? = nil) -> Request {
     if let unwrappedAlwaysLoad = alwaysLoad {
       self.alwaysLoad = unwrappedAlwaysLoad
@@ -486,11 +515,7 @@ public class Request {
     if let unwrappedDoNotCache = doNotCache {
       self.doNotCache = unwrappedDoNotCache
     }
-    if self.downloadPath == nil {
-      host.startRequest(self)
-    } else {
-      host.startDownloadRequest(self)
-    }
+    host.run(self)
     return self
   }
 }

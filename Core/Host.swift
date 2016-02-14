@@ -35,23 +35,23 @@ import Foundation
 
 let DefaultCacheDuration:NSTimeInterval = 60 // 1 minute
 
-public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDownloadDelegate {
+public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, NSURLSessionDownloadDelegate {
 
-  var defaultSession: NSURLSession!
+  // MARK:- Properties
+  public var name: String?
+  private var path: String?
+  private var portNumber: Int?
+  private var defaultHeaders: [String:String]
+  public var secure: Bool = true // ATS, so true! Yay!
+
+  // MARK:- Sessions
+  private var defaultSession: NSURLSession!
   private var ephermeralSession: NSURLSession!
-
   private var backgroundSession: NSURLSession!
   public var backgroundSessionCompletionHandler: (Void -> Void)?
   public var backgroundSessionIdentifier: String = "com.mknetworkkit.backgroundsessionidentifier"
 
-  private var defaultHeaders: [String:String]
-
-  var authenticationHandler: ((session: NSURLSession, task: NSURLSessionTask,  challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) -> Void)?
-
-  public var name: String?
-  private var path: String?
-  private var portNumber: Int?
-
+  // MARK:- Cache Handling
   public var cacheDirectory: String? {
     didSet {
       if let unwrappedDirectory = cacheDirectory {
@@ -66,13 +66,14 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDownloadDeleg
   private var resumeDataCache: Cache<NSData>?
   private var responseCache: Cache<NSHTTPURLResponse>?
 
-  func emptyCache() {
+  public func emptyCache() {
     dataCache?.emptyCache()
     responseCache?.emptyCache()
   }
 
-  public var secure: Bool = true // ATS, so true! Yay!
+  public var authenticationHandler: ((session: NSURLSession, task: NSURLSessionTask,  challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) -> Void)?
 
+  // MARK:- Designated Initializer
   public init(name: String? = nil,
     path: String? = nil,
     defaultHeaders: [String:String] = [:],
@@ -93,8 +94,6 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDownloadDeleg
       } else {
         resumeDataCache = Cache(cost: 10)
       }
-
-
 
       super.init()
 
@@ -118,6 +117,7 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDownloadDeleg
         delegate: self, delegateQueue: NSOperationQueue.mainQueue())
   }
 
+  // MARK:- Request preparation
   public func request(withUrlString urlString: String) -> Request {
     let request = Request(url: urlString)
     request.host = self
@@ -169,6 +169,7 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDownloadDeleg
       return customizeRequest(request)
   }
 
+  // MARK:- Customization Opportunities for Subclasses
   public func customizeRequest(request: Request) -> Request {
     if !request.cacheble || request.ignoreCache {
       return request
@@ -188,236 +189,148 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDownloadDeleg
     return request.error
   }
 
-  public func startDownloadRequest(request: Request) {
+  // MARK:- Running the Request
+  public func run(request: Request) {
     guard let urlRequest = request.request else {
       Log.error("Request is nil, check your URL and other parameters you use to build your request")
       return
     }
 
-//    if backgroundSessionCompletionHandler == nil {
-//      print("application:handleEventsForBackgroundURLSession:completionHandler: is not implemented in your application delegate. Download tasks will not resume properly after the app is backgrounded. Implement the method and set the completionHandler value to the host's backgroundSessionCompletionHandler")
-//    }
+    let sessionToUse = request.requiresAuthentication ? ephermeralSession: defaultSession
 
-    if let resumeData = resumeDataCache?[request.equalityIdentifier] {
-      request.task = backgroundSession.downloadTaskWithResumeData(resumeData)
-    } else {
-      request.task = backgroundSession.downloadTaskWithRequest(urlRequest)
-    }
-    request.task!.request = request
-    request.state = .Started
-  }
+    if request.downloadPath == nil { // create a data task
+      if request.cacheble && !request.ignoreCache {
+        if let cachedResponse = responseCache?[request.equalityIdentifier] {
+          let cacheExpiryDate = cachedResponse.cacheExpiryDate
+          let expiryTimeFromNow = cacheExpiryDate?.timeIntervalSinceNow ?? DefaultCacheDuration
 
-  public func startRequest(request: Request) {
-    guard let urlRequest = request.request else {
-      Log.error("Request is nil, check your URL and other parameters you use to build your request")
-      return
-    }
-
-    if request.cacheble && !request.ignoreCache {
-      if let cachedResponse = responseCache?[request.equalityIdentifier] {
-        let cacheExpiryDate = cachedResponse.cacheExpiryDate
-        let expiryTimeFromNow = cacheExpiryDate?.timeIntervalSinceNow ?? DefaultCacheDuration
-
-        if let data = dataCache?[request.equalityIdentifier] {
-          request.responseData = data
-          request.response = cachedResponse
-          request.cachedDataHash = data.md5
-
-          if expiryTimeFromNow > 0 {
-            request.state = .ResponseAvailableFromCache
+          if let data = dataCache?[request.equalityIdentifier] {
+            request.responseData = data.mutableCopy() as! NSMutableData
+            request.response = cachedResponse
             request.cachedDataHash = data.md5
 
-            if !request.alwaysLoad {
-              request.state = .Completed
-              return
+            if expiryTimeFromNow > 0 {
+              request.state = .ResponseAvailableFromCache
+              request.cachedDataHash = data.md5
+
+              if !request.alwaysLoad {
+                request.state = .Completed
+                return
+              }
+            } else {
+              request.state = .StaleResponseAvailableFromCache
             }
-          } else {
-            request.state = .StaleResponseAvailableFromCache
           }
         }
       }
-    }
 
-    let sessionToUse: NSURLSession = request.requiresAuthentication ? ephermeralSession: defaultSession
+      request.task = sessionToUse.dataTaskWithRequest(urlRequest)
 
-    request.task = sessionToUse.dataTaskWithRequest(urlRequest) {[unowned self]
-      (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
-
-      request.responseData = data
-      request.response = response as? NSHTTPURLResponse
-      request.error = error
-
-      if request.state == .Cancelled {
-        return
-      }
-
-      if response == nil {
-        request.state = .Error
-        return
-      }
-
-      var statusCode: Int = 0
-      if request.response != nil {
-        statusCode = request.response!.statusCode
-      }
-
-      switch (statusCode) {
-      case 304:
-        request.responseData = nil
-
-      case 400..<600:
-        var userInfo = [String:AnyObject]()
-        if let unwrappedResponse = response {
-          userInfo["response"] = unwrappedResponse
-        }
-        if let unwrappedError = error {
-          userInfo["error"] = unwrappedError
-        }
-        userInfo[NSLocalizedFailureReasonErrorKey] = "\(statusCode) " + NSHTTPURLResponse.localizedStringForStatusCode(statusCode)
-        request.error = NSError(domain: "com.mknetworkkit.httperrordomain", code: statusCode, userInfo: userInfo)
-        request.error = self.customizeError(request)
-
-      default:
-        break
-      }
-
-      if request.error == nil {
-        if request.cacheble {
-          self.dataCache?[request.equalityIdentifier] = request.responseData
-          self.responseCache?[request.equalityIdentifier] = request.response
-        }
-        request.state = .Completed
+    } else if request.inputStream != nil {
+      request.task = sessionToUse.uploadTaskWithStreamedRequest(urlRequest)
+    } else {
+      if let resumeData = resumeDataCache?[request.equalityIdentifier] {
+        request.task = backgroundSession.downloadTaskWithResumeData(resumeData)
       } else {
-        request.state = .Error
+        request.task = backgroundSession.downloadTaskWithRequest(urlRequest)
       }
     }
 
+    request.task!.request = request
     if request.requiresAuthentication {
       ephermeralSession.configuration.URLCredentialStorage?.setDefaultCredential(request.credential!
         , forProtectionSpace: request.protectionSpace!, task: request.task!)
     }
 
-    request.task!.request = request
     request.state = .Started
   }
 
-  //MARK: - Completion Handler for background tasks
+  //MARK:- Completion Handler (used for upload and download tasks)
   public func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+
+    if task.request!.error == nil { // this could be set if the downloaded file can't be moved
+      task.request!.error = error
+    }
+
+    if task.request!.state == .Cancelled {
+      return
+    }
+
+    if task.request!.response == nil {
+      task.request!.state = .Error
+      return
+    }
+
+    for stream in task.request!.outputStream {
+      stream.close()
+    }
+
+    var statusCode: Int = 0
+    if let response = task.request!.response {
+      statusCode = response.statusCode
+    }
+
+    switch (statusCode) {
+    case 304:
+      task.request!.responseData = NSMutableData() // clear the data
+
+    case 400..<600:
+      var userInfo = [String:AnyObject]()
+      if let unwrappedResponse = task.request!.response {
+        userInfo["response"] = unwrappedResponse
+      }
+      if let unwrappedError = error {
+        userInfo["error"] = unwrappedError
+      }
+      userInfo[NSLocalizedFailureReasonErrorKey] = "\(statusCode) " + NSHTTPURLResponse.localizedStringForStatusCode(statusCode)
+      task.request!.error = NSError(domain: "com.mknetworkkit.httperrordomain", code: statusCode, userInfo: userInfo)
+      task.request!.error = self.customizeError(task.request!)
+
+    default:
+      break
+    }
+
     if session == backgroundSession {
-      //let request = !
-      task.request?.response = task.response as? NSHTTPURLResponse
-      if task.request?.error == nil { // this could be set if the downloaded file can't be moved
-        task.request?.error = error
-      }
-
-      if task.request?.state == .Cancelled {
-        return
-      }
-
-      if task.response == nil {
-        task.request?.state = .Error
-        return
-      }
-
       if let infoDictionary = error?.userInfo {
         resumeDataCache?[task.request!.equalityIdentifier] = infoDictionary[NSURLSessionDownloadTaskResumeData as NSObject] as? NSData
       }
-
-      var statusCode: Int = 0
-      if let response = task.request?.response {
-        statusCode = response.statusCode
-      }
-
-      if statusCode >= 400 && statusCode < 600 {
-        var userInfo = [String:AnyObject]()
-        if let unwrappedResponse = task.response {
-          userInfo["response"] = unwrappedResponse
-        }
-        if let unwrappedError = error {
-          userInfo["error"] = unwrappedError
-        }
-        userInfo[NSLocalizedFailureReasonErrorKey] = "\(statusCode) " + NSHTTPURLResponse.localizedStringForStatusCode(statusCode)
-        task.request?.error = NSError(domain: "com.mknetworkkit.httperrordomain", code: statusCode, userInfo: userInfo)
-        task.request?.error = self.customizeError(task.request!)
-      }
-
-      if task.request?.error == nil {
-        task.request?.state = .Completed
-      } else {
-        task.request?.state = .Error
-      }
     }
-  }
 
-  //MARK: - Auth related
-  public func URLSession(session: NSURLSession, task: NSURLSessionTask, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) {
-
-    if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
-      if let trust = challenge.protectionSpace.serverTrust {
-        // TODO: - Add certificate pinning later here
-        let credential = NSURLCredential(forTrust: trust)
-        completionHandler(.UseCredential, credential)
-      } else {
-        completionHandler(.CancelAuthenticationChallenge, nil)
-      }
-    } else if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodClientCertificate {
-      guard let certificate = task.request?.clientCertificate else {
-        completionHandler(.CancelAuthenticationChallenge, nil)
-        return
-      }
-      do {
-        let certificateData = try NSData(contentsOfFile: certificate, options: .DataReadingMappedIfSafe)
-        let password = task.request?.clientCertificatePassword
-        let identityAndTrust:IdentityAndTrust = extractIdentity(certificateData, certPassword: password)
-        let urlCredential:NSURLCredential = NSURLCredential(identity: identityAndTrust.identityRef,
-          certificates: identityAndTrust.certArray as [AnyObject],
-          persistence: .ForSession)
-        completionHandler(.UseCredential, urlCredential)
-      }
-      catch let error as NSError {
-        print (error)
-        completionHandler(.CancelAuthenticationChallenge, nil)
-      }
-    } else if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodHTTPBasic ||
-      challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodHTTPDigest ||
-      challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodNTLM {
-        if challenge.previousFailureCount == 3 {
-          completionHandler(.RejectProtectionSpace, nil)
-        } else {
-          if let credential = session.configuration.URLCredentialStorage?.defaultCredentialForProtectionSpace(challenge.protectionSpace) {
-            completionHandler(.UseCredential, credential)
-          } else {
-            completionHandler(.CancelAuthenticationChallenge, nil)
-          }
+    if task.request!.error == nil {
+      if session == defaultSession {
+        if task.request!.cacheble {
+          self.dataCache?[task.request!.equalityIdentifier] = task.request!.responseData
+          self.responseCache?[task.request!.equalityIdentifier] = task.request!.response
         }
-    } else if let authenticationHandler = authenticationHandler {
-      authenticationHandler(session: session, task: task, challenge: challenge, completionHandler: completionHandler)
+      }
+      task.request!.state = .Completed
     } else {
-      completionHandler(.CancelAuthenticationChallenge, nil)
+      task.request!.state = .Error
     }
   }
 
-  //MARK: - Progress markers
+  //MARK:- Progress Notifications
   public func URLSession(session: NSURLSession, task: NSURLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
     let progress = Double(totalBytesSent) / Double(totalBytesExpectedToSend)
-    task.request?.progressValue = progress
+    task.request!.progressValue = progress
   }
 
   public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
     let progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
-    downloadTask.request?.progressValue = progress
+    downloadTask.request!.progressValue = progress
   }
 
+  //MARK:- Downloading to File
   public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
 
-    guard let path = downloadTask.request?.downloadPath else {
+    guard let path = downloadTask.request!.downloadPath else {
       print ("downloadPath not set in your Request. Unable to move downloaded file")
       return
     }
     do {
       try NSFileManager.defaultManager().moveItemAtPath(location.path!, toPath: path)
     } catch let error as NSError {
-      downloadTask.request?.error = error
+      downloadTask.request!.error = error
     }
   }
 
@@ -433,6 +346,35 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDownloadDeleg
     }
   }
 
+  // MARK:- Input Streaming
+  public func URLSession(session: NSURLSession, task: NSURLSessionTask, needNewBodyStream completionHandler: (NSInputStream?) -> Void) {
+    completionHandler(task.request!.inputStream)
+  }
+
+  // MARK:- Output Streaming
+  public func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void) {
+    // Open streams if any
+    for stream in dataTask.request!.outputStream {
+      stream.open()
+    }
+    if dataTask.request!.outputStream.count == 0 {
+      dataTask.request!.responseData = NSMutableData()
+    }
+
+    dataTask.request!.response = response as? NSHTTPURLResponse
+    completionHandler(.Allow)
+  }
+
+  public func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+    for stream in dataTask.request!.outputStream {
+      stream.write(UnsafePointer<UInt8>(data.bytes), maxLength: data.length)
+    }
+    if dataTask.request!.outputStream.count == 0 {
+      dataTask.request!.responseData.appendData(data)
+    }
+  }
+
+  // MARK:- Identify and Trust Validation from Certificate
   struct IdentityAndTrust {
     var identityRef:SecIdentityRef
     var trust:SecTrustRef
@@ -478,5 +420,52 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDownloadDeleg
       }
     }
     return identityAndTrust
+  }
+
+  public func URLSession(session: NSURLSession, task: NSURLSessionTask, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) {
+
+    if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+      if let trust = challenge.protectionSpace.serverTrust {
+        // TODO: - Add certificate pinning later here
+        let credential = NSURLCredential(forTrust: trust)
+        completionHandler(.UseCredential, credential)
+      } else {
+        completionHandler(.CancelAuthenticationChallenge, nil)
+      }
+    } else if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodClientCertificate {
+      guard let certificate = task.request!.clientCertificate else {
+        completionHandler(.CancelAuthenticationChallenge, nil)
+        return
+      }
+      do {
+        let certificateData = try NSData(contentsOfFile: certificate, options: .DataReadingMappedIfSafe)
+        let password = task.request!.clientCertificatePassword
+        let identityAndTrust:IdentityAndTrust = extractIdentity(certificateData, certPassword: password)
+        let urlCredential:NSURLCredential = NSURLCredential(identity: identityAndTrust.identityRef,
+          certificates: identityAndTrust.certArray as [AnyObject],
+          persistence: .ForSession)
+        completionHandler(.UseCredential, urlCredential)
+      }
+      catch let error as NSError {
+        print (error)
+        completionHandler(.CancelAuthenticationChallenge, nil)
+      }
+    } else if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodHTTPBasic ||
+      challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodHTTPDigest ||
+      challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodNTLM {
+        if challenge.previousFailureCount == 3 {
+          completionHandler(.RejectProtectionSpace, nil)
+        } else {
+          if let credential = session.configuration.URLCredentialStorage?.defaultCredentialForProtectionSpace(challenge.protectionSpace) {
+            completionHandler(.UseCredential, credential)
+          } else {
+            completionHandler(.CancelAuthenticationChallenge, nil)
+          }
+        }
+    } else if let authenticationHandler = authenticationHandler {
+      authenticationHandler(session: session, task: task, challenge: challenge, completionHandler: completionHandler)
+    } else {
+      completionHandler(.CancelAuthenticationChallenge, nil)
+    }
   }
 }

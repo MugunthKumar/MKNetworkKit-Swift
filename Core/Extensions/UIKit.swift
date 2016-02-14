@@ -66,16 +66,11 @@ extension Request {
       #endif
     }
 
-    if let data = responseData {
-      return UIImage(data:data, scale: scale)
-    } else {
-      return nil
-    }
+    return UIImage(data:responseData, scale: scale)
   }
 
   public var responseAsDecompressedImage: UIImage? {
-    guard let data = responseData else { return nil }
-    guard let source = CGImageSourceCreateWithData(data as CFDataRef, nil) else { return nil }
+    guard let source = CGImageSourceCreateWithData(responseData as CFDataRef, nil) else { return nil }
     guard let cgImage = CGImageSourceCreateImageAtIndex(source, 0,
       [(kCGImageSourceShouldCache as String): false]) else { return nil }
 
