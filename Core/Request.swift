@@ -164,7 +164,7 @@ public class Request {
     return (username != nil && password != nil && realm != nil)
   }
 
-  var credential: NSURLCredential? {
+  public var credential: NSURLCredential? {
     var credentialToReturn: NSURLCredential? = nil
     if requiresAuthentication {
       credentialToReturn = NSURLCredential(user: username!, password: password!, persistence: .ForSession)
@@ -172,7 +172,7 @@ public class Request {
     return credentialToReturn
   }
 
-  var protectionSpace: NSURLProtectionSpace? {
+  public var protectionSpace: NSURLProtectionSpace? {
     var protectionSpaceToReturn: NSURLProtectionSpace? = nil
 
     if let url = request?.URL {
@@ -322,7 +322,7 @@ public class Request {
   }
 
   // MARK:- URL Request Preparation
-  var request: NSURLRequest? {
+  public var request: NSURLRequest? {
     var finalUrl: String
     switch(method) {
     case .GET, .DELETE, .CONNECT, .TRACE:
