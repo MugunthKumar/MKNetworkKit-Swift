@@ -13,7 +13,7 @@
 
 import Foundation
 
-extension NSDate {
+public extension NSDate {
 
   private static func cachedThreadLocalObjectWithKey<T: AnyObject>(key: String, create: () -> T) -> T {
     let threadDictionary = NSThread.currentThread().threadDictionary

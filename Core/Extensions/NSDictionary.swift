@@ -33,8 +33,8 @@
 
 import Foundation
 
-extension Dictionary {
-  var URLEncodedString: String {
+public extension Dictionary {
+  public var URLEncodedString: String {
     var encodedString = self.reduce("") {
       let (key, value) = $1
       return "\($0)" + "\(key)=\(value)&"
@@ -51,7 +51,7 @@ extension Dictionary {
     return encodedString.stringByAddingPercentEncodingWithAllowedCharacters(filterSet) ?? ""
   }
 
-  var JSONString: String? {
+  public var JSONString: String? {
     let stringizedDictionary = self.map {(key, value) in
       return ["\(key)","\(value)"]
     }

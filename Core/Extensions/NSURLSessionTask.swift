@@ -33,12 +33,12 @@
 
 import Foundation
 
-extension NSURLSessionTask {
+public extension NSURLSessionTask {
   private struct AssociatedKeys {
     static var RequestKey = "com.steinlogic.mknetworkkit.associatedkeys.request"
   }
 
-  var request: Request? {
+  public var request: Request? {
     get {
       return objc_getAssociatedObject(self, &AssociatedKeys.RequestKey) as? Request
     }

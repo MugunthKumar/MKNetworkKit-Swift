@@ -33,7 +33,7 @@
 
 import Foundation
 
-extension NSHTTPURLResponse {
+public extension NSHTTPURLResponse {
 
   public func headerValue(key: String) -> String? {
     let lowercaseKey = String(key).lowercaseString
@@ -44,7 +44,8 @@ extension NSHTTPURLResponse {
     }
     return nil
   }
-  var isContentTypeImage: Bool {
+
+  public var isContentTypeImage: Bool {
     if let _ = headerValue("Content-Type")?.lowercaseString.rangeOfString("image") {
       return true
     } else {
@@ -52,7 +53,7 @@ extension NSHTTPURLResponse {
     }
   }
 
-  var cacheExpiryDate: NSDate? {
+  public var cacheExpiryDate: NSDate? {
     if let expiresOn = headerValue("Expires") {
       if let expiresOnDate = NSDate.dateFromRFC1123DateString(expiresOn) {
         return expiresOnDate

@@ -34,7 +34,7 @@
 import Foundation
 import AppKit
 
-extension NSAlert {
+public extension NSAlert {
   public func show(error: NSError) {
     let alert = NSAlert(error:error)
     alert.runModal()

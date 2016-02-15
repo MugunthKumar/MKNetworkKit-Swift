@@ -31,14 +31,11 @@
 //  THE SOFTWARE.
 //
 
-// This file requires CommonCrypto to be included in the Bridging Header
-// #import <CommonCrypto/CommonCrypto.h>
-
 import Foundation
 import CommonCrypto
 
-extension NSData {
-  var md5: String {
+public extension NSData {
+  public var md5: String {
     let digestLength = Int(CC_MD5_DIGEST_LENGTH)
     let md5Buffer = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLength)
 
