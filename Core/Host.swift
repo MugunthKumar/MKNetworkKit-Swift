@@ -42,6 +42,8 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
   private var path: String?
   private var portNumber: Int?
   private var defaultHeaders: [String:String]
+  public var defaultParameterEncoding: ParameterEncoding?
+
   public var secure: Bool = true // ATS, so true! Yay!
 
   // MARK:- Sessions
@@ -166,6 +168,9 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
 
       request.host = self // weak reference
       request.append(headers: defaultHeaders)
+      if let defaultParameterEncoding = defaultParameterEncoding {
+        request.parameterEncoding = defaultParameterEncoding
+      }
       return customizeRequest(request)
   }
 

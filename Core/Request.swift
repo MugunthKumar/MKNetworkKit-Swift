@@ -138,7 +138,7 @@ public class Request {
   internal var method = HTTPMethod.GET
   internal var parameters = [String:AnyObject]()
   internal var headers = [String:String]()
-  internal var parameterEncoding = ParameterEncoding.URL
+  public var parameterEncoding = ParameterEncoding.URL
 
   internal var multipartEntities = [String:MultipartEntity]()
   internal var bodyData: NSData?
