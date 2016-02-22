@@ -265,7 +265,7 @@ public class Request {
     }
     return self
   }
-  
+
   public var state: State = .Ready {
     willSet {
       stateWillChange?(self)
@@ -343,11 +343,13 @@ public class Request {
       urlRequest.setValue(headerValue, forHTTPHeaderField: headerField)
     }
 
-    urlRequest.setValue(parameterEncoding.contentType, forHTTPHeaderField: "Content-Type")
-
     let charset =
     CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)) as NSString
-    urlRequest.addValue("charset=\(charset)", forHTTPHeaderField: "Content-Type")
+    
+    if parameters.count > 0 {
+      urlRequest.setValue(parameterEncoding.contentType, forHTTPHeaderField: "Content-Type")
+      urlRequest.addValue("charset=\(charset)", forHTTPHeaderField: "Content-Type")
+    }
 
     if [.POST, .PUT, .PATCH, .OPTIONS].contains(method) {
       urlRequest.HTTPBody = parameters.URLEncodedString.dataUsingEncoding(NSUTF8StringEncoding)
