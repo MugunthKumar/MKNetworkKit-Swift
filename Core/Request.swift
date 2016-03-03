@@ -352,7 +352,12 @@ public class Request {
     }
 
     if [.POST, .PUT, .PATCH, .OPTIONS].contains(method) {
-      urlRequest.HTTPBody = parameters.URLEncodedString.dataUsingEncoding(NSUTF8StringEncoding)
+      if parameterEncoding == .URL {
+        urlRequest.HTTPBody = parameters.URLEncodedString.dataUsingEncoding(NSUTF8StringEncoding)
+      }
+      if parameterEncoding == .JSON {
+        urlRequest.HTTPBody = parameters.JSONString?.dataUsingEncoding(NSUTF8StringEncoding)
+      }
     }
 
     // this overrides body provided by parameter encoding.
