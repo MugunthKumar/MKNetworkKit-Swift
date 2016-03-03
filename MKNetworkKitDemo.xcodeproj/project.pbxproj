@@ -189,8 +189,8 @@
 		ABCF93B71B2ECB830078CA66 /* FlickrClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
 		ABCF93B81B2ECB830078CA66 /* FlickrImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrImage.swift; sourceTree = "<group>"; };
 		ABCF93B91B2ECB830078CA66 /* FlickrImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrImageCell.swift; sourceTree = "<group>"; };
-		ABD1438F1C87EC0A0040FFFA /* MKNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ABD143A71C87EC4C0040FFFA /* MKNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABD1438F1C87EC0A0040FFFA /* MKNetworkKitAppex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKNetworkKitAppex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABD143A71C87EC4C0040FFFA /* MKNetworkKitAppex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKNetworkKitAppex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD143A91C87ECC40040FFFA /* iOS-Appex.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "iOS-Appex.plist"; path = "Supporting Files/iOS-Appex.plist"; sourceTree = "<group>"; };
 		ABD143AA1C87ECC40040FFFA /* tvOS-Appex.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "tvOS-Appex.plist"; path = "Supporting Files/tvOS-Appex.plist"; sourceTree = "<group>"; };
 		ABDCA0A51C69B2F800B9568E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -352,8 +352,8 @@
 				AB8134391BEA0FA200726CE6 /* MKNetworkKit.framework */,
 				AB0F5F941C6DDDEA006ED63F /* MKNetworkKit.framework */,
 				AB0F5FAC1C6DDE16006ED63F /* MKNetworkKit.framework */,
-				ABD1438F1C87EC0A0040FFFA /* MKNetworkKit.framework */,
-				ABD143A71C87EC4C0040FFFA /* MKNetworkKit.framework */,
+				ABD1438F1C87EC0A0040FFFA /* MKNetworkKitAppex.framework */,
+				ABD143A71C87EC4C0040FFFA /* MKNetworkKitAppex.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -555,7 +555,7 @@
 			);
 			name = "MKNetworkKit-iOS-Appex";
 			productName = MKNetworkKit;
-			productReference = ABD1438F1C87EC0A0040FFFA /* MKNetworkKit.framework */;
+			productReference = ABD1438F1C87EC0A0040FFFA /* MKNetworkKitAppex.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		ABD143911C87EC4C0040FFFA /* MKNetworkKit-tvOS-Appex */ = {
@@ -573,7 +573,7 @@
 			);
 			name = "MKNetworkKit-tvOS-Appex";
 			productName = MKNetworkKit;
-			productReference = ABD143A71C87EC4C0040FFFA /* MKNetworkKit.framework */;
+			productReference = ABD143A71C87EC4C0040FFFA /* MKNetworkKitAppex.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1305,7 +1305,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
-				PRODUCT_NAME = MKNetworkKit;
+				PRODUCT_NAME = MKNetworkKitAppex;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
@@ -1339,7 +1339,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
-				PRODUCT_NAME = MKNetworkKit;
+				PRODUCT_NAME = MKNetworkKitAppex;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
@@ -1377,7 +1377,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
-				PRODUCT_NAME = MKNetworkKit;
+				PRODUCT_NAME = MKNetworkKitAppex;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
@@ -1412,7 +1412,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
-				PRODUCT_NAME = MKNetworkKit;
+				PRODUCT_NAME = MKNetworkKitAppex;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
