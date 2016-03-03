@@ -52,8 +52,10 @@ public extension Dictionary {
   }
 
   public var JSONString: String? {
-    let stringizedDictionary = self.map {(key, value) in
-      return ["\(key)","\(value)"]
+    
+    var stringizedDictionary = [String: String]()
+    for (key, value) in self {
+      stringizedDictionary["\(key)"] = "\(value)"
     }
     var data: NSData?
     do {

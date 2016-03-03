@@ -28,7 +28,7 @@ class CRUDViewController: UIViewController {
       }.run()
     }
     if method == .POST {
-      host.request(.POST, withPath: "post")?.completion { completedRequest in
+      host.request(.POST, withPath: "post", parameters: ["A": "a", "B": "b"])?.completion { completedRequest in
         dispatch_async(dispatch_get_main_queue()) {
           self.textView.text = completedRequest.responseAsString
         }
