@@ -31,16 +31,18 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
-import UIKit
-
+#if APPEX
+  import Foundation
+  import UIKit
+  
 #if os(iOS) || os(tvOS)
-public extension UIAlertController {
-  public func show(error: NSError) {
-    let alertController = UIAlertController(title: error.localizedFailureReason ?? error.localizedDescription,
-      message: error.localizedRecoverySuggestion,
-      preferredStyle: .Alert)
-    UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+  public extension UIAlertController {
+    public func show(error: NSError) {
+      let alertController = UIAlertController(title: error.localizedFailureReason ?? error.localizedDescription,
+        message: error.localizedRecoverySuggestion,
+        preferredStyle: .Alert)
+      UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+    }
   }
-}
+#endif
 #endif

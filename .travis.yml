@@ -6,9 +6,11 @@ env:
   - LANG=en_US.UTF-8
   - LC_ALL=en_US.UTF-8
   - IOS_FRAMEWORK_SCHEME="MKNetworkKit-iOS"
-  - OSX_FRAMEWORK_SCHEME="MKNetworkKit-OSX"
-  - TVOS_FRAMEWORK_SCHEME="MKNetworkKit-tvOS"
+  - IOS_APPEX_FRAMEWORK_SCHEME="MKNetworkKit-iOS-Appex"
   - WATCHOS_FRAMEWORK_SCHEME="MKNetworkKit-watchOS"
+  - TVOS_FRAMEWORK_SCHEME="MKNetworkKit-tvOS"
+  - TVOS_APPEX_FRAMEWORK_SCHEME="MKNetworkKit-tvOS-Appex"
+  - OSX_FRAMEWORK_SCHEME="MKNetworkKit-OSX"
   - DEMO_SCHEME="MKNetworkKitDemo"
   - TESTS_SCHEME="MKNetworkKitTests"
   - IOS_SDK=iphonesimulator9.2
@@ -18,8 +20,11 @@ env:
   matrix:
     - DESTINATION="OS=8.4,name=iPhone 5"           SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK"         RUN_AS_TEST="NO"
     - DESTINATION="OS=9.1,name=iPhone 6 Plus"      SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK"         RUN_AS_TEST="NO"   
+    - DESTINATION="OS=8.4,name=iPhone 5"           SCHEME="$IOS_APPEX_FRAMEWORK_SCHEME" SDK="$IOS_SDK"   RUN_AS_TEST="NO"
+    - DESTINATION="OS=9.1,name=iPhone 6 Plus"      SCHEME="$IOS_APPEX_FRAMEWORK_SCHEME" SDK="$IOS_SDK"   RUN_AS_TEST="NO"   
     - DESTINATION="arch=x86_64"                    SCHEME="$OSX_FRAMEWORK_SCHEME" SDK="$OSX_SDK"         RUN_AS_TEST="NO"
     - DESTINATION="OS=9.1,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME" SDK="$TVOS_SDK"       RUN_AS_TEST="NO"
+    - DESTINATION="OS=9.1,name=Apple TV 1080p"     SCHEME="$TVOS_APPEX_FRAMEWORK_SCHEME" SDK="$TVOS_SDK" RUN_AS_TEST="NO"
     - DESTINATION="OS=2.1,name=Apple Watch - 38mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_AS_TEST="NO"
     - DESTINATION="OS=9.1,name=iPhone 6 Plus"      SCHEME="$DEMO_SCHEME" SDK="$IOS_SDK"                  RUN_AS_TEST="NO" 
     - DESTINATION="OS=9.1,name=iPhone 6 Plus"      SCHEME="$TESTS_SCHEME" SDK="$IOS_SDK"                 RUN_AS_TEST="YES"  

@@ -88,6 +88,7 @@ extension Request {
     return UIImage(CGImage: cgImage, scale: scale, orientation: .Up)
   }
 
+  #if APPEX
   public static var automaticNetworkActivityIndicator: Bool = false {
     didSet {
       if automaticNetworkActivityIndicator {
@@ -101,4 +102,5 @@ extension Request {
       }
     }
   }
+  #endif
 }
