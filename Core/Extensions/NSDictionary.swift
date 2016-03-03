@@ -52,15 +52,9 @@ public extension Dictionary {
   }
 
   public var JSONString: String? {
-    
-    var stringizedDictionary = [String: String]()
-    for (key, value) in self {
-      stringizedDictionary["\(key)"] = "\(value)"
-    }
     var data: NSData?
     do {
-      try data = NSJSONSerialization.dataWithJSONObject(stringizedDictionary, options:
-        NSJSONWritingOptions.PrettyPrinted)
+      try data = NSJSONSerialization.dataWithJSONObject(self as! AnyObject, options:[])
     } catch let error as NSError {
       Log.warn(error)
     }
