@@ -346,7 +346,7 @@ public class Request {
     let charset =
     CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)) as NSString
     
-    if parameters.count > 0 {
+    if parameters.count > 0 && urlRequest.valueForHTTPHeaderField("Content-Type") == nil {
       urlRequest.setValue(parameterEncoding.contentType, forHTTPHeaderField: "Content-Type")
       urlRequest.addValue("charset=\(charset)", forHTTPHeaderField: "Content-Type")
     }
