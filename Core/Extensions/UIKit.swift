@@ -96,8 +96,8 @@ extension Request {
         Request.runningRequestsUpdatedHandler = { count in
           dispatch_async(dispatch_get_main_queue()) {
             #if os(iOS)
-              UIApplication.sharedApplication().networkActivityIndicatorVisible = count > 0
-            #endif
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = count > 0
+              #endif
           }
         }
       }

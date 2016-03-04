@@ -76,7 +76,6 @@
 		ABD1437E1C87EC0A0040FFFA /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134781BEA1E0500726CE6 /* UIKit.swift */; };
 		ABD1437F1C87EC0A0040FFFA /* QueueOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C41C6B3D3A0030B70C /* QueueOperation.swift */; };
 		ABD143801C87EC0A0040FFFA /* NSURLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */; };
-		ABD143811C87EC0A0040FFFA /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB81348A1BEA1E9C00726CE6 /* UIAlertController.swift */; };
 		ABD143821C87EC0A0040FFFA /* NSHTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */; };
 		ABD143831C87EC0A0040FFFA /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C11C6B26120030B70C /* Queue.swift */; };
 		ABD143841C87EC0A0040FFFA /* NSDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */; };
@@ -90,7 +89,6 @@
 		ABD143961C87EC4C0040FFFA /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134781BEA1E0500726CE6 /* UIKit.swift */; };
 		ABD143971C87EC4C0040FFFA /* QueueOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C41C6B3D3A0030B70C /* QueueOperation.swift */; };
 		ABD143981C87EC4C0040FFFA /* NSURLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */; };
-		ABD143991C87EC4C0040FFFA /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB81348A1BEA1E9C00726CE6 /* UIAlertController.swift */; };
 		ABD1439A1C87EC4C0040FFFA /* NSHTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */; };
 		ABD1439B1C87EC4C0040FFFA /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C11C6B26120030B70C /* Queue.swift */; };
 		ABD1439C1C87EC4C0040FFFA /* NSDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */; };
@@ -806,7 +804,6 @@
 				ABD1437E1C87EC0A0040FFFA /* UIKit.swift in Sources */,
 				ABD1437F1C87EC0A0040FFFA /* QueueOperation.swift in Sources */,
 				ABD143801C87EC0A0040FFFA /* NSURLSessionTask.swift in Sources */,
-				ABD143811C87EC0A0040FFFA /* UIAlertController.swift in Sources */,
 				ABD143821C87EC0A0040FFFA /* NSHTTPURLResponse.swift in Sources */,
 				ABD143831C87EC0A0040FFFA /* Queue.swift in Sources */,
 				ABD143841C87EC0A0040FFFA /* NSDictionary.swift in Sources */,
@@ -826,7 +823,6 @@
 				ABD143961C87EC4C0040FFFA /* UIKit.swift in Sources */,
 				ABD143971C87EC4C0040FFFA /* QueueOperation.swift in Sources */,
 				ABD143981C87EC4C0040FFFA /* NSURLSessionTask.swift in Sources */,
-				ABD143991C87EC4C0040FFFA /* UIAlertController.swift in Sources */,
 				ABD1439A1C87EC4C0040FFFA /* NSHTTPURLResponse.swift in Sources */,
 				ABD1439B1C87EC4C0040FFFA /* Queue.swift in Sources */,
 				ABD1439C1C87EC4C0040FFFA /* NSDictionary.swift in Sources */,
@@ -1294,7 +1290,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
-					"APPEX=1",
 				);
 				INFOPLIST_FILE = "Supporting Files/iOS-Appex.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1304,6 +1299,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
+				OTHER_SWIFT_FLAGS = "-DAPPEX";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
 				PRODUCT_NAME = MKNetworkKitAppex;
 				SKIP_INSTALL = YES;
@@ -1329,7 +1325,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = "APPEX=1";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "Supporting Files/iOS-Appex.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1338,6 +1334,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
+				OTHER_SWIFT_FLAGS = "-DAPPEX";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
 				PRODUCT_NAME = MKNetworkKitAppex;
 				SKIP_INSTALL = YES;
@@ -1366,7 +1363,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
-					"APPEX=1",
 				);
 				INFOPLIST_FILE = "Supporting Files/tvOS-Appex.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1376,6 +1372,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
+				OTHER_SWIFT_FLAGS = "-DAPPEX";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
 				PRODUCT_NAME = MKNetworkKitAppex;
 				SDKROOT = appletvos;
@@ -1402,7 +1399,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = "APPEX=1";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "Supporting Files/tvOS-Appex.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1411,6 +1408,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
+				OTHER_SWIFT_FLAGS = "-DAPPEX";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
 				PRODUCT_NAME = MKNetworkKitAppex;
 				SDKROOT = appletvos;

@@ -31,11 +31,9 @@
 //  THE SOFTWARE.
 //
 
-#if APPEX
-#else
-  import Foundation
-  import UIKit
-  
+import Foundation
+import UIKit
+
 #if os(iOS) || os(tvOS)
   public extension UIAlertController {
     public func show(error: NSError) {
@@ -45,5 +43,4 @@
       UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
     }
   }
-#endif
 #endif
