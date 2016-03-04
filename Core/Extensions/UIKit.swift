@@ -89,6 +89,7 @@ extension Request {
   }
 
   #if APPEX
+  #else
   public static var automaticNetworkActivityIndicator: Bool = false {
     didSet {
       if automaticNetworkActivityIndicator {

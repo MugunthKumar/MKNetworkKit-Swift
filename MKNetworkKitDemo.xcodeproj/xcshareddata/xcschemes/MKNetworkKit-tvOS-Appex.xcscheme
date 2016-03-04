@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ABD143911C87EC4C0040FFFA"
-               BuildableName = "MKNetworkKit-tvOS-Appex.framework"
+               BuildableName = "MKNetworkKitAppex.framework"
                BlueprintName = "MKNetworkKit-tvOS-Appex"
                ReferencedContainer = "container:MKNetworkKitDemo.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ABD143911C87EC4C0040FFFA"
-            BuildableName = "MKNetworkKit-tvOS-Appex.framework"
+            BuildableName = "MKNetworkKitAppex.framework"
             BlueprintName = "MKNetworkKit-tvOS-Appex"
             ReferencedContainer = "container:MKNetworkKitDemo.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ABD143911C87EC4C0040FFFA"
-            BuildableName = "MKNetworkKit-tvOS-Appex.framework"
+            BuildableName = "MKNetworkKitAppex.framework"
             BlueprintName = "MKNetworkKit-tvOS-Appex"
             ReferencedContainer = "container:MKNetworkKitDemo.xcodeproj">
          </BuildableReference>

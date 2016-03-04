@@ -125,7 +125,7 @@ public struct MultipartEntity {
   }
 }
 
-public class Request {
+public class Request: NSObject {
 
   // MARK:- Properties to manage Running Requests
   static private var runningRequestsSynchronizingQueue =
@@ -451,7 +451,7 @@ public class Request {
   }
 
   // MARK:- Printing and Debug String Support
-  public var description: String {
+  public override var description: String {
     return asCurlCommand
   }
 
