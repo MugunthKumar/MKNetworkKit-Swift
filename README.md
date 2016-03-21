@@ -12,14 +12,18 @@ This is version 3.0 of MKNetworkKit.
 Version 3 is a complete rewrite loosely based on [version 2](https://github.com/MugunthKumar/MKNetworkKit) that was released in October 2015.
 
 ###Why MKNetworkKit?
-
-* Single network queue for the whole app
-* Auto queue sizing and auto network indicator support
 * High performance background caching (based on HTTP 1.1 caching specs) built in
-* You don't need a separate image cache library
+	* You don't need a separate image cache library
+* Written completely in Swift 2 and uses Swift like naming conventions. 
+	* Your networking code is going to be clean and read like any Swift code
+* Auto network indicator support (on iOS only)
+	* MKNetworkKit manages the display of status bar network indicator for you
+* Fully compatible with application extensions
 * Background image decompression
 * Background completion
 * cURL-able debug lines
+* Queued Requests (Batch a bunch of requests and get notified once they are done)
+* Full support for NSStreams
 
 These are just a few of the most interesting features on MKNetworkKit.
 
