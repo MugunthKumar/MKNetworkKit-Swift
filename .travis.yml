@@ -13,10 +13,10 @@ env:
   - OSX_FRAMEWORK_SCHEME="MKNetworkKit-OSX"
   - DEMO_SCHEME="MKNetworkKitDemo"
   - TESTS_SCHEME="MKNetworkKitTests"
-  - IOS_SDK=iphonesimulator9.2
+  - IOS_SDK=iphonesimulator9.3
   - OSX_SDK=macosx10.11
-  - TVOS_SDK=appletvsimulator9.1
-  - WATCHOS_SDK=watchsimulator2.1
+  - TVOS_SDK=appletvsimulator9.2
+  - WATCHOS_SDK=watchsimulator2.2
   matrix:
     - DESTINATION="OS=8.4,name=iPhone 5"           SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK"         RUN_AS_TEST="NO"
     - DESTINATION="OS=9.1,name=iPhone 6 Plus"      SCHEME="$IOS_FRAMEWORK_SCHEME" SDK="$IOS_SDK"         RUN_AS_TEST="NO"   
