@@ -88,30 +88,30 @@ public struct Log {
       self.errorSuffix = errorSuffix
   }
 
-  public func info<T>(object: T, functionName: String = __FUNCTION__, lineNumber: Int = __LINE__) {
+  public func info<T>(object: T, functionName: String = #function, lineNumber: Int = #line) {
     print("\(functionName) [\(lineNumber)] \(infoPrefix)\(object)\(infoSuffix)")
     print("\n") // remove this line if you are using Swift 2 and above
   }
 
-  public func warn<T>(object: T, functionName: String = __FUNCTION__, lineNumber: Int = __LINE__) {
+  public func warn<T>(object: T, functionName: String = #function, lineNumber: Int = #line) {
     print("\(functionName) [\(lineNumber)] \(warnPrefix)\(object)\(warnSuffix)")
     print("\n")
   }
 
-  public func error<T>(object: T, functionName: String = __FUNCTION__, lineNumber: Int = __LINE__) {
+  public func error<T>(object: T, functionName: String = #function, lineNumber: Int = #line) {
     print("\(functionName) [\(lineNumber)] \(errorPrefix)\(object)\(errorSuffix)")
     print("\n")
   }
 
-  public static func info<T>(object: T, functionName: String = __FUNCTION__, lineNumber: Int = __LINE__) {
+  public static func info<T>(object: T, functionName: String = #function, lineNumber: Int = #line) {
     defaultLog.info(object, functionName:functionName, lineNumber:lineNumber)
   }
 
-  public static func warn<T>(object: T, functionName: String = __FUNCTION__, lineNumber: Int = __LINE__) {
+  public static func warn<T>(object: T, functionName: String = #function, lineNumber: Int = #line) {
     defaultLog.warn(object, functionName:functionName, lineNumber:lineNumber)
   }
 
-  public static func error<T>(object: T, functionName: String = __FUNCTION__, lineNumber: Int = __LINE__) {
+  public static func error<T>(object: T, functionName: String = #function, lineNumber: Int = #line) {
     defaultLog.error(object, functionName:functionName, lineNumber:lineNumber)
   }
 }

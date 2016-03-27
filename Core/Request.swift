@@ -187,7 +187,7 @@ public class Request: NSObject {
         }
       }
       protectionSpaceToReturn = NSURLProtectionSpace(host: url.host!, port: portNumber,
-        `protocol`: url.scheme, realm: realm,
+        protocol: url.scheme, realm: realm,
         authenticationMethod: authenticationMethod.rawValue)
     }
     return protectionSpaceToReturn
