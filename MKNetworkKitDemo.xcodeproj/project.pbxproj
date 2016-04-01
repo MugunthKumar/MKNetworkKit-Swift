@@ -1258,7 +1258,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DAPPEX";
-				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitAppex;
 				PRODUCT_NAME = MKNetworkKitAppex;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -1289,7 +1289,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DAPPEX";
-				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitAppex;
 				PRODUCT_NAME = MKNetworkKitAppex;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -1323,7 +1323,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DAPPEX";
-				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitAppex;
 				PRODUCT_NAME = MKNetworkKitAppex;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -1355,7 +1355,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DAPPEX";
-				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitAppex;
 				PRODUCT_NAME = MKNetworkKitAppex;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
