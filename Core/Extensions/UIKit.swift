@@ -40,54 +40,58 @@ import ImageIO
 // MARK: Extension methods on String to load a remote image
 public extension String {
   static let imageHost = Host(cacheDirectory: "MKNetworkKit")
-  public func loadRemoteImage(decompress: Bool = true, handler:(UIImage?, Bool) -> Void) -> Request {
+  public func loadRemoteImage(decompress: Bool = true, scale: CGFloat? = nil, handler:(UIImage?, Bool) -> Void) -> Request {
     return String.imageHost.request(withUrlString:self)
       .completion { (request) -> Void in
         let cachedResponse = [.ResponseAvailableFromCache, .StaleResponseAvailableFromCache].contains(request.state)
         if decompress {
-          handler(request.responseAsDecompressedImage, cachedResponse)
+          handler(request.responseAsDecompressedImage(scale), cachedResponse)
         } else {
-          handler(request.responseAsImage, cachedResponse)
+          handler(request.responseAsImage(scale), cachedResponse)
         }
       }.run()
   }
 }
 
 extension Request {
-  public var responseAsImage: UIImage? {
+  public func responseAsImage(scale: CGFloat? = nil) -> UIImage? {
     var token: dispatch_once_t = 0
-    var scale: CGFloat = 2.0
-    dispatch_once(&token) {
-      #if os(watchOS)
-        scale = WKInterfaceDevice.currentDevice().screenScale
-      #endif
-      #if os(iOS)
-        scale = UIScreen.mainScreen().scale
-      #endif
+    var mutableScale = scale
+    if mutableScale == nil { // use device scale
+      mutableScale = 2
+      dispatch_once(&token) {
+        #if os(watchOS)
+          mutableScale = WKInterfaceDevice.currentDevice().screenScale
+        #endif
+        #if os(iOS)
+          mutableScale = UIScreen.mainScreen().scale
+        #endif
+      }
     }
-
-    return UIImage(data:responseData, scale: scale)
+    return UIImage(data:responseData, scale: mutableScale!)
   }
-
-  public var responseAsDecompressedImage: UIImage? {
+  
+  public func responseAsDecompressedImage (scale: CGFloat? = nil) -> UIImage? {
     guard let source = CGImageSourceCreateWithData(responseData as CFDataRef, nil) else { return nil }
     guard let cgImage = CGImageSourceCreateImageAtIndex(source, 0,
-      [(kCGImageSourceShouldCache as String): false]) else { return nil }
-
+                                                        [(kCGImageSourceShouldCache as String): false]) else { return nil }
+    
     var token: dispatch_once_t = 0
-    var scale: CGFloat = 2.0
-    dispatch_once(&token) {
-      #if os(watchOS)
-        scale = WKInterfaceDevice.currentDevice().screenScale
-      #endif
-      #if os(iOS)
-        scale = UIScreen.mainScreen().scale
-      #endif
+    var mutableScale = scale
+    if mutableScale == nil { // use device scale
+      mutableScale = 2
+      dispatch_once(&token) {
+        #if os(watchOS)
+          mutableScale = WKInterfaceDevice.currentDevice().screenScale
+        #endif
+        #if os(iOS)
+          mutableScale = UIScreen.mainScreen().scale
+        #endif
+      }
     }
-
-    return UIImage(CGImage: cgImage, scale: scale, orientation: .Up)
+    return UIImage(CGImage: cgImage, scale: mutableScale!, orientation: .Up)
   }
-
+  
   #if APPEX
   #else
   public static var automaticNetworkActivityIndicator: Bool = false {
@@ -96,8 +100,8 @@ extension Request {
         Request.runningRequestsUpdatedHandler = { count in
           dispatch_async(dispatch_get_main_queue()) {
             #if os(iOS)
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = count > 0
-              #endif
+              UIApplication.sharedApplication().networkActivityIndicatorVisible = count > 0
+            #endif
           }
         }
       }
