@@ -135,7 +135,7 @@ public class Request: NSObject {
 
   // MARK:- URL Properties
   internal var url: String
-  public var method = HTTPMethod.GET
+  internal var method = HTTPMethod.GET
   internal var parameters = [String:AnyObject]()
   internal var headers = [String:String]()
   public var parameterEncoding = ParameterEncoding.URL

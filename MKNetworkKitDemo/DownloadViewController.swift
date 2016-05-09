@@ -39,7 +39,7 @@ class DownloadViewController: UIViewController, UIDocumentInteractionControllerD
     } else {
       downloadPauseResumeButton.setTitle("Pause", forState: .Normal)
       progressView.alpha = 1
-      request = flickrHost.request(withUrlString:textField.text!)
+      request = flickrHost.request(withAbsoluteURLString:textField.text!)
       let path = "\(NSHomeDirectory())/image.jpg"
 //      if let outputStream = NSOutputStream(toFileAtPath: path, append: true) {
 //        request?.appendOutputStream(outputStream)

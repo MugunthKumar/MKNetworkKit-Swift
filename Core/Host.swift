@@ -120,10 +120,27 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
   }
 
   // MARK:- Request preparation
-  public func request(withUrlString urlString: String) -> Request {
-    let request = Request(url: urlString)
-    request.host = self
-    return request
+
+  public func request(
+    method: HTTPMethod = .GET,
+    withAbsoluteURLString absoluteURLString: String,
+             parameters: [String:AnyObject] = [:],
+             headers: [String:String] = [:],
+             bodyData: NSData? = nil) -> Request? {
+
+    let request = Request(
+      method: method,
+      url: absoluteURLString,
+      parameters: parameters,
+      headers: headers,
+      bodyData: bodyData)
+
+    request.host = self // weak reference
+    request.append(headers: defaultHeaders)
+    if let defaultParameterEncoding = defaultParameterEncoding {
+      request.parameterEncoding = defaultParameterEncoding
+    }
+    return customizeRequest(request)
   }
 
   public func request(

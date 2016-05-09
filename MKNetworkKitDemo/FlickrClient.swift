@@ -59,9 +59,9 @@ class FlickrClient: Host {
   }
 
   #if os(iOS) || os(watchOS) || os(tvOS)
-  func fetchImage (imageURLString : String, completionHandler: (UIImage?) -> Void) -> Request {
-    let request = super.request(withUrlString: imageURLString)
-    return request.completion {request in
+  func fetchImage (imageURLString : String, completionHandler: (UIImage?) -> Void) -> Request? {
+    let request = super.request(withAbsoluteURLString: imageURLString)
+    return request?.completion {request in
       completionHandler(request.responseAsImage())
       }.run()
   }
