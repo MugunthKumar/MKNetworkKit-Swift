@@ -36,7 +36,7 @@ import UIKit
 
 #if os(iOS) || os(tvOS)
   public extension UIAlertController {
-    public func show(error: NSError) {
+    public static func show(error: NSError) {
       let alertController = UIAlertController(title: error.localizedFailureReason ?? error.localizedDescription,
         message: error.localizedRecoverySuggestion,
         preferredStyle: .Alert)
