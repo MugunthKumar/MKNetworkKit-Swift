@@ -40,8 +40,9 @@ import ImageIO
 // MARK: Extension methods on String to load a remote image
 public extension String {
 
-  public var filePathSafeString: String {
-    return stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet(charactersInString: "/").invertedSet) ?? ""
+  public var filePathSafeString: String {    
+    let characterSet = NSCharacterSet(charactersInString: "/*?!").invertedSet
+    return stringByAddingPercentEncodingWithAllowedCharacters(characterSet) ?? ""
   }
 
   static var imageHost: Host?
