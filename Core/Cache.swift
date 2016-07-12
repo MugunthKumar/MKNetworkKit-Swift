@@ -44,7 +44,7 @@ public class Cache<T>: CustomDebugStringConvertible {
   //MARK:- Properties
   var fileExtension: String
   var directory: String
-  var cacheCost: Int = 10
+  var cacheCost: Int
 
   //MARK:- Cache Storage
   var inMemoryCache: [String:T] = [String:T]()

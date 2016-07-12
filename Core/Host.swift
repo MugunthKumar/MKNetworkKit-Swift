@@ -81,7 +81,8 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
     defaultHeaders: [String:String] = [:],
     portNumber: Int? = nil,
     session: NSURLSession? = nil,
-    cacheDirectory: String? = nil) {
+    cacheDirectory: String? = nil,
+    cacheCost: Int = 10) {
 
       self.name = name
       self.defaultHeaders = defaultHeaders
@@ -90,11 +91,11 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
 
       if let unwrappedDirectory = cacheDirectory {
         self.cacheDirectory = unwrappedDirectory
-        dataCache = Cache(directoryName: "\(unwrappedDirectory)/Data")
-        responseCache = Cache(directoryName: "\(unwrappedDirectory)/Response")
-        resumeDataCache = Cache(directoryName: "\(unwrappedDirectory)/ResumeData")
+        dataCache = Cache(cost: cacheCost, directoryName: "\(unwrappedDirectory)/Data")
+        responseCache = Cache(cost: cacheCost, directoryName: "\(unwrappedDirectory)/Response")
+        resumeDataCache = Cache(cost: cacheCost, directoryName: "\(unwrappedDirectory)/ResumeData")
       } else {
-        resumeDataCache = Cache(cost: 10)
+        resumeDataCache = Cache(cost: cacheCost)
       }
 
       super.init()
