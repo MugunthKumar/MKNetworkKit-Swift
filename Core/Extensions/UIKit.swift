@@ -39,6 +39,11 @@ import ImageIO
 
 // MARK: Extension methods on String to load a remote image
 public extension String {
+
+  public var filePathSafeString: String {
+    return stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet(charactersInString: "/").invertedSet) ?? ""
+  }
+
   static var imageHost: Host?
   public func loadRemoteImage(decompress: Bool = true, scale: CGFloat? = nil, handler:(UIImage?, Bool) -> Void) -> Request? {
     var token: dispatch_once_t = 0

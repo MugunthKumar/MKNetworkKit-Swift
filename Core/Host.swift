@@ -59,6 +59,7 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
       if let unwrappedDirectory = cacheDirectory {
         dataCache = Cache(directoryName: "\(unwrappedDirectory)/Data")
         responseCache = Cache(directoryName: "\(unwrappedDirectory)/Response")
+        responseTimeCache = Cache(directoryName: "\(unwrappedDirectory)/ResponseTime")
         resumeDataCache = Cache(directoryName: "\(unwrappedDirectory)/ResumeData")
       }
     }
@@ -67,10 +68,12 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
   private var dataCache: Cache<NSData>?
   private var resumeDataCache: Cache<NSData>?
   private var responseCache: Cache<NSHTTPURLResponse>?
+  private var responseTimeCache: Cache<NSDate>?
 
   public func emptyCache() {
     dataCache?.emptyCache()
     responseCache?.emptyCache()
+    responseTimeCache?.emptyCache()
   }
 
   public var authenticationHandler: ((session: NSURLSession, task: NSURLSessionTask,  challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) -> Void)?
@@ -82,7 +85,7 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
     portNumber: Int? = nil,
     session: NSURLSession? = nil,
     cacheDirectory: String? = nil,
-    cacheCost: Int = 10) {
+    cacheCost: Int = 50) {
 
       self.name = name
       self.defaultHeaders = defaultHeaders
@@ -93,6 +96,7 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
         self.cacheDirectory = unwrappedDirectory
         dataCache = Cache(cost: cacheCost, directoryName: "\(unwrappedDirectory)/Data")
         responseCache = Cache(cost: cacheCost, directoryName: "\(unwrappedDirectory)/Response")
+        responseTimeCache = Cache(cost: cacheCost, directoryName: "\(unwrappedDirectory)/ResponseTime")
         resumeDataCache = Cache(cost: cacheCost, directoryName: "\(unwrappedDirectory)/ResumeData")
       } else {
         resumeDataCache = Cache(cost: cacheCost)
@@ -224,7 +228,8 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
     if request.downloadPath == nil { // create a data task
       if request.cacheble && !request.ignoreCache {
         if let cachedResponse = responseCache?[request.equalityIdentifier] {
-          let cacheExpiryDate = cachedResponse.cacheExpiryDate
+          let date = responseTimeCache?[request.equalityIdentifier]
+          let cacheExpiryDate = cachedResponse.cacheExpiryDate(date)
           let expiryTimeFromNow = cacheExpiryDate?.timeIntervalSinceNow ?? DefaultCacheDuration
 
           if let data = dataCache?[request.equalityIdentifier] {
@@ -324,6 +329,7 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
         if task.request!.cacheble {
           self.dataCache?[task.request!.equalityIdentifier] = task.request!.responseData
           self.responseCache?[task.request!.equalityIdentifier] = task.request!.response
+          self.responseTimeCache?[task.request!.equalityIdentifier] = NSDate()
         }
       }
       task.request!.state = .Completed

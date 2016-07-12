@@ -53,7 +53,7 @@ public extension NSHTTPURLResponse {
     }
   }
 
-  public var cacheExpiryDate: NSDate? {
+  public func cacheExpiryDate(requestDate: NSDate?) -> NSDate? {
     if let expiresOn = headerValue("Expires") {
       if let expiresOnDate = NSDate.dateFromRFC1123DateString(expiresOn) {
         return expiresOnDate
@@ -69,7 +69,11 @@ public extension NSHTTPURLResponse {
         if let _ = entity.rangeOfString("max-age") {
           let maxAgeComponents = entity.componentsSeparatedByString("=")
           if let maxAge = Double(maxAgeComponents[1]) {
-            return NSDate().dateByAddingTimeInterval(maxAge)
+            if requestDate == nil {
+              return NSDate().dateByAddingTimeInterval(maxAge)
+            } else {
+              return requestDate!.dateByAddingTimeInterval(maxAge)
+            }
           }
         }
       }

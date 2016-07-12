@@ -219,7 +219,7 @@ public class Request: NSObject {
     var string: String = "\(arc4random())"
     if let unwrappedRequest = request {
       if ![.POST, .PUT, .PATCH, .OPTIONS].contains(method) {
-        string = "\(method.rawValue.uppercaseString) \(unwrappedRequest.URL!.absoluteString)"
+        string = "\(method.rawValue.uppercaseString)-\(unwrappedRequest.URL!.absoluteString)"
       }
     }
     if let unwrappedUsername = username {

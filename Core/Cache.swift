@@ -47,8 +47,8 @@ public class Cache<T>: CustomDebugStringConvertible {
   var cacheCost: Int
 
   //MARK:- Cache Storage
-  var inMemoryCache: [String:T] = [String:T]()
-  var recentKeys: [String] = [String]()
+  var inMemoryCache = [String:T]()
+  var recentKeys = [String]()
 
   //MARK:- Queue
   var queue: dispatch_queue_t = dispatch_queue_create("com.mknetworkkit.cachequeue", DISPATCH_QUEUE_SERIAL)
@@ -59,7 +59,7 @@ public class Cache<T>: CustomDebugStringConvertible {
   }
 
   // MARK:- Designated Initializer
-  public init(cost: Int = 10, directoryName: String = "AppCache", fileExtension: String = "cachearchive") {
+  public init(cost: Int = 50, directoryName: String = "AppCache", fileExtension: String = "cachearchive") {
     let cachesDirectory = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
     directory = cachesDirectory + "/" + directoryName
     cacheCost = cost
@@ -111,7 +111,8 @@ public class Cache<T>: CustomDebugStringConvertible {
 
   // MARK:- Disk cache
   func makePath(key: String) -> String {
-    return "\(self.directory)/\(key).\(fileExtension)"
+    let string = "\(self.directory)/\(key.filePathSafeString).\(fileExtension)"
+    return string
   }
 
   func fetchFromDisk (key: String) -> T? {
@@ -127,7 +128,10 @@ public class Cache<T>: CustomDebugStringConvertible {
 
     let data = NSKeyedArchiver.archivedDataWithRootObject(value as! AnyObject)
     dispatch_async(diskQueue) {
-      data.writeToFile(filePath, atomically: true)
+      let written = data.writeToFile(filePath, atomically: true)
+      if !written {
+        print ("Failed \(filePath)")
+      }
     }
   }
 
@@ -166,11 +170,10 @@ public class Cache<T>: CustomDebugStringConvertible {
   }
 
   func flushToDisk() {
-    for (key, value) in inMemoryCache {
-      cacheToDisk(key, value)
-    }
-
     dispatch_async(self.queue) {
+      for (key, value) in self.inMemoryCache {
+        self.cacheToDisk(key, value)
+      }
       self.inMemoryCache.removeAll()
       self.recentKeys.removeAll()
     }
