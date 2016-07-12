@@ -39,9 +39,15 @@ import ImageIO
 
 // MARK: Extension methods on String to load a remote image
 public extension String {
-  static let imageHost = Host(cacheDirectory: "MKNetworkKit")
+  static var imageHost: Host?
   public func loadRemoteImage(decompress: Bool = true, scale: CGFloat? = nil, handler:(UIImage?, Bool) -> Void) -> Request? {
-    return String.imageHost.request(withAbsoluteURLString:self)?
+    var token: dispatch_once_t = 0
+    dispatch_once(&token) {
+      if String.imageHost == nil {
+        String.imageHost = Host(cacheDirectory: "MKNetworkKit")
+      }
+    }
+    return String.imageHost?.request(withAbsoluteURLString:self)?
       .completion { (request) -> Void in
         let cachedResponse = [.ResponseAvailableFromCache, .StaleResponseAvailableFromCache].contains(request.state)
         if decompress {
