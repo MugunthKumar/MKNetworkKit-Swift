@@ -45,7 +45,7 @@ Run `carthage update` to build the framework and drag the built `MKNetworkKit.fr
 We will release a stable tagged version soon.
 
 ###How to use
-Documentation is available on the [Wiki page](https://github.com/MugunthKumar/MKNetworkKit-Swift/Wiki)
+Documentation is available on the [wiki page](https://github.com/MugunthKumar/MKNetworkKit-Swift/wiki)
 
 ###Licensing
 MKNetworkKit is licensed under MIT License. Attribution free licensing is available for a small license fee. Get an attribution free license from our [license store](http://blog.mugunthkumar.com/license-store/)
