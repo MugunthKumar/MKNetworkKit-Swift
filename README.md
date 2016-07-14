@@ -24,8 +24,10 @@ With iOS 7, Apple introduced `NSURLSession` based networking that blew everythin
 Using `NSURLSession` is super easy to use. Most of today's third party networking frameworks that exist today are built on top of `NSURLSession`. With deprecation of `NSURLConnection` in iOS 9 (tvOS 9.0 marks NSURLConnection as unavailable), you don't even need to know the "basics" like `NSURLConnection`. In fact, `NSURLSession` is the new "basics". `NSURLSession` *is* the class that you should learn, if you are doing networking today.
 
 In my opinion, the only benefits of using a networking framework instead of `NSURLSession` are 
+
 1. Easier Authentication (`www-authenticate`based and client certificate/server trust based)
 	Authentication with NSURLSession still requires delegate handling like NSURLConnection
+	
 2. Multi-part form upload
 
 In addition to the above, MKNetworkKit has the following features.
