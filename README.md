@@ -21,7 +21,7 @@ Though `NSURLConnection` was easier than `CFNetwork` it still wasn't easy enough
 
 With iOS 7, Apple introduced `NSURLSession` based networking that blew everything out of water.
 
-Using `NSURLSession` is super easy to use. Most of today's third party networking frameworks that exist today are built on top of `NSURLSession`. With deprecation of `NSURLConnection` in iOS 9 (tvOS 9.0 marks NSURLConnection as unavailable), you don't even need to know the "basics" like `NSURLConnection`. In fact, `NSURLSession` is the new "basics". `NSURLSession` *is* the class that you should learn, if you are doing networking today.
+Using `NSURLSession` is super easy to use. Most of today's third party networking frameworks that exist today are built on top of `NSURLSession`. With deprecation of `NSURLConnection` in iOS 9 (tvOS 9.0 marks NSURLConnection as unavailable), you don't even need to know the "basics" like `NSURLConnection`. In fact, `NSURLSession` is the new "basics". `NSURLSession` **is** the class that you should learn, if you are doing networking today.
 
 In my opinion, the only benefits of using a networking framework instead of `NSURLSession` are 
 
@@ -31,10 +31,9 @@ In my opinion, the only benefits of using a networking framework instead of `NSU
 2. Multi-part form upload
 
 In addition to the above, MKNetworkKit has the following features.
-* Queued Requests (Batch a bunch of requests and get notified once they are done)
-* High performance background *caching* (based on HTTP 1.1 caching specs) built in
-	* You don't need a separate image cache library
-* Fetching remote images are done using extension methods in strings. Just call the `loadRemoteImage` method on any URL String and get the image in the completion handler.
+* **Queued Requests** (Batch a bunch of requests and get notified once they are done)
+* High performance background **caching** (based on HTTP 1.1 caching specs) built in
+* Fetching remote images are done using extension methods in strings. Just call the `loadRemoteImage` method on any URL String and get the image in the completion handler. What's more? All these fetched images are automatically cached and you don't need a separate image caching library.
 * Auto network indicator support MKNetworkKit manages the display of status bar network indicator for you. (on iOS only)
 * cURL-able debug lines
 * Fully compatible with application extensions
@@ -56,10 +55,10 @@ github "MugunthKumar/MKNetworkKit-Swift" "master"
 ```
 Run `carthage update` to build the framework and drag the built `MKNetworkKit.framework` into your Xcode project.
 
-We will release a stable tagged version soon.
+Version 1 of this release is available as a tag here[https://github.com/MugunthKumar/MKNetworkKit-Swift/tree/v1] for Cocoapods users.
 
 ###How to use
-Documentation is available on the [wiki page](https://github.com/MugunthKumar/MKNetworkKit-Swift/wiki)
+Documentation will soon be available on the [wiki page](https://github.com/MugunthKumar/MKNetworkKit-Swift/wiki)
 
 ###Licensing
 MKNetworkKit is licensed under MIT License. Attribution free licensing is available for a small license fee. Get an attribution free license from our [license store](http://blog.mugunthkumar.com/license-store/)
