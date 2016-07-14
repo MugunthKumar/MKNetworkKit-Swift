@@ -40,6 +40,7 @@ In addition to the above, MKNetworkKit has the following features.
 * Background image decompression
 * Background completion
 * Full support for NSStreams
+
 ---
 
 ###Installation
@@ -55,7 +56,7 @@ github "MugunthKumar/MKNetworkKit-Swift" "master"
 ```
 Run `carthage update` to build the framework and drag the built `MKNetworkKit.framework` into your Xcode project.
 
-Version 1 of this release is available as a tag here[https://github.com/MugunthKumar/MKNetworkKit-Swift/tree/v1] for Cocoapods users.
+Version 1 of this release is available as a tag [here](https://github.com/MugunthKumar/MKNetworkKit-Swift/tree/v1) for Cocoapods users.
 
 ###How to use
 Documentation will soon be available on the [wiki page](https://github.com/MugunthKumar/MKNetworkKit-Swift/wiki)
