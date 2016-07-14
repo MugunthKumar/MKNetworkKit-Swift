@@ -12,21 +12,33 @@ This is version 3.0 of MKNetworkKit.
 Version 3 is a complete rewrite loosely based on [version 2](https://github.com/MugunthKumar/MKNetworkKit) that was released in October 2015.
 
 ###Why MKNetworkKit?
-* High performance background caching (based on HTTP 1.1 caching specs) built in
+Actually, you don't need a networking framework today (post iOS 7). We live in the era of `NSURLSession` and with networking becoming a core feature of every app, you need to know how to write a good networking stack without using a third party library.
+
+Now, you may ask, So, why are there so many networking frameworks? Almost every iOS developer I know uses one or the other networking library.
+
+Well, that's because, when iOS was introduced, the two frameworks built into the iPhone (iOS) SDK, namely, `CFNetwork.framework` and `NSURLConnection`(`Foundation.framework`) were complicated to understand and use.
+Though `NSURLConnection` was easier than `CFNetwork` it still wasn't easy enough for most developers.
+
+With iOS 7, Apple introduced `NSURLSession` based networking that blew everything out of water.
+
+Using `NSURLSession` is super easy to use. Most of today's third party networking frameworks that exist today are built on top of `NSURLSession`. With deprecation of `NSURLConnection` in iOS 9 (tvOS 9.0 marks NSURLConnection as unavailable), you don't even need to know the "basics" like `NSURLConnection`. In fact, `NSURLSession` is the new "basics". `NSURLSession` *is* the class that you should learn, if you are doing networking today.
+
+In my opinion, the only benefits of using a networking framework instead of `NSURLSession` are 
+1. Easier Authentication (`www-authenticate`based and client certificate/server trust based)
+	Authentication with NSURLSession still requires delegate handling like NSURLConnection
+2. Multi-part form upload
+
+In addition to the above, MKNetworkKit has the following features.
+* Queued Requests (Batch a bunch of requests and get notified once they are done)
+* High performance background *caching* (based on HTTP 1.1 caching specs) built in
 	* You don't need a separate image cache library
-* Written completely in Swift 2 and uses Swift like naming conventions. 
-	* Your networking code is going to be clean and read like any Swift code
-* Auto network indicator support (on iOS only)
-	* MKNetworkKit manages the display of status bar network indicator for you
+* Fetching remote images are done using extension methods in strings. Just call the `loadRemoteImage` method on any URL String and get the image in the completion handler.
+* Auto network indicator support MKNetworkKit manages the display of status bar network indicator for you. (on iOS only)
+* cURL-able debug lines
 * Fully compatible with application extensions
 * Background image decompression
 * Background completion
-* cURL-able debug lines
-* Queued Requests (Batch a bunch of requests and get notified once they are done)
 * Full support for NSStreams
-
-These are just a few of the most interesting features on MKNetworkKit.
-
 ---
 
 ###Installation
