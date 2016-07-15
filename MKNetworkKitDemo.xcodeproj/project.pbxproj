@@ -61,6 +61,14 @@
 		AB8134881BEA1E5200726CE6 /* NSHTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */; };
 		AB8134891BEA1E5200726CE6 /* NSHTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */; };
 		AB81348B1BEA1E9C00726CE6 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB81348A1BEA1E9C00726CE6 /* UIAlertController.swift */; };
+		AB8BEEB31D38BC8A00CD4E7F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8BEEB21D38BC8A00CD4E7F /* String.swift */; };
+		AB8BEEB41D38BC8A00CD4E7F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8BEEB21D38BC8A00CD4E7F /* String.swift */; };
+		AB8BEEB51D38BC8A00CD4E7F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8BEEB21D38BC8A00CD4E7F /* String.swift */; };
+		AB8BEEB61D38BC8A00CD4E7F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8BEEB21D38BC8A00CD4E7F /* String.swift */; };
+		AB8BEEB71D38BC8A00CD4E7F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8BEEB21D38BC8A00CD4E7F /* String.swift */; };
+		AB8BEEB81D38BC8A00CD4E7F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8BEEB21D38BC8A00CD4E7F /* String.swift */; };
+		AB8BEEB91D38BC8A00CD4E7F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8BEEB21D38BC8A00CD4E7F /* String.swift */; };
+		AB8BEEBA1D38BC8A00CD4E7F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8BEEB21D38BC8A00CD4E7F /* String.swift */; };
 		ABCF93871B2ECA1F0078CA66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93861B2ECA1F0078CA66 /* AppDelegate.swift */; };
 		ABCF93891B2ECA1F0078CA66 /* FlickrImageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93881B2ECA1F0078CA66 /* FlickrImageListViewController.swift */; };
 		ABCF938B1B2ECA1F0078CA66 /* FlickrImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF938A1B2ECA1F0078CA66 /* FlickrImageDetailViewController.swift */; };
@@ -176,6 +184,7 @@
 		AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDictionary.swift; sourceTree = "<group>"; };
 		AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSHTTPURLResponse.swift; sourceTree = "<group>"; };
 		AB81348A1BEA1E9C00726CE6 /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		AB8BEEB21D38BC8A00CD4E7F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		ABCF93831B2ECA1F0078CA66 /* MKNetworkKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKNetworkKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABCF93861B2ECA1F0078CA66 /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 2; };
 		ABCF93881B2ECA1F0078CA66 /* FlickrImageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImageListViewController.swift; sourceTree = "<group>"; };
@@ -325,6 +334,7 @@
 				AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */,
 				AB81348A1BEA1E9C00726CE6 /* UIAlertController.swift */,
 				AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */,
+				AB8BEEB21D38BC8A00CD4E7F /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -697,6 +707,7 @@
 				AB0F5F811C6DDDEA006ED63F /* NSData.swift in Sources */,
 				AB0F5F821C6DDDEA006ED63F /* NSDate.swift in Sources */,
 				AB0F5F831C6DDDEA006ED63F /* UIKit.swift in Sources */,
+				AB8BEEB71D38BC8A00CD4E7F /* String.swift in Sources */,
 				AB0F5F841C6DDDEA006ED63F /* QueueOperation.swift in Sources */,
 				AB0F5F851C6DDDEA006ED63F /* NSURLSessionTask.swift in Sources */,
 				AB0F5F861C6DDDEA006ED63F /* UIAlertController.swift in Sources */,
@@ -717,6 +728,7 @@
 				AB0F5F991C6DDE16006ED63F /* NSData.swift in Sources */,
 				AB0F5F9A1C6DDE16006ED63F /* NSDate.swift in Sources */,
 				AB0F5F9B1C6DDE16006ED63F /* UIKit.swift in Sources */,
+				AB8BEEB81D38BC8A00CD4E7F /* String.swift in Sources */,
 				AB0F5F9C1C6DDE16006ED63F /* QueueOperation.swift in Sources */,
 				AB0F5F9D1C6DDE16006ED63F /* NSURLSessionTask.swift in Sources */,
 				AB0F5F9E1C6DDE16006ED63F /* UIAlertController.swift in Sources */,
@@ -737,6 +749,7 @@
 				ABEB1AAB1C69A7DE00702A28 /* NSData.swift in Sources */,
 				AB81347D1BEA1E0500726CE6 /* NSDate.swift in Sources */,
 				AB81347F1BEA1E0500726CE6 /* UIKit.swift in Sources */,
+				AB8BEEB41D38BC8A00CD4E7F /* String.swift in Sources */,
 				AB7A41C61C6B3D430030B70C /* QueueOperation.swift in Sources */,
 				AB7A41BE1C6AF74C0030B70C /* NSURLSessionTask.swift in Sources */,
 				AB81348B1BEA1E9C00726CE6 /* UIAlertController.swift in Sources */,
@@ -753,6 +766,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB8BEEB51D38BC8A00CD4E7F /* String.swift in Sources */,
 				AB18DB971BC3F3AF00E25793 /* MKNetworkKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -762,6 +776,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB81347A1BEA1E0500726CE6 /* NSAlert.swift in Sources */,
+				AB8BEEB61D38BC8A00CD4E7F /* String.swift in Sources */,
 				AB81347E1BEA1E0500726CE6 /* NSDate.swift in Sources */,
 				AB8134671BEA13DE00726CE6 /* Request.swift in Sources */,
 				ABEB1AAD1C69A7DE00702A28 /* NSData.swift in Sources */,
@@ -782,6 +797,7 @@
 				ABCF938B1B2ECA1F0078CA66 /* FlickrImageDetailViewController.swift in Sources */,
 				AB0F5F7D1C6DC5B7006ED63F /* CRUDViewController.swift in Sources */,
 				ABDCA0B91C69BCD300B9568E /* TestClient.swift in Sources */,
+				AB8BEEB31D38BC8A00CD4E7F /* String.swift in Sources */,
 				ABDCA0C01C69E70100B9568E /* HTTPBinHost.swift in Sources */,
 				ABCF93C01B2ECB830078CA66 /* FlickrImageCell.swift in Sources */,
 				ABDCA0BD1C69C08900B9568E /* UploadViewController.swift in Sources */,
@@ -799,6 +815,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABD1437B1C87EC0A0040FFFA /* Cache.swift in Sources */,
+				AB8BEEB91D38BC8A00CD4E7F /* String.swift in Sources */,
 				ABD1437C1C87EC0A0040FFFA /* NSData.swift in Sources */,
 				ABD1437D1C87EC0A0040FFFA /* NSDate.swift in Sources */,
 				ABD1437E1C87EC0A0040FFFA /* UIKit.swift in Sources */,
@@ -818,6 +835,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABD143931C87EC4C0040FFFA /* Cache.swift in Sources */,
+				AB8BEEBA1D38BC8A00CD4E7F /* String.swift in Sources */,
 				ABD143941C87EC4C0040FFFA /* NSData.swift in Sources */,
 				ABD143951C87EC4C0040FFFA /* NSDate.swift in Sources */,
 				ABD143961C87EC4C0040FFFA /* UIKit.swift in Sources */,
