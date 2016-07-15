@@ -327,9 +327,11 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
     if task.request!.error == nil {
       if session == defaultSession {
         if task.request!.cacheble {
-          self.dataCache?[task.request!.equalityIdentifier] = task.request!.responseData
-          self.responseCache?[task.request!.equalityIdentifier] = task.request!.response
-          self.responseTimeCache?[task.request!.equalityIdentifier] = NSDate()
+          if statusCode != 304 {
+            self.dataCache?[task.request!.equalityIdentifier] = task.request!.responseData
+            self.responseCache?[task.request!.equalityIdentifier] = task.request!.response
+            self.responseTimeCache?[task.request!.equalityIdentifier] = NSDate()
+          }
         }
       }
       task.request!.state = .Completed
