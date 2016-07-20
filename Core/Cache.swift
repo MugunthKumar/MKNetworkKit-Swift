@@ -186,6 +186,7 @@ public class Cache<T>: CustomDebugStringConvertible {
     }
     do {
      try NSFileManager.defaultManager().removeItemAtPath(directory)
+      try NSFileManager.defaultManager().createDirectoryAtPath(directory, withIntermediateDirectories: true, attributes: nil)
     } catch let error as NSError {
       Log.warn(error)
     }
