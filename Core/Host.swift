@@ -300,7 +300,9 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
 
     switch (statusCode) {
     case 304:
-      task.request!.responseData = NSMutableData() // clear the data
+      if let data = dataCache?[task.request!.equalityIdentifier] {
+        task.request!.responseData = data.mutableCopy() as! NSMutableData
+      }
 
     case 400..<600:
       var userInfo = [String:AnyObject]()
