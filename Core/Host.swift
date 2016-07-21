@@ -330,8 +330,8 @@ public class Host: NSObject, NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
           if statusCode != 304 {
             self.dataCache?[task.request!.equalityIdentifier] = task.request!.responseData
             self.responseCache?[task.request!.equalityIdentifier] = task.request!.response
-            self.responseTimeCache?[task.request!.equalityIdentifier] = NSDate()
           }
+          self.responseTimeCache?[task.request!.equalityIdentifier] = NSDate()
         }
       }
       task.request!.state = .Completed
