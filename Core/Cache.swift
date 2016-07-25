@@ -111,8 +111,8 @@ public class Cache<T>: CustomDebugStringConvertible {
 
   // MARK:- Disk cache
   func makePath(key: String) -> String {
-    let string = "\(self.directory)/\(key.filePathSafeString).\(fileExtension)"
-    return string
+    let md5Key = key.dataUsingEncoding(NSUTF8StringEncoding)!.md5
+    return "\(self.directory)/\(md5Key).\(fileExtension)"
   }
 
   func fetchFromDisk (key: String) -> T? {
