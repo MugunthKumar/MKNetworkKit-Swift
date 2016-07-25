@@ -128,9 +128,10 @@ public class Cache<T>: CustomDebugStringConvertible {
 
     let data = NSKeyedArchiver.archivedDataWithRootObject(value as! AnyObject)
     dispatch_async(diskQueue) {
-      let written = data.writeToFile(filePath, atomically: true)
-      if !written {
-        print ("Failed \(filePath)")
+      do {
+      try data.writeToFile(filePath, options: .AtomicWrite)
+      } catch let error as NSError {
+        print ("Failed \(filePath) with error \(error)")
       }
     }
   }
