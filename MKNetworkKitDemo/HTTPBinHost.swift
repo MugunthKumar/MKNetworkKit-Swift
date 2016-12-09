@@ -12,6 +12,7 @@ import MKNetworkKit
 class HTTPBinHost: Host {
   init() {
     super.init(name: "httpbin.org")
+    secure = true
     defaultParameterEncoding = .JSON
   }
 

@@ -108,7 +108,6 @@
 		ABDCA0B21C69B9A400B9568E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDCA0A51C69B2F800B9568E /* SystemConfiguration.framework */; };
 		ABDCA0B31C69B9CA00B9568E /* MKNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; };
 		ABDCA0B41C69B9CA00B9568E /* MKNetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		ABDCA0B91C69BCD300B9568E /* TestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDCA0B81C69BCD300B9568E /* TestClient.swift */; };
 		ABDCA0BD1C69C08900B9568E /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDCA0BC1C69C08900B9568E /* UploadViewController.swift */; };
 		ABDCA0C01C69E70100B9568E /* HTTPBinHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDCA0BF1C69E70100B9568E /* HTTPBinHost.swift */; };
 		ABEB1AAA1C69A7DE00702A28 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* Data.swift */; };
@@ -202,7 +201,6 @@
 		ABD143AA1C87ECC40040FFFA /* tvOS-Appex.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "tvOS-Appex.plist"; path = "Supporting Files/tvOS-Appex.plist"; sourceTree = "<group>"; };
 		ABDCA0A51C69B2F800B9568E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		ABDCA0B61C69B9E000B9568E /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = usr/lib/system/libcommonCrypto.tbd; sourceTree = SDKROOT; };
-		ABDCA0B81C69BCD300B9568E /* TestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestClient.swift; sourceTree = "<group>"; };
 		ABDCA0BC1C69C08900B9568E /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		ABDCA0BF1C69E70100B9568E /* HTTPBinHost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinHost.swift; sourceTree = "<group>"; };
 		ABEB1AA91C69A7DE00702A28 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
@@ -379,7 +377,6 @@
 				ABCF938F1B2ECA1F0078CA66 /* Assets.xcassets */,
 				ABCF93911B2ECA1F0078CA66 /* LaunchScreen.storyboard */,
 				ABCF93941B2ECA1F0078CA66 /* Info.plist */,
-				ABDCA0B81C69BCD300B9568E /* TestClient.swift */,
 				ABDCA0BC1C69C08900B9568E /* UploadViewController.swift */,
 				ABDCA0BF1C69E70100B9568E /* HTTPBinHost.swift */,
 				AB0F5F751C6DA0D0006ED63F /* DemoListViewController.swift */,
@@ -798,7 +795,6 @@
 				ABCF93BD1B2ECB830078CA66 /* FlickrImage.swift in Sources */,
 				ABCF938B1B2ECA1F0078CA66 /* FlickrImageDetailViewController.swift in Sources */,
 				AB0F5F7D1C6DC5B7006ED63F /* CRUDViewController.swift in Sources */,
-				ABDCA0B91C69BCD300B9568E /* TestClient.swift in Sources */,
 				AB8BEEB31D38BC8A00CD4E7F /* String.swift in Sources */,
 				ABDCA0C01C69E70100B9568E /* HTTPBinHost.swift in Sources */,
 				ABCF93C01B2ECB830078CA66 /* FlickrImageCell.swift in Sources */,
@@ -1261,7 +1257,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -1276,7 +1272,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
