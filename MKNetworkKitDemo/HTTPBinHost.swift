@@ -15,41 +15,41 @@ class HTTPBinHost: Host {
     defaultParameterEncoding = .JSON
   }
 
-  func testPost (completionHandler: (Void -> Void)) {
+  func testPost (_ completionHandler: ((Void) -> Void)) {
     guard let request = request(.POST, withPath: "post") else { return }
     request.appendParameter("name", value: "Mugunth")
     request.completion { completedRequest -> Void in
-      print (completedRequest.responseAsJSON)
+      print ("\(completedRequest.responseAsJSON)")
     }.run()
   }
 
-  func performHiddenBasicAuthentication (completionHandler: (Void -> Void)) {
+  func performHiddenBasicAuthentication (_ completionHandler: ((Void) -> Void)) {
     guard let request = request(withPath: "hidden-basic-auth/user/passwd") else { return }
     request.appendBasicAuthorizationHeader(username: "user", password: "passwd")
     request.completion { completedRequest -> Void in
-      print (completedRequest.responseAsJSON)
+      print ("\(completedRequest.responseAsJSON)")
       }.run()
   }
 
-  func performBasicAuthentication (completionHandler: (Void -> Void)) {
+  func performBasicAuthentication (_ completionHandler: ((Void) -> Void)) {
     guard let request = request(withPath: "basic-auth/user/passwd") else { return }
     request.username = "user"
     request.password = "passwd"
     request.realm = "Fake Realm"
 
     request.completion { completedRequest -> Void in
-      print (completedRequest.responseAsJSON)
+      print ("\(completedRequest.responseAsJSON)")
       }.run()
   }
 
-  func performDigestAuthentication (completionHandler: (Void -> Void)) {
+  func performDigestAuthentication (_ completionHandler: ((Void) -> Void)) {
     guard let request = request(withPath: "digest-auth/auth/user/passwd") else { return }
     request.username = "user"
     request.password = "passwd"
     request.realm = "me@kennethreitz.com"
-    request.authenticationMethod = .HTTPDigest
+    request.authenticationMethod = .httpDigest
     request.completion { completedRequest -> Void in
-      print (completedRequest.responseAsJSON)
+      print ("\(completedRequest.responseAsJSON)")
       }.run()
   }
 
@@ -71,7 +71,7 @@ class HTTPBinHost: Host {
     }
   }
   
-  func uploadImage (imageFilePath: String, completionHandler: (Void -> Void)) {
+  func uploadImage (_ imageFilePath: String, completionHandler: ((Void) -> Void)) {
     guard let request = request(.POST, withPath: "post") else { return }
     if let imageEntity = MultipartEntity(mimetype: "application/jpeg", filePath: imageFilePath) {
       request.appendMultipartEntity("image", value: imageEntity)

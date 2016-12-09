@@ -18,7 +18,7 @@ class DownloadViewController: UIViewController, UIDocumentInteractionControllerD
   var request: Request?
 
   var flickrHost: FlickrClient {
-    return (UIApplication.sharedApplication().delegate as! AppDelegate).flickrHost
+    return (UIApplication.shared.delegate as! AppDelegate).flickrHost
   }
 
   override func viewDidLoad() {
@@ -26,18 +26,18 @@ class DownloadViewController: UIViewController, UIDocumentInteractionControllerD
     progressView.alpha = 0
   }
 
-  @IBAction func downloadPauseResumeButtonAction(sender: AnyObject) {
+  @IBAction func downloadPauseResumeButtonAction(_ sender: AnyObject) {
 
     if let unwrappedRequest = request {
       if unwrappedRequest.state == .Paused {
         unwrappedRequest.resume()
-        downloadPauseResumeButton.setTitle("Pause", forState: .Normal)
+        downloadPauseResumeButton.setTitle("Pause", for: UIControlState())
       } else {
         unwrappedRequest.pause()
-        downloadPauseResumeButton.setTitle("Resume", forState: .Normal)
+        downloadPauseResumeButton.setTitle("Resume", for: UIControlState())
       }
     } else {
-      downloadPauseResumeButton.setTitle("Pause", forState: .Normal)
+      downloadPauseResumeButton.setTitle("Pause", for: UIControlState())
       progressView.alpha = 1
       request = flickrHost.request(withAbsoluteURLString:textField.text!)
       let path = "\(NSHomeDirectory())/image.jpg"
@@ -45,27 +45,27 @@ class DownloadViewController: UIViewController, UIDocumentInteractionControllerD
 //        request?.appendOutputStream(outputStream)
 //      }
       request?.downloadPath = path
-      if NSFileManager.defaultManager().fileExistsAtPath(path) {
+      if FileManager.default.fileExists(atPath: path) {
         do {
-          try NSFileManager.defaultManager().removeItemAtPath(path)
+          try FileManager.default.removeItem(atPath: path)
         } catch let error as NSError {
           print (error)
         }
       }
       request?.progress { inProgressRequest in
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
           self.progressView.progress = Float(inProgressRequest.progressValue!)
         }
         }.completion { completedRequest in
-          dispatch_async(dispatch_get_main_queue()) {
+          DispatchQueue.main.async {
             self.progressView.alpha = 0
-            self.downloadPauseResumeButton.setTitle("Download", forState: .Normal)
+            self.downloadPauseResumeButton.setTitle("Download", for: .normal)
             self.request = nil
           }
           if let error = completedRequest.error {
             print ("Error \(error)")
           } else {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
               self.presentFile(path)
             }
           }
@@ -73,13 +73,13 @@ class DownloadViewController: UIViewController, UIDocumentInteractionControllerD
     }
   }
 
-  func presentFile(fileUrl: String) {
-    let controller = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: fileUrl))
+  func presentFile(_ fileUrl: String) {
+    let controller = UIDocumentInteractionController(url: URL(fileURLWithPath: fileUrl))
     controller.delegate = self
-    controller.presentPreviewAnimated(true)
+    controller.presentPreview(animated: true)
   }
 
-  func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
+  func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
     return self
   }
   

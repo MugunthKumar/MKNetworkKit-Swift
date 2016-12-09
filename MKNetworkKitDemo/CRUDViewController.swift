@@ -15,35 +15,35 @@ class CRUDViewController: UIViewController {
   @IBOutlet var textView: UITextView!
 
   var host: HTTPBinHost {
-    return (UIApplication.sharedApplication().delegate as! AppDelegate).httpbinHost
+    return (UIApplication.shared.delegate as! AppDelegate).httpbinHost
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
     if method == .GET {
       host.request(withPath: "get")?.completion { completedRequest in
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
           self.textView.text = completedRequest.responseAsString
         }
       }.run()
     }
     if method == .POST {
       host.request(.POST, withPath: "post", parameters: ["A": "a", "B": "b"])?.completion { completedRequest in
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
           self.textView.text = completedRequest.responseAsString
         }
         }.run()
     }
     if method == .PUT {
       host.request(.PUT, withPath: "put")?.completion { completedRequest in
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
           self.textView.text = completedRequest.responseAsString
         }
         }.run()
     }
     if method == .DELETE {
       host.request(.DELETE, withPath: "delete")?.completion { completedRequest in
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
           self.textView.text = completedRequest.responseAsString
         }
         }.run()

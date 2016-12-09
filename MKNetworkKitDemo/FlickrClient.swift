@@ -28,10 +28,10 @@ class FlickrClient: Host {
   }
 
   @discardableResult
-  internal func imageFetchRequest(tag : String, page: Int) -> Request? {
+  internal func imageFetchRequest(_ tag : String, page: Int) -> Request? {
     return super.request(withPath: "", parameters:
       ["method": "flickr.photos.search",
-        "tags": tag.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!,
+       "tags": tag.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!,
         "per_page": "200",
         "format": "json",
         "nojsoncallback": "1",
@@ -40,12 +40,12 @@ class FlickrClient: Host {
   }
 
   @discardableResult
-  override func customizeRequest(request: Request) -> Request {
+  override func customizeRequest(_ request: Request) -> Request {
     request.appendParameter("api_key", value: flickrAPIKey)
     return request
   }
 
-  func fetchImages (tag : String, completionHandler: [FlickrImage] -> Void) {
+  func fetchImages (_ tag : String, completionHandler: @escaping ([FlickrImage]) -> Void) {
     guard let request = imageFetchRequest(tag, page: 0) else { return }
 
     request.completion {request in
@@ -55,14 +55,14 @@ class FlickrClient: Host {
         let flickrArray = photosDictionary["photo"] as! [[String: AnyObject]]
         completionHandler(flickrArray.map {FlickrImage(jsonDictionary: $0)})
       } else {
-        print(request.error)
+        print("\(request.error)")
       }
       }.run()
   }
 
   #if os(iOS) || os(watchOS) || os(tvOS)
   @discardableResult
-  func fetchImage (imageURLString : String, completionHandler: (UIImage?) -> Void) -> Request? {
+  func fetchImage (_ imageURLString : String, completionHandler: @escaping (UIImage?) -> Void) -> Request? {
     let request = super.request(withAbsoluteURLString: imageURLString)
     return request?.completion {request in
       completionHandler(request.responseAsImage())

@@ -10,23 +10,23 @@ import Foundation
 import UIKit
 
 private enum TableView: Int {
-  case CRUDSection = 0
-  case AuthenticationSection = 1
-  case UDSection = 2
-  case FlickrSection = 3
-  case QueueSection = 4
-  case NumberOfSections = 5
+  case crudSection = 0
+  case authenticationSection = 1
+  case udSection = 2
+  case flickrSection = 3
+  case queueSection = 4
+  case numberOfSections = 5
 }
 
 class DemoListViewController: UITableViewController {
 
   var host: HTTPBinHost {
-    return (UIApplication.sharedApplication().delegate as! AppDelegate).httpbinHost
+    return (UIApplication.shared.delegate as! AppDelegate).httpbinHost
   }
 
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    if indexPath.section == TableView.AuthenticationSection.rawValue {
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+    if indexPath.section == TableView.authenticationSection.rawValue {
       if indexPath.row == 0 {
         host.performBasicAuthentication {}
       }
@@ -38,26 +38,26 @@ class DemoListViewController: UITableViewController {
       }
     }
 
-    if indexPath.section == TableView.QueueSection.rawValue {
+    if indexPath.section == TableView.queueSection.rawValue {
       host.performQueuedRequests()
     }
   }
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showGET" {
-      let controller = segue.destinationViewController as! CRUDViewController
+      let controller = segue.destination as! CRUDViewController
       controller.method = .GET
     }
     if segue.identifier == "showPOST" {
-      let controller = segue.destinationViewController as! CRUDViewController
+      let controller = segue.destination as! CRUDViewController
       controller.method = .POST
     }
     if segue.identifier == "showPUT" {
-      let controller = segue.destinationViewController as! CRUDViewController
+      let controller = segue.destination as! CRUDViewController
       controller.method = .PUT
     }
     if segue.identifier == "showDELETE" {
-      let controller = segue.destinationViewController as! CRUDViewController
+      let controller = segue.destination as! CRUDViewController
       controller.method = .DELETE
     }
   }

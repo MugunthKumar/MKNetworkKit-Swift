@@ -15,14 +15,14 @@ class FlickrImageListViewController: UITableViewController {
 
   override func awakeFromNib() {
     super.awakeFromNib()
-    if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+    if UIDevice.current.userInterfaceIdiom == .pad {
       self.clearsSelectionOnViewWillAppear = false
       self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
     }
   }
 
   var flickrHost: FlickrClient {
-    return (UIApplication.sharedApplication().delegate as! AppDelegate).flickrHost
+    return (UIApplication.shared.delegate as! AppDelegate).flickrHost
   }
 
   override func viewDidLoad() {
@@ -35,7 +35,7 @@ class FlickrImageListViewController: UITableViewController {
 
       flickrHost.fetchImages("Singapore") {images -> Void in
         self.images = images
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+        DispatchQueue.main.async { () -> Void in
           self.tableView.reloadData()
         }
       }
@@ -49,13 +49,13 @@ class FlickrImageListViewController: UITableViewController {
 
   // MARK: - Segues
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showDetail" {
       if let indexPath = self.tableView.indexPathForSelectedRow {
         let object = images[indexPath.row]
-        let controller = (segue.destinationViewController as! UINavigationController).topViewController as! FlickrImageDetailViewController
+        let controller = (segue.destination as! UINavigationController).topViewController as! FlickrImageDetailViewController
         controller.detailItem = object
-        controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+        controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
         controller.navigationItem.leftItemsSupplementBackButton = true
       }
     }
@@ -63,16 +63,16 @@ class FlickrImageListViewController: UITableViewController {
 
   // MARK: - Table View
 
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return images.count
   }
 
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("FlickrImageCell", forIndexPath: indexPath) as! FlickrImageCell
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "FlickrImageCell", for: indexPath) as! FlickrImageCell
     let flickrImage = images[indexPath.row]
     cell.bind(flickrImage)
     return cell

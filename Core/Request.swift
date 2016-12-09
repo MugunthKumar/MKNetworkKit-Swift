@@ -132,7 +132,7 @@ open class Request: NSObject {
   // MARK:- URL Properties
   internal var url: String
   internal var method = HTTPMethod.GET
-  internal var parameters = [String:AnyObject]()
+  internal var parameters = [String:Any]()
   internal var headers = [String:String]()
   open var parameterEncoding = ParameterEncoding.URL
 
@@ -403,7 +403,7 @@ open class Request: NSObject {
   // MARK:- Designated Initializer
   init(method: HTTPMethod = .GET,
     url: String,
-    parameters: [String:AnyObject] = [:],
+    parameters: [String:Any] = [:],
     headers: [String:String] = [:],
     bodyData: Data? = nil) {
       self.url = url

@@ -20,11 +20,11 @@ class FlickrImageCell: UITableViewCell {
     imageFetchRequest?.cancel()
   }
 
-  func bind(flickrImage : FlickrImage) {
+  func bind(_ flickrImage : FlickrImage) {
     imageFetchRequest = flickrImage.thumbnailImageUrlString?.loadRemoteImage { image, cached -> Void in
-      dispatch_async(dispatch_get_main_queue()) { () -> Void in
+      DispatchQueue.main.async { () -> Void in
         if let view = self.superview {
-          UIView.transitionWithView(view, duration: 0.5, options: .TransitionCrossDissolve, animations: {
+          UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {
             () -> Void in
             self.photoView.image = image
             }, completion: nil)

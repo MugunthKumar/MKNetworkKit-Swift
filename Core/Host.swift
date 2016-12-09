@@ -151,7 +151,7 @@ open class Host: NSObject, URLSessionTaskDelegate, URLSessionDataDelegate, URLSe
   open func request(
     _ method: HTTPMethod = .GET,
     withPath requestPath: String,
-    parameters: [String:AnyObject] = [:],
+    parameters: [String:Any] = [:],
     headers: [String:String] = [:],
     bodyData: Data? = nil,
     ssl: Bool? = nil) -> Request? {

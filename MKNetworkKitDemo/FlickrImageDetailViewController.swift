@@ -21,7 +21,7 @@ class FlickrImageDetailViewController: UIViewController {
   }
 
   var flickrHost: FlickrClient {
-    return (UIApplication.sharedApplication().delegate as! AppDelegate).flickrHost
+    return (UIApplication.shared.delegate as! AppDelegate).flickrHost
   }
 
   func configureView() {
@@ -30,9 +30,9 @@ class FlickrImageDetailViewController: UIViewController {
 
       flickrHost.fetchImage(detail.fullscreenImageUrlString!) { (image : UIImage?) -> Void in
 
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+        DispatchQueue.main.async { () -> Void in
 
-          UIView.transitionWithView(self.view!, duration: 0.5, options: .TransitionCrossDissolve, animations: {
+          UIView.transition(with: self.view!, duration: 0.5, options: .transitionCrossDissolve, animations: {
             () -> Void in
             self.fullScreenImageView.image = image
             }, completion: nil)

@@ -15,7 +15,7 @@ class TestClient: Host {
         self.secure = false
     }
 
-  func uploadImage (imageFilePath: String, completionHandler: (Void -> Void)) {
+  func uploadImage (_ imageFilePath: String, completionHandler: ((Void) -> Void)) {
 
     guard let request = request(.POST, withPath: "upload.php", parameters: ["Submit": "1"]) else { return }
     if let imageEntity = MultipartEntity(mimetype: "application/jpeg", filePath: imageFilePath) {
