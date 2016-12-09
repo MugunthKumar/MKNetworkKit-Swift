@@ -1,5 +1,5 @@
 //
-//  NSString.swift
+//  URLSessionTask.swift
 //  MKNetworkKit
 //
 //  Created by Mugunth Kumar
@@ -32,18 +32,18 @@
 //
 
 import Foundation
-import CommonCrypto
 
-public extension NSData {
-  public var md5: String {
-    let digestLength = Int(CC_MD5_DIGEST_LENGTH)
-    let md5Buffer = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLength)
+public extension URLSessionTask {
+  fileprivate struct AssociatedKeys {
+    static var RequestKey = "com.steinlogic.mknetworkkit.associatedkeys.request"
+  }
 
-    CC_MD5(bytes, CC_LONG(length), md5Buffer)
-    let output = NSMutableString(capacity: Int(CC_MD5_DIGEST_LENGTH * 2))
-    for i in 0..<digestLength {
-      output.appendFormat("%02x", md5Buffer[i])
+  public var request: Request? {
+    get {
+      return objc_getAssociatedObject(self, &AssociatedKeys.RequestKey) as? Request
     }
-    return NSString(format: output) as String
+    set (newValue) {
+      objc_setAssociatedObject(self, &AssociatedKeys.RequestKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
   }
 }

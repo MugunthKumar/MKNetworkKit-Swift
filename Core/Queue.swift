@@ -32,14 +32,14 @@
 
 import Foundation
 
-public class Queue {
-  public var requests = [Request]()
-  public var failedRequests = [Request]()
-  var serialQueue = dispatch_queue_create("queue", DISPATCH_QUEUE_SERIAL)
+open class Queue {
+  open var requests = [Request]()
+  open var failedRequests = [Request]()
+  var serialQueue = DispatchQueue(label: "queue", attributes: [])
   public init() {}
 
-  public func run(serial serialMode: Bool = true, abortOnFirstFail: Bool = false, completionHandler: (Queue -> Void)) {
-    let queue = NSOperationQueue()
+  open func run(serial serialMode: Bool = true, abortOnFirstFail: Bool = false, completionHandler: @escaping ((Queue) -> Void)) {
+    let queue = OperationQueue()
     if serialMode {
       queue.maxConcurrentOperationCount = 1
     }
@@ -53,13 +53,13 @@ public class Queue {
           }
         }
       }
-      dispatch_async(serialQueue) {
+      serialQueue.async {
         queue.addOperation(QueueOperation(request: request))
       }
     }
-    dispatch_async(serialQueue) {
+    serialQueue.async {
       queue.waitUntilAllOperationsAreFinished()
-      dispatch_async(dispatch_get_main_queue()) {
+      DispatchQueue.main.async {
         completionHandler(self)
       }
     }

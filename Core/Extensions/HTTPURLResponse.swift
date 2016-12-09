@@ -1,5 +1,5 @@
 //
-//  NSHTTPURLResponse.swift
+//  HTTPURLResponse.swift
 //  MKNetworkKit
 //
 //  Created by Mugunth Kumar
@@ -33,12 +33,12 @@
 
 import Foundation
 
-public extension NSHTTPURLResponse {
+public extension HTTPURLResponse {
 
-  public func headerValue(key: String) -> String? {
-    let lowercaseKey = String(key).lowercaseString
+  public func headerValue(_ key: String) -> String? {
+    let lowercaseKey = String(key).lowercased()
     for (k, v) in allHeaderFields {
-      if String(k).lowercaseString == lowercaseKey {
+      if String(describing: k).lowercased() == lowercaseKey {
         return v as? String
       }
     }
@@ -46,33 +46,33 @@ public extension NSHTTPURLResponse {
   }
 
   public var isContentTypeImage: Bool {
-    if let _ = headerValue("Content-Type")?.lowercaseString.rangeOfString("image") {
+    if let _ = headerValue("Content-Type")?.lowercased().range(of: "image") {
       return true
     } else {
       return false
     }
   }
 
-  public func cacheExpiryDate(requestDate: NSDate?) -> NSDate? {
+  public func cacheExpiryDate(_ requestDate: Date?) -> Date? {
     if let expiresOn = headerValue("Expires") {
-      if let expiresOnDate = NSDate.dateFromRFC1123DateString(expiresOn) {
+      if let expiresOnDate = Date.dateFromRFC1123DateString(expiresOn) {
         return expiresOnDate
       }
     }
 
     if let cacheControl = headerValue("Cache-Control") {
-      let entities = cacheControl.componentsSeparatedByString(",")
+      let entities = cacheControl.components(separatedBy: ",")
       for entity in entities {
-        if let _ = entity.rangeOfString("no-cache") {
+        if let _ = entity.range(of: "no-cache") {
           return nil
         }
-        if let _ = entity.rangeOfString("max-age") {
-          let maxAgeComponents = entity.componentsSeparatedByString("=")
+        if let _ = entity.range(of: "max-age") {
+          let maxAgeComponents = entity.components(separatedBy: "=")
           if let maxAge = Double(maxAgeComponents[1]) {
             if requestDate == nil {
-              return NSDate().dateByAddingTimeInterval(maxAge)
+              return Date().addingTimeInterval(maxAge)
             } else {
-              return requestDate!.dateByAddingTimeInterval(maxAge)
+              return requestDate!.addingTimeInterval(maxAge)
             }
           }
         }

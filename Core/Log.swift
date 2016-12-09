@@ -68,12 +68,12 @@ public struct Log {
 
   public static var defaultLog: Log = simpleLog
 
-  private var infoPrefix: String
-  private var warnPrefix: String
-  private var errorPrefix: String
-  private var infoSuffix: String
-  private var warnSuffix: String
-  private var errorSuffix: String
+  fileprivate var infoPrefix: String
+  fileprivate var warnPrefix: String
+  fileprivate var errorPrefix: String
+  fileprivate var infoSuffix: String
+  fileprivate var warnSuffix: String
+  fileprivate var errorSuffix: String
 
   public init(infoPrefix: String, infoSuffix: String,
     warnPrefix: String, warnSuffix: String,
@@ -88,30 +88,30 @@ public struct Log {
       self.errorSuffix = errorSuffix
   }
 
-  public func info<T>(object: T, functionName: String = #function, lineNumber: Int = #line) {
+  public func info<T>(_ object: T, functionName: String = #function, lineNumber: Int = #line) {
     print("\(functionName) [\(lineNumber)] \(infoPrefix)\(object)\(infoSuffix)")
     print("\n") // remove this line if you are using Swift 2 and above
   }
 
-  public func warn<T>(object: T, functionName: String = #function, lineNumber: Int = #line) {
+  public func warn<T>(_ object: T, functionName: String = #function, lineNumber: Int = #line) {
     print("\(functionName) [\(lineNumber)] \(warnPrefix)\(object)\(warnSuffix)")
     print("\n")
   }
 
-  public func error<T>(object: T, functionName: String = #function, lineNumber: Int = #line) {
+  public func error<T>(_ object: T, functionName: String = #function, lineNumber: Int = #line) {
     print("\(functionName) [\(lineNumber)] \(errorPrefix)\(object)\(errorSuffix)")
     print("\n")
   }
 
-  public static func info<T>(object: T, functionName: String = #function, lineNumber: Int = #line) {
+  public static func info<T>(_ object: T, functionName: String = #function, lineNumber: Int = #line) {
     defaultLog.info(object, functionName:functionName, lineNumber:lineNumber)
   }
 
-  public static func warn<T>(object: T, functionName: String = #function, lineNumber: Int = #line) {
+  public static func warn<T>(_ object: T, functionName: String = #function, lineNumber: Int = #line) {
     defaultLog.warn(object, functionName:functionName, lineNumber:lineNumber)
   }
 
-  public static func error<T>(object: T, functionName: String = #function, lineNumber: Int = #line) {
+  public static func error<T>(_ object: T, functionName: String = #function, lineNumber: Int = #line) {
     defaultLog.error(object, functionName:functionName, lineNumber:lineNumber)
   }
 }

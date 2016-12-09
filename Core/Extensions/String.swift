@@ -9,7 +9,7 @@
 import Foundation
 public extension String {
   public var filePathSafeString: String {
-    let characterSet = NSCharacterSet(charactersInString: "/*?!:").invertedSet
-    return stringByAddingPercentEncodingWithAllowedCharacters(characterSet) ?? ""
+    let characterSet = CharacterSet(charactersIn: "/*?!:").inverted
+    return addingPercentEncoding(withAllowedCharacters: characterSet) ?? ""
   }
 }

@@ -36,16 +36,16 @@ import UIKit
 
 #if os(iOS) || os(tvOS)
   public extension UIAlertController {
-    public static func show(error: NSError) {
+    public static func show(_ error: NSError) {
       let title = error.localizedFailureReason ?? error.localizedDescription
       let alertController = UIAlertController(title: title,
                                               message: error.localizedRecoverySuggestion,
-                                              preferredStyle: .Alert)
-      let action = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .Default) { _ in
+                                              preferredStyle: .alert)
+      let action = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) { _ in
 
       }
       alertController.addAction(action)
-      UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+      UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
   }
 #endif

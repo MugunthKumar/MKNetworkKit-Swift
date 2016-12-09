@@ -39,7 +39,7 @@ import UIKit
 import AppKit
 #endif
 
-public class Cache<T>: CustomDebugStringConvertible {
+open class Cache<T>: CustomDebugStringConvertible {
 
   //MARK:- Properties
   var fileExtension: String
@@ -51,85 +51,81 @@ public class Cache<T>: CustomDebugStringConvertible {
   var recentKeys = [String]()
 
   //MARK:- Queue
-  var queue: dispatch_queue_t = dispatch_queue_create("com.mknetworkkit.cachequeue", DISPATCH_QUEUE_SERIAL)
-  var diskQueue: dispatch_queue_t = dispatch_queue_create("com.mknetworkkit.diskqueue", DISPATCH_QUEUE_SERIAL)
+  var queue: DispatchQueue = DispatchQueue(label: "com.mknetworkkit.cachequeue", attributes: [])
+  var diskQueue: DispatchQueue = DispatchQueue(label: "com.mknetworkkit.diskqueue", attributes: [])
 
-  public var debugDescription: String {
+  open var debugDescription: String {
     return directory
   }
 
   // MARK:- Designated Initializer
   public init(cost: Int = 50, directoryName: String = "AppCache", fileExtension: String = "cachearchive") {
-    let cachesDirectory = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).first!
+    let cachesDirectory = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first!
     directory = cachesDirectory + "/" + directoryName
     cacheCost = cost
     self.fileExtension = fileExtension
 
-    if !(NSFileManager.defaultManager().fileExistsAtPath(directory)) {
+    if !(FileManager.default.fileExists(atPath: directory)) {
       do {
-        try NSFileManager.defaultManager().createDirectoryAtPath(directory, withIntermediateDirectories: true, attributes: nil)
+        try FileManager.default.createDirectory(atPath: directory, withIntermediateDirectories: true, attributes: nil)
       } catch let error as NSError {
         Log.error(error)
       }
     }
 
     #if os(iOS) || os(tvOS)
-      NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationDidReceiveMemoryWarningNotification,
-        object: nil, queue: nil, usingBlock: { (_) in
+      NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationDidReceiveMemoryWarning,
+        object: nil, queue: nil, using: { (_) in
           self.flushToDisk()
       })
-      NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationDidEnterBackgroundNotification,
-        object: nil, queue: nil, usingBlock: { (_) in
+      NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationDidEnterBackground,
+        object: nil, queue: nil, using: { (_) in
           self.flushToDisk()
       })
-      NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillResignActiveNotification,
-        object: nil, queue: nil, usingBlock: { (_) in
+      NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationWillResignActive,
+        object: nil, queue: nil, using: { (_) in
           self.flushToDisk()
       })
-      NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillTerminateNotification,
-        object: nil, queue: nil, usingBlock: { (_) in
+      NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationWillTerminate,
+        object: nil, queue: nil, using: { (_) in
           self.flushToDisk()
       })
     #endif
 
     #if os(OSX)
-      NSNotificationCenter.defaultCenter().addObserverForName(NSApplicationWillHideNotification,
-      object: nil, queue: nil, usingBlock: { (_) in
-      self.flushToDisk()
-      })
-      NSNotificationCenter.defaultCenter().addObserverForName(NSApplicationWillResignActiveNotification,
-      object: nil, queue: nil, usingBlock: { (_) in
-      self.flushToDisk()
-      })
-      NSNotificationCenter.defaultCenter().addObserverForName(NSApplicationWillTerminateNotification,
-      object: nil, queue: nil, usingBlock: { (_) in
-      self.flushToDisk()
-      })
-
+      NotificationCenter.default.addObserver(forName: NSNotification.Name.NSApplicationWillHide, object: nil, queue: nil) { (_) in
+        self.flushToDisk()
+      }
+      NotificationCenter.default.addObserver(forName: NSNotification.Name.NSApplicationWillResignActive, object: nil, queue: nil) { (_) in
+        self.flushToDisk()
+      }
+      NotificationCenter.default.addObserver(forName: NSNotification.Name.NSApplicationWillTerminate, object: nil, queue: nil) { (_) in
+        self.flushToDisk()
+      }
     #endif
   }
 
   // MARK:- Disk cache
-  func makePath(key: String) -> String {
-    let md5Key = key.dataUsingEncoding(NSUTF8StringEncoding)!.md5
+  func makePath(_ key: String) -> String {
+    let md5Key = key.data(using: String.Encoding.utf8)!.md5
     return "\(self.directory)/\(md5Key).\(fileExtension)"
   }
 
-  func fetchFromDisk (key: String) -> T? {
+  func fetchFromDisk (_ key: String) -> T? {
     let filePath = makePath(key)
-    return NSKeyedUnarchiver.unarchiveObjectWithFile(filePath) as? T
+    return NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? T
   }
   
-  func cacheToDisk (key: String, _ value: T) {
+  func cacheToDisk (_ key: String, _ value: T) {
     let filePath = makePath(key)
-    if NSFileManager.defaultManager().fileExistsAtPath(filePath) {
-       try! NSFileManager.defaultManager().removeItemAtPath(filePath)
+    if FileManager.default.fileExists(atPath: filePath) {
+       try! FileManager.default.removeItem(atPath: filePath)
     }
 
-    let data = NSKeyedArchiver.archivedDataWithRootObject(value as! AnyObject)
-    dispatch_async(diskQueue) {
+    let data = NSKeyedArchiver.archivedData(withRootObject: value as AnyObject)
+    diskQueue.async {
       do {
-      try data.writeToFile(filePath, options: .AtomicWrite)
+      try data.write(to: URL(fileURLWithPath: filePath), options: .atomicWrite)
       } catch let error as NSError {
         print ("Failed \(filePath) with error \(error)")
       }
@@ -149,7 +145,7 @@ public class Cache<T>: CustomDebugStringConvertible {
       return nil
     }
     set {
-      dispatch_async(self.queue) {
+      self.queue.async {
         self.inMemoryCache[key] = newValue
         self.recentKeys.append(key)
         self.enforceMemoryCost()
@@ -160,18 +156,18 @@ public class Cache<T>: CustomDebugStringConvertible {
   // MARK:- Cleanup related methods
   func enforceMemoryCost() {
     if recentKeys.count <= cacheCost { return }
-    dispatch_async(self.queue) {
+    self.queue.async {
       let lruKey = self.recentKeys.removeLast()
       let lruValue = self.inMemoryCache[lruKey]
       if let valueToCache = lruValue {
         self.cacheToDisk(lruKey, valueToCache)
-        self.inMemoryCache.removeValueForKey(lruKey)
+        self.inMemoryCache.removeValue(forKey: lruKey)
       }
     }
   }
 
   func flushToDisk() {
-    dispatch_async(self.queue) {
+    self.queue.async {
       for (key, value) in self.inMemoryCache {
         self.cacheToDisk(key, value)
       }
@@ -181,13 +177,13 @@ public class Cache<T>: CustomDebugStringConvertible {
   }
 
   func emptyCache() {
-    dispatch_async(self.queue) {
+    self.queue.async {
       self.inMemoryCache.removeAll()
       self.recentKeys.removeAll()
     }
     do {
-     try NSFileManager.defaultManager().removeItemAtPath(directory)
-      try NSFileManager.defaultManager().createDirectoryAtPath(directory, withIntermediateDirectories: true, attributes: nil)
+     try FileManager.default.removeItem(atPath: directory)
+      try FileManager.default.createDirectory(atPath: directory, withIntermediateDirectories: true, attributes: nil)
     } catch let error as NSError {
       Log.warn(error)
     }
@@ -196,15 +192,21 @@ public class Cache<T>: CustomDebugStringConvertible {
   // MARK:- De-initalizer
   deinit {
     #if os(iOS)
-      NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
-      NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidEnterBackgroundNotification, object: nil)
-      NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationWillResignActiveNotification, object: nil)
-      NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationWillTerminateNotification, object: nil)
+      NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidReceiveMemoryWarning, object: nil)
+      NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+      NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+      NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
     #endif
     #if os(OSX)
-      NSNotificationCenter.defaultCenter().removeObserver(self, name: NSApplicationWillHideNotification, object: nil)
-      NSNotificationCenter.defaultCenter().removeObserver(self, name: NSApplicationWillResignActiveNotification, object: nil)
-      NSNotificationCenter.defaultCenter().removeObserver(self, name: NSApplicationWillTerminateNotification, object: nil)
+      NotificationCenter.default.addObserver(forName: NSNotification.Name.NSApplicationWillHide, object: nil, queue: nil) { (_) in
+        self.flushToDisk()
+      }
+      NotificationCenter.default.addObserver(forName: NSNotification.Name.NSApplicationWillResignActive, object: nil, queue: nil) { (_) in
+        self.flushToDisk()
+      }
+      NotificationCenter.default.addObserver(forName: NSNotification.Name.NSApplicationWillTerminate, object: nil, queue: nil) { (_) in
+        self.flushToDisk()
+      }
     #endif
   }
 }

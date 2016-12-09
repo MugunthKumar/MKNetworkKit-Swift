@@ -41,7 +41,9 @@ import ImageIO
 public extension String {
 
   static var imageHost = Host(cacheDirectory: "MKNetworkKit")
-  public func loadRemoteImage(decompress: Bool = true, scale: CGFloat? = nil, handler:(UIImage?, Bool) -> Void) -> Request? {
+
+  @discardableResult
+  public func loadRemoteImage(_ decompress: Bool = true, scale: CGFloat? = nil, handler:@escaping (UIImage?, Bool) -> Void) -> Request? {
     return String.imageHost.request(withAbsoluteURLString:self)?
       .completion { (request) -> Void in
         let cachedResponse = [.ResponseAvailableFromCache, .StaleResponseAvailableFromCache].contains(request.state)
@@ -54,43 +56,37 @@ public extension String {
   }
 }
 
+struct LazyConstants {
+  static var scale: CGFloat = {
+    #if os(watchOS)
+      return WKInterfaceDevice.current().screenScale
+    #elseif os(iOS)
+      return UIScreen.main.scale
+    #else
+      return 2
+    #endif
+  } ()
+}
+
 extension Request {
-  public func responseAsImage(scale: CGFloat? = nil) -> UIImage? {
-    var token: dispatch_once_t = 0
+  public func responseAsImage(_ scale: CGFloat? = nil) -> UIImage? {
     var mutableScale = scale
     if mutableScale == nil { // use device scale
-      mutableScale = 2
-      dispatch_once(&token) {
-        #if os(watchOS)
-          mutableScale = WKInterfaceDevice.currentDevice().screenScale
-        #endif
-        #if os(iOS)
-          mutableScale = UIScreen.mainScreen().scale
-        #endif
+      mutableScale = LazyConstants.scale
       }
-    }
-    return UIImage(data:responseData, scale: mutableScale!)
+    return UIImage(data:responseData as Data, scale: mutableScale!)
   }
   
-  public func responseAsDecompressedImage (scale: CGFloat? = nil) -> UIImage? {
-    guard let source = CGImageSourceCreateWithData(responseData as CFDataRef, nil) else { return nil }
+  public func responseAsDecompressedImage (_ scale: CGFloat? = nil) -> UIImage? {
+    guard let source = CGImageSourceCreateWithData(responseData as CFData, nil) else { return nil }
     guard let cgImage = CGImageSourceCreateImageAtIndex(source, 0,
-                                                        [(kCGImageSourceShouldCache as String): false]) else { return nil }
+                                                        [(kCGImageSourceShouldCache as String): false] as CFDictionary?) else { return nil }
     
-    var token: dispatch_once_t = 0
     var mutableScale = scale
     if mutableScale == nil { // use device scale
-      mutableScale = 2
-      dispatch_once(&token) {
-        #if os(watchOS)
-          mutableScale = WKInterfaceDevice.currentDevice().screenScale
-        #endif
-        #if os(iOS)
-          mutableScale = UIScreen.mainScreen().scale
-        #endif
-      }
+      mutableScale = LazyConstants.scale
     }
-    return UIImage(CGImage: cgImage, scale: mutableScale!, orientation: .Up)
+    return UIImage(cgImage: cgImage, scale: mutableScale!, orientation: .up)
   }
   
   #if APPEX
@@ -99,9 +95,9 @@ extension Request {
     didSet {
       if automaticNetworkActivityIndicator {
         Request.runningRequestsUpdatedHandler = { count in
-          dispatch_async(dispatch_get_main_queue()) {
+          DispatchQueue.main.async {
             #if os(iOS)
-              UIApplication.sharedApplication().networkActivityIndicatorVisible = count > 0
+              UIApplication.shared.isNetworkActivityIndicatorVisible = count > 0
             #endif
           }
         }

@@ -32,67 +32,67 @@
 
 import UIKit
 
-public class QueueOperation: NSOperation {
+open class QueueOperation: Operation {
   var request: Request
   public init(request: Request) {
     self.request = request
     super.init()
   }
 
-  public override func start() {
+  open override func start() {
     request.stateWillChange = { updatedRequest in
       if ![.Started, .Error, .Completed, .Cancelled].contains(updatedRequest.state) {
-        self.willChangeValueForKey("isReady")
-        self.willChangeValueForKey("isExecuting")
+        self.willChangeValue(forKey: "isReady")
+        self.willChangeValue(forKey: "isExecuting")
       } else {
-        self.willChangeValueForKey("isFinished")
+        self.willChangeValue(forKey: "isFinished")
       }
       if updatedRequest.state == .Ready {
-        self.willChangeValueForKey("isReady")
+        self.willChangeValue(forKey: "isReady")
       }
       if updatedRequest.state == .Cancelled {
-        self.willChangeValueForKey("isCancelled")
+        self.willChangeValue(forKey: "isCancelled")
       }
     }
 
     request.stateDidChange = { updatedRequest in
       if ![.Started, .Error, .Completed, .Cancelled].contains(updatedRequest.state) {
-        self.didChangeValueForKey("isReady")
-        self.didChangeValueForKey("isExecuting")
+        self.didChangeValue(forKey: "isReady")
+        self.didChangeValue(forKey: "isExecuting")
       } else {
-        self.didChangeValueForKey("isFinished")
+        self.didChangeValue(forKey: "isFinished")
       }
       if updatedRequest.state == .Ready {
-        self.didChangeValueForKey("isReady")
+        self.didChangeValue(forKey: "isReady")
       }
       if updatedRequest.state == .Cancelled {
-        self.didChangeValueForKey("isCancelled")
+        self.didChangeValue(forKey: "isCancelled")
       }
     }
 
-    if !cancelled {
+    if !isCancelled {
       //print ("started \(request.request?.URL?.absoluteString)")
       request.run()
     }
   }
 
-  public override var asynchronous: Bool {
+  open override var isAsynchronous: Bool {
     return true
   }
 
-  public override var ready: Bool {
+  open override var isReady: Bool {
     return request.state == .Ready
   }
 
-  public override var executing: Bool {
+  open override var isExecuting: Bool {
     return ![.Error, .Completed, .Cancelled].contains(request.state)
   }
 
-  public override var finished: Bool {
+  open override var isFinished: Bool {
     return [.Error, .Completed, .Cancelled].contains(request.state)
   }
 
-  public override func cancel() {
+  open override func cancel() {
     request.cancel()
     super.cancel()
   }

@@ -11,37 +11,37 @@
 		AB0F5F781C6DA34D006ED63F /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F5F771C6DA34D006ED63F /* DownloadViewController.swift */; };
 		AB0F5F7D1C6DC5B7006ED63F /* CRUDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F5F7C1C6DC5B7006ED63F /* CRUDViewController.swift */; };
 		AB0F5F801C6DDDEA006ED63F /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134501BEA11AC00726CE6 /* Cache.swift */; };
-		AB0F5F811C6DDDEA006ED63F /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
-		AB0F5F821C6DDDEA006ED63F /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134771BEA1E0500726CE6 /* NSDate.swift */; };
+		AB0F5F811C6DDDEA006ED63F /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* Data.swift */; };
+		AB0F5F821C6DDDEA006ED63F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134771BEA1E0500726CE6 /* Date.swift */; };
 		AB0F5F831C6DDDEA006ED63F /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134781BEA1E0500726CE6 /* UIKit.swift */; };
 		AB0F5F841C6DDDEA006ED63F /* QueueOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C41C6B3D3A0030B70C /* QueueOperation.swift */; };
-		AB0F5F851C6DDDEA006ED63F /* NSURLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */; };
+		AB0F5F851C6DDDEA006ED63F /* URLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* URLSessionTask.swift */; };
 		AB0F5F861C6DDDEA006ED63F /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB81348A1BEA1E9C00726CE6 /* UIAlertController.swift */; };
-		AB0F5F871C6DDDEA006ED63F /* NSHTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */; };
+		AB0F5F871C6DDDEA006ED63F /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* HTTPURLResponse.swift */; };
 		AB0F5F881C6DDDEA006ED63F /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C11C6B26120030B70C /* Queue.swift */; };
-		AB0F5F891C6DDDEA006ED63F /* NSDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */; };
+		AB0F5F891C6DDDEA006ED63F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* Dictionary.swift */; };
 		AB0F5F8A1C6DDDEA006ED63F /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134531BEA11AC00726CE6 /* Log.swift */; };
 		AB0F5F8B1C6DDDEA006ED63F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134551BEA11AC00726CE6 /* Request.swift */; };
 		AB0F5F8C1C6DDDEA006ED63F /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134521BEA11AC00726CE6 /* Host.swift */; };
 		AB0F5F981C6DDE16006ED63F /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134501BEA11AC00726CE6 /* Cache.swift */; };
-		AB0F5F991C6DDE16006ED63F /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
-		AB0F5F9A1C6DDE16006ED63F /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134771BEA1E0500726CE6 /* NSDate.swift */; };
+		AB0F5F991C6DDE16006ED63F /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* Data.swift */; };
+		AB0F5F9A1C6DDE16006ED63F /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134771BEA1E0500726CE6 /* Date.swift */; };
 		AB0F5F9B1C6DDE16006ED63F /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134781BEA1E0500726CE6 /* UIKit.swift */; };
 		AB0F5F9C1C6DDE16006ED63F /* QueueOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C41C6B3D3A0030B70C /* QueueOperation.swift */; };
-		AB0F5F9D1C6DDE16006ED63F /* NSURLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */; };
+		AB0F5F9D1C6DDE16006ED63F /* URLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* URLSessionTask.swift */; };
 		AB0F5F9E1C6DDE16006ED63F /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB81348A1BEA1E9C00726CE6 /* UIAlertController.swift */; };
-		AB0F5F9F1C6DDE16006ED63F /* NSHTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */; };
+		AB0F5F9F1C6DDE16006ED63F /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* HTTPURLResponse.swift */; };
 		AB0F5FA01C6DDE16006ED63F /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C11C6B26120030B70C /* Queue.swift */; };
-		AB0F5FA11C6DDE16006ED63F /* NSDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */; };
+		AB0F5FA11C6DDE16006ED63F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* Dictionary.swift */; };
 		AB0F5FA21C6DDE16006ED63F /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134531BEA11AC00726CE6 /* Log.swift */; };
 		AB0F5FA31C6DDE16006ED63F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134551BEA11AC00726CE6 /* Request.swift */; };
 		AB0F5FA41C6DDE16006ED63F /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134521BEA11AC00726CE6 /* Host.swift */; };
 		AB0F5FA61C6DDE16006ED63F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDCA0A51C69B2F800B9568E /* SystemConfiguration.framework */; };
-		AB0F5FB21C6DF6D2006ED63F /* NSURLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */; };
+		AB0F5FB21C6DF6D2006ED63F /* URLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* URLSessionTask.swift */; };
 		AB0F5FB41C6DF6EF006ED63F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0F5FB31C6DF6EF006ED63F /* SystemConfiguration.framework */; };
 		AB18DB901BC3F3AF00E25793 /* MKNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB18DB861BC3F3AF00E25793 /* MKNetworkKit.framework */; };
 		AB18DB971BC3F3AF00E25793 /* MKNetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */; };
-		AB7A41BE1C6AF74C0030B70C /* NSURLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */; };
+		AB7A41BE1C6AF74C0030B70C /* URLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* URLSessionTask.swift */; };
 		AB7A41C31C6B2BA00030B70C /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C11C6B26120030B70C /* Queue.swift */; };
 		AB7A41C61C6B3D430030B70C /* QueueOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C41C6B3D3A0030B70C /* QueueOperation.swift */; };
 		AB8134591BEA11AC00726CE6 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134501BEA11AC00726CE6 /* Cache.swift */; };
@@ -53,13 +53,13 @@
 		AB81346A1BEA13F000726CE6 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134521BEA11AC00726CE6 /* Host.swift */; };
 		AB81346C1BEA13F900726CE6 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134501BEA11AC00726CE6 /* Cache.swift */; };
 		AB81347A1BEA1E0500726CE6 /* NSAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134751BEA1E0500726CE6 /* NSAlert.swift */; };
-		AB81347D1BEA1E0500726CE6 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134771BEA1E0500726CE6 /* NSDate.swift */; };
-		AB81347E1BEA1E0500726CE6 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134771BEA1E0500726CE6 /* NSDate.swift */; };
+		AB81347D1BEA1E0500726CE6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134771BEA1E0500726CE6 /* Date.swift */; };
+		AB81347E1BEA1E0500726CE6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134771BEA1E0500726CE6 /* Date.swift */; };
 		AB81347F1BEA1E0500726CE6 /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134781BEA1E0500726CE6 /* UIKit.swift */; };
-		AB8134821BEA1E2E00726CE6 /* NSDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */; };
-		AB8134831BEA1E2E00726CE6 /* NSDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */; };
-		AB8134881BEA1E5200726CE6 /* NSHTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */; };
-		AB8134891BEA1E5200726CE6 /* NSHTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */; };
+		AB8134821BEA1E2E00726CE6 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* Dictionary.swift */; };
+		AB8134831BEA1E2E00726CE6 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* Dictionary.swift */; };
+		AB8134881BEA1E5200726CE6 /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* HTTPURLResponse.swift */; };
+		AB8134891BEA1E5200726CE6 /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* HTTPURLResponse.swift */; };
 		AB81348B1BEA1E9C00726CE6 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB81348A1BEA1E9C00726CE6 /* UIAlertController.swift */; };
 		AB8BEEB31D38BC8A00CD4E7F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8BEEB21D38BC8A00CD4E7F /* String.swift */; };
 		AB8BEEB41D38BC8A00CD4E7F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8BEEB21D38BC8A00CD4E7F /* String.swift */; };
@@ -79,27 +79,27 @@
 		ABCF93BD1B2ECB830078CA66 /* FlickrImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B81B2ECB830078CA66 /* FlickrImage.swift */; };
 		ABCF93C01B2ECB830078CA66 /* FlickrImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF93B91B2ECB830078CA66 /* FlickrImageCell.swift */; };
 		ABD1437B1C87EC0A0040FFFA /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134501BEA11AC00726CE6 /* Cache.swift */; };
-		ABD1437C1C87EC0A0040FFFA /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
-		ABD1437D1C87EC0A0040FFFA /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134771BEA1E0500726CE6 /* NSDate.swift */; };
+		ABD1437C1C87EC0A0040FFFA /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* Data.swift */; };
+		ABD1437D1C87EC0A0040FFFA /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134771BEA1E0500726CE6 /* Date.swift */; };
 		ABD1437E1C87EC0A0040FFFA /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134781BEA1E0500726CE6 /* UIKit.swift */; };
 		ABD1437F1C87EC0A0040FFFA /* QueueOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C41C6B3D3A0030B70C /* QueueOperation.swift */; };
-		ABD143801C87EC0A0040FFFA /* NSURLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */; };
-		ABD143821C87EC0A0040FFFA /* NSHTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */; };
+		ABD143801C87EC0A0040FFFA /* URLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* URLSessionTask.swift */; };
+		ABD143821C87EC0A0040FFFA /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* HTTPURLResponse.swift */; };
 		ABD143831C87EC0A0040FFFA /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C11C6B26120030B70C /* Queue.swift */; };
-		ABD143841C87EC0A0040FFFA /* NSDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */; };
+		ABD143841C87EC0A0040FFFA /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* Dictionary.swift */; };
 		ABD143851C87EC0A0040FFFA /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134531BEA11AC00726CE6 /* Log.swift */; };
 		ABD143861C87EC0A0040FFFA /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134551BEA11AC00726CE6 /* Request.swift */; };
 		ABD143871C87EC0A0040FFFA /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134521BEA11AC00726CE6 /* Host.swift */; };
 		ABD143891C87EC0A0040FFFA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDCA0A51C69B2F800B9568E /* SystemConfiguration.framework */; };
 		ABD143931C87EC4C0040FFFA /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134501BEA11AC00726CE6 /* Cache.swift */; };
-		ABD143941C87EC4C0040FFFA /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
-		ABD143951C87EC4C0040FFFA /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134771BEA1E0500726CE6 /* NSDate.swift */; };
+		ABD143941C87EC4C0040FFFA /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* Data.swift */; };
+		ABD143951C87EC4C0040FFFA /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134771BEA1E0500726CE6 /* Date.swift */; };
 		ABD143961C87EC4C0040FFFA /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134781BEA1E0500726CE6 /* UIKit.swift */; };
 		ABD143971C87EC4C0040FFFA /* QueueOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C41C6B3D3A0030B70C /* QueueOperation.swift */; };
-		ABD143981C87EC4C0040FFFA /* NSURLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */; };
-		ABD1439A1C87EC4C0040FFFA /* NSHTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */; };
+		ABD143981C87EC4C0040FFFA /* URLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41BC1C6AF6F00030B70C /* URLSessionTask.swift */; };
+		ABD1439A1C87EC4C0040FFFA /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134871BEA1E5200726CE6 /* HTTPURLResponse.swift */; };
 		ABD1439B1C87EC4C0040FFFA /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7A41C11C6B26120030B70C /* Queue.swift */; };
-		ABD1439C1C87EC4C0040FFFA /* NSDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */; };
+		ABD1439C1C87EC4C0040FFFA /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134811BEA1E2E00726CE6 /* Dictionary.swift */; };
 		ABD1439D1C87EC4C0040FFFA /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134531BEA11AC00726CE6 /* Log.swift */; };
 		ABD1439E1C87EC4C0040FFFA /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134551BEA11AC00726CE6 /* Request.swift */; };
 		ABD1439F1C87EC4C0040FFFA /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8134521BEA11AC00726CE6 /* Host.swift */; };
@@ -111,9 +111,9 @@
 		ABDCA0B91C69BCD300B9568E /* TestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDCA0B81C69BCD300B9568E /* TestClient.swift */; };
 		ABDCA0BD1C69C08900B9568E /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDCA0BC1C69C08900B9568E /* UploadViewController.swift */; };
 		ABDCA0C01C69E70100B9568E /* HTTPBinHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDCA0BF1C69E70100B9568E /* HTTPBinHost.swift */; };
-		ABEB1AAA1C69A7DE00702A28 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
-		ABEB1AAB1C69A7DE00702A28 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
-		ABEB1AAD1C69A7DE00702A28 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* NSData.swift */; };
+		ABEB1AAA1C69A7DE00702A28 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* Data.swift */; };
+		ABEB1AAB1C69A7DE00702A28 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* Data.swift */; };
+		ABEB1AAD1C69A7DE00702A28 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1AA91C69A7DE00702A28 /* Data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,7 +170,7 @@
 		AB18DB8F1BC3F3AF00E25793 /* MKNetworkKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MKNetworkKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB18DB961BC3F3AF00E25793 /* MKNetworkKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKNetworkKitTests.swift; sourceTree = "<group>"; };
 		AB18DB981BC3F3AF00E25793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionTask.swift; sourceTree = "<group>"; };
+		AB7A41BC1C6AF6F00030B70C /* URLSessionTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionTask.swift; sourceTree = "<group>"; };
 		AB7A41C11C6B26120030B70C /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		AB7A41C41C6B3D3A0030B70C /* QueueOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueOperation.swift; sourceTree = "<group>"; };
 		AB8134391BEA0FA200726CE6 /* MKNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,10 +179,10 @@
 		AB8134531BEA11AC00726CE6 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		AB8134551BEA11AC00726CE6 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		AB8134751BEA1E0500726CE6 /* NSAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAlert.swift; sourceTree = "<group>"; };
-		AB8134771BEA1E0500726CE6 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
+		AB8134771BEA1E0500726CE6 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		AB8134781BEA1E0500726CE6 /* UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKit.swift; sourceTree = "<group>"; };
-		AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDictionary.swift; sourceTree = "<group>"; };
-		AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSHTTPURLResponse.swift; sourceTree = "<group>"; };
+		AB8134811BEA1E2E00726CE6 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		AB8134871BEA1E5200726CE6 /* HTTPURLResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPURLResponse.swift; sourceTree = "<group>"; };
 		AB81348A1BEA1E9C00726CE6 /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		AB8BEEB21D38BC8A00CD4E7F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		ABCF93831B2ECA1F0078CA66 /* MKNetworkKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKNetworkKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,7 +205,7 @@
 		ABDCA0B81C69BCD300B9568E /* TestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestClient.swift; sourceTree = "<group>"; };
 		ABDCA0BC1C69C08900B9568E /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		ABDCA0BF1C69E70100B9568E /* HTTPBinHost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinHost.swift; sourceTree = "<group>"; };
-		ABEB1AA91C69A7DE00702A28 /* NSData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSData.swift; sourceTree = "<group>"; };
+		ABEB1AA91C69A7DE00702A28 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,13 +327,13 @@
 			isa = PBXGroup;
 			children = (
 				AB8134751BEA1E0500726CE6 /* NSAlert.swift */,
-				ABEB1AA91C69A7DE00702A28 /* NSData.swift */,
-				AB8134771BEA1E0500726CE6 /* NSDate.swift */,
+				ABEB1AA91C69A7DE00702A28 /* Data.swift */,
+				AB8134771BEA1E0500726CE6 /* Date.swift */,
 				AB8134781BEA1E0500726CE6 /* UIKit.swift */,
-				AB8134811BEA1E2E00726CE6 /* NSDictionary.swift */,
-				AB8134871BEA1E5200726CE6 /* NSHTTPURLResponse.swift */,
+				AB8134811BEA1E2E00726CE6 /* Dictionary.swift */,
+				AB8134871BEA1E5200726CE6 /* HTTPURLResponse.swift */,
 				AB81348A1BEA1E9C00726CE6 /* UIAlertController.swift */,
-				AB7A41BC1C6AF6F00030B70C /* NSURLSessionTask.swift */,
+				AB7A41BC1C6AF6F00030B70C /* URLSessionTask.swift */,
 				AB8BEEB21D38BC8A00CD4E7F /* String.swift */,
 			);
 			path = Extensions;
@@ -591,12 +591,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Steinlogic Consulting and Training Pte Ltd";
 				TargetAttributes = {
 					AB18DB851BC3F3AF00E25793 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = P898K98WCW;
+						LastSwiftMigration = 0810;
 					};
 					AB18DB8E1BC3F3AF00E25793 = {
 						CreatedOnToolsVersion = 7.1;
@@ -704,16 +705,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB0F5F801C6DDDEA006ED63F /* Cache.swift in Sources */,
-				AB0F5F811C6DDDEA006ED63F /* NSData.swift in Sources */,
-				AB0F5F821C6DDDEA006ED63F /* NSDate.swift in Sources */,
+				AB0F5F811C6DDDEA006ED63F /* Data.swift in Sources */,
+				AB0F5F821C6DDDEA006ED63F /* Date.swift in Sources */,
 				AB0F5F831C6DDDEA006ED63F /* UIKit.swift in Sources */,
 				AB8BEEB71D38BC8A00CD4E7F /* String.swift in Sources */,
 				AB0F5F841C6DDDEA006ED63F /* QueueOperation.swift in Sources */,
-				AB0F5F851C6DDDEA006ED63F /* NSURLSessionTask.swift in Sources */,
+				AB0F5F851C6DDDEA006ED63F /* URLSessionTask.swift in Sources */,
 				AB0F5F861C6DDDEA006ED63F /* UIAlertController.swift in Sources */,
-				AB0F5F871C6DDDEA006ED63F /* NSHTTPURLResponse.swift in Sources */,
+				AB0F5F871C6DDDEA006ED63F /* HTTPURLResponse.swift in Sources */,
 				AB0F5F881C6DDDEA006ED63F /* Queue.swift in Sources */,
-				AB0F5F891C6DDDEA006ED63F /* NSDictionary.swift in Sources */,
+				AB0F5F891C6DDDEA006ED63F /* Dictionary.swift in Sources */,
 				AB0F5F8A1C6DDDEA006ED63F /* Log.swift in Sources */,
 				AB0F5F8B1C6DDDEA006ED63F /* Request.swift in Sources */,
 				AB0F5F8C1C6DDDEA006ED63F /* Host.swift in Sources */,
@@ -725,16 +726,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB0F5F981C6DDE16006ED63F /* Cache.swift in Sources */,
-				AB0F5F991C6DDE16006ED63F /* NSData.swift in Sources */,
-				AB0F5F9A1C6DDE16006ED63F /* NSDate.swift in Sources */,
+				AB0F5F991C6DDE16006ED63F /* Data.swift in Sources */,
+				AB0F5F9A1C6DDE16006ED63F /* Date.swift in Sources */,
 				AB0F5F9B1C6DDE16006ED63F /* UIKit.swift in Sources */,
 				AB8BEEB81D38BC8A00CD4E7F /* String.swift in Sources */,
 				AB0F5F9C1C6DDE16006ED63F /* QueueOperation.swift in Sources */,
-				AB0F5F9D1C6DDE16006ED63F /* NSURLSessionTask.swift in Sources */,
+				AB0F5F9D1C6DDE16006ED63F /* URLSessionTask.swift in Sources */,
 				AB0F5F9E1C6DDE16006ED63F /* UIAlertController.swift in Sources */,
-				AB0F5F9F1C6DDE16006ED63F /* NSHTTPURLResponse.swift in Sources */,
+				AB0F5F9F1C6DDE16006ED63F /* HTTPURLResponse.swift in Sources */,
 				AB0F5FA01C6DDE16006ED63F /* Queue.swift in Sources */,
-				AB0F5FA11C6DDE16006ED63F /* NSDictionary.swift in Sources */,
+				AB0F5FA11C6DDE16006ED63F /* Dictionary.swift in Sources */,
 				AB0F5FA21C6DDE16006ED63F /* Log.swift in Sources */,
 				AB0F5FA31C6DDE16006ED63F /* Request.swift in Sources */,
 				AB0F5FA41C6DDE16006ED63F /* Host.swift in Sources */,
@@ -746,16 +747,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB8134591BEA11AC00726CE6 /* Cache.swift in Sources */,
-				ABEB1AAB1C69A7DE00702A28 /* NSData.swift in Sources */,
-				AB81347D1BEA1E0500726CE6 /* NSDate.swift in Sources */,
+				ABEB1AAB1C69A7DE00702A28 /* Data.swift in Sources */,
+				AB81347D1BEA1E0500726CE6 /* Date.swift in Sources */,
 				AB81347F1BEA1E0500726CE6 /* UIKit.swift in Sources */,
 				AB8BEEB41D38BC8A00CD4E7F /* String.swift in Sources */,
 				AB7A41C61C6B3D430030B70C /* QueueOperation.swift in Sources */,
-				AB7A41BE1C6AF74C0030B70C /* NSURLSessionTask.swift in Sources */,
+				AB7A41BE1C6AF74C0030B70C /* URLSessionTask.swift in Sources */,
 				AB81348B1BEA1E9C00726CE6 /* UIAlertController.swift in Sources */,
-				AB8134881BEA1E5200726CE6 /* NSHTTPURLResponse.swift in Sources */,
+				AB8134881BEA1E5200726CE6 /* HTTPURLResponse.swift in Sources */,
 				AB7A41C31C6B2BA00030B70C /* Queue.swift in Sources */,
-				AB8134821BEA1E2E00726CE6 /* NSDictionary.swift in Sources */,
+				AB8134821BEA1E2E00726CE6 /* Dictionary.swift in Sources */,
 				AB81345F1BEA11AC00726CE6 /* Log.swift in Sources */,
 				AB8134631BEA11AC00726CE6 /* Request.swift in Sources */,
 				AB81345D1BEA11AC00726CE6 /* Host.swift in Sources */,
@@ -777,12 +778,12 @@
 			files = (
 				AB81347A1BEA1E0500726CE6 /* NSAlert.swift in Sources */,
 				AB8BEEB61D38BC8A00CD4E7F /* String.swift in Sources */,
-				AB81347E1BEA1E0500726CE6 /* NSDate.swift in Sources */,
+				AB81347E1BEA1E0500726CE6 /* Date.swift in Sources */,
 				AB8134671BEA13DE00726CE6 /* Request.swift in Sources */,
-				ABEB1AAD1C69A7DE00702A28 /* NSData.swift in Sources */,
-				AB0F5FB21C6DF6D2006ED63F /* NSURLSessionTask.swift in Sources */,
-				AB8134891BEA1E5200726CE6 /* NSHTTPURLResponse.swift in Sources */,
-				AB8134831BEA1E2E00726CE6 /* NSDictionary.swift in Sources */,
+				ABEB1AAD1C69A7DE00702A28 /* Data.swift in Sources */,
+				AB0F5FB21C6DF6D2006ED63F /* URLSessionTask.swift in Sources */,
+				AB8134891BEA1E5200726CE6 /* HTTPURLResponse.swift in Sources */,
+				AB8134831BEA1E2E00726CE6 /* Dictionary.swift in Sources */,
 				AB8134691BEA13EC00726CE6 /* Log.swift in Sources */,
 				AB81346C1BEA13F900726CE6 /* Cache.swift in Sources */,
 				AB81346A1BEA13F000726CE6 /* Host.swift in Sources */,
@@ -803,7 +804,7 @@
 				ABDCA0BD1C69C08900B9568E /* UploadViewController.swift in Sources */,
 				ABCF93891B2ECA1F0078CA66 /* FlickrImageListViewController.swift in Sources */,
 				ABCF93871B2ECA1F0078CA66 /* AppDelegate.swift in Sources */,
-				ABEB1AAA1C69A7DE00702A28 /* NSData.swift in Sources */,
+				ABEB1AAA1C69A7DE00702A28 /* Data.swift in Sources */,
 				ABCF93BA1B2ECB830078CA66 /* FlickrClient.swift in Sources */,
 				AB0F5F781C6DA34D006ED63F /* DownloadViewController.swift in Sources */,
 				AB0F5F761C6DA0D0006ED63F /* DemoListViewController.swift in Sources */,
@@ -816,14 +817,14 @@
 			files = (
 				ABD1437B1C87EC0A0040FFFA /* Cache.swift in Sources */,
 				AB8BEEB91D38BC8A00CD4E7F /* String.swift in Sources */,
-				ABD1437C1C87EC0A0040FFFA /* NSData.swift in Sources */,
-				ABD1437D1C87EC0A0040FFFA /* NSDate.swift in Sources */,
+				ABD1437C1C87EC0A0040FFFA /* Data.swift in Sources */,
+				ABD1437D1C87EC0A0040FFFA /* Date.swift in Sources */,
 				ABD1437E1C87EC0A0040FFFA /* UIKit.swift in Sources */,
 				ABD1437F1C87EC0A0040FFFA /* QueueOperation.swift in Sources */,
-				ABD143801C87EC0A0040FFFA /* NSURLSessionTask.swift in Sources */,
-				ABD143821C87EC0A0040FFFA /* NSHTTPURLResponse.swift in Sources */,
+				ABD143801C87EC0A0040FFFA /* URLSessionTask.swift in Sources */,
+				ABD143821C87EC0A0040FFFA /* HTTPURLResponse.swift in Sources */,
 				ABD143831C87EC0A0040FFFA /* Queue.swift in Sources */,
-				ABD143841C87EC0A0040FFFA /* NSDictionary.swift in Sources */,
+				ABD143841C87EC0A0040FFFA /* Dictionary.swift in Sources */,
 				ABD143851C87EC0A0040FFFA /* Log.swift in Sources */,
 				ABD143861C87EC0A0040FFFA /* Request.swift in Sources */,
 				ABD143871C87EC0A0040FFFA /* Host.swift in Sources */,
@@ -836,14 +837,14 @@
 			files = (
 				ABD143931C87EC4C0040FFFA /* Cache.swift in Sources */,
 				AB8BEEBA1D38BC8A00CD4E7F /* String.swift in Sources */,
-				ABD143941C87EC4C0040FFFA /* NSData.swift in Sources */,
-				ABD143951C87EC4C0040FFFA /* NSDate.swift in Sources */,
+				ABD143941C87EC4C0040FFFA /* Data.swift in Sources */,
+				ABD143951C87EC4C0040FFFA /* Date.swift in Sources */,
 				ABD143961C87EC4C0040FFFA /* UIKit.swift in Sources */,
 				ABD143971C87EC4C0040FFFA /* QueueOperation.swift in Sources */,
-				ABD143981C87EC4C0040FFFA /* NSURLSessionTask.swift in Sources */,
-				ABD1439A1C87EC4C0040FFFA /* NSHTTPURLResponse.swift in Sources */,
+				ABD143981C87EC4C0040FFFA /* URLSessionTask.swift in Sources */,
+				ABD1439A1C87EC4C0040FFFA /* HTTPURLResponse.swift in Sources */,
 				ABD1439B1C87EC4C0040FFFA /* Queue.swift in Sources */,
-				ABD1439C1C87EC4C0040FFFA /* NSDictionary.swift in Sources */,
+				ABD1439C1C87EC4C0040FFFA /* Dictionary.swift in Sources */,
 				ABD1439D1C87EC4C0040FFFA /* Log.swift in Sources */,
 				ABD1439E1C87EC4C0040FFFA /* Request.swift in Sources */,
 				ABD1439F1C87EC4C0040FFFA /* Host.swift in Sources */,
@@ -893,15 +894,16 @@
 		AB0F5F921C6DDDEA006ED63F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = "Supporting Files/watchOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -912,6 +914,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALID_ARCHS = armv7k;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -923,15 +926,16 @@
 		AB0F5F931C6DDDEA006ED63F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = "Supporting Files/watchOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -942,6 +946,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALID_ARCHS = armv7k;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -953,15 +958,16 @@
 		AB0F5FAA1C6DDE16006ED63F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = "Supporting Files/tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -972,6 +978,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = arm64;
@@ -983,15 +990,16 @@
 		AB0F5FAB1C6DDE16006ED63F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = "Supporting Files/tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1002,6 +1010,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = arm64;
@@ -1013,15 +1022,16 @@
 		AB18DB9D1BC3F3AF00E25793 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = "Supporting Files/iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1032,6 +1042,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
+				SWIFT_VERSION = 3.0.1;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1043,15 +1054,16 @@
 		AB18DB9E1BC3F3AF00E25793 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = "Supporting Files/iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1062,6 +1074,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
+				SWIFT_VERSION = 3.0.1;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1078,6 +1091,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0.1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MKNetworkKitDemo.app/MKNetworkKitDemo";
 			};
 			name = Debug;
@@ -1090,6 +1104,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0.1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MKNetworkKitDemo.app/MKNetworkKitDemo";
 			};
 			name = Release;
@@ -1113,6 +1128,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/OSX";
+				SWIFT_VERSION = 3.0.1;
 				VALID_ARCHS = "i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1138,6 +1154,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/OSX";
+				SWIFT_VERSION = 3.0.1;
 				VALID_ARCHS = "i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1157,8 +1174,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1202,8 +1221,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1222,6 +1243,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1230,43 +1252,46 @@
 		ABCF93AE1B2ECA200078CA66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MKNetworkKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
 		ABCF93AF1B2ECA200078CA66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MKNetworkKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.steinlogic.MKNetworkKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
 		ABD1438D1C87EC0A0040FFFA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1281,6 +1306,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
+				SWIFT_VERSION = 3.0.1;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1292,15 +1318,16 @@
 		ABD1438E1C87EC0A0040FFFA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "Supporting Files/iOS-Appex.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1312,6 +1339,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
+				SWIFT_VERSION = 3.0.1;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1323,15 +1351,16 @@
 		ABD143A51C87EC4C0040FFFA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1347,6 +1376,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = arm64;
@@ -1358,15 +1388,16 @@
 		ABD143A61C87EC4C0040FFFA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "Supporting Files/tvOS-Appex.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1379,6 +1410,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/CommonCrypto/iOS";
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALID_ARCHS = arm64;

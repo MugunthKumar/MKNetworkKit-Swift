@@ -1,5 +1,5 @@
 //
-//  NSURLSessionTask.swift
+//  Dictionary.swift
 //  MKNetworkKit
 //
 //  Created by Mugunth Kumar
@@ -33,17 +33,35 @@
 
 import Foundation
 
-public extension NSURLSessionTask {
-  private struct AssociatedKeys {
-    static var RequestKey = "com.steinlogic.mknetworkkit.associatedkeys.request"
+public extension Dictionary {
+  public var URLEncodedString: String {
+    var encodedString = self.reduce("") {
+      let (key, value) = $1
+      return "\($0)" + "\(key)=\(value)&"
+    }
+    if encodedString.characters.count > 0 {
+      encodedString.remove(at: encodedString.characters.index(before: encodedString.endIndex))
+    }
+
+    let filterSet = (CharacterSet.urlFragmentAllowed as NSCharacterSet).mutableCopy() as! NSMutableCharacterSet
+    filterSet.formUnion(with: .urlPathAllowed)
+    filterSet.formUnion(with: .urlQueryAllowed)
+    filterSet.formUnion(with: .urlHostAllowed)
+
+    return encodedString.addingPercentEncoding(withAllowedCharacters: filterSet as CharacterSet) ?? ""
   }
 
-  public var request: Request? {
-    get {
-      return objc_getAssociatedObject(self, &AssociatedKeys.RequestKey) as? Request
+  public var JSONString: String? {
+    var data: Data?
+    do {
+      try data = JSONSerialization.data(withJSONObject: self as AnyObject, options:[])
+    } catch let error as NSError {
+      Log.warn(error)
     }
-    set (newValue) {
-      objc_setAssociatedObject(self, &AssociatedKeys.RequestKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+
+    guard data != nil else {
+      return nil
     }
+    return NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as String?
   }
 }

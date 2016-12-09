@@ -76,14 +76,14 @@ public enum HTTPMethod: String, CustomStringConvertible {
 
 // MARK:- Authentication Method
 public enum AuthenticationMethod: RawRepresentable {
-  case HTTPBasic
-  case HTTPDigest
+  case httpBasic
+  case httpDigest
   public init?(rawValue: String) {
     if rawValue == String(NSURLAuthenticationMethodHTTPDigest) {
-      self = HTTPDigest
+      self = .httpDigest
     }
     else if rawValue == String(NSURLAuthenticationMethodHTTPBasic) {
-      self = HTTPBasic
+      self = .httpBasic
     } else {
       return nil
     }
@@ -91,9 +91,9 @@ public enum AuthenticationMethod: RawRepresentable {
 
   public var rawValue: String {
     switch self {
-    case .HTTPBasic:
+    case .httpBasic:
       return String(NSURLAuthenticationMethodHTTPBasic)
-    case .HTTPDigest:
+    case .httpDigest:
       return String(NSURLAuthenticationMethodHTTPDigest)
     }
   }
@@ -103,8 +103,8 @@ public enum AuthenticationMethod: RawRepresentable {
 public struct MultipartEntity {
   let mimetype: String
   let suggestedFileName: String
-  let data: NSData
-  public init(mimetype: String, suggestedFileName: String, data: NSData) {
+  let data: Data
+  public init(mimetype: String, suggestedFileName: String, data: Data) {
     self.mimetype = mimetype
     self.suggestedFileName = suggestedFileName
     self.data = data
@@ -112,25 +112,21 @@ public struct MultipartEntity {
 
   public init?(mimetype: String, filePath: String) {
     self.mimetype = mimetype
+    self.suggestedFileName = URL(fileURLWithPath: filePath).lastPathComponent
 
-    guard let fileName = NSURL(fileURLWithPath: filePath).lastPathComponent else {
-      return nil
-    }
-    self.suggestedFileName = fileName
-
-    guard let data = NSData(contentsOfFile: filePath) else {
+    guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
       return nil
     }
     self.data = data
   }
 }
 
-public class Request: NSObject {
+open class Request: NSObject {
 
   // MARK:- Properties to manage Running Requests
-  static private var runningRequestsSynchronizingQueue =
-  dispatch_queue_create("com.mknetworkkit.request.queue", DISPATCH_QUEUE_SERIAL)
-  static private var runningRequests = [Request]()
+  static fileprivate var runningRequestsSynchronizingQueue =
+  DispatchQueue(label: "com.mknetworkkit.request.queue", attributes: [])
+  static fileprivate var runningRequests = [Request]()
   static internal var runningRequestsUpdatedHandler: ((Int) -> Void)?
 
   // MARK:- URL Properties
@@ -138,47 +134,47 @@ public class Request: NSObject {
   internal var method = HTTPMethod.GET
   internal var parameters = [String:AnyObject]()
   internal var headers = [String:String]()
-  public var parameterEncoding = ParameterEncoding.URL
+  open var parameterEncoding = ParameterEncoding.URL
 
   internal var multipartEntities = [String:MultipartEntity]()
-  internal var bodyData: NSData?
+  internal var bodyData: Data?
 
   // MARK:- Stream Properties
-  public var inputStream: NSInputStream?
-  internal var outputStream = [NSOutputStream]()
-  public var downloadPath: String?
+  open var inputStream: InputStream?
+  internal var outputStream = [OutputStream]()
+  open var downloadPath: String?
 
   // MARK:- Opaque References
-  internal weak var task: NSURLSessionTask?
+  internal weak var task: URLSessionTask?
   internal weak var host: Host!
 
   // MARK:- Authentication Properties
-  public var username: String?
-  public var password: String?
-  public var realm: String?
-  public var authenticationMethod = AuthenticationMethod.HTTPBasic
-  public var clientCertificate: String?
-  public var clientCertificatePassword: String?
+  open var username: String?
+  open var password: String?
+  open var realm: String?
+  open var authenticationMethod = AuthenticationMethod.httpBasic
+  open var clientCertificate: String?
+  open var clientCertificatePassword: String?
 
   internal var requiresAuthentication: Bool {
     return (username != nil && password != nil && realm != nil)
   }
 
-  public var credential: NSURLCredential? {
-    var credentialToReturn: NSURLCredential? = nil
+  open var credential: URLCredential? {
+    var credentialToReturn: URLCredential? = nil
     if requiresAuthentication {
-      credentialToReturn = NSURLCredential(user: username!, password: password!, persistence: .ForSession)
+      credentialToReturn = URLCredential(user: username!, password: password!, persistence: .forSession)
     }
     return credentialToReturn
   }
 
-  public var protectionSpace: NSURLProtectionSpace? {
-    var protectionSpaceToReturn: NSURLProtectionSpace? = nil
+  open var protectionSpace: URLProtectionSpace? {
+    var protectionSpaceToReturn: URLProtectionSpace? = nil
 
-    if let url = request?.URL {
+    if let url = request?.url {
       var portNumber: Int!
-      if let p = url.port {
-        portNumber = p.integerValue
+      if let p = (url as NSURL).port {
+        portNumber = p.intValue
       } else {
         if url.scheme == "https" {
           portNumber = 443
@@ -186,7 +182,7 @@ public class Request: NSObject {
           portNumber = 80
         }
       }
-      protectionSpaceToReturn = NSURLProtectionSpace(host: url.host!, port: portNumber,
+      protectionSpaceToReturn = URLProtectionSpace(host: url.host!, port: portNumber,
         protocol: url.scheme, realm: realm,
         authenticationMethod: authenticationMethod.rawValue)
     }
@@ -194,14 +190,14 @@ public class Request: NSObject {
   }
 
   // MARK:- State Change Handlers
-  public var stateWillChange: (Request -> Void)?
-  public var stateDidChange: (Request -> Void)?
+  open var stateWillChange: ((Request) -> Void)?
+  open var stateDidChange: ((Request) -> Void)?
 
   // MARK:- Progress And Completion Handlers
-  private var progressHandlers = Array<Request -> Void>()
-  private var completionHandlers = Array<Request -> Void>()
+  fileprivate var progressHandlers = Array<(Request) -> Void>()
+  fileprivate var completionHandlers = Array<(Request) -> Void>()
 
-  public var progressValue: Double? {
+  open var progressValue: Double? {
     didSet {
       for handler in progressHandlers {
         handler(self)
@@ -210,16 +206,16 @@ public class Request: NSObject {
   }
 
   // MARK:- Cache Handling Properties
-  public var doNotCache: Bool = false
-  public var ignoreCache: Bool = false
-  public var alwaysLoad: Bool = false
+  open var doNotCache: Bool = false
+  open var ignoreCache: Bool = false
+  open var alwaysLoad: Bool = false
 
   internal var cachedDataHash: String?
   internal var equalityIdentifier: String {
     var string: String = "\(arc4random())"
     if let unwrappedRequest = request {
       if ![.POST, .PUT, .PATCH, .OPTIONS].contains(method) {
-        string = "\(method.rawValue.uppercaseString)-\(unwrappedRequest.URL!.absoluteString)"
+        string = "\(method.rawValue.uppercased())-\(unwrappedRequest.url!.absoluteString)"
       }
     }
     if let unwrappedUsername = username {
@@ -245,28 +241,31 @@ public class Request: NSObject {
   }
 
   // MARK:- Request State
-  public func cancel() -> Request {
+  @discardableResult
+  open func cancel() -> Request {
     if state == .Started {
       state = .Cancelled
     }
     return self
   }
 
-  public func pause() -> Request {
+  @discardableResult
+  open func pause() -> Request {
     if state == .Started {
       state = .Paused
     }
     return self
   }
 
-  public func resume() -> Request {
+  @discardableResult
+  open func resume() -> Request {
     if state == .Paused {
       state = .Started
     }
     return self
   }
 
-  public var state: State = .Ready {
+  open var state: State = .Ready {
     willSet {
       stateWillChange?(self)
     }
@@ -307,13 +306,13 @@ public class Request: NSObject {
       stateDidChange?(self)
 
       if (state == .Started) {
-        dispatch_async(Request.runningRequestsSynchronizingQueue) {
+        Request.runningRequestsSynchronizingQueue.async {
           Request.runningRequests.append(self)
           Request.runningRequestsUpdatedHandler?(Request.runningRequests.count)
         }
       }
       if (state == .Completed || state == .Paused || state == .Error || state == .Cancelled) {
-        dispatch_async(Request.runningRequestsSynchronizingQueue) {
+        Request.runningRequestsSynchronizingQueue.async {
           Request.runningRequests = Request.runningRequests.filter {$0 !== self}
           Request.runningRequestsUpdatedHandler?(Request.runningRequests.count)
         }
@@ -322,7 +321,7 @@ public class Request: NSObject {
   }
 
   // MARK:- URL Request Preparation
-  public var request: NSURLRequest? {
+  open var request: URLRequest? {
     var finalUrl: String
     switch(method) {
     case .GET, .DELETE, .CONNECT, .TRACE:
@@ -335,28 +334,28 @@ public class Request: NSObject {
       finalUrl = url
     }
 
-    guard let nsurl = NSURL(string: finalUrl) else {return nil}
-    let urlRequest = NSMutableURLRequest(URL: nsurl)
-    urlRequest.HTTPMethod = method.description
+    guard let nsurl = URL(string: finalUrl) else {return nil}
+    let urlRequest = NSMutableURLRequest(url: nsurl)
+    urlRequest.httpMethod = method.description
 
     for (headerField, headerValue) in headers {
       urlRequest.setValue(headerValue, forHTTPHeaderField: headerField)
     }
 
     let charset =
-    CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)) as NSString
+    CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(String.Encoding.utf8.rawValue)) as NSString
     
-    if parameters.count > 0 && urlRequest.valueForHTTPHeaderField("Content-Type") == nil {
+    if parameters.count > 0 && urlRequest.value(forHTTPHeaderField: "Content-Type") == nil {
       urlRequest.setValue(parameterEncoding.contentType, forHTTPHeaderField: "Content-Type")
       urlRequest.addValue("charset=\(charset)", forHTTPHeaderField: "Content-Type")
     }
 
     if [.POST, .PUT, .PATCH, .OPTIONS].contains(method) {
       if parameterEncoding == .URL {
-        urlRequest.HTTPBody = parameters.URLEncodedString.dataUsingEncoding(NSUTF8StringEncoding)
+        urlRequest.httpBody = parameters.URLEncodedString.data(using: String.Encoding.utf8)
       }
       if parameterEncoding == .JSON {
-        urlRequest.HTTPBody = parameters.JSONString?.dataUsingEncoding(NSUTF8StringEncoding)
+        urlRequest.httpBody = parameters.JSONString?.data(using: String.Encoding.utf8)
       }
     }
 
@@ -368,20 +367,20 @@ public class Request: NSObject {
 
       for (k, v) in parameters {
         let string = "--\(boundary)\r\nContent-Disposition: form-data; name=\"\(k)\"\r\n\r\n\(v)\r\n"
-        body.appendData(string.dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.append(string.data(using: String.Encoding.utf8)!)
       }
 
       for (k, v) in multipartEntities {
         let string = "--\(boundary)\r\nContent-Disposition: form-data; name=\"\(k)\"; filename=\"\(v.suggestedFileName)\"\r\nContent-Type: \(v.mimetype)\r\nContent-Transfer-Encoding: binary\r\n\r\n"
-        body.appendData(string.dataUsingEncoding(NSUTF8StringEncoding)!)
-        body.appendData(v.data)
-        body.appendData("\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.append(string.data(using: String.Encoding.utf8)!)
+        body.append(v.data)
+        body.append("\r\n".data(using: String.Encoding.utf8)!)
       }
 
       let closingBoundary = "--\(boundary)--\r\n"
-      body.appendData(closingBoundary.dataUsingEncoding(NSUTF8StringEncoding)!)
+      body.append(closingBoundary.data(using: String.Encoding.utf8)!)
 
-      urlRequest.HTTPBody = body
+      urlRequest.httpBody = body as Data
       urlRequest.setValue("multipart/form-data", forHTTPHeaderField: "Content-Type")
       urlRequest.addValue("charset=\(charset)", forHTTPHeaderField: "Content-Type")
       urlRequest.addValue("boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
@@ -390,23 +389,23 @@ public class Request: NSObject {
 
     // body data overrides parameters, files or blob based body data
     if let unwrappedBodyData = bodyData {
-      urlRequest.HTTPBody = unwrappedBodyData
+      urlRequest.httpBody = unwrappedBodyData
     }
 
-    return urlRequest
+    return urlRequest as URLRequest
   }
 
   // MARK:- Response Properties
-  internal var responseData = NSMutableData()
-  internal var response: NSHTTPURLResponse?
-  public var error: NSError?
+  internal var responseData = Data()
+  internal var response: HTTPURLResponse?
+  open var error: NSError?
 
   // MARK:- Designated Initializer
   init(method: HTTPMethod = .GET,
     url: String,
     parameters: [String:AnyObject] = [:],
     headers: [String:String] = [:],
-    bodyData: NSData? = nil) {
+    bodyData: Data? = nil) {
       self.url = url
       self.method = method
       self.parameters = parameters
@@ -415,7 +414,7 @@ public class Request: NSObject {
   }
 
   // MARK:- Tweaking your Request
-  public func append(headers additionalHeaders: [String:String] = [:],
+  open func append(headers additionalHeaders: [String:String] = [:],
     parameters additionalParameters: [String:AnyObject] = [:]) {
       for (k, v) in additionalHeaders {
         headers.updateValue(v, forKey: k)
@@ -425,92 +424,94 @@ public class Request: NSObject {
       }
   }
 
-  public func appendHeader(key: String, value: String) {
+  open func appendHeader(_ key: String, value: String) {
     headers.updateValue(value, forKey: key)
   }
 
-  public func appendParameter(key: String, value: String) {
-    parameters.updateValue(value, forKey: key)
+  open func appendParameter(_ key: String, value: String) {
+    parameters.updateValue(value as AnyObject, forKey: key)
   }
 
-  public func appendMultipartEntity(key: String, value: MultipartEntity) {
+  open func appendMultipartEntity(_ key: String, value: MultipartEntity) {
     multipartEntities.updateValue(value, forKey: key)
   }
 
-  public func appendOutputStream(stream: NSOutputStream) {
+  open func appendOutputStream(_ stream: OutputStream) {
     outputStream.append(stream)
   }
 
   // MARK:- Adding Authorization to your Request
-  public func appendBasicAuthorizationHeader(username username: String, password: String) {
-    let authString = "\(username):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!.base64EncodedStringWithOptions(.EncodingEndLineWithCarriageReturn)
+  open func appendBasicAuthorizationHeader(username: String, password: String) {
+    let authString = "\(username):\(password)".data(using: String.Encoding.utf8)!.base64EncodedString(options: .endLineWithCarriageReturn)
     appendAuthorizationHeader(type: "Basic", value: authString)
   }
-  public func appendAuthorizationHeader(type type: String, value: String) {
+  open func appendAuthorizationHeader(type: String, value: String) {
     appendHeader("Authorization", value: "\(type) \(value)")
   }
 
   // MARK:- Printing and Debug String Support
-  public override var description: String {
+  open override var description: String {
     return asCurlCommand
   }
 
-  public var asCurlCommand: String {
+  open var asCurlCommand: String {
     var displayString = "curl -X \(method)"
     guard let r = request else { return displayString }
-    guard let urlString = r.URL?.absoluteString else { return displayString }
+    guard let urlString = r.url?.absoluteString else { return displayString }
     displayString = displayString + " '" + urlString + "'"
 
     guard var h = r.allHTTPHeaderFields else { return displayString }
     if let encodingValue = h["Accept-Encoding"] {
-      if encodingValue.containsString("gzip") {
+      if encodingValue.contains("gzip") {
         h["Accept-Encoding"] = nil
       }
     }
-    displayString += " -H \(h.map {"'\($0):\($1)'"}.joinWithSeparator(" -H "))"
+    displayString += " -H \(h.map {"'\($0):\($1)'"}.joined(separator: " -H "))"
 
-    if let actualData = r.HTTPBody {
-      if let stringData = String(data:actualData, encoding:NSUTF8StringEncoding) {
+    if let actualData = r.httpBody {
+      if let stringData = String(data:actualData, encoding:String.Encoding.utf8) {
         displayString = displayString + " -d '" + stringData + "'"
       }
     }
     return displayString
   }
 
-  public func log() -> Request {
+  @discardableResult
+  open func log() -> Request {
     Log.info(self.asCurlCommand)
     return self
   }
 
   // MARK:- Response Formatters
-  public var responseAsString: String? {
-    guard let responseData: NSData = responseData else { return nil }
-    return String(data: responseData, encoding: NSUTF8StringEncoding)
+  open var responseAsString: String? {
+    return String(data: responseData, encoding: String.Encoding.utf8)
   }
 
-  public var responseAsJSON: AnyObject? {
-    guard let responseData: NSData = responseData else { return nil }
+  open var responseAsJSON: AnyObject? {
     do {
-      let jsonObject = try NSJSONSerialization.JSONObjectWithData(responseData, options: .MutableLeaves)
-      return jsonObject
+      let jsonObject = try JSONSerialization.jsonObject(with: responseData, options: .mutableLeaves)
+      return jsonObject as AnyObject?
     } catch {
       Log.error("Error parsing as JSON \(responseAsString)")
       return nil
     }
   }
 
-  public func progress (handler: (Request) -> Void) -> Request {
+  @discardableResult
+  open func progress (_ handler: @escaping (Request) -> Void) -> Request {
     progressHandlers.append(handler)
     return self
   }
 
-  public func completion (handler: (Request) -> Void) -> Request {
+  @discardableResult
+  open func completion (_ handler: @escaping (Request) -> Void) -> Request {
     completionHandlers.append(handler)
     return self
   }
 
   // MARK:- Running the request
-  public func run(alwaysLoad alwaysLoad: Bool? = nil, ignoreCache: Bool? = nil, doNotCache: Bool? = nil) -> Request {
+  @discardableResult
+  open func run(alwaysLoad: Bool? = nil, ignoreCache: Bool? = nil, doNotCache: Bool? = nil) -> Request {
     if let unwrappedAlwaysLoad = alwaysLoad {
       self.alwaysLoad = unwrappedAlwaysLoad
     }

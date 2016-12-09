@@ -1,5 +1,5 @@
 # MKNetworkKit
-#### An simple, elegant and easy to use networking framework in Swift 2.0
+#### An simple, elegant and easy to use networking framework in Swift 3.0
 [![Build Status](https://travis-ci.org/MugunthKumar/MKNetworkKit-Swift.svg?branch=master)](https://travis-ci.org/MugunthKumar/MKNetworkKit-Swift)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Twitter](https://img.shields.io/badge/twitter-@MugunthKumar-orange.svg?style=flat)](http://twitter.com/MugunthKumar)
@@ -12,7 +12,7 @@ This is version 3.0 of MKNetworkKit.
 Version 3 is a complete rewrite loosely based on [version 2](https://github.com/MugunthKumar/MKNetworkKit) that was released in October 2015.
 
 ###Why MKNetworkKit?
-Actually, you don't need a networking framework today (post iOS 7). We live in the era of `NSURLSession` and with networking becoming a core feature of every app, you need to know how to write a good networking stack without using a third party library.
+Actually, you don't need a networking framework today (post iOS 7). We live in the era of `URLSession` and with networking becoming a core feature of every app, you need to know how to write a good networking stack without using a third party library.
 
 Now, you may ask, So, why are there so many networking frameworks? Almost every iOS developer I know uses one or the other networking library.
 
@@ -21,9 +21,9 @@ Though `NSURLConnection` was easier than `CFNetwork` it still wasn't easy enough
 
 With iOS 7, Apple introduced `NSURLSession` based networking that blew everything out of water.
 
-Using `NSURLSession` is super easy to use. Most of today's third party networking frameworks that exist today are built on top of `NSURLSession`. With deprecation of `NSURLConnection` in iOS 9 (tvOS 9.0 marks NSURLConnection as unavailable), you don't even need to know the "basics" like `NSURLConnection`. In fact, `NSURLSession` is the new "basics". `NSURLSession` **is** the class that you should learn, if you are doing networking today.
+Using `URLSession` is super easy to use. Most of today's third party networking frameworks that exist today are built on top of `URLSession`. With deprecation of `NSURLConnection` in iOS 9 (tvOS 9.0 marks NSURLConnection as unavailable), you don't even need to know the "basics" like `NSURLConnection`. In fact, `URLSession` is the new "basics". `URLSession` **is** the class that you should learn, if you are doing networking today.
 
-In my opinion, the only benefits of using a networking framework instead of `NSURLSession` are 
+In my opinion, the only benefits of using a networking framework instead of `URLSession` are 
 
 1. Easier Authentication (`www-authenticate`based and client certificate/server trust based)
 	Authentication with NSURLSession still requires delegate handling like NSURLConnection

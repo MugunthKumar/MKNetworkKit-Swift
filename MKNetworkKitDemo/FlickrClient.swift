@@ -27,6 +27,7 @@ class FlickrClient: Host {
     self.secure = true
   }
 
+  @discardableResult
   internal func imageFetchRequest(tag : String, page: Int) -> Request? {
     return super.request(withPath: "", parameters:
       ["method": "flickr.photos.search",
@@ -38,6 +39,7 @@ class FlickrClient: Host {
       ])
   }
 
+  @discardableResult
   override func customizeRequest(request: Request) -> Request {
     request.appendParameter("api_key", value: flickrAPIKey)
     return request
@@ -59,6 +61,7 @@ class FlickrClient: Host {
   }
 
   #if os(iOS) || os(watchOS) || os(tvOS)
+  @discardableResult
   func fetchImage (imageURLString : String, completionHandler: (UIImage?) -> Void) -> Request? {
     let request = super.request(withAbsoluteURLString: imageURLString)
     return request?.completion {request in

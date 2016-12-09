@@ -1,5 +1,5 @@
 //
-//  NSDictionary.swift
+//  Date.swift
 //  MKNetworkKit
 //
 //  Created by Mugunth Kumar
@@ -32,36 +32,21 @@
 //
 
 import Foundation
+import CommonCrypto
 
-public extension Dictionary {
-  public var URLEncodedString: String {
-    var encodedString = self.reduce("") {
-      let (key, value) = $1
-      return "\($0)" + "\(key)=\(value)&"
-    }
-    if encodedString.characters.count > 0 {
-      encodedString.removeAtIndex(encodedString.endIndex.predecessor())
-    }
+public extension Data {
+  public var md5: String {
+    let digestLength = Int(CC_MD5_DIGEST_LENGTH)
+    var md5Buffer = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
 
-    let filterSet = NSCharacterSet.URLFragmentAllowedCharacterSet().mutableCopy() as! NSMutableCharacterSet
-    filterSet.formUnionWithCharacterSet(.URLPathAllowedCharacterSet())
-    filterSet.formUnionWithCharacterSet(.URLQueryAllowedCharacterSet())
-    filterSet.formUnionWithCharacterSet(.URLHostAllowedCharacterSet())
-
-    return encodedString.stringByAddingPercentEncodingWithAllowedCharacters(filterSet) ?? ""
-  }
-
-  public var JSONString: String? {
-    var data: NSData?
-    do {
-      try data = NSJSONSerialization.dataWithJSONObject(self as! AnyObject, options:[])
-    } catch let error as NSError {
-      Log.warn(error)
+    _ = withUnsafeBytes { bytes in
+      CC_MD5(bytes, CC_LONG(count), &md5Buffer)
     }
 
-    guard data != nil else {
-      return nil
+    let output = NSMutableString(capacity: Int(CC_MD5_DIGEST_LENGTH * 2))
+    for i in 0..<digestLength {
+      output.appendFormat("%02x", md5Buffer[i])
     }
-    return NSString(data: data!, encoding: NSUTF8StringEncoding) as String?
+    return NSString(format: output) as String
   }
 }
