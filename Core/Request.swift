@@ -6,7 +6,7 @@
 //  Copyright © 2015 - 2020 Steinlogic Consulting and Training Pte Ltd. All rights reserved.
 //
 //  MIT LICENSE (REQUIRES ATTRIBUTION)
-//	ATTRIBUTION FREE LICENSING AVAILBLE (for a license fee)
+//  ATTRIBUTION FREE LICENSING AVAILBLE (for a license fee)
 //  Email mugunth.kumar@gmail.com for details
 //
 //  Created by Mugunth Kumar (@mugunthkumar)
@@ -466,7 +466,7 @@ open class Request: NSObject {
         h["Accept-Encoding"] = nil
       }
     }
-    displayString += " -H \(h.map {"'\($0):\($1)'"}.joined(separator: " -H "))"
+    displayString += " -H \(h.map {"'\($0.0):\($0.1)'"}.joined(separator: " -H "))"
 
     if let actualData = r.httpBody {
       if let stringData = String(data:actualData, encoding:String.Encoding.utf8) {
@@ -492,7 +492,7 @@ open class Request: NSObject {
       let jsonObject = try JSONSerialization.jsonObject(with: responseData, options: .mutableLeaves)
       return jsonObject as AnyObject?
     } catch {
-      Log.error("Error parsing as JSON \(responseAsString)")
+      Log.error("Error parsing as JSON \(responseAsString ?? "")")
       return nil
     }
   }

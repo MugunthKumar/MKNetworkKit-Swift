@@ -55,7 +55,7 @@ class FlickrClient: Host {
         let flickrArray = photosDictionary["photo"] as! [[String: AnyObject]]
         completionHandler(flickrArray.map {FlickrImage(jsonDictionary: $0)})
       } else {
-        print("\(request.error)")
+        print("\(String(describing: request.error))")
       }
       }.run()
   }

@@ -6,7 +6,7 @@
 //  Copyright © 2015 - 2020 Steinlogic Consulting and Training Pte Ltd. All rights reserved.
 //
 //  MIT LICENSE (REQUIRES ATTRIBUTION)
-//	ATTRIBUTION FREE LICENSING AVAILBLE (for a license fee)
+//  ATTRIBUTION FREE LICENSING AVAILBLE (for a license fee)
 //  Email mugunth.kumar@gmail.com for details
 //
 //  Created by Mugunth Kumar (@mugunthkumar)
@@ -50,7 +50,7 @@ open class Host: NSObject, URLSessionTaskDelegate, URLSessionDataDelegate, URLSe
   fileprivate var defaultSession: Foundation.URLSession!
   fileprivate var ephermeralSession: Foundation.URLSession!
   fileprivate var backgroundSession: Foundation.URLSession!
-  open var backgroundSessionCompletionHandler: ((Void) -> Void)?
+  open var backgroundSessionCompletionHandler: (() -> Void)?
   open var backgroundSessionIdentifier: String = "com.mknetworkkit.backgroundsessionidentifier"
 
   // MARK:- Cache Handling
@@ -322,7 +322,7 @@ open class Host: NSObject, URLSessionTaskDelegate, URLSessionDataDelegate, URLSe
     }
 
     if session == backgroundSession {      
-      if let infoDictionary = (error as? NSError)?.userInfo {
+      if let infoDictionary = (error as NSError?)?.userInfo {
         resumeDataCache?[task.request!.equalityIdentifier] = infoDictionary[NSURLSessionDownloadTaskResumeData as NSObject] as? Data
       }
     }
