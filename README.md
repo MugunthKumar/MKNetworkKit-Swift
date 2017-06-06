@@ -8,6 +8,9 @@
 [![Gitter](https://badges.gitter.im/MugunthKumar/MKNetworkKit-Swift.svg)](https://gitter.im/MugunthKumar/MKNetworkKit-Swift?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ---
+
+*Update: (June 6 2017)* - A Swift 4 compatible version is available on [swift-4](https://github.com/MugunthKumar/MKNetworkKit-Swift/tree/swift-4) branch.
+
 This is version 3.0 of MKNetworkKit. 
 Version 3 is a complete rewrite loosely based on [version 2](https://github.com/MugunthKumar/MKNetworkKit) that was released in October 2015.
 

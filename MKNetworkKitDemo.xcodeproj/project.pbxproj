@@ -172,6 +172,9 @@
 		AB7A41BC1C6AF6F00030B70C /* URLSessionTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionTask.swift; sourceTree = "<group>"; };
 		AB7A41C11C6B26120030B70C /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		AB7A41C41C6B3D3A0030B70C /* QueueOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueOperation.swift; sourceTree = "<group>"; };
+		AB7DCF491EE668DD00BF25D9 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		AB7DCF4A1EE668DD00BF25D9 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
+		AB7DCF4B1EE668DD00BF25D9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AB8134391BEA0FA200726CE6 /* MKNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8134501BEA11AC00726CE6 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		AB8134521BEA11AC00726CE6 /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
@@ -340,6 +343,9 @@
 		ABCF937A1B2ECA1F0078CA66 = {
 			isa = PBXGroup;
 			children = (
+				AB7DCF491EE668DD00BF25D9 /* LICENSE.md */,
+				AB7DCF4B1EE668DD00BF25D9 /* README.md */,
+				AB7DCF4A1EE668DD00BF25D9 /* TODO.md */,
 				AB81344E1BEA11AC00726CE6 /* Core */,
 				ABCF93851B2ECA1F0078CA66 /* iOSDemo */,
 				AB0F5F791C6DC4A9006ED63F /* Frameworks */,
